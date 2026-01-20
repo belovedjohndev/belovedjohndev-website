@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import StructuredData from '../components/StructuredData.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.pathname,
+  ogImage = '/assets/images/hero-bg.webp',
+} = Astro.props;
+
+const siteUrl = 'https://belovedjohndev.github.io';
+const fullUrl = `${siteUrl}${canonical === '/' ? '' : canonical}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Beloved John Dev" />
+    <link rel="canonical" href={fullUrl} />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Beloved John Dev" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={fullUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageUrl} />
+    
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    
+    <StructuredData />
+    
+    <link rel="dns-prefetch" href="https://wa.me" />
+    <link rel="dns-prefetch" href="https://t.me" />
+    
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <slot name="navbar" />
+    
+    <main id="main">
+      <slot />
+    </main>
+    
+    <slot name="footer" />
+    
+    <slot name="scripts" />
+  </body>
+</html>

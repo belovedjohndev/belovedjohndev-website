@@ -1,0 +1,57 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout
+  title="Page Not Found | Beloved John Dev"
+  description="The page you're looking for doesn't exist."
+  canonical="/404"
+>
+  <Navbar slot="navbar" />
+  
+  <section class="error-page section-padding">
+    <div class="container">
+      <div class="error-content">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <a href="/" class="btn btn-primary">Go to Homepage</a>
+      </div>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white);
+  }
+
+  .error-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .error-content h1 {
+    font-size: 8rem;
+    line-height: 1;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .error-content h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .error-content p {
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
+  }
+</style>

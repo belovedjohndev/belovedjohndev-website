@@ -1,0 +1,144 @@
+<section class="projects section-padding" id="projects">
+  <div class="container">
+    <div class="section-title">
+      <h2>Recent Projects</h2>
+      <p>Real websites built for clients, focusing on performance and user experience.</p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card">
+        <img
+          src="/assets/images/travel-agency.png"
+          alt="Screenshot of travel agency website showing service sections and contact form"
+          width="600"
+          height="400"
+          loading="lazy"
+          class="project-image"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <div class="image-placeholder" style="display: none; padding: 2rem; background: var(--color-light); text-align: center; color: var(--color-text-muted);">
+          Image unavailable
+        </div>
+        <div class="project-meta">Business Website · Frontend: HTML5, CSS3, Vanilla JavaScript</div>
+        <h3>Travel Agency Website</h3>
+        <p class="project-description">
+          A clean, mobile-friendly website for a travel agency. Includes service
+          sections, contact form, and professional layout optimized for customer inquiries.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">HTML5/CSS3</span>
+          <span class="tech-tag">Vanilla JavaScript</span>
+          <span class="tech-tag">Responsive</span>
+        </div>
+        <p class="project-result">
+          <strong>Result:</strong> Improved mobile experience and easier customer inquiries.
+        </p>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="/assets/images/religious-org.png"
+          alt="Screenshot of religious organization website with clean layout and easy navigation"
+          width="600"
+          height="400"
+          loading="lazy"
+          class="project-image"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <div class="image-placeholder" style="display: none; padding: 2rem; background: var(--color-light); text-align: center; color: var(--color-text-muted);">
+          Image unavailable
+        </div>
+        <div class="project-meta">Premium Website · A full-stack church management system built with Django REST Framework (backend) and Next.js (frontend). </div>
+        <h3>Religious Organization Website</h3>
+        <p class="project-description">
+          A modern, respectful website designed for clarity and easy navigation.
+          Focused on readability and accessibility across all devices.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Accessibility</span>
+        </div>
+        <p class="project-result">
+          <strong>Result:</strong> Improved clarity and accessibility across all devices.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    background-color: var(--color-light);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .project-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+  }
+
+  .project-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+
+  .project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  .project-card > div,
+  .project-card > h3,
+  .project-card > p {
+    padding: 0 var(--space-md);
+  }
+
+  .project-meta {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+  }
+
+  .project-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .project-description {
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .tech-tag {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .project-result {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    padding-bottom: var(--space-md);
+  }
+</style>

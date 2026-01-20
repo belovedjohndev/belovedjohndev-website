@@ -1,0 +1,114 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout
+  title="Privacy Policy | Beloved John Dev"
+  description="Privacy policy for Beloved John Dev website and services."
+  canonical="/privacy"
+>
+  <Navbar slot="navbar" />
+  
+  <article class="legal-page">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p><strong>Last updated:</strong> January 2025</p>
+
+      <p>
+        At <strong>Beloved John Dev</strong>, your privacy is respected.
+        This website is a simple informational website intended to describe web development services.
+      </p>
+
+      <h2>Information Collection</h2>
+      <p>
+        This website does not collect personal information directly.
+        There are no forms, user accounts, or databases on this website.
+      </p>
+
+      <h2>Contacting Me</h2>
+      <p>
+        If you choose to contact me via email, WhatsApp, or Telegram,
+        your information is used only to respond to your inquiry and discuss your project.
+        I do not sell, rent, or share your personal information with third parties.
+      </p>
+
+      <h2>Cookies & Analytics</h2>
+      <p>
+        This website may use basic analytics tools in the future to understand general website traffic
+        (such as page visits and device types).
+        These tools do not collect personally identifiable information.
+      </p>
+
+      <h2>Third-Party Services</h2>
+      <p>
+        This website contains links to third-party services such as WhatsApp and Telegram.
+        These services have their own privacy policies, and I am not responsible for their practices.
+      </p>
+
+      <h2>Children's Privacy</h2>
+      <p>
+        This website is not intended for children under the age of 13,
+        and no personal information is knowingly collected from children.
+      </p>
+
+      <h2>Policy Updates</h2>
+      <p>
+        This privacy policy may be updated occasionally.
+        Any changes will be posted on this page.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        If you have questions about this privacy policy,
+        you can contact me via the methods listed on this website.
+      </p>
+
+      <p class="back-link">
+        <a href="/">← Back to Home</a>
+      </p>
+    </div>
+  </article>
+  
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .legal-page {
+    padding: var(--space-2xl) 0;
+    background-color: var(--color-white);
+    min-height: 60vh;
+  }
+
+  .legal-page .container {
+    max-width: 900px;
+  }
+
+  .legal-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-dark);
+  }
+
+  .legal-page h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+  }
+
+  .legal-page p {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .back-link {
+    margin-top: var(--space-2xl);
+  }
+
+  .back-link a {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+</style>

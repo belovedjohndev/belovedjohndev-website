@@ -1,0 +1,87 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: "How long does it take to build a website?",
+    answer: "Starter Business websites take 3–5 days. Business websites take 7–10 days. Premium websites take 14–21 days, depending on complexity."
+  },
+  {
+    question: "Do I need to buy a domain and hosting?",
+    answer: "Yes, I can guide you step by step on where to buy an affordable domain and hosting, and assist with the setup. If you prefer, I can manage everything for you, and we can discuss pricing based on your needs."
+  },
+  {
+    question: "Can I request changes?",
+    answer: "Yes. Up to 2 revision rounds are included during the design stage to ensure everything meets your expectations."
+  },
+  {
+    question: "What if I don't like the first design?",
+    answer: "No problem. I'll refine the layout, colors, or sections within the included revision rounds to make sure it meets your expectations."
+  },
+  {
+    question: "How does payment work?",
+    answer: "Payment terms: 100% upfront for Starter Business websites. 50% upfront / 50% on completion for business and premium projects."
+  },
+  {
+    question: "Do you provide support after launch?",
+    answer: "Yes. I provide 30 days of free support after launch and can help with small updates or guidance when needed."
+  }
+];
+---
+
+<section class="faq section-padding" id="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+      <p>Clear answers to common questions.</p>
+    </div>
+
+    <div class="faq-grid">
+      {faqs.map((faq) => (
+        <article class="faq-card">
+          <h3>{faq.question}</h3>
+          <p>{faq.answer}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background-color: var(--color-light);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .faq-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+  }
+
+  .faq-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .faq-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-dark);
+  }
+
+  .faq-card p {
+    color: var(--color-text);
+    margin-bottom: 0;
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  type?: 'Person' | 'ProfessionalService';
+}
+
+const { type = 'ProfessionalService' } = Astro.props;
+
+const siteUrl = 'https://belovedjohndev.github.io';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': type,
+  name: 'Beloved John Dev',
+  url: siteUrl,
+  logo: `${siteUrl}/assets/images/logo.svg`,
+  description: 'Freelance web developer specializing in fast, accessible, and maintainable websites for small businesses.',
+  areaServed: 'Worldwide',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'KH',
+  },
+  sameAs: [
+    'https://wa.me/855963885424',
+    'https://t.me/belovedjohndev',
+    'https://github.com/belovedjohndev',
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

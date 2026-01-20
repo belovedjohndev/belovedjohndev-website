@@ -1,0 +1,29 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Services from '../components/sections/Services.astro';
+import Projects from '../components/sections/Projects.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+
+<MainLayout
+  title="Beloved John Dev | Web Developer Portfolio"
+  description="Freelance web developer specializing in fast, accessible, and maintainable websites. Custom-coded solutions for small businesses and entrepreneurs."
+>
+  <Navbar slot="navbar" />
+  
+  <Hero />
+  <About />
+  <Services />
+  <Projects />
+  <Testimonials />
+  <FAQ />
+  <Contact />
+  
+  <Footer slot="footer" />
+</MainLayout>

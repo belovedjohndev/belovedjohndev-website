@@ -1,0 +1,71 @@
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-logo">
+      <img src="/assets/images/logo.svg" alt="Beloved John Dev logo" width="50" height="50" />
+    </div>
+    <p>Professional web development services for businesses and entrepreneurs.</p>
+    
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="#top">Back to Top</a>
+    </div>
+    
+    <div class="copyright">
+      © {new Date().getFullYear()} Beloved John Dev. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-xl) 0 var(--space-md);
+  }
+
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .footer-logo img {
+    height: 50px;
+    width: auto;
+  }
+
+  .footer-links {
+    margin-top: var(--space-md);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
+
+  .copyright {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+</style>
