@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 600 120"
+     role="img"
+     aria-label="Beloved John Dev logo">
+
+  <style>
+    :root {
+      --primary: #0B1F33;
+      --secondary: #9CA3AF;
+    }
+
+    .stroke {
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .title {
+      fill: var(--primary);
+      font: 700 44px Poppins, Arial, Helvetica, sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .sub {
+      fill: var(--secondary);
+      font: 600 18px Poppins, Arial, Helvetica, sans-serif;
+      letter-spacing: 4px;
+    }
+
+    .line {
+      stroke: var(--secondary);
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+  </style>
+
+  <!-- Monitor -->
+  <rect x="16" y="28" width="96" height="56" rx="10" class="stroke"/>
+  <line x1="48" y1="94" x2="80" y2="94" class="stroke"/>
+
+  <!-- CENTERED </> GROUP -->
+  <!-- Monitor center = (64, 56) -->
+  <g transform="translate(64 56)">
+    <!-- < -->
+    <path d="M-18 -10 L-30 0 L-18 10" class="stroke"/>
+    <!-- / -->
+    <line x1="-4" y1="14" x2="4" y2="-14" class="stroke"/>
+    <!-- > -->
+    <path d="M18 -10 L30 0 L18 10" class="stroke"/>
+  </g>
+
+  <!-- Text -->
+  <g transform="translate(170)">
+    <text x="200" y="66" text-anchor="middle" class="title">
+      BELOVED JOHN
+    </text>
+
+    <line x1="120" y1="84" x2="180" y2="84" class="line"/>
+    <text x="200" y="92" text-anchor="middle" class="sub">
+      DEV
+    </text>
+    <line x1="220" y1="84" x2="280" y2="84" class="line"/>
+  </g>
+
+</svg>
