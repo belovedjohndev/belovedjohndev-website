@@ -1,7 +1,3 @@
-# Security headers for static hosting
-# Note: GitHub Pages doesn't support custom headers
-# Use these if deploying to Netlify, Vercel, or Cloudflare Pages
-
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff

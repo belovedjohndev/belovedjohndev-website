@@ -149,7 +149,6 @@
 </style>
 
 <script>
-  // Mobile menu toggle with improved focus management
   const menuBtn = document.getElementById('mobile-menu-btn');
   const navLinks = document.getElementById('primary-navigation');
 
@@ -162,34 +161,29 @@
       const isExpanded = navLinks.classList.toggle('active');
       menuBtn.setAttribute('aria-expanded', String(isExpanded));
       
-      // Focus first link when menu opens
       if (isExpanded && firstLink) {
         firstLink.focus();
       }
     });
 
-    // Close menu when clicking a link
     links.forEach((link) => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.focus(); // Return focus to button
+        menuBtn.focus();
       });
     });
 
-    // Keyboard navigation: trap focus in menu when open
     navLinks.addEventListener('keydown', (e) => {
       if (!navLinks.classList.contains('active')) return;
 
       if (e.key === 'Tab') {
         if (e.shiftKey) {
-          // Shift + Tab
           if (document.activeElement === firstLink) {
             e.preventDefault();
             lastLink.focus();
           }
         } else {
-          // Tab
           if (document.activeElement === lastLink) {
             e.preventDefault();
             firstLink.focus();
@@ -205,7 +199,6 @@
     });
   }
 
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -220,7 +213,6 @@
           top: targetPosition,
           behavior: 'smooth',
         });
-        // Update URL without triggering scroll
         history.pushState(null, '', href);
       }
     });
