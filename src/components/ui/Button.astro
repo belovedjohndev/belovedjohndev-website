@@ -48,11 +48,15 @@ const finalClass = `${baseClass} ${className}`.trim();
   }
 
   .btn-primary:hover {
-    background-color: transparent;
+    background-color: var(--color-accent);
     border-color: var(--color-accent);
     color: var(--color-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(244, 162, 97, 0.3);
+    box-shadow: 0 4px 16px rgba(244, 162, 97, 0.4);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
   }
 
   .btn-secondary {
@@ -65,6 +69,11 @@ const finalClass = `${baseClass} ${className}`.trim();
     background-color: var(--color-white);
     color: var(--color-dark);
     transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
   }
 
   .btn-dark {
@@ -73,9 +82,14 @@ const finalClass = `${baseClass} ${className}`.trim();
   }
 
   .btn-dark:hover {
-    background-color: transparent;
-    border-color: var(--color-dark);
-    color: var(--color-dark);
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-white);
     transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(42, 157, 143, 0.3);
+  }
+
+  .btn-dark:active {
+    transform: translateY(0);
   }
 </style>

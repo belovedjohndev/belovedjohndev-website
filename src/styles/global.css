@@ -61,6 +61,12 @@ a:hover {
   color: var(--color-primary-dark);
 }
 
+a:not(.btn):not(.nav-links a):not(.contact-method):not(.footer-links a):hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
 a:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
@@ -72,6 +78,12 @@ a:focus-visible {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .section-padding {
@@ -135,5 +147,9 @@ a:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .hero::after {
+    animation: none !important;
   }
 }

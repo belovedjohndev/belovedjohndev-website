@@ -8,6 +8,7 @@ import Footer from '../components/Footer.astro';
   title="Page Not Found | Beloved John Dev"
   description="The page you're looking for doesn't exist."
   canonical="/404"
+  robots="noindex, follow"
 >
   <Navbar slot="navbar" />
   
@@ -40,10 +41,15 @@ import Footer from '../components/Footer.astro';
   }
 
   .error-content h1 {
-    font-size: 8rem;
+    font-size: clamp(6rem, 15vw, 8rem);
     line-height: 1;
     color: var(--color-primary);
     margin-bottom: var(--space-sm);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .error-content h2 {

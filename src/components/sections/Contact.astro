@@ -34,7 +34,7 @@
     </div>
 
     <p class="contact-note text-center">
-      I typically respond within 24 hours. Looking forward to hearing from you!
+      I typically respond within 24 hours. Looking forward to hearing from you! 🚀
     </p>
   </div>
 </section>
@@ -79,9 +79,19 @@
   }
 
   .contact-method:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .contact-method:active {
+    transform: translateY(-1px);
+  }
+
+  .contact-method:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
   }
 
   .contact-method svg {

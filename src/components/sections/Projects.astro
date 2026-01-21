@@ -7,61 +7,69 @@
 
     <div class="projects-grid">
       <article class="project-card">
-        <img
-          src="/assets/images/travel-agency.png"
-          alt="Screenshot of travel agency website showing service sections and contact form"
-          width="600"
-          height="400"
-          loading="lazy"
-          class="project-image"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-        />
-        <div class="image-placeholder" style="display: none; padding: 2rem; background: var(--color-light); text-align: center; color: var(--color-text-muted);">
-          Image unavailable
+        <div class="project-image-wrapper">
+          <img
+            src="/assets/images/travel-agency.png"
+            alt="Screenshot of travel agency website showing service sections and contact form"
+            width="600"
+            height="400"
+            loading="lazy"
+            class="project-image"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="image-placeholder">
+            Image unavailable
+          </div>
         </div>
-        <div class="project-meta">Business Website · Frontend: HTML5, CSS3, Vanilla JavaScript</div>
-        <h3>Travel Agency Website</h3>
-        <p class="project-description">
-          A clean, mobile-friendly website for a travel agency. Includes service
-          sections, contact form, and professional layout optimized for customer inquiries.
-        </p>
-        <div class="project-tech">
-          <span class="tech-tag">HTML5/CSS3</span>
-          <span class="tech-tag">Vanilla JavaScript</span>
-          <span class="tech-tag">Responsive</span>
+        <div class="project-content">
+          <div class="project-meta" aria-label="Project type and technologies">Business Website · Frontend: HTML5, CSS3, Vanilla JavaScript</div>
+          <h3>Travel Agency Website</h3>
+          <p class="project-description">
+            A clean, mobile-friendly website for a travel agency. Includes service
+            sections, contact form, and professional layout optimized for customer inquiries.
+          </p>
+          <div class="project-tech" role="list">
+            <span class="tech-tag" role="listitem">HTML5/CSS3</span>
+            <span class="tech-tag" role="listitem">Vanilla JavaScript</span>
+            <span class="tech-tag" role="listitem">Responsive</span>
+          </div>
+          <p class="project-result">
+            <strong>Result:</strong> Improved mobile experience and easier customer inquiries.
+          </p>
         </div>
-        <p class="project-result">
-          <strong>Result:</strong> Improved mobile experience and easier customer inquiries.
-        </p>
       </article>
 
       <article class="project-card">
-        <img
-          src="/assets/images/religious-org.png"
-          alt="Screenshot of religious organization website with clean layout and easy navigation"
-          width="600"
-          height="400"
-          loading="lazy"
-          class="project-image"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-        />
-        <div class="image-placeholder" style="display: none; padding: 2rem; background: var(--color-light); text-align: center; color: var(--color-text-muted);">
-          Image unavailable
+        <div class="project-image-wrapper">
+          <img
+            src="/assets/images/religious-org.png"
+            alt="Screenshot of religious organization website with clean layout and easy navigation"
+            width="600"
+            height="400"
+            loading="lazy"
+            class="project-image"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="image-placeholder">
+            Image unavailable
+          </div>
         </div>
-        <div class="project-meta">Premium Website · A full-stack church management system built with Django REST Framework (backend) and Next.js (frontend). </div>
-        <h3>Religious Organization Website</h3>
-        <p class="project-description">
-          A modern, respectful website designed for clarity and easy navigation.
-          Focused on readability and accessibility across all devices.
-        </p>
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">JavaScript</span>
-          <span class="tech-tag">Accessibility</span>
+        <div class="project-content">
+          <div class="project-meta" aria-label="Project type and technologies">Premium Website · A full-stack church management system built with Django REST Framework (backend) and Next.js (frontend).</div>
+          <h3>Religious Organization Website</h3>
+          <p class="project-description">
+            A modern, respectful website designed for clarity and easy navigation.
+            Focused on readability and accessibility across all devices.
+          </p>
+          <div class="project-tech" role="list">
+            <span class="tech-tag" role="listitem">Python</span>
+            <span class="tech-tag" role="listitem">JavaScript</span>
+            <span class="tech-tag" role="listitem">Accessibility</span>
+          </div>
+          <p class="project-result">
+            <strong>Result:</strong> Improved clarity and accessibility across all devices.
+          </p>
         </div>
-        <p class="project-result">
-          <strong>Result:</strong> Improved clarity and accessibility across all devices.
-        </p>
       </article>
     </div>
   </div>
@@ -88,20 +96,40 @@
 
   .project-card:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+  }
+
+  .project-card:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: var(--border-radius);
+  }
+
+  .project-image-wrapper {
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
   .project-image {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    transition: var(--transition);
   }
 
-  .project-card > div,
-  .project-card > h3,
-  .project-card > p {
-    padding: 0 var(--space-md);
+  .project-card:hover .project-image {
+    transform: scale(1.02);
+  }
+
+  .project-content {
+    padding: var(--space-md);
+  }
+
+  .project-meta,
+  .project-card h3,
+  .project-card p {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .project-meta {
@@ -140,5 +168,17 @@
     font-size: 0.9rem;
     color: var(--color-text-muted);
     padding-bottom: var(--space-md);
+  }
+
+  .image-placeholder {
+    display: none;
+    padding: 2rem;
+    background: var(--color-light);
+    text-align: center;
+    color: var(--color-text-muted);
+    min-height: 200px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 </style>

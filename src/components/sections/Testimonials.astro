@@ -17,7 +17,7 @@ const testimonials: Testimonial[] = [
     text: "The website for our organization is perfect - clean, easy to navigate, and works perfectly on mobile. Beloved John understood exactly what we wanted.",
     author: "Religious Organization Client",
     location: "PH",
-    date: "May 12, 2025"
+    date: "May 12, 2024"
   },
   {
     text: "Affordable pricing and excellent communication. My business website was ready in just 4 days and looks professional. Will definitely work with him again!",
@@ -75,15 +75,28 @@ const testimonials: Testimonial[] = [
 
   .testimonial-card:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    border-left-width: 5px;
   }
 
   .testimonial-text {
     font-style: italic;
     margin-bottom: var(--space-md);
     color: var(--color-text);
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 2vw, 1.05rem);
     line-height: 1.7;
+    position: relative;
+  }
+
+  .testimonial-text::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--color-primary);
+    opacity: 0.2;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    line-height: 1;
   }
 
   .testimonial-author {

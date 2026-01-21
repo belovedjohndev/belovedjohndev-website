@@ -7,7 +7,7 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "How long does it take to build a website?",
-    answer: "Starter Business websites take 3–5 days. Business websites take 7–10 days. Premium websites take 14–21 days, depending on complexity."
+    answer: "Starter websites take 3–5 days. Business websites take 7–10 days. Premium websites take 14–21 days, depending on complexity."
   },
   {
     question: "Do I need to buy a domain and hosting?",
@@ -23,7 +23,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "How does payment work?",
-    answer: "Payment terms: 100% upfront for Starter Business websites. 50% upfront / 50% on completion for business and premium projects."
+    answer: "Payment terms: 100% upfront for Starter websites. 50% upfront / 50% on completion for Business and Premium projects."
   },
   {
     question: "Do you provide support after launch?",
@@ -67,11 +67,17 @@ const faqs: FAQItem[] = [
     padding: var(--space-lg);
     box-shadow: var(--shadow-md);
     transition: var(--transition);
+    border-left: 4px solid transparent;
   }
 
   .faq-card:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    border-left-color: var(--color-primary);
+  }
+
+  .faq-card {
+    border-left: 4px solid transparent;
   }
 
   .faq-card h3 {
