@@ -6,28 +6,36 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "How long does it take to build a website?",
-    answer: "Starter websites take 3–5 days. Business websites take 7–10 days. Premium websites take 14–21 days, depending on complexity."
+    question: "How long does it take to build a custom system?",
+    answer: "Timeline depends on complexity. Simple systems (invoice generators, basic automation) take 1-2 weeks. Medium systems (POS, inventory management) take 3-6 weeks. Complex systems (full management platforms) take 6-12 weeks. I'll provide a detailed timeline after discussing your requirements."
   },
   {
-    question: "Do I need to buy a domain and hosting?",
-    answer: "Yes, I can guide you step by step on where to buy an affordable domain and hosting, and assist with the setup. If you prefer, I can manage everything for you, and we can discuss pricing based on your needs."
+    question: "Do you provide hosting and server setup?",
+    answer: "Yes, I can guide you through hosting options suitable for your system, or I can manage the hosting setup for you. We'll discuss the best approach based on your needs and budget."
   },
   {
-    question: "Can I request changes?",
-    answer: "Yes. Up to 2 revision rounds are included during the design stage to ensure everything meets your expectations."
+    question: "Can I request changes during development?",
+    answer: "Yes. I include revision rounds during development to ensure the system meets your expectations. We'll have regular check-ins to review progress and make adjustments as needed."
   },
   {
-    question: "What if I don't like the first design?",
-    answer: "No problem. I'll refine the layout, colors, or sections within the included revision rounds to make sure it meets your expectations."
+    question: "What if my business needs change after launch?",
+    answer: "I provide 30 days of free support after launch. For ongoing changes and new features, we can discuss a maintenance plan or project-based updates to keep your system aligned with your business growth."
   },
   {
     question: "How does payment work?",
-    answer: "Payment terms: 100% upfront for Starter websites. 50% upfront / 50% on completion for Business and Premium projects."
+    answer: "Payment terms vary by project size. Small projects: 50% upfront / 50% on completion. Medium to large projects: 40% upfront / 40% at milestone / 20% on completion. We'll agree on terms before starting."
   },
   {
-    question: "Do you provide support after launch?",
-    answer: "Yes. I provide 30 days of free support after launch and can help with small updates or guidance when needed."
+    question: "Do you provide training for my team?",
+    answer: "Yes. I provide documentation and training sessions to ensure your team can use the system effectively. Training is included in the project scope."
+  },
+  {
+    question: "Can the system work offline?",
+    answer: "Depending on your needs, I can build systems with offline capabilities. This is especially useful for POS systems and inventory management in areas with unreliable internet. We'll discuss this during planning."
+  },
+  {
+    question: "Is my business data secure?",
+    answer: "Absolutely. Security is a priority. I implement industry-standard security practices including data encryption, secure authentication, regular backups, and follow ethical development principles to protect your business information."
   }
 ];
 ---
@@ -36,7 +44,7 @@ const faqs: FAQItem[] = [
   <div class="container">
     <div class="section-title">
       <h2>Frequently Asked Questions</h2>
-      <p>Clear answers to common questions.</p>
+      <p>Common questions about digital solutions and systems.</p>
     </div>
 
     <div class="faq-grid">
@@ -85,5 +93,6 @@ const faqs: FAQItem[] = [
   .faq-card p {
     color: var(--color-text);
     margin-bottom: 0;
+    line-height: 1.7;
   }
 </style>

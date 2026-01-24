@@ -3,27 +3,27 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/sections/Hero.astro';
-import About from '../components/sections/About.astro';
 import Services from '../components/sections/Services.astro';
 import Projects from '../components/sections/Projects.astro';
+import WhyMe from '../components/sections/WhyMe.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import FAQ from '../components/sections/FAQ.astro';
-import Contact from '../components/sections/Contact.astro';
+import ContactCTA from '../components/sections/ContactCTA.astro';
 ---
 
 <MainLayout
-  title="Beloved John Dev | Web Developer Portfolio"
-  description="Freelance web developer specializing in fast, accessible, and maintainable websites. Custom-coded solutions for small businesses and entrepreneurs."
+  title="Beloved John Dev | Digital Solutions for Cambodian Businesses"
+  description="Secure digital systems for businesses in Cambodia: business management systems, POS solutions, automation tools, and security services. Local expertise, clean architecture, and ongoing support."
 >
   <Navbar slot="navbar" />
   
   <Hero />
-  <About />
   <Services />
   <Projects />
+  <WhyMe />
   <Testimonials />
   <FAQ />
-  <Contact />
+  <ContactCTA />
   
   <Footer slot="footer" />
 </MainLayout>

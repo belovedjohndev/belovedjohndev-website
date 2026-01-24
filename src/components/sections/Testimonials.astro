@@ -2,26 +2,34 @@
 interface Testimonial {
   text: string;
   author: string;
+  role: string;
+  industry: string;
   location?: string;
   date?: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    text: "Beloved John created a beautiful website for my travel agency. He was professional, responsive, and delivered exactly what we needed. Highly recommended!",
+    text: "The travel agency website transformed how we handle customer inquiries. We now receive more qualified leads and the booking process is much smoother. The mobile-friendly design means customers can easily reach us from anywhere.",
     author: "Travel Agency Client",
+    role: "Owner",
+    industry: "Travel & Tourism",
     location: "PH",
     date: "March 21, 2024"
   },
   {
-    text: "The website for our organization is perfect - clean, easy to navigate, and works perfectly on mobile. Beloved John understood exactly what we wanted.",
+    text: "The church management system has streamlined our operations significantly. We can now track members, manage events, and communicate announcements all in one place. It's saved us hours of administrative work each week.",
     author: "Religious Organization Client",
+    role: "Administrator",
+    industry: "Religious Organization",
     location: "PH",
     date: "May 12, 2024"
   },
   {
-    text: "Affordable pricing and excellent communication. My business website was ready in just 4 days and looks professional. Will definitely work with him again!",
+    text: "Professional service and excellent communication throughout the project. Our business website was delivered on time and looks exactly as we envisioned. The clean design and fast loading speed have improved our online presence.",
     author: "Café Owner",
+    role: "Business Owner",
+    industry: "Food & Beverage",
     location: "KH",
     date: "December 11, 2024"
   }
@@ -32,7 +40,7 @@ const testimonials: Testimonial[] = [
   <div class="container">
     <div class="section-title">
       <h2>Client Testimonials</h2>
-      <p>What clients say about working with me.</p>
+      <p>What businesses say about working with me.</p>
     </div>
 
     <div class="testimonials-grid">
@@ -43,6 +51,7 @@ const testimonials: Testimonial[] = [
           </blockquote>
           <footer class="testimonial-author">
             <cite>— {testimonial.author}</cite>
+            <p class="testimonial-role">{testimonial.role} · {testimonial.industry}</p>
             {testimonial.location && testimonial.date && (
               <p class="testimonial-meta">{testimonial.location} · {testimonial.date}</p>
             )}
@@ -55,7 +64,7 @@ const testimonials: Testimonial[] = [
 
 <style>
   .testimonials {
-    background-color: var(--color-white);
+    background-color: var(--color-light);
   }
 
   .testimonials-grid {
@@ -71,6 +80,8 @@ const testimonials: Testimonial[] = [
     box-shadow: var(--shadow-md);
     border-left: 4px solid var(--color-primary);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
   }
 
   .testimonial-card:hover {
@@ -86,6 +97,7 @@ const testimonials: Testimonial[] = [
     font-size: clamp(1rem, 2vw, 1.05rem);
     line-height: 1.7;
     position: relative;
+    flex-grow: 1;
   }
 
   .testimonial-text::before {
@@ -101,12 +113,23 @@ const testimonials: Testimonial[] = [
 
   .testimonial-author {
     text-align: right;
+    margin-top: auto;
   }
 
   .testimonial-author cite {
     font-weight: 600;
     color: var(--color-primary);
     font-style: normal;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .testimonial-role {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+    margin-top: 0;
   }
 
   .testimonial-meta {

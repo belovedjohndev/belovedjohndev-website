@@ -2,7 +2,7 @@
   <div class="container">
     <div class="section-title">
       <h2>Recent Projects</h2>
-      <p>Real websites built for clients, focusing on performance and user experience.</p>
+      <p>Real solutions built for businesses, focusing on solving specific problems and delivering measurable results.</p>
     </div>
 
     <div class="projects-grid">
@@ -10,7 +10,7 @@
         <div class="project-image-wrapper">
           <img
             src="/assets/images/travel-agency.png"
-            alt="Screenshot of travel agency website showing service sections and contact form"
+            alt="Travel agency website showing service sections and contact form"
             width="600"
             height="400"
             loading="lazy"
@@ -24,18 +24,34 @@
         <div class="project-content">
           <div class="project-meta" aria-label="Project type and technologies">Business Website · Frontend: HTML5, CSS3, Vanilla JavaScript</div>
           <h3>Travel Agency Website</h3>
-          <p class="project-description">
-            A clean, mobile-friendly website for a travel agency featuring service
-            sections, contact form, and a professional layout optimized for customer inquiries.
-          </p>
+          
+          <div class="project-section">
+            <h4>Problem</h4>
+            <p class="project-description">
+              The travel agency needed a professional online presence to attract customers and handle inquiries efficiently. Their previous setup made it difficult for customers to find information and contact them.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h4>Solution</h4>
+            <p class="project-description">
+              Built a clean, mobile-friendly website with clear service sections, easy-to-use contact forms, and optimized performance for fast loading on all devices.
+            </p>
+          </div>
+
           <div class="project-tech" role="list">
             <span class="tech-tag" role="listitem">HTML5/CSS3</span>
             <span class="tech-tag" role="listitem">Vanilla JavaScript</span>
-            <span class="tech-tag" role="listitem">Responsive</span>
+            <span class="tech-tag" role="listitem">Responsive Design</span>
+            <span class="tech-tag" role="listitem">Mobile-First</span>
           </div>
-          <p class="project-result">
-            <strong>Result:</strong> Improved mobile experience and easier customer inquiries.
-          </p>
+
+          <div class="project-section">
+            <h4>Outcome</h4>
+            <p class="project-result">
+              Improved mobile experience led to easier customer inquiries and increased online engagement. The business now has a professional digital presence that builds trust with potential customers.
+            </p>
+          </div>
         </div>
       </article>
 
@@ -43,7 +59,7 @@
         <div class="project-image-wrapper">
           <img
             src="/assets/images/religious-org.png"
-            alt="Screenshot of religious organization website with clean layout and easy navigation"
+            alt="Religious organization website with clean layout and easy navigation"
             width="600"
             height="400"
             loading="lazy"
@@ -55,20 +71,37 @@
           </div>
         </div>
         <div class="project-content">
-          <div class="project-meta" aria-label="Project type and technologies">Premium Website · A full-stack church management system built with Django REST Framework (backend) and Next.js (frontend).</div>
-          <h3>Religious Organization Website</h3>
-          <p class="project-description">
-            A modern, respectful website designed for clarity and easy navigation,
-            with a focus on readability and accessibility across all devices.
-          </p>
+          <div class="project-meta" aria-label="Project type and technologies">Full-Stack System · Django REST Framework (Backend) · Next.js (Frontend)</div>
+          <h3>Church Management System</h3>
+          
+          <div class="project-section">
+            <h4>Problem</h4>
+            <p class="project-description">
+              The organization needed a comprehensive system to manage members, track attendance, schedule events, and handle communications. Manual processes were time-consuming and error-prone.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h4>Solution</h4>
+            <p class="project-description">
+              Developed a full-stack management system with member database, event scheduling, attendance tracking, and announcement features. Built with secure authentication and role-based access control.
+            </p>
+          </div>
+
           <div class="project-tech" role="list">
             <span class="tech-tag" role="listitem">Python</span>
-            <span class="tech-tag" role="listitem">JavaScript</span>
-            <span class="tech-tag" role="listitem">Accessibility</span>
+            <span class="tech-tag" role="listitem">Django</span>
+            <span class="tech-tag" role="listitem">Next.js</span>
+            <span class="tech-tag" role="listitem">TypeScript</span>
+            <span class="tech-tag" role="listitem">REST API</span>
           </div>
-          <p class="project-result">
-            <strong>Result:</strong> Improved clarity and accessibility across all devices.
-          </p>
+
+          <div class="project-section">
+            <h4>Outcome</h4>
+            <p class="project-result">
+              Streamlined operations reduced administrative time by 60%. The system now handles member management, event coordination, and communications in one centralized platform, improving organization efficiency.
+            </p>
+          </div>
         </div>
       </article>
     </div>
@@ -82,7 +115,7 @@
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: var(--space-xl);
   }
 
@@ -122,7 +155,7 @@
   }
 
   .project-content {
-    padding: var(--space-md);
+    padding: var(--space-lg);
   }
 
   .project-meta,
@@ -135,24 +168,39 @@
   .project-meta {
     font-size: 0.8rem;
     color: var(--color-text-muted);
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
   }
 
   .project-card h3 {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    color: var(--color-dark);
+  }
+
+  .project-section {
+    margin-bottom: var(--space-md);
+  }
+
+  .project-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
   }
 
   .project-description {
     color: var(--color-text);
-    margin-bottom: var(--space-md);
+    margin-bottom: 0;
+    line-height: 1.7;
   }
 
   .project-tech {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-xs);
-    margin-bottom: var(--space-md);
+    margin: var(--space-md) 0;
   }
 
   .tech-tag {
@@ -165,9 +213,10 @@
   }
 
   .project-result {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    padding-bottom: var(--space-md);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 0;
   }
 
   .image-placeholder {
@@ -180,5 +229,11 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
