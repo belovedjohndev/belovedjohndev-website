@@ -1,18 +1,27 @@
 <section class="hero" id="top">
   <div class="container hero-content">
-    <h1>Digital Solutions That Help Businesses Operate Better</h1>
+    <h1>
+      Independent Digital Systems Developer<br />
+      <span class="hero-highlight">Building Practical Tools for Real Businesses</span>
+    </h1>
+
     <p class="hero-subtitle">
-      I build secure, real-world digital systems for businesses in Cambodia:
-      business management systems, POS solutions, automation tools, and security services.
+      I design and build real-world digital systems for businesses in Cambodia —
+      from management and POS systems to automation tools, internal platforms,
+      and reliable business websites when needed.
     </p>
-    <p class="hero-location">Based in Cambodia · Serving local businesses</p>
-    
+
+    <p class="hero-location">
+      Based in Cambodia · Working directly with local businesses
+    </p>
+
     <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Request a Demo</a>
+      <a href="#projects" class="btn btn-primary">View Systems</a>
       <a href="#contact" class="btn btn-secondary">Contact Me</a>
     </div>
   </div>
 </section>
+
 
 <style>
   .hero {
@@ -34,37 +43,42 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(42, 157, 143, 0.15), transparent 60%);
+    background: radial-gradient(
+      circle at center,
+      rgba(42, 157, 143, 0.15),
+      transparent 60%
+    );
     pointer-events: none;
     animation: pulse 4s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
+    max-width: 720px;
   }
 
   .hero h1 {
     margin-bottom: var(--space-md);
     color: var(--color-white);
-    max-width: 680px;
+    line-height: 1.2;
+  }
+
+  .hero-highlight {
+    display: block;
+    color: var(--color-accent);
+    font-weight: 600;
   }
 
   .hero-subtitle {
     font-size: clamp(1.1rem, 2vw, 1.2rem);
     opacity: 0.95;
-    max-width: 620px;
     margin-bottom: var(--space-sm);
-    color: var(--color-white);
     line-height: 1.7;
   }
 
@@ -72,7 +86,6 @@
     font-size: 0.95rem;
     opacity: 0.85;
     margin-bottom: var(--space-lg);
-    color: var(--color-white);
   }
 
   .hero-buttons {
