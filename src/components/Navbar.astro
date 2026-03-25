@@ -17,13 +17,13 @@
     </button>
 
     <ul class="nav-links" id="primary-navigation">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Work</a></li>
-      <li><a href="#why-me">Why Me</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#projects">Work</a></li>
+      <li><a href="/#why-me">Why Me</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#testimonials">Testimonials</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -155,8 +155,8 @@
 
   if (menuBtn && navLinks) {
     const links = navLinks.querySelectorAll('a');
-    let firstLink = links[0];
-    let lastLink = links[links.length - 1];
+    const firstLink = links[0];
+    const lastLink = links[links.length - 1];
 
     menuBtn.addEventListener('click', () => {
       const isExpanded = navLinks.classList.toggle('active');
@@ -169,6 +169,8 @@
 
     links.forEach((link) => {
       link.addEventListener('click', () => {
+        if (!navLinks.classList.contains('active')) return;
+
         navLinks.classList.remove('active');
         menuBtn.setAttribute('aria-expanded', 'false');
         menuBtn.focus();
@@ -200,22 +202,27 @@
     });
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#' || href === '#top') return;
+  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+
+      const url = new URL(href, window.location.href);
+      const isSamePage = url.origin === window.location.origin && url.pathname === window.location.pathname;
+      if (!isSamePage || !url.hash) return;
+
+      const target = document.querySelector(url.hash);
+      if (!target) return;
 
       e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        const offset = 80;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth',
-        });
-        history.pushState(null, '', href);
-      }
+
+      const offset = 80;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth',
+      });
+      history.pushState(null, '', url.hash);
     });
   });
 </script>

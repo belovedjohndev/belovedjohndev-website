@@ -8,6 +8,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   robots?: string;
+  structuredDataType?: 'Person' | 'ProfessionalService' | false;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   canonical = Astro.url.pathname,
   ogImage = '/assets/images/hero-bg.png',
   robots = 'index, follow',
+  structuredDataType = 'ProfessionalService',
 } = Astro.props;
 
 const siteUrl = 'https://belovedjohndev.github.io';
@@ -58,19 +60,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      as="style"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
     
-    <StructuredData />
+    {structuredDataType && <StructuredData type={structuredDataType} />}
     
     <link rel="dns-prefetch" href="https://wa.me" />
     <link rel="dns-prefetch" href="https://t.me" />
