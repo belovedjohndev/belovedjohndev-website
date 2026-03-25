@@ -3,7 +3,7 @@
     <a href="/" class="logo" aria-label="Beloved John Dev - Home">
       <img src="/assets/images/logo.svg" alt="Beloved John Dev logo" width="50" height="50" loading="eager" />
     </a>
-    
+
     <button
       class="mobile-menu-btn"
       aria-label="Toggle menu"
@@ -15,12 +15,12 @@
         <path d="M3 12h18M3 6h18M3 18h18" />
       </svg>
     </button>
-    
+
     <ul class="nav-links" id="primary-navigation">
       <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#projects">Work</a></li>
       <li><a href="#why-me">Why Me</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -161,7 +161,7 @@
     menuBtn.addEventListener('click', () => {
       const isExpanded = navLinks.classList.toggle('active');
       menuBtn.setAttribute('aria-expanded', String(isExpanded));
-      
+
       if (isExpanded && firstLink) {
         firstLink.focus();
       }

@@ -3,41 +3,37 @@ interface Testimonial {
   text: string;
   author: string;
   role: string;
-  industry: string;
-  location?: string;
-  date?: string;
+  company: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    text: "The travel agency website transformed how we handle customer inquiries. We now receive more qualified leads and the booking process is much smoother. The mobile-friendly design means customers can easily reach us from anywhere.",
-    author: "Travel Agency Client",
-    role: "Owner",
-    industry: "Travel & Tourism",
-    location: "PH",
+    text: 'The website gave us a much stronger first impression and made it easier for serious inquiries to reach us. The structure is clearer, the site feels more professional, and mobile visitors can act quickly.',
+    author: 'Travel Agency Client',
+    role: 'Owner',
+    company: 'Travel and Tourism Business',
   },
   {
-    text: "The church management system has streamlined our operations significantly. We can now track members, manage events, and communicate announcements all in one place. It's saved us hours of administrative work each week.",
-    author: "Religious Organization Client",
-    role: "Administrator",
-    industry: "Religious Organization",
-    location: "PH",
+    text: 'The management system replaced scattered admin work with one clear process. Member records, events, attendance, and communication are now much easier to handle, and the time savings have been significant.',
+    author: 'Organization Client',
+    role: 'Administrator',
+    company: 'Private Membership Organization',
   },
   {
-    text: "Professional service and excellent communication throughout the project. Our business website was delivered on time and looks exactly as we envisioned. The clean design and fast loading speed have improved our online presence.",
-    author: "Café Owner",
-    role: "Business Owner",
-    industry: "Food & Beverage",
-    location: "KH",
-  }
+    text: 'Communication was direct, timelines were clear, and the work stayed grounded in what the business actually needed. That made the whole process feel reliable from start to finish.',
+    author: 'Website Client',
+    role: 'Business Owner',
+    company: 'Service Business',
+  },
 ];
 ---
 
 <section class="testimonials section-padding" id="testimonials">
   <div class="container">
     <div class="section-title">
-      <h2>Client Testimonials</h2>
-      <p>What businesses say about working with me.</p>
+      <h2>Testimonials</h2>
+      <p>Feedback from clients who needed practical delivery and clear communication.</p>
+      <p class="text-muted">Some names are generalized to respect client privacy.</p>
     </div>
 
     <div class="testimonials-grid">
@@ -47,11 +43,8 @@ const testimonials: Testimonial[] = [
             "{testimonial.text}"
           </blockquote>
           <footer class="testimonial-author">
-            <cite>— {testimonial.author}</cite>
-            <p class="testimonial-role">{testimonial.role} · {testimonial.industry}</p>
-            {testimonial.location && testimonial.date && (
-              <p class="testimonial-meta">{testimonial.location} · {testimonial.date}</p>
-            )}
+            <cite>{testimonial.author}</cite>
+            <p class="testimonial-role">{testimonial.role} | {testimonial.company}</p>
           </footer>
         </article>
       ))}
@@ -125,14 +118,7 @@ const testimonials: Testimonial[] = [
     font-size: 0.9rem;
     color: var(--color-text);
     font-weight: 500;
-    margin-bottom: var(--space-xs);
-    margin-top: 0;
-  }
-
-  .testimonial-meta {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    margin-top: var(--space-xs);
     margin-bottom: 0;
+    margin-top: 0;
   }
 </style>

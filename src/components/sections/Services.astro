@@ -1,224 +1,89 @@
+---
+const services = [
+  {
+    title: 'Custom Business Systems',
+    description:
+      'Purpose-built software for teams that need clearer operations, better control, and fewer manual workarounds.',
+    features: [
+      'Internal platforms for staff and management',
+      'Admin systems for records, approvals, and reporting',
+      'Operations software for inventory, workflows, and day-to-day execution',
+      'Role-based access, auditability, and maintainable architecture',
+    ],
+    bestFor: 'Businesses replacing spreadsheets, disconnected tools, or fragile manual processes.',
+  },
+  {
+    title: 'Business Websites with Operational Value',
+    description:
+      'Websites designed to support the business, not just present it. The goal is clearer trust, better lead flow, and useful operational touchpoints.',
+    features: [
+      'Lead-focused pages with stronger inquiry paths',
+      'Fast, mobile-friendly builds that are easy to maintain',
+      'Booking, quote, contact, or intake flows where needed',
+      'Credibility, performance, and structure aligned to business goals',
+    ],
+    bestFor: 'Companies that need their website to support sales, service delivery, or operational workflows.',
+  },
+  {
+    title: 'Automation & Internal Tools',
+    description:
+      'Small but valuable systems that remove repetitive work, connect processes, and give teams faster access to the data they need.',
+    features: [
+      'Bots, utilities, and lightweight internal tooling',
+      'Data workflows, imports, exports, and process automation',
+      'Monitoring, notifications, and custom operational utilities',
+      'Integrations that reduce manual handling across teams',
+    ],
+    bestFor: 'Teams that want to save time, reduce mistakes, and remove avoidable operational friction.',
+  },
+];
+
+const supportingCapabilities = [
+  'POS and inventory tooling',
+  'Reporting dashboards',
+  'API and backend development',
+  'Role-based access control',
+  'Data cleanup and migration utilities',
+  'Security hardening and deployment support',
+];
+---
+
 <section class="services section-padding" id="services">
   <div class="container">
     <div class="section-title">
-      <h2>Digital Solutions & Services</h2>
-      <p>Practical tools and systems built for businesses.</p>
+      <h2>Core Services</h2>
+      <p>Three focused offers for businesses that need dependable software support.</p>
       <p class="text-muted">
-        From managing inventory to improving your website, I build solutions that help your business run smoother and serve customers better. Each solution is designed as a modular system, so features can be added
-        later without rebuilding everything.
+        I keep the homepage focused on the work I want to be hired for most often:
+        operational systems, business websites with clear value, and practical automation.
       </p>
     </div>
 
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <line x1="9" y1="9" x2="15" y2="9" />
-            <line x1="9" y1="15" x2="15" y2="15" />
-          </svg>
-        </div>
-        <h3>Business Management & Inventory Systems</h3>
-        <p class="service-description">
-          Stop losing track of stock and sales. A complete system that shows you what you have, what you've sold, and who your customers are—all in one place.
-        </p>
-        <ul class="service-features">
-          <li>See your inventory levels in real-time</li>
-          <li>Track daily sales and revenue automatically</li>
-          <li>Keep customer information organized</li>
-          <li>Control who can access what (staff permissions)</li>
-          <li>Export data and backup your information</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Retail stores, warehouses, and businesses that need to track physical products</p>
-      </div>
+      {services.map((service) => (
+        <article class="service-card">
+          <h3>{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <ul class="service-features">
+            {service.features.map((feature) => <li>{feature}</li>)}
+          </ul>
+          <p class="service-best-for"><strong>Best fit:</strong> {service.bestFor}</p>
+        </article>
+      ))}
+    </div>
 
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="3" width="20" height="14" rx="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-            <path d="M7 8h10M7 12h10M7 16h4" />
-          </svg>
-        </div>
-        <h3>Khmer-Friendly POS System</h3>
-        <p class="service-description">
-          A point-of-sale system your staff can actually use. Everything in Khmer, designed for how local businesses actually work—fast checkout, clear receipts, and simple reports.
-        </p>
-        <ul class="service-features">
-          <li>Complete Khmer language interface</li>
-          <li>Scan barcodes to add items quickly</li>
-          <li>Print receipts for customers</li>
-          <li>See daily sales summaries at a glance</li>
-          <li>Works even when internet is down</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Retail shops, restaurants, cafes, and any business where staff need to process sales quickly</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
-        </div>
-        <h3>Church & Organization Management System</h3>
-        <p class="service-description">
-          Keep your organization running smoothly. Manage who's coming to events, track donations, send announcements, and see attendance—without spreadsheets or paper lists.
-        </p>
-        <ul class="service-features">
-          <li>Store member information in one place</li>
-          <li>Schedule events and see who's attending</li>
-          <li>Track donations and contributions</li>
-          <li>Send announcements to members</li>
-          <li>Record and view attendance history</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Churches, NGOs, community groups, and any organization with members to manage</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-            <polyline points="10 9 9 9 8 9" />
-          </svg>
-        </div>
-        <h3>Invoice & Receipt Generator</h3>
-        <p class="service-description">
-          Create professional invoices and receipts in minutes. No more manual numbering or formatting—just fill in the details and send to clients.
-        </p>
-        <ul class="service-features">
-          <li>Choose from professional templates</li>
-          <li>Invoices numbered automatically</li>
-          <li>Export as PDF to send to clients</li>
-          <li>Save client information for quick access</li>
-          <li>Track which invoices are paid or pending</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Service providers, freelancers, consultants, and businesses that send invoices regularly</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
-        </div>
-        <h3>Website Security Audit & Hardening</h3>
-        <p class="service-description">
-          Protect your website and customer data. I'll check for security issues, fix vulnerabilities, and set up proper protection so you can focus on your business.
-        </p>
-        <ul class="service-features">
-          <li>Scan for security vulnerabilities</li>
-          <li>Apply security best practices</li>
-          <li>Set up SSL/HTTPS (secure connection)</li>
-          <li>Configure firewall protection</li>
-          <li>Get recommendations for ongoing security</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Businesses with existing websites, especially those handling customer data or payments</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            <path d="M13 8H7M17 12H7M13 16H7" />
-          </svg>
-        </div>
-        <h3>Business Automation Bots</h3>
-        <p class="service-description">
-          Let a bot handle common customer questions and orders on Telegram or Messenger, even when you're busy or offline. Responds instantly, never misses a message.
-        </p>
-        <ul class="service-features">
-          <li>Answer customer questions automatically</li>
-          <li>Process orders and bookings 24/7</li>
-          <li>Send notifications and reminders</li>
-          <li>Support multiple languages (Khmer, English)</li>
-          <li>Connect with your existing systems</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Businesses that get many messages on Telegram or Messenger and want faster responses</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="2" x2="12" y2="6" />
-            <line x1="12" y1="18" x2="12" y2="22" />
-          </svg>
-        </div>
-        <h3>Data Scraping & Price Monitoring Tools</h3>
-        <p class="service-description">
-          Keep an eye on competitor prices and market changes automatically. Get alerts when prices change, track trends, and make better pricing decisions.
-        </p>
-        <ul class="service-features">
-          <li>Automatically collect data from websites</li>
-          <li>Get notified when prices change</li>
-          <li>Monitor competitor pricing</li>
-          <li>Schedule regular updates</li>
-          <li>Export data for analysis</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Retailers, e-commerce businesses, and anyone who needs to track competitor prices or market data</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="3" width="20" height="14" rx="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-            <path d="M7 8h10M7 12h10M7 16h4" />
-          </svg>
-        </div>
-        <h3>Business Website Development</h3>
-        <p class="service-description">
-          A website that actually works for your business. Fast loading, easy to use on phones, and designed to turn visitors into customers. No complicated setup needed.
-        </p>
-        <ul class="service-features">
-          <li>Works perfectly on phones and tablets</li>
-          <li>Loads quickly (important for keeping visitors)</li>
-          <li>Optimized for Google search</li>
-          <li>Contact forms that capture leads</li>
-          <li>Easy to update content yourself</li>
-        </ul>
-        <p class="service-best-for"><strong>Best for:</strong> Small businesses, service providers, restaurants, and anyone starting their online presence</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <h3>Website Upgrades & Conversion Tools</h3>
-        <p class="service-description">
-          Your website exists, but is it bringing you customers? I audit what's holding it back,
-          fix performance and mobile issues, and add simple tools—like WhatsApp buttons and booking forms—
-          that make it easier for customers to contact you and turn visitors into leads.
-        </p>
-        <ul class="service-features">
-          <li>Website performance audit and speed improvements</li>
-          <li>Add WhatsApp and Messenger contact buttons</li>
-          <li>Improve contact forms and booking systems</li>
-          <li>Fix mobile usability issues</li>
-          <li>Optimize for better search visibility</li>
-        </ul>
-        <p class="service-good-fit"><strong>Good fit if:</strong> Your website gets visitors but few of them contact you or make bookings.</p>
-        <p class="service-best-for"><strong>Best for:</strong> Businesses that already have a website but want more customers from it</p>
+    <div class="capabilities-panel">
+      <p class="capabilities-label">Supporting capabilities</p>
+      <div class="capabilities-list" role="list">
+        {supportingCapabilities.map((capability) => (
+          <span class="capability-chip" role="listitem">{capability}</span>
+        ))}
       </div>
     </div>
 
     <div class="services-cta">
-      <p class="cta-text">Not sure which solution fits your business?</p>
-      <a href="#contact" class="btn btn-primary">Let's Talk About Your Needs</a>
+      <p class="cta-text">Need to figure out which service best matches your operations?</p>
+      <a href="#contact" class="btn btn-primary">Start a Project Conversation</a>
     </div>
   </div>
 </section>
@@ -282,23 +147,12 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-    transform: scaleX(0);
-    transition: var(--transition);
-  }
-
-  .service-card:hover::before {
-    transform: scaleX(1);
   }
 
   .service-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-primary);
-  }
-
-  .service-icon {
-    color: var(--color-primary);
-    margin-bottom: var(--space-md);
   }
 
   .service-card h3 {
@@ -329,18 +183,11 @@
   }
 
   .service-features li::before {
-    content: '✓';
+    content: '+';
     position: absolute;
     left: 0;
     color: var(--color-primary);
     font-weight: bold;
-  }
-
-  .service-good-fit {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    margin-top: var(--space-sm);
-    margin-bottom: var(--space-xs);
   }
 
   .service-best-for {
@@ -349,6 +196,40 @@
     margin-top: auto;
     padding-top: var(--space-sm);
     border-top: 1px solid var(--color-gray-light);
+  }
+
+  .capabilities-panel {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
+    border: 1px solid rgba(42, 157, 143, 0.15);
+  }
+
+  .capabilities-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .capabilities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .capability-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    color: var(--color-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
   }
 
   .services-cta {

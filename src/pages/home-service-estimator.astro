@@ -1,0 +1,663 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/ui/Button.astro';
+
+const demoUrl = 'https://example.com/replace-with-estimator-demo';
+
+const industries = [
+  'HVAC',
+  'Roofing',
+  'Plumbing',
+  'Solar',
+  'Restoration',
+  'Remodeling',
+];
+
+const problems = [
+  {
+    title: 'Traffic leaves without converting',
+    description:
+      'Visitors arrive, scan the page, and leave because there is no practical next step between browsing and calling the office.',
+  },
+  {
+    title: 'No guided intake before quote requests',
+    description:
+      'Teams receive generic form submissions without the job details needed to qualify the lead or route it properly.',
+  },
+  {
+    title: 'Too many manual estimate conversations',
+    description:
+      'Staff spend time repeating the same early-stage questions instead of focusing on serious opportunities and booked work.',
+  },
+  {
+    title: 'Lead data is not structured',
+    description:
+      'Important details arrive through scattered emails, call notes, and contact forms that are hard to compare or follow up on consistently.',
+  },
+  {
+    title: 'The website is disconnected from operations',
+    description:
+      'Traffic may be coming in, but the site is not collecting the information the business needs to quote, prioritize, and respond effectively.',
+  },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Customer opens the estimate tool',
+    description:
+      'The visitor starts from your website instead of dropping into a generic contact form.',
+  },
+  {
+    number: '02',
+    title: 'Answers a few guided questions',
+    description:
+      'The system collects job type, scope signals, timeline, property details, and service area information in a structured flow.',
+  },
+  {
+    number: '03',
+    title: 'Receives an estimated range or guided outcome',
+    description:
+      'The visitor gets a useful next step: an estimated range, a recommendation, or a clear handoff based on your business rules.',
+  },
+  {
+    number: '04',
+    title: 'Submits contact details as a qualified lead',
+    description:
+      'Your team receives the lead with context already attached, making follow-up faster and more informed.',
+  },
+];
+
+const includedItems = [
+  {
+    title: 'Branded estimator widget',
+    description:
+      'A guided flow that fits your website and gives visitors a clearer path than a generic quote form.',
+  },
+  {
+    title: 'Lead capture form',
+    description:
+      'Collects contact details only after the visitor has moved through the estimate flow, producing better-context leads.',
+  },
+  {
+    title: 'Configurable estimate logic',
+    description:
+      'Estimate rules can be shaped around your service categories, project types, coverage area, and qualification logic.',
+  },
+  {
+    title: 'Email notification flow',
+    description:
+      'New leads can trigger structured notifications so the right person sees the request quickly.',
+  },
+  {
+    title: 'Admin and lead visibility',
+    description:
+      'Submitted estimates can be reviewed in a clean internal view instead of getting buried in inboxes.',
+  },
+  {
+    title: 'Install support on your existing website',
+    description:
+      'Designed to fit into an existing site without forcing a full rebuild when the estimator is the priority.',
+  },
+];
+
+const adminFields = [
+  'Service type',
+  'Job details and qualification answers',
+  'Estimated range or routed outcome',
+  'Location and service area check',
+  'Timeline and urgency',
+  'Contact details and submission status',
+];
+
+const valuePoints = [
+  'More qualified website leads',
+  'Less repetitive intake work',
+  'Cleaner handoff from website to office',
+];
+---
+
+<MainLayout
+  title="Instant Estimate & Lead Capture System for Home Service Companies | Beloved John Dev"
+  description="Focused landing page for an instant estimate and lead capture system built for HVAC, roofing, plumbing, solar, restoration, and remodeling companies."
+  canonical="/home-service-estimator"
+>
+  <Navbar slot="navbar" />
+
+  <section class="offer-hero" id="top">
+    <div class="container offer-hero__content">
+      <p class="offer-eyebrow">Focused offer for home service companies</p>
+      <h1>Instant Estimate &amp; Lead Capture System for Home Service Companies</h1>
+      <p class="offer-subtitle">
+        A guided estimate flow for service businesses that want more qualified leads,
+        less manual quoting friction, and better lead data from their website.
+      </p>
+      <p class="offer-body">
+        Instead of sending visitors into a generic contact form, the system walks them
+        through a practical estimate flow, collects structured job information, and
+        turns website traffic into leads your team can review and act on.
+      </p>
+
+      <div class="offer-actions">
+        <Button href={demoUrl} variant="primary">View Demo</Button>
+        <Button href="#contact" variant="secondary">Start a Project Conversation</Button>
+      </div>
+
+      <div class="offer-points" role="list" aria-label="Core offer points">
+        {valuePoints.map((point) => (
+          <span class="offer-point" role="listitem">{point}</span>
+        ))}
+      </div>
+
+      <p class="offer-note">
+        Built and configured as a practical website system for companies that want better intake,
+        better lead data, and less friction before the first real quote conversation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding offer-section offer-section--white">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Who It&apos;s For</h2>
+        <p>
+          Best suited for home service companies where quote requests need more structure
+          before a salesperson or office manager steps in.
+        </p>
+      </div>
+
+      <div class="industry-grid">
+        {industries.map((industry) => (
+          <article class="simple-card industry-card">
+            <h3>{industry}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding offer-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Problems It Solves</h2>
+        <p>
+          The offer is designed for companies whose website is already getting attention
+          but is not doing enough to qualify, structure, and route quote requests.
+        </p>
+      </div>
+
+      <div class="problem-grid">
+        {problems.map((problem) => (
+          <article class="simple-card problem-card">
+            <h3>{problem.title}</h3>
+            <p>{problem.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding offer-section offer-section--white">
+    <div class="container">
+      <div class="section-heading">
+        <h2>How It Works</h2>
+        <p>
+          The flow is intentionally simple. The goal is not to replace your full sales
+          process. It is to make the first step more useful for both the customer and your team.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        {steps.map((step) => (
+          <article class="simple-card step-card">
+            <p class="step-number">{step.number}</p>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding offer-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>What&apos;s Included</h2>
+        <p>
+          The deliverable is a practical lead and estimate system, not a vague concept.
+          It is designed to support conversion, qualification, and internal visibility.
+        </p>
+      </div>
+
+      <div class="included-grid">
+        {includedItems.map((item) => (
+          <article class="simple-card included-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding offer-section offer-section--white" id="demo">
+    <div class="container">
+      <div class="demo-panel">
+        <div class="demo-copy">
+          <p class="panel-eyebrow">Demo</p>
+          <h2>See the Estimate Flow in Action</h2>
+          <p>
+            The demo should show a straightforward visitor experience: a few guided questions,
+            a useful estimate outcome, and a clean lead handoff with better intake data than
+            a standard quote form can provide.
+          </p>
+          <div class="demo-actions">
+            <Button href={demoUrl} variant="primary">View Demo</Button>
+            <Button href="#contact" variant="dark">Start a Project Conversation</Button>
+          </div>
+        </div>
+
+        <div class="demo-status">
+          <p class="demo-status__label">Current demo link</p>
+          <p class="demo-status__url">{demoUrl}</p>
+          <p class="text-muted">
+            Placeholder URL. Replace this with your live estimator demo before using the page in outreach.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding offer-section">
+    <div class="container admin-grid">
+      <div class="section-heading admin-copy">
+        <p class="panel-eyebrow">Admin / lead visibility</p>
+        <h2>Structured Lead Review Instead of Inbox Guesswork</h2>
+        <p>
+          Submitted leads can be reviewed in a clean internal view with the details collected
+          during the estimate flow. That gives your team better context before they call,
+          quote, schedule, or route the request.
+        </p>
+        <ul class="admin-list">
+          {adminFields.map((field) => <li>{field}</li>)}
+        </ul>
+      </div>
+
+      <div class="admin-preview">
+        <article class="admin-card">
+          <div class="admin-card__header">
+            <div>
+              <p class="admin-card__label">Lead preview</p>
+              <h3>Structured internal lead view</h3>
+            </div>
+            <span class="admin-card__status">Qualified</span>
+          </div>
+
+          <dl class="admin-card__grid">
+            <div>
+              <dt>Service</dt>
+              <dd>Selected category</dd>
+            </div>
+            <div>
+              <dt>Property</dt>
+              <dd>Relevant site details</dd>
+            </div>
+            <div>
+              <dt>Scope signal</dt>
+              <dd>Captured during intake</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>Urgency and scheduling info</dd>
+            </div>
+            <div>
+              <dt>Estimate outcome</dt>
+              <dd>Range or routed next step</dd>
+            </div>
+            <div>
+              <dt>Contact</dt>
+              <dd>Lead record ready for follow-up</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding final-cta" id="contact">
+    <div class="container final-cta__content">
+      <p class="panel-eyebrow panel-eyebrow--light">Final CTA</p>
+      <h2>Turn Website Traffic Into Better Quote Requests</h2>
+      <p>
+        If your sales team is still starting every estimate conversation from scratch,
+        this system creates a stronger first step. It gives visitors a guided path,
+        gives your team better lead context, and makes the website more useful to the
+        actual quoting process.
+      </p>
+      <div class="final-cta__actions">
+        <Button href={demoUrl} variant="primary">View Demo</Button>
+        <Button href="https://wa.me/855963885424?text=Hi%2C%20I'd%20like%20to%20discuss%20the%20home%20service%20estimator%20offer." variant="secondary">
+          Start a Project Conversation
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .offer-hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0 4rem;
+    color: var(--color-white);
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.88)),
+      url('/assets/images/hero-bg.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .offer-hero__content {
+    max-width: 820px;
+  }
+
+  .offer-eyebrow,
+  .panel-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .panel-eyebrow--light {
+    color: var(--color-accent);
+  }
+
+  .offer-hero h1 {
+    color: var(--color-white);
+    max-width: 780px;
+    margin-bottom: var(--space-md);
+  }
+
+  .offer-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .offer-body {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    line-height: 1.75;
+    margin-bottom: var(--space-lg);
+  }
+
+  .offer-actions,
+  .demo-actions,
+  .final-cta__actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .offer-note {
+    margin-top: var(--space-md);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.84);
+    max-width: 720px;
+    line-height: 1.7;
+  }
+
+  .offer-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .offer-point {
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--color-white);
+    font-size: 0.92rem;
+  }
+
+  .offer-section {
+    background-color: var(--color-light);
+  }
+
+  .offer-section--white {
+    background-color: var(--color-white);
+  }
+
+  .section-heading {
+    max-width: 760px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-heading h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-heading p {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+
+  .industry-grid,
+  .problem-grid,
+  .steps-grid,
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .simple-card {
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .industry-card,
+  .problem-card,
+  .step-card,
+  .included-card {
+    padding: var(--space-lg);
+  }
+
+  .industry-card {
+    text-align: center;
+  }
+
+  .industry-card h3,
+  .problem-card h3,
+  .step-card h3,
+  .included-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .problem-card p,
+  .step-card p,
+  .included-card p {
+    margin-bottom: 0;
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
+  .step-number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .demo-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+    gap: var(--space-lg);
+    align-items: stretch;
+  }
+
+  .demo-copy,
+  .demo-status,
+  .admin-card {
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+  }
+
+  .demo-copy p {
+    line-height: 1.75;
+  }
+
+  .demo-status {
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.05));
+  }
+
+  .demo-status__label,
+  .admin-card__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .demo-status__url {
+    font-weight: 600;
+    word-break: break-word;
+    margin-bottom: var(--space-sm);
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .admin-copy {
+    margin-bottom: 0;
+  }
+
+  .admin-list {
+    list-style: none;
+    margin-top: var(--space-md);
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .admin-list li {
+    padding-left: var(--space-md);
+    position: relative;
+    color: var(--color-text);
+  }
+
+  .admin-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .admin-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .admin-card__status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background-color: rgba(42, 157, 143, 0.12);
+    color: var(--color-primary-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .admin-card__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .admin-card__grid dt {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .admin-card__grid dd {
+    margin: 0;
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .final-cta {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+  }
+
+  .final-cta__content {
+    max-width: 820px;
+  }
+
+  .final-cta h2 {
+    color: var(--color-white);
+  }
+
+  .final-cta p {
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 900px) {
+    .demo-panel,
+    .admin-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .offer-hero {
+      min-height: auto;
+      padding: 5rem 0 3rem;
+    }
+
+    .offer-actions,
+    .demo-actions,
+    .final-cta__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .admin-card__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,59 +1,62 @@
 <section class="about section-padding" id="about">
   <div class="container">
     <div class="about-grid">
-      <img
-        src="/assets/images/beloved-john.webp"
-        alt="Beloved John – Independent Digital Systems Developer based in Cambodia"
-        width="300"
-        height="300"
-        loading="lazy"
-        class="about-image"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-      />
-      <div class="image-placeholder">
-        Photo unavailable
+      <div class="about-media">
+        <img
+          src="/assets/images/beloved-john.webp"
+          alt="Beloved John, independent business systems developer"
+          width="300"
+          height="300"
+          loading="lazy"
+          class="about-image"
+          onerror="this.closest('.about-media').classList.add('is-fallback');"
+        />
+        <div class="image-placeholder" aria-hidden="true">
+          <span class="about-placeholder-mark">BJ</span>
+          <span class="about-placeholder-text">Independent business systems developer</span>
+        </div>
       </div>
 
       <div class="about-content">
         <h2>About Me</h2>
 
         <p>
-          I’m an independent digital systems developer based in Cambodia.
-          I build practical tools that help businesses operate better —
-          from internal management systems and POS tools to automation,
-          data utilities, and customer-facing platforms when needed.
+          I am an independent developer focused on business systems that need to
+          be practical, secure, and maintainable. Most of my work sits close to
+          operations: internal platforms, workflow tools, automation, and websites
+          that support how a business actually runs.
         </p>
 
         <p>
-          I work directly with business owners to understand how their operations
-          actually run. Instead of generic solutions, I design systems around
-          real workflows, staff roles, and local business realities.
+          Clients work directly with me, without agency layers or handoffs.
+          That means I can understand the real process behind the request, shape
+          the software around it, and keep the build aligned with business needs
+          instead of adding complexity for its own sake.
         </p>
 
         <p>
-          My approach is simple and intentional: keep systems clear, secure,
-          and easy to maintain. I avoid unnecessary complexity and focus on
-          building solutions that work reliably today and can grow naturally
-          as the business evolves.
+          My approach is simple: solve the operational problem clearly, make the
+          system understandable for the people using it, and build it in a way
+          that remains supportable after launch. That is especially important for
+          clients trusting software with business-critical work.
         </p>
 
         <div class="skills">
-          <h3>Tools & Technologies I Work With</h3>
+          <h3>Typical Capabilities</h3>
           <ul class="skills-list">
-            <li>Business systems & internal tools</li>
-            <li>POS and inventory platforms (online & offline)</li>
-            <li>Automation bots (Telegram, Messenger)</li>
+            <li>Business systems and internal tools</li>
+            <li>Operations, inventory, and admin workflows</li>
+            <li>Automation bots and custom process tooling</li>
             <li>REST APIs and backend logic</li>
             <li>Data scraping, monitoring, and utilities</li>
-            <li>Web interfaces when a browser-based UI is needed</li>
-            <li>Basic security hardening & access control</li>
+            <li>Web interfaces when a browser-based UI adds value</li>
+            <li>Security hardening and role-based access</li>
             <li>Performance, reliability, and maintainability</li>
           </ul>
 
           <p class="skills-note">
-            Technology choices are driven by the problem being solved —
-            not by trends. Simplicity, reliability, and long-term usability
-            come first.
+            Technology choices are driven by the operational need, not by trends.
+            Clear structure and long-term usability come first.
           </p>
         </div>
 
@@ -84,6 +87,12 @@
     align-items: start;
   }
 
+  .about-media {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+  }
+
   .about-image {
     border-radius: var(--border-radius);
     width: 100%;
@@ -96,6 +105,10 @@
   .about-image:hover {
     transform: scale(1.02);
     box-shadow: var(--shadow-lg);
+  }
+
+  .about-media.is-fallback .about-image {
+    display: none;
   }
 
   .about-content h2 {
@@ -131,7 +144,7 @@
   }
 
   .skills-list li::before {
-    content: '▸';
+    content: '+';
     position: absolute;
     left: 0;
     color: var(--color-primary);
@@ -140,13 +153,37 @@
   .image-placeholder {
     display: none;
     padding: 2rem;
-    background: var(--color-light);
+    background: linear-gradient(135deg, rgba(38, 70, 83, 0.95), rgba(42, 157, 143, 0.75));
     text-align: center;
-    color: var(--color-text-muted);
+    color: var(--color-white);
     border-radius: var(--border-radius);
     min-height: 300px;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .about-media.is-fallback .image-placeholder {
+    display: flex;
+  }
+
+  .about-placeholder-mark {
+    width: 84px;
+    height: 84px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .about-placeholder-text {
+    max-width: 180px;
+    line-height: 1.5;
   }
 
   .skills-note {
@@ -166,6 +203,7 @@
       text-align: center;
     }
 
+    .about-media,
     .about-image {
       margin: 0 auto;
     }

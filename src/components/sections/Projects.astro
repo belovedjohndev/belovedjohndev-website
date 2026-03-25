@@ -1,143 +1,127 @@
+---
+const projects = [
+  {
+    title: 'Travel Agency Website',
+    type: 'Operational Website',
+    stack: 'HTML5, CSS3, Vanilla JavaScript',
+    image: '/assets/images/travel-agency.png',
+    alt: 'Travel agency website showing service sections and contact flow',
+    highlights: ['Lead-focused structure', 'Mobile-first delivery', 'Low-maintenance stack'],
+    problem:
+      'The agency needed a stronger digital presence and a clearer inquiry path. Prospective customers were not getting enough structure, trust signals, or fast contact options from the previous setup.',
+    approach:
+      'I treated the site as an operational sales asset rather than a simple brochure. The build focused on mobile clarity, fast loading, direct contact paths, and a structure the client could maintain without overhead.',
+    solution:
+      'Delivered a static business website with clear service sections, trust-building content, responsive layouts, and contact flows designed to turn interest into real inquiries.',
+    outcome:
+      'The business gained a more credible online presence and a smoother path from first visit to direct inquiry, especially for mobile users comparing providers and reaching out quickly.',
+    referenceLabel: 'Live reference',
+    referenceHref: 'https://blessedjourneyglobal.com',
+    referenceText: 'blessedjourneyglobal.com',
+    fallbackTitle: 'Project preview',
+    fallbackBody: 'Live example available',
+    tags: ['Responsive design', 'Mobile-first', 'Performance-conscious'],
+  },
+  {
+    title: 'Church Management System',
+    type: 'Custom Business System',
+    stack: 'Django REST Framework, Next.js, TypeScript',
+    image: '/assets/images/religious-org.png',
+    alt: 'Church management platform interface with structured navigation',
+    highlights: ['Role-based access', 'Centralized records', 'Operational reporting'],
+    problem:
+      'The organization was handling members, events, attendance, and announcements through disconnected manual processes. That created duplicated work, inconsistent records, and avoidable administrative overhead.',
+    approach:
+      'I designed the system around a clear API-first architecture so business rules stayed centralized and the interface stayed focused on usability. That made the platform easier to secure, maintain, and extend.',
+    solution:
+      'Built a full-stack management platform covering member records, event scheduling, attendance tracking, announcements, and secure role-based access for staff and leadership.',
+    outcome:
+      'Administrative workload dropped by roughly 60 percent, and the organization moved from scattered records to a single operational system that supports day-to-day coordination.',
+    referenceLabel: 'Reference',
+    referenceText: 'Private and confidential',
+    fallbackTitle: 'Internal platform',
+    fallbackBody: 'Preview withheld for client privacy',
+    tags: ['Python', 'Next.js', 'REST API'],
+  },
+];
+---
+
 <section class="projects section-padding" id="projects">
   <div class="container">
     <div class="section-title">
-      <h2>Recent Projects</h2>
-      <p>Real systems built for businesses, designed to be simple, secure,
-        and easy to maintain as needs grow.</p>
+      <h2>Selected Work</h2>
+      <p>Examples of business-facing and internal systems built to solve operational problems clearly.</p>
     </div>
 
     <div class="projects-grid">
-      <article class="project-card">
-        <div class="project-image-wrapper">
-          <img
-            src="/assets/images/travel-agency.png"
-            alt="Travel agency website showing service sections and contact form"
-            width="600"
-            height="400"
-            loading="lazy"
-            class="project-image"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <div class="image-placeholder">
-            Image unavailable
+      {projects.map((project) => (
+        <article class="project-card">
+          <div class="project-image-wrapper">
+            <div class="project-media">
+              <img
+                src={project.image}
+                alt={project.alt}
+                width="600"
+                height="400"
+                loading="lazy"
+                class="project-image"
+                onerror="this.closest('.project-media').classList.add('is-fallback');"
+              />
+              <div class="project-fallback" aria-hidden="true">
+                <span>{project.fallbackTitle}</span>
+                <strong>{project.fallbackBody}</strong>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="project-content">
-          <div class="project-meta" aria-label="Project type and technologies">Business Website · Frontend: HTML5, CSS3, Vanilla JavaScript</div>
-          <h3>Travel Agency Website</h3>
-          
-          <div class="project-section">
-            <h4>Problem</h4>
-            <p class="project-description">
-              The travel agency needed a professional online presence to attract customers and handle inquiries efficiently. Their previous setup made it difficult for customers to find information and contact them.
-            </p>
+          <div class="project-content">
+            <div class="project-meta" aria-label="Project type and technologies">{project.type} | {project.stack}</div>
+            <h3>{project.title}</h3>
+
+            <div class="project-highlights" role="list">
+              {project.highlights.map((highlight) => (
+                <span class="project-highlight" role="listitem">{highlight}</span>
+              ))}
+            </div>
+
+            <div class="project-section">
+              <h4>Problem</h4>
+              <p class="project-description">{project.problem}</p>
+            </div>
+
+            <div class="project-section">
+              <h4>Approach</h4>
+              <p>{project.approach}</p>
+            </div>
+
+            <div class="project-section">
+              <h4>Solution</h4>
+              <p class="project-description">{project.solution}</p>
+            </div>
+
+            <div class="project-tech" role="list">
+              {project.tags.map((tag) => (
+                <span class="tech-tag" role="listitem">{tag}</span>
+              ))}
+            </div>
+
+            <div class="project-section">
+              <h4>Outcome</h4>
+              <p class="project-result">{project.outcome}</p>
+            </div>
 
             <p class="project-reference">
-              <strong>Reference:</strong>
-              <a
-               href="https://blessedjourneyglobal.com"
-               target="_blank"
-               rel="noopener nofollow"
-              >
-                blessedjourneyglobal.com
-              </a>
+              <strong>{project.referenceLabel}:</strong>{' '}
+              {project.referenceHref ? (
+                <a href={project.referenceHref} target="_blank" rel="noopener nofollow">
+                  {project.referenceText}
+                </a>
+              ) : (
+                <span>{project.referenceText}</span>
+              )}
             </p>
           </div>
-
-          <div class="project-section">
-            <h4>Approach</h4>
-            <p>
-              I kept the structure simple and fast — a static, mobile-first
-              website with clear content sections and lightweight JavaScript.
-              This reduces maintenance and ensures fast loading even on slow
-              networks.
-            </p>
-          </div>
-
-          <div class="project-section">
-            <h4>Solution</h4>
-            <p class="project-description">
-              Built a clean, mobile-friendly website with clear service sections, easy-to-use contact forms, and optimized performance for fast loading on all devices.
-            </p>
-          </div>
-
-          <div class="project-tech" role="list">
-            <span class="tech-tag" role="listitem">HTML5/CSS3</span>
-            <span class="tech-tag" role="listitem">Vanilla JavaScript</span>
-            <span class="tech-tag" role="listitem">Responsive Design</span>
-            <span class="tech-tag" role="listitem">Mobile-First</span>
-          </div>
-
-          <div class="project-section">
-            <h4>Outcome</h4>
-            <p class="project-result">
-              Improved mobile experience led to easier customer inquiries and increased online engagement. The business now has a professional digital presence that builds trust with potential customers.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-image-wrapper">
-          <img
-            src="/assets/images/religious-org.png"
-            alt="Religious organization website with clean layout and easy navigation"
-            width="600"
-            height="400"
-            loading="lazy"
-            class="project-image"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <div class="image-placeholder">
-            Image unavailable
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-meta" aria-label="Project type and technologies">Full-Stack System · Django REST Framework (Backend) · Next.js (Frontend)</div>
-          <h3>Church Management System</h3>
-          
-          <div class="project-section">
-            <h4>Problem</h4>
-            <p class="project-description">
-              The organization needed a comprehensive system to manage members, track attendance, schedule events, and handle communications. Manual processes were time-consuming and error-prone.
-            </p>
-            <p class="project-reference private">
-             <strong>Reference:</strong> Private / Confidential
-            </p>
-          </div>
-
-          <div class="project-section">
-            <h4>Approach</h4>
-            <p>
-              Designed the system with a clear separation between frontend and
-              backend. Business logic lives in the API, while the frontend focuses
-              on usability. This keeps the system secure and easy to extend later.
-            </p>
-          </div>
-          
-          <div class="project-section">
-            <h4>Solution</h4>
-            <p class="project-description">
-              Developed a full-stack management system with member database, event scheduling, attendance tracking, and announcement features. Built with secure authentication and role-based access control.
-            </p>
-          </div>
-
-          <div class="project-tech" role="list">
-            <span class="tech-tag" role="listitem">Python</span>
-            <span class="tech-tag" role="listitem">Django</span>
-            <span class="tech-tag" role="listitem">Next.js</span>
-            <span class="tech-tag" role="listitem">TypeScript</span>
-            <span class="tech-tag" role="listitem">REST API</span>
-          </div>
-
-          <div class="project-section">
-            <h4>Outcome</h4>
-            <p class="project-result">
-              Streamlined operations reduced administrative time by 60%. The system now handles member management, event coordination, and communications in one centralized platform, improving organization efficiency.
-            </p>
-          </div>
-        </div>
-      </article>
+        </article>
+      ))}
     </div>
   </div>
 </section>
@@ -177,6 +161,11 @@
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
+  .project-media {
+    position: relative;
+    background: linear-gradient(135deg, rgba(38, 70, 83, 0.95), rgba(42, 157, 143, 0.7));
+  }
+
   .project-image {
     width: 100%;
     height: auto;
@@ -184,8 +173,40 @@
     transition: var(--transition);
   }
 
+  .project-media.is-fallback .project-image {
+    display: none;
+  }
+
   .project-card:hover .project-image {
     transform: scale(1.02);
+  }
+
+  .project-fallback {
+    display: none;
+    min-height: 240px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    color: var(--color-white);
+  }
+
+  .project-media.is-fallback .project-fallback {
+    display: flex;
+  }
+
+  .project-fallback span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .project-fallback strong {
+    font-size: 1.15rem;
+    line-height: 1.4;
   }
 
   .project-content {
@@ -210,18 +231,35 @@
     color: var(--color-dark);
   }
 
+  .project-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .project-highlight {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background-color: rgba(42, 157, 143, 0.08);
+    color: var(--color-primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
   .project-section {
     margin-bottom: var(--space-md);
   }
 
   .project-section h4 {
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--color-primary);
     margin-bottom: var(--space-xs);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.85rem;
   }
 
   .project-description {
@@ -253,16 +291,14 @@
     margin-bottom: 0;
   }
 
-  .image-placeholder {
-    display: none;
-    padding: 2rem;
-    background: var(--color-light);
-    text-align: center;
+  .project-reference {
+    margin-bottom: 0;
     color: var(--color-text-muted);
-    min-height: 200px;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-size: 0.92rem;
+  }
+
+  .project-reference a {
+    font-weight: 500;
   }
 
   @media (max-width: 768px) {
