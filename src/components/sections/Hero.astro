@@ -2,18 +2,18 @@
   <div class="container hero-content">
     <p class="hero-eyebrow">Independent business systems developer</p>
     <h1>
-      Secure, maintainable systems for businesses that need software to do real work.
+      Custom systems, operational websites, and conversion tools built for real business work.
     </h1>
 
     <p class="hero-subtitle">
       I work directly with founders and operators to build custom business systems,
-      operational websites, and automation tools that improve day-to-day execution
-      without adding unnecessary complexity.
+      lead-focused websites, and practical tools like intake flows, estimators, and
+      automation that improve day-to-day execution without adding unnecessary complexity.
     </p>
 
     <p class="hero-location">
-      Built for international clients who need practical delivery, clear communication,
-      and systems they can trust with business-critical work.
+      The portfolio stays broad on purpose, while focused offer pages show how that work
+      translates into niche-ready solutions for specific client types.
     </p>
 
     <div class="hero-buttons">
@@ -21,9 +21,31 @@
         Discuss Your Project
       </a>
 
-      <a href="#projects" class="btn btn-secondary">
+      <a href="/home-service-estimator" class="btn btn-secondary">
+        View Estimator Offer
+      </a>
+
+      <a href="#projects" class="btn btn-secondary btn-ghost">
         Review Selected Work
       </a>
+    </div>
+
+    <div class="hero-offer">
+      <p class="hero-offer__label">Focused offer currently live</p>
+      <p class="hero-offer__text">
+        Home service estimator system with guided quoting, structured lead capture,
+        and a cleaner handoff from website traffic to the office team.
+      </p>
+
+      <a href="/home-service-estimator" class="hero-offer__link">
+        See the full offer page
+      </a>
+    </div>
+
+    <div class="hero-focuses" role="list" aria-label="Core focus areas">
+      <span class="hero-focus" role="listitem">Custom business systems</span>
+      <span class="hero-focus" role="listitem">Operational websites</span>
+      <span class="hero-focus" role="listitem">Estimators and intake flows</span>
     </div>
   </div>
 </section>
@@ -115,6 +137,65 @@
 
   .hero-buttons .btn {
     min-width: 180px;
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+  }
+
+  .btn-ghost:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .hero-offer {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    max-width: 720px;
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-offer__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-offer__text {
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-offer__link {
+    color: var(--color-white);
+    font-weight: 600;
+  }
+
+  .hero-focuses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+
+  .hero-focus {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--color-white);
+    font-size: 0.9rem;
   }
 
   @media (max-width: 768px) {

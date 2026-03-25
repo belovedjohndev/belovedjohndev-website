@@ -1,6 +1,27 @@
 ---
 const projects = [
   {
+    title: 'Home Service Estimate Engine',
+    type: 'Focused Offer + Demo System',
+    stack: 'Astro, Widget Frontend, API-backed estimate flow',
+    highlights: ['Guided estimate flow', 'Qualified lead capture', 'Reusable offer architecture'],
+    problem:
+      'Home service businesses often rely on generic contact forms that create weak quote requests, repetitive intake work, and poor lead context for the office team.',
+    approach:
+      'I treated the estimator as both a productized service offer and a working software proof. The public page explains the business value, while the live demo proves the estimator flow can be delivered as a real client-facing system.',
+    solution:
+      'Built a focused estimator offer page tied to a live demo that shows guided intake, estimate logic, and structured lead capture for home service companies.',
+    outcome:
+      'The project now works as both portfolio proof and a niche sales asset. It gives prospects a clearer picture of what they could buy, not just what I can code.',
+    referenceLabel: 'Offer page',
+    referenceHref: '/home-service-estimator',
+    referenceText: 'View the estimator offer',
+    referenceExternal: false,
+    fallbackTitle: 'Focused offer',
+    fallbackBody: 'Live page and demo available',
+    tags: ['Astro', 'Lead generation', 'Productized service'],
+  },
+  {
     title: 'Travel Agency Website',
     type: 'Operational Website',
     stack: 'HTML5, CSS3, Vanilla JavaScript',
@@ -50,23 +71,25 @@ const projects = [
   <div class="container">
     <div class="section-title">
       <h2>Selected Work</h2>
-      <p>Examples of business-facing and internal systems built to solve operational problems clearly.</p>
+      <p>Examples of business-facing systems, internal platforms, and focused offers built to solve operational problems clearly.</p>
     </div>
 
     <div class="projects-grid">
       {projects.map((project) => (
         <article class="project-card">
           <div class="project-image-wrapper">
-            <div class="project-media">
-              <img
-                src={project.image}
-                alt={project.alt}
-                width="600"
-                height="400"
-                loading="lazy"
-                class="project-image"
-                onerror="this.closest('.project-media').classList.add('is-fallback');"
-              />
+            <div class:list={['project-media', { 'is-fallback': !project.image }]}>
+              {project.image && (
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  class="project-image"
+                  onerror="this.closest('.project-media').classList.add('is-fallback');"
+                />
+              )}
               <div class="project-fallback" aria-hidden="true">
                 <span>{project.fallbackTitle}</span>
                 <strong>{project.fallbackBody}</strong>
@@ -112,7 +135,11 @@ const projects = [
             <p class="project-reference">
               <strong>{project.referenceLabel}:</strong>{' '}
               {project.referenceHref ? (
-                <a href={project.referenceHref} target="_blank" rel="noopener nofollow">
+                <a
+                  href={project.referenceHref}
+                  target={project.referenceExternal === false ? undefined : '_blank'}
+                  rel={project.referenceExternal === false ? undefined : 'noopener nofollow'}
+                >
                   {project.referenceText}
                 </a>
               ) : (
