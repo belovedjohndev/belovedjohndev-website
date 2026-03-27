@@ -1,47 +1,28 @@
 ---
-interface Testimonial {
-  text: string;
-  author: string;
-  role: string;
-  company: string;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    text: 'The website gave us a much stronger first impression and made it easier for serious inquiries to reach us. The structure is clearer, the site feels more professional, and mobile visitors can act quickly.',
-    author: 'Travel Agency Client',
-    role: 'Owner',
-    company: 'Travel and Tourism Business',
-  },
-  {
-    text: 'The management system replaced scattered admin work with one clear process. Member records, events, attendance, and communication are now much easier to handle, and the time savings have been significant.',
-    author: 'Organization Client',
-    role: 'Administrator',
-    company: 'Private Membership Organization',
-  },
-  {
-    text: 'Communication was direct, timelines were clear, and the work stayed grounded in what the business actually needed. That made the whole process feel reliable from start to finish.',
-    author: 'Website Client',
-    role: 'Business Owner',
-    company: 'Service Business',
-  },
-];
+import { testimonials } from '../../data/siteContent';
 ---
 
 <section class="testimonials section-padding" id="testimonials">
   <div class="container">
     <div class="section-title">
       <h2>Testimonials</h2>
-      <p>Feedback from clients who needed practical delivery and clear communication.</p>
+      <p>Feedback from clients who needed a practical result, not just code delivery.</p>
       <p class="text-muted">Some names are generalized to respect client privacy.</p>
     </div>
 
     <div class="testimonials-grid">
       {testimonials.map((testimonial) => (
         <article class="testimonial-card">
-          <blockquote class="testimonial-text">
-            "{testimonial.text}"
-          </blockquote>
+          <p class="testimonial-headline">{testimonial.headline}</p>
+          <p class="testimonial-context">{testimonial.context}</p>
+
+          <div class="testimonial-proof" role="list" aria-label="Testimonial proof points">
+            {testimonial.proof.map((point) => (
+              <span class="testimonial-proof__chip" role="listitem">{point}</span>
+            ))}
+          </div>
+
+          <blockquote class="testimonial-text">"{testimonial.quote}"</blockquote>
           <footer class="testimonial-author">
             <cite>{testimonial.author}</cite>
             <p class="testimonial-role">{testimonial.role} | {testimonial.company}</p>
@@ -78,6 +59,38 @@ const testimonials: Testimonial[] = [
     box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
     border-left-width: 5px;
+  }
+
+  .testimonial-headline {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+    line-height: 1.35;
+    font-weight: 700;
+    color: var(--color-dark);
+  }
+
+  .testimonial-context {
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
+  .testimonial-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .testimonial-proof__chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background-color: rgba(42, 157, 143, 0.08);
+    color: var(--color-primary);
+    font-size: 0.82rem;
+    font-weight: 600;
   }
 
   .testimonial-text {

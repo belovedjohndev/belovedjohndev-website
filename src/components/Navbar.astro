@@ -1,3 +1,22 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/process', label: 'Process' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const isActive = (href: string) =>
+  href === '/'
+    ? currentPath === href
+    : currentPath === href || currentPath.startsWith(`${href}/`);
+---
+
 <nav class="navbar" aria-label="Main navigation">
   <div class="container nav-container">
     <a href="/" class="logo" aria-label="Beloved John Dev - Home">
@@ -17,13 +36,16 @@
     </button>
 
     <ul class="nav-links" id="primary-navigation">
-      <li><a href="/#services">Services</a></li>
-      <li><a href="/#projects">Work</a></li>
-      <li><a href="/#why-me">Why Me</a></li>
-      <li><a href="/#about">About</a></li>
-      <li><a href="/#testimonials">Testimonials</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#contact">Contact</a></li>
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class:list={{ active: isActive(item.href) }}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="nav-cta-item">
+        <a href="/contact" class="nav-cta">Discuss Your System</a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -88,6 +110,10 @@
     position: relative;
   }
 
+  .nav-links a.active {
+    color: var(--color-primary);
+  }
+
   .nav-links a::after {
     content: '';
     position: absolute;
@@ -105,8 +131,36 @@
   }
 
   .nav-links a:hover::after,
-  .nav-links a:focus-visible::after {
+  .nav-links a:focus-visible::after,
+  .nav-links a.active::after {
     width: 100%;
+  }
+
+  .nav-cta-item {
+    margin-left: var(--space-xs);
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.15rem;
+    border-radius: 999px;
+    background-color: var(--color-dark);
+    color: var(--color-white) !important;
+    border: 1px solid var(--color-dark);
+  }
+
+  .nav-cta::after {
+    display: none;
+  }
+
+  .nav-cta:hover,
+  .nav-cta:focus-visible {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
   }
 
   .mobile-menu-btn {
@@ -141,6 +195,15 @@
 
     .nav-links.active {
       display: flex;
+    }
+
+    .nav-cta-item {
+      margin-left: 0;
+      margin-top: var(--space-xs);
+    }
+
+    .nav-cta {
+      width: 100%;
     }
 
     .mobile-menu-btn {
@@ -201,28 +264,4 @@
       }
     });
   }
-
-  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const href = anchor.getAttribute('href');
-      if (!href || href === '#') return;
-
-      const url = new URL(href, window.location.href);
-      const isSamePage = url.origin === window.location.origin && url.pathname === window.location.pathname;
-      if (!isSamePage || !url.hash) return;
-
-      const target = document.querySelector(url.hash);
-      if (!target) return;
-
-      e.preventDefault();
-
-      const offset = 80;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth',
-      });
-      history.pushState(null, '', url.hash);
-    });
-  });
 </script>

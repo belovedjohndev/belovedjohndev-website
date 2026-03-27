@@ -1,0 +1,207 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import { insights } from '../../data/siteContent';
+
+export function getStaticPaths() {
+  return insights.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+---
+
+<MainLayout
+  title={`${article.title} | Insights | Beloved John Dev`}
+  description={article.summary}
+  canonical={`/insights/${article.slug}`}
+  ogImage={`/og/insights/${article.slug}.svg`}
+  ogImageAlt={`${article.title} insight share image`}
+>
+  <Navbar slot="navbar" />
+
+  <article>
+    <section class="page-hero">
+      <div class="container page-hero__content">
+        <p class="eyebrow">{article.category} | {article.readingTime}</p>
+        <h1>{article.title}</h1>
+        <p class="page-hero__lead">{article.summary}</p>
+        <p class="page-hero__audience"><strong>Best for:</strong> {article.audience}</p>
+
+        <div class="hero-actions">
+          <Button href="/contact" variant="primary">Discuss This Kind of Problem</Button>
+          <Button href="/insights" variant="secondary">Back to Insights</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="takeaways-band">
+      <div class="container">
+        <div class="takeaways-card">
+          <p class="takeaways-card__label">Key takeaways</p>
+          <div class="takeaways-list" role="list">
+            {article.takeaways.map((takeaway) => (
+              <span class="takeaway-chip" role="listitem">{takeaway}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding article-body">
+      <div class="container article-body__content">
+        <p class="article-intro">{article.intro}</p>
+
+        {article.sections.map((section) => (
+          <section class="article-section">
+            <h2>{section.title}</h2>
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-padding cta-band">
+      <div class="container cta-band__content">
+        <p class="eyebrow">Next step</p>
+        <h2>Need Help Applying This to Your Workflow?</h2>
+        <p>
+          If the problem in this article sounds familiar, we can map it to a practical first phase
+          and decide whether the right move is a system, a portal, or a focused automation layer.
+        </p>
+        <div class="hero-actions">
+          <Button href="/contact" variant="primary">Discuss Your Project</Button>
+          <Button href="/services" variant="secondary">View Services</Button>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .page-hero,
+  .cta-band {
+    color: var(--color-white);
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.88)),
+      url('/assets/images/hero-bg.png');
+    background-position: center;
+    background-size: cover;
+  }
+
+  .page-hero {
+    padding: 7rem 0 4rem;
+  }
+
+  .page-hero__content,
+  .cta-band__content,
+  .article-body__content {
+    max-width: 840px;
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-hero h1,
+  .cta-band h2 {
+    color: var(--color-white);
+  }
+
+  .page-hero__lead,
+  .page-hero__audience,
+  .cta-band p {
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+  }
+
+  .takeaways-band {
+    background-color: var(--color-white);
+    padding: var(--space-lg) 0;
+  }
+
+  .takeaways-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
+    border: 1px solid rgba(42, 157, 143, 0.14);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .takeaways-card__label {
+    margin-bottom: var(--space-sm);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .takeaways-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .takeaway-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .article-body {
+    background-color: var(--color-white);
+  }
+
+  .article-intro,
+  .article-section p {
+    line-height: 1.85;
+    color: var(--color-text);
+  }
+
+  .article-intro {
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article-section + .article-section {
+    margin-top: var(--space-xl);
+  }
+
+  .article-section h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

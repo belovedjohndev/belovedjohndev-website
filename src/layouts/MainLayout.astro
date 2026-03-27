@@ -7,6 +7,7 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   robots?: string;
   structuredDataType?: 'Person' | 'ProfessionalService' | false;
 }
@@ -16,11 +17,12 @@ const {
   description,
   canonical = Astro.url.pathname,
   ogImage = '/assets/images/hero-bg.png',
+  ogImageAlt = title,
   robots = 'index, follow',
   structuredDataType = 'ProfessionalService',
 } = Astro.props;
 
-const siteUrl = 'https://belovedjohndev.github.io';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.pages.dev';
 const fullUrl = `${siteUrl}${canonical === '/' ? '' : canonical}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
@@ -43,6 +45,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Beloved John Dev" />
 
     <meta property="twitter:card" content="summary_large_image" />
@@ -50,6 +55,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageUrl} />
+    <meta property="twitter:image:alt" content={ogImageAlt} />
     
     <meta name="robots" content={robots} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />

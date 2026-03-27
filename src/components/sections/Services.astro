@@ -1,71 +1,24 @@
 ---
-const services = [
-  {
-    title: 'Custom Business Systems',
-    description:
-      'Purpose-built software for teams that need clearer operations, better control, and fewer manual workarounds.',
-    features: [
-      'Internal platforms for staff and management',
-      'Admin systems for records, approvals, and reporting',
-      'Operations software for inventory, workflows, and day-to-day execution',
-      'Role-based access, auditability, and maintainable architecture',
-    ],
-    bestFor: 'Businesses replacing spreadsheets, disconnected tools, or fragile manual processes.',
-  },
-  {
-    title: 'Business Websites with Operational Value',
-    description:
-      'Websites designed to support the business, not just present it. The goal is clearer trust, better lead flow, and useful operational touchpoints.',
-    features: [
-      'Lead-focused pages with stronger inquiry paths',
-      'Fast, mobile-friendly builds that are easy to maintain',
-      'Booking, quote, contact, or intake flows where needed',
-      'Credibility, performance, and structure aligned to business goals',
-    ],
-    bestFor: 'Companies that need their website to support sales, service delivery, or operational workflows.',
-  },
-  {
-    title: 'Automation & Internal Tools',
-    description:
-      'Small but valuable systems that remove repetitive work, connect processes, and give teams faster access to the data they need.',
-    features: [
-      'Bots, utilities, and lightweight internal tooling',
-      'Data workflows, imports, exports, and process automation',
-      'Monitoring, notifications, and custom operational utilities',
-      'Integrations that reduce manual handling across teams',
-    ],
-    bestFor: 'Teams that want to save time, reduce mistakes, and remove avoidable operational friction.',
-  },
-];
-
-const supportingCapabilities = [
-  'POS and inventory tooling',
-  'Reporting dashboards',
-  'API and backend development',
-  'Role-based access control',
-  'Data cleanup and migration utilities',
-  'Security hardening and deployment support',
-];
+import { serviceOffers, supportingCapabilities } from '../../data/siteContent';
 ---
 
 <section class="services section-padding" id="services">
   <div class="container">
     <div class="section-title">
-      <h2>Core Services</h2>
-      <p>Three focused offers for businesses that need dependable software support.</p>
+      <h2>What You Can Hire Me For</h2>
+      <p>Three focused offers for companies that need better operations, not just a nicer-looking website.</p>
       <p class="text-muted">
-        I keep the homepage focused on the work I want to be hired for most often:
-        operational systems, business websites with clear value, and practical automation.
+        This is intentionally not a list of everything I can code. It is a clear offer structure built around the problems I solve best.
       </p>
     </div>
 
     <div class="services-grid">
-      {services.map((service) => (
+      {serviceOffers.map((service) => (
         <article class="service-card">
           <h3>{service.title}</h3>
           <p class="service-description">{service.description}</p>
           <ul class="service-features">
-            {service.features.map((feature) => <li>{feature}</li>)}
+            {service.includes.map((feature) => <li>{feature}</li>)}
           </ul>
           <p class="service-best-for"><strong>Best fit:</strong> {service.bestFor}</p>
         </article>
@@ -82,8 +35,11 @@ const supportingCapabilities = [
     </div>
 
     <div class="services-cta">
-      <p class="cta-text">Need to figure out which service best matches your operations?</p>
-      <a href="#contact" class="btn btn-primary">Start a Project Conversation</a>
+      <p class="cta-text">Need help deciding which offer best matches the bottleneck in your workflow?</p>
+      <div class="services-cta__actions">
+        <a href="/services" class="btn btn-dark">Explore the Services</a>
+        <a href="/contact" class="btn btn-primary">Discuss Your Workflow</a>
+      </div>
     </div>
   </div>
 </section>
@@ -235,6 +191,13 @@ const supportingCapabilities = [
   .services-cta {
     text-align: center;
     margin-top: var(--space-xl);
+  }
+
+  .services-cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
   }
 
   .cta-text {

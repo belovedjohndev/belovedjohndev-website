@@ -1,8 +1,13 @@
 
 import { defineConfig } from 'astro/config';
 
+const site =
+  process.env.SITE_URL ??
+  process.env.CF_PAGES_URL ??
+  'https://belovedjohndev.pages.dev';
+
 export default defineConfig({
-  site: 'https://belovedjohndev.github.io',
+  site,
   base: '/',
   output: 'static',
   build: {

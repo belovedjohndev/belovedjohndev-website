@@ -1,17 +1,21 @@
+---
+import { contactLinks } from '../../data/siteContent';
+---
+
 <section class="contact-cta section-padding" id="contact">
   <div class="container">
     <div class="section-title">
-      <h2>Discuss Your Requirements</h2>
-      <p>Tell me what the business needs to do better, faster, or more reliably.</p>
+      <h2>Tell Me Where the Workflow Is Breaking</h2>
+      <p>Tell me what the business needs to do better, faster, or with less manual handling.</p>
       <p class="text-muted">
-        If you need a custom system, a business website with stronger operational value,
-        or automation that removes repetitive work, we can start with a direct project conversation.
+        If you need a custom system, a client portal, an estimator tool, or automation
+        that removes repetitive work, we can start with a direct project conversation.
       </p>
     </div>
 
     <div class="contact-methods">
       <a
-        href="https://wa.me/855963885424?text=Hi%2C%20I'd%20like%20to%20discuss%20a%20business%20system%20or%20website%20project."
+        href={contactLinks.whatsapp}
         class="contact-method"
         target="_blank"
         rel="noopener"
@@ -24,7 +28,7 @@
       </a>
 
       <a
-        href="https://t.me/belovedjohndev"
+        href={contactLinks.telegram}
         class="contact-method"
         target="_blank"
         rel="noopener"
@@ -35,10 +39,14 @@
         </svg>
         <span>Message on Telegram</span>
       </a>
+
+      <a href="/contact" class="contact-method contact-method--page">
+        <span>Open Contact Page</span>
+      </a>
     </div>
 
     <p class="contact-note text-center">
-      I typically respond within 24 hours with next steps or follow-up questions.
+      I typically respond within 24 hours with next steps, fit feedback, or follow-up questions.
     </p>
   </div>
 </section>
@@ -107,6 +115,11 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
+  }
+
+  .contact-method--page {
+    min-width: 220px;
+    justify-content: center;
   }
 
   .contact-note {

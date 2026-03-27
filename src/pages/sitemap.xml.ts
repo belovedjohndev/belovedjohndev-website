@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { caseStudies, insights } from '../data/siteContent';
 
 const pages = [
   {
@@ -7,14 +8,56 @@ const pages = [
     priority: '1.0',
   },
   {
+    path: '/services',
+    changefreq: 'weekly',
+    priority: '0.9',
+  },
+  {
+    path: '/case-studies',
+    changefreq: 'weekly',
+    priority: '0.9',
+  },
+  {
+    path: '/insights',
+    changefreq: 'weekly',
+    priority: '0.8',
+  },
+  {
+    path: '/process',
+    changefreq: 'monthly',
+    priority: '0.8',
+  },
+  {
+    path: '/about',
+    changefreq: 'monthly',
+    priority: '0.7',
+  },
+  {
+    path: '/contact',
+    changefreq: 'weekly',
+    priority: '0.8',
+  },
+  {
     path: '/home-service-estimator',
     changefreq: 'monthly',
     priority: '0.8',
   },
+  ...caseStudies.map((study) => ({
+    path: `/case-studies/${study.slug}`,
+    changefreq: 'monthly',
+    priority: '0.7',
+  })),
+  ...insights.map((article) => ({
+    path: `/insights/${article.slug}`,
+    changefreq: 'monthly',
+    priority: '0.6',
+  })),
 ] as const;
 
 export const GET: APIRoute = ({ site }) => {
-  const baseUrl = site ?? new URL('https://belovedjohndev.github.io');
+  const fallbackSite =
+    process.env.SITE_URL ?? process.env.CF_PAGES_URL ?? 'https://belovedjohndev.pages.dev';
+  const baseUrl = site ?? new URL(fallbackSite);
   const lastmod = new Date().toISOString().split('T')[0];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

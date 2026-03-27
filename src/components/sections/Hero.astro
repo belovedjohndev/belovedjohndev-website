@@ -1,51 +1,55 @@
+---
+import { homePainPoints } from '../../data/siteContent';
+---
+
 <section class="hero" id="top">
   <div class="container hero-content">
     <p class="hero-eyebrow">Independent business systems developer</p>
     <h1>
-      Custom systems, operational websites, and conversion tools built for real business work.
+      I build custom business systems that replace spreadsheets, manual workflows, and disconnected tools.
     </h1>
 
     <p class="hero-subtitle">
-      I work directly with founders and operators to build custom business systems,
-      lead-focused websites, and practical tools like intake flows, estimators, and
-      automation that improve day-to-day execution without adding unnecessary complexity.
+      For service businesses, agencies, and growing teams, I design and build internal
+      tools, client portals, estimator flows, and automation that make operations easier
+      to run and easier to scale.
     </p>
 
     <p class="hero-location">
-      The portfolio stays broad on purpose, while focused offer pages show how that work
-      translates into niche-ready solutions for specific client types.
+      Best fit for companies that have outgrown spreadsheets, patched-together tools,
+      and manual handoffs but do not want bloated agency overhead.
     </p>
 
     <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">
-        Discuss Your Project
+      <a href="/contact" class="btn btn-primary">
+        Discuss Your Workflow
       </a>
 
-      <a href="/home-service-estimator" class="btn btn-secondary">
-        View Estimator Offer
+      <a href="/case-studies" class="btn btn-secondary">
+        Review Case Studies
       </a>
 
-      <a href="#projects" class="btn btn-secondary btn-ghost">
-        Review Selected Work
+      <a href="/services" class="btn btn-secondary btn-ghost">
+        See What I Build
       </a>
     </div>
 
-    <div class="hero-offer">
-      <p class="hero-offer__label">Focused offer currently live</p>
-      <p class="hero-offer__text">
-        Home service estimator system with guided quoting, structured lead capture,
-        and a cleaner handoff from website traffic to the office team.
+    <div class="hero-problems">
+      <p class="hero-offer__label">Common reasons clients reach out</p>
+      <p class="hero-problems__intro">
+        The pattern is usually the same: the business is growing, but the workflow is still being held together manually.
       </p>
-
-      <a href="/home-service-estimator" class="hero-offer__link">
-        See the full offer page
-      </a>
+      <div class="hero-problem-list" role="list" aria-label="Operational pain points">
+        {homePainPoints.slice(0, 4).map((painPoint) => (
+          <span class="hero-problem" role="listitem">{painPoint}</span>
+        ))}
+      </div>
     </div>
 
     <div class="hero-focuses" role="list" aria-label="Core focus areas">
       <span class="hero-focus" role="listitem">Custom business systems</span>
-      <span class="hero-focus" role="listitem">Operational websites</span>
-      <span class="hero-focus" role="listitem">Estimators and intake flows</span>
+      <span class="hero-focus" role="listitem">Client portals and estimator tools</span>
+      <span class="hero-focus" role="listitem">Automation and integrations</span>
     </div>
   </div>
 </section>
@@ -150,7 +154,7 @@
     border-color: rgba(255, 255, 255, 0.35);
   }
 
-  .hero-offer {
+  .hero-problems {
     margin-top: var(--space-lg);
     padding: var(--space-md);
     max-width: 720px;
@@ -169,15 +173,27 @@
     margin-bottom: var(--space-xs);
   }
 
-  .hero-offer__text {
-    margin-bottom: var(--space-sm);
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.92);
+  .hero-problem-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
   }
 
-  .hero-offer__link {
-    color: var(--color-white);
-    font-weight: 600;
+  .hero-problems__intro {
+    margin-bottom: var(--space-sm);
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.7;
+  }
+
+  .hero-problem {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.9rem;
   }
 
   .hero-focuses {

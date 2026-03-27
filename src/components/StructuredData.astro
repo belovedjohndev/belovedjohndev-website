@@ -5,7 +5,7 @@ interface Props {
 
 const { type = 'ProfessionalService' } = Astro.props;
 
-const siteUrl = 'https://belovedjohndev.github.io';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.pages.dev';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': type,
@@ -13,12 +13,12 @@ const structuredData = {
   url: siteUrl,
   logo: `${siteUrl}/assets/images/logo.svg`,
   description:
-    'Independent business systems developer building secure, maintainable operational software, business websites, and automation tools for international clients.',
+    'Independent business systems developer building custom business systems, client portals, and automation tools for international clients.',
   areaServed: 'Worldwide',
   serviceType: [
     'Custom business systems',
-    'Business websites with operational value',
-    'Automation and internal tools',
+    'Client portals and estimator tools',
+    'Automation and integrations',
   ],
   sameAs: [
     'https://wa.me/855963885424',

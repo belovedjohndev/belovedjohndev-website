@@ -1,0 +1,132 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/ui/Button.astro';
+import AboutSection from '../components/sections/About.astro';
+import WhyMe from '../components/sections/WhyMe.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import { aboutPrinciples } from '../data/siteContent';
+---
+
+<MainLayout
+  title="About | Beloved John Dev"
+  description="Independent business systems developer focused on practical, maintainable software for real operations."
+  canonical="/about"
+  ogImage="/og/about.svg"
+  ogImageAlt="Beloved John Dev about page share image"
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero">
+    <div class="container page-hero__content">
+      <p class="eyebrow">About</p>
+      <h1>Independent Consultant Mindset, Systems-Focused Delivery</h1>
+      <p class="page-hero__lead">
+        The value is not just writing code. It is understanding the process underneath the request
+        and turning it into software that stays useful after launch.
+      </p>
+      <div class="hero-actions">
+        <Button href="/contact" variant="primary">Discuss Your Project</Button>
+        <Button href="/case-studies" variant="secondary">See Case Studies</Button>
+      </div>
+    </div>
+  </section>
+
+  <AboutSection />
+
+  <section class="section-padding section-light">
+    <div class="container principles-grid">
+      {aboutPrinciples.map((principle) => (
+        <article class="principle-card">
+          <p class="eyebrow eyebrow--small">{principle.title}</p>
+          <p>{principle.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <WhyMe />
+  <Testimonials />
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .page-hero {
+    padding: 7rem 0 4rem;
+    color: var(--color-white);
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.88)),
+      url('/assets/images/hero-bg.png');
+    background-position: center;
+    background-size: cover;
+  }
+
+  .page-hero__content {
+    max-width: 820px;
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .eyebrow--small {
+    color: var(--color-primary);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+  }
+
+  .page-hero__lead {
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+  }
+
+  .section-light {
+    background-color: var(--color-white);
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .principle-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    box-shadow: var(--shadow-md);
+  }
+
+  .principle-card p:last-child {
+    margin-bottom: 0;
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
