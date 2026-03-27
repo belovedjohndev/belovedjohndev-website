@@ -178,7 +178,9 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   .page-hero {
     padding: 7rem 0 4rem;
     color: var(--color-white);
-    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.88)),
+    background:
+      radial-gradient(circle at top right, rgba(240, 188, 116, 0.16), transparent 24%),
+      linear-gradient(135deg, rgba(10, 22, 35, 0.94), rgba(17, 50, 64, 0.9)),
       url('/assets/images/hero-bg.png');
     background-position: center;
     background-size: cover;
@@ -326,15 +328,17 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 0.95rem 1.6rem;
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     text-decoration: none;
     border-radius: 50px;
     transition: var(--transition);
     cursor: pointer;
     border: 2px solid transparent;
     font-family: inherit;
+    box-shadow: var(--shadow-sm);
   }
 
   .btn:focus-visible {
@@ -343,7 +347,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   }
 
   .btn-primary {
-    background-color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-accent), #ffd99f);
     color: var(--color-dark);
   }
 
@@ -351,20 +355,20 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     border-color: var(--color-accent);
     color: var(--color-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(244, 162, 97, 0.4);
+    box-shadow: 0 16px 30px rgba(240, 188, 116, 0.3);
   }
 
   .btn-dark {
-    background-color: var(--color-dark);
+    background: linear-gradient(135deg, var(--color-dark), var(--color-dark-soft));
     color: var(--color-white);
   }
 
   .btn-dark:hover {
-    background-color: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-dark));
+    border-color: rgba(22, 138, 122, 0.5);
     color: var(--color-white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(42, 157, 143, 0.3);
+    box-shadow: 0 16px 34px rgba(22, 138, 122, 0.24);
   }
 
   .form-actions .btn {

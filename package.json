@@ -2,7 +2,7 @@
   "name": "belovedjohndev-portfolio",
   "type": "module",
   "version": "1.0.0",
-  "description": "Personal developer portfolio - Beloved John Dev",
+  "description": "Consultant website for Beloved John Dev focused on business systems, client portals, and automation.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

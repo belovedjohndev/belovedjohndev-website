@@ -1,11 +1,25 @@
+---
+import { contactLinks } from '../data/siteContent';
+---
+
 <footer class="footer">
   <div class="container footer-content">
     <div class="footer-logo">
       <img src="/assets/images/logo.svg" alt="Beloved John Dev logo" width="50" height="50" loading="lazy" />
+      <div class="footer-logo__copy">
+        <strong>Beloved John</strong>
+        <span>Business Systems Consultant</span>
+      </div>
     </div>
     <p>
       Independent business systems developer building custom business systems, client portals,
       and automation for companies that have outgrown spreadsheets and manual workflows.
+    </p>
+
+    <p class="footer-contact">
+      <a href={contactLinks.mailto}>{contactLinks.email}</a>
+      <span>·</span>
+      <a href={contactLinks.demo} target="_blank" rel="noopener">Live demo</a>
     </p>
 
     <div class="footer-links">
@@ -25,9 +39,11 @@
 
 <style>
   .footer {
-    background-color: var(--color-dark);
+    background:
+      radial-gradient(circle at top center, rgba(22, 138, 122, 0.22), transparent 30%),
+      linear-gradient(180deg, var(--color-dark) 0%, #0a1623 100%);
     color: var(--color-white);
-    padding: var(--space-xl) 0 var(--space-md);
+    padding: 4.5rem 0 var(--space-md);
   }
 
   .footer-content {
@@ -38,19 +54,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-xs);
+    gap: 0.9rem;
     margin-bottom: var(--space-sm);
-    font-size: 1.5rem;
-    font-weight: 700;
   }
 
   .footer-logo img {
-    height: 50px;
+    height: 48px;
     width: auto;
   }
 
-  .footer-links {
+  .footer-logo__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+  }
+
+  .footer-logo__copy strong {
+    font-size: 1.05rem;
+    letter-spacing: -0.03em;
+  }
+
+  .footer-logo__copy span {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .footer-content > p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.8;
+  }
+
+  .footer-contact {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    align-items: center;
     margin-top: var(--space-md);
+    color: rgba(255, 255, 255, 0.74);
+  }
+
+  .footer-contact a {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+  }
+
+  .footer-links {
+    margin-top: var(--space-lg);
     display: flex;
     justify-content: center;
     gap: var(--space-lg);
@@ -80,5 +135,20 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.875rem;
     opacity: 0.8;
+  }
+
+  @media (max-width: 560px) {
+    .footer-logo {
+      flex-direction: column;
+    }
+
+    .footer-logo__copy {
+      align-items: center;
+    }
+
+    .footer-contact {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
   }
 </style>

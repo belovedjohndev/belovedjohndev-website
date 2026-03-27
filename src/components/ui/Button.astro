@@ -26,15 +26,17 @@ const finalClass = `${baseClass} ${className}`.trim();
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 0.95rem 1.6rem;
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     text-decoration: none;
     border-radius: 50px;
     transition: var(--transition);
     cursor: pointer;
     border: 2px solid transparent;
     font-family: inherit;
+    box-shadow: var(--shadow-sm);
   }
 
   .btn:focus-visible {
@@ -43,16 +45,15 @@ const finalClass = `${baseClass} ${className}`.trim();
   }
 
   .btn-primary {
-    background-color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-accent), #ffd99f);
     color: var(--color-dark);
   }
 
   .btn-primary:hover {
-    background-color: var(--color-accent);
     border-color: var(--color-accent);
     color: var(--color-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(244, 162, 97, 0.4);
+    box-shadow: 0 16px 30px rgba(240, 188, 116, 0.3);
   }
 
   .btn-primary:active {
@@ -60,16 +61,17 @@ const finalClass = `${baseClass} ${className}`.trim();
   }
 
   .btn-secondary {
-    background-color: transparent;
-    border-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.26);
     color: var(--color-white);
+    backdrop-filter: blur(8px);
   }
 
   .btn-secondary:hover {
-    background-color: var(--color-white);
-    color: var(--color-dark);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--color-white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 16px 32px rgba(255, 255, 255, 0.12);
   }
 
   .btn-secondary:active {
@@ -77,16 +79,16 @@ const finalClass = `${baseClass} ${className}`.trim();
   }
 
   .btn-dark {
-    background-color: var(--color-dark);
+    background: linear-gradient(135deg, var(--color-dark), var(--color-dark-soft));
     color: var(--color-white);
   }
 
   .btn-dark:hover {
-    background-color: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-dark));
+    border-color: rgba(22, 138, 122, 0.5);
     color: var(--color-white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(42, 157, 143, 0.3);
+    box-shadow: 0 16px 34px rgba(22, 138, 122, 0.24);
   }
 
   .btn-dark:active {

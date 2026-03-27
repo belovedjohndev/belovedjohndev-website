@@ -62,8 +62,11 @@ import { homePainPoints } from '../../data/siteContent';
     position: relative;
     overflow: hidden;
     color: var(--color-white);
-    padding: 6rem 0 4rem;
-    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+    padding: 6.75rem 0 4.75rem;
+    background:
+      radial-gradient(circle at top right, rgba(240, 188, 116, 0.14), transparent 24%),
+      radial-gradient(circle at left center, rgba(22, 138, 122, 0.18), transparent 28%),
+      linear-gradient(135deg, rgba(10, 22, 35, 0.92), rgba(16, 50, 66, 0.9)),
       url('/assets/images/hero-bg.png');
     background-size: cover;
     background-position: center;
@@ -97,7 +100,7 @@ import { homePainPoints } from '../../data/siteContent';
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 760px;
+    max-width: 840px;
   }
 
   .hero-eyebrow {
@@ -118,17 +121,18 @@ import { homePainPoints } from '../../data/siteContent';
   }
 
   .hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.2rem);
+    font-size: clamp(1.1rem, 2vw, 1.28rem);
     opacity: 0.95;
     margin-bottom: var(--space-sm);
-    line-height: 1.7;
+    line-height: 1.8;
+    max-width: 760px;
   }
 
   .hero-location {
-    font-size: 0.95rem;
+    font-size: 1rem;
     opacity: 0.85;
     margin-bottom: var(--space-lg);
-    line-height: 1.7;
+    line-height: 1.8;
     max-width: 640px;
   }
 
@@ -156,12 +160,13 @@ import { homePainPoints } from '../../data/siteContent';
 
   .hero-problems {
     margin-top: var(--space-lg);
-    padding: var(--space-md);
+    padding: 1.35rem;
     max-width: 720px;
     border-radius: var(--border-radius);
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-lg);
   }
 
   .hero-offer__label {
@@ -206,10 +211,10 @@ import { homePainPoints } from '../../data/siteContent';
   .hero-focus {
     display: inline-flex;
     align-items: center;
-    padding: 0.45rem 0.85rem;
+    padding: 0.55rem 0.95rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.08);
     color: var(--color-white);
     font-size: 0.9rem;
   }
