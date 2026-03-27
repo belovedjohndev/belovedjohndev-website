@@ -8,20 +8,12 @@ import Projects from '../components/sections/Projects.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import ContactCTA from '../components/sections/ContactCTA.astro';
 import Button from '../components/ui/Button.astro';
-import {
-  buyerGuidance,
-  ctaLabels,
-  idealClients,
-  insights,
-  nextStepTimeline,
-  processSteps,
-  serviceOffers,
-} from '../data/siteContent';
+import { idealClients, insights, notIdealClients, processSteps } from '../data/siteContent';
 ---
 
 <MainLayout
-  title="Beloved John Dev | Custom Business Systems for Operationally Serious Teams"
-  description="Custom business systems that replace spreadsheets, manual workflows, and disconnected tools for service businesses, agencies, and growing teams."
+  title="Beloved John Dev | Independent Business Systems Developer"
+  description="Custom business systems, client portals, and automation software for companies that have outgrown spreadsheets and manual workflows."
   ogImage="/og/home.svg"
   ogImageAlt="Beloved John Dev business systems homepage share image"
 >
@@ -29,57 +21,39 @@ import {
 
   <Hero />
 
-  <section class="qualification-preview section-padding">
-    <div class="container">
-      <div class="section-title">
-        <p class="section-eyebrow">Quick qualification</p>
-        <h2>The homepage version of what serious buyers usually need to know</h2>
-        <p>
-          The full detail lives on the services, process, and contact pages. This section is here to make the first decision easier without turning the homepage into the whole site.
-        </p>
-      </div>
+  <section class="positioning-band">
+    <div class="container positioning-band__content">
+      <p class="positioning-band__eyebrow">What I actually help with</p>
+      <p class="positioning-band__text">
+        I am not primarily selling brochure websites. I help companies replace spreadsheet-heavy workflows,
+        disconnected tools, and repetitive admin work with custom software that fits how the business already runs.
+      </p>
+    </div>
+  </section>
 
-      <div class="qualification-grid">
-        <article class="qualification-card">
-          <p class="qualification-card__label">Best fit</p>
-          <ul class="check-list">
-            {idealClients.slice(0, 4).map((item) => <li>{item}</li>)}
+  <section class="fit section-padding">
+    <div class="container">
+      <div class="fit-grid">
+        <article class="fit-panel">
+          <p class="fit-panel__eyebrow">Best fit</p>
+          <h2>Who This Is For</h2>
+          <p class="fit-panel__intro">
+            This site is built to attract businesses with real operational friction, not one-off design-only projects.
+          </p>
+          <ul class="fit-list">
+            {idealClients.slice(0, 4).map((client) => <li>{client}</li>)}
           </ul>
         </article>
 
-        <article class="qualification-card">
-          <p class="qualification-card__label">Typical project shape</p>
-          <div class="stack-list">
-            {buyerGuidance.projectShape.map((item) => (
-              <p class="stack-list__item">{item}</p>
-            ))}
-          </div>
-        </article>
-
-        <article class="qualification-card qualification-card--accent">
-          <p class="qualification-card__label">Starting ranges</p>
-          <div class="price-list">
-            {serviceOffers.map((offer) => (
-              <div class="price-row">
-                <span>{offer.title}</span>
-                <strong>{offer.startingPrice}</strong>
-              </div>
-            ))}
-          </div>
-          <p class="qualification-note">Final scope depends on workflow complexity, integrations, and business rules.</p>
-        </article>
-
-        <article class="qualification-card">
-          <p class="qualification-card__label">After inquiry</p>
-          <div class="timeline-mini">
-            {nextStepTimeline.map((item) => (
-              <div class="timeline-mini__item">
-                <span>{item.step}</span>
-                <p>{item.title}</p>
-              </div>
-            ))}
-          </div>
-          <a href="/contact" class="qualification-link">See the full contact process</a>
+        <article class="fit-panel fit-panel--muted">
+          <p class="fit-panel__eyebrow">Usually not a fit</p>
+          <h2>What I Am Not Selling</h2>
+          <p class="fit-panel__intro">
+            De-emphasizing lower-value web work keeps the positioning focused on systems, portals, and automation.
+          </p>
+          <ul class="fit-list">
+            {notIdealClients.map((client) => <li>{client}</li>)}
+          </ul>
         </article>
       </div>
     </div>
@@ -91,13 +65,12 @@ import {
   <section class="process-preview section-padding">
     <div class="container">
       <div class="section-title">
-        <p class="section-eyebrow">Delivery</p>
-        <h2>What the project path usually looks like</h2>
-        <p>Clear discovery, practical scoping, and delivery built around the workflow that needs fixing first.</p>
+        <h2>How Projects Move</h2>
+        <p>Clear discovery, sensible scope, and delivery built around the workflow that needs fixing first.</p>
       </div>
 
       <div class="process-grid">
-        {processSteps.map((step) => (
+        {processSteps.slice(0, 4).map((step) => (
           <article class="process-card">
             <p class="process-card__number">{step.number}</p>
             <h3>{step.title}</h3>
@@ -107,8 +80,7 @@ import {
       </div>
 
       <div class="process-actions">
-        <Button href="/process" variant="dark">See the full process</Button>
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/process" variant="dark">See the Full Process</Button>
       </div>
     </div>
   </section>
@@ -116,9 +88,8 @@ import {
   <section class="insights-preview section-padding">
     <div class="container">
       <div class="section-title">
-        <p class="section-eyebrow">Decision support</p>
-        <h2>Insights for buyers deciding whether custom systems work is the right move</h2>
-        <p>These articles are here to help prospects think clearly about workflow bottlenecks, lead quality, and software fit before the first call.</p>
+        <h2>How I Think About Systems Work</h2>
+        <p>Short insights on workflow bottlenecks, lead quality, and when custom software actually makes sense.</p>
       </div>
 
       <div class="insights-preview__grid">
@@ -133,8 +104,7 @@ import {
       </div>
 
       <div class="process-actions">
-        <Button href="/insights" variant="dark">View all insights</Button>
-        <Button href="/services" variant="primary">{ctaLabels.services}</Button>
+        <Button href="/insights" variant="dark">View All Insights</Button>
       </div>
     </div>
   </section>
@@ -146,148 +116,88 @@ import {
 </MainLayout>
 
 <style>
-  .section-eyebrow,
-  .qualification-card__label,
-  .process-card__number,
-  .insight-preview-card__meta {
+  .positioning-band {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--space-lg) 0;
+  }
+
+  .positioning-band__content {
+    max-width: 900px;
+  }
+
+  .positioning-band__eyebrow {
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
   }
 
-  .section-eyebrow,
-  .qualification-card__label,
-  .process-card__number,
-  .insight-preview-card__meta {
-    color: var(--color-primary);
+  .positioning-band__text {
+    margin-bottom: 0;
+    line-height: 1.75;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.92);
   }
 
-  .qualification-preview {
+  .fit {
     background-color: var(--color-white);
   }
 
-  .qualification-grid,
-  .process-grid,
-  .insights-preview__grid {
+  .fit-grid {
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-lg);
   }
 
-  .qualification-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .process-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-
-  .insights-preview {
-    background-color: var(--color-light);
-  }
-
-  .insights-preview__grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-
-  .qualification-card,
-  .process-card,
-  .insight-preview-card {
+  .fit-panel {
     padding: var(--space-lg);
     border-radius: var(--border-radius);
-    background-color: var(--color-white);
     border: 1px solid rgba(38, 70, 83, 0.08);
+    background-color: var(--color-white);
     box-shadow: var(--shadow-md);
   }
 
-  .qualification-card--accent {
+  .fit-panel--muted {
     background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
   }
 
-  .check-list {
+  .fit-panel__eyebrow,
+  .process-card__number {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .fit-list {
     list-style: none;
     display: grid;
     gap: var(--space-sm);
   }
 
-  .check-list li,
-  .stack-list__item,
-  .qualification-note,
-  .process-card p,
-  .insight-preview-card p {
+  .fit-panel__intro {
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
     line-height: 1.75;
+  }
+
+  .fit-list li,
+  .process-card p {
     color: var(--color-text);
+    line-height: 1.7;
   }
 
-  .stack-list {
-    display: grid;
-    gap: var(--space-sm);
-  }
-
-  .stack-list__item {
-    margin-bottom: 0;
-    padding: 0.9rem 1rem;
-    border-radius: var(--border-radius-sm);
-    background-color: var(--color-light);
-    border: 1px solid rgba(42, 157, 143, 0.08);
-  }
-
-  .price-list,
-  .timeline-mini {
-    display: grid;
-    gap: var(--space-sm);
-  }
-
-  .price-row,
-  .timeline-mini__item {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-sm);
-    align-items: center;
-    padding: 0.8rem 0.95rem;
-    border-radius: var(--border-radius-sm);
-    background-color: rgba(255, 255, 255, 0.82);
-    border: 1px solid rgba(42, 157, 143, 0.12);
-  }
-
-  .price-row span,
-  .timeline-mini__item p {
-    margin-bottom: 0;
-    color: var(--color-text);
-    line-height: 1.45;
-  }
-
-  .price-row strong {
-    color: var(--color-dark);
-    white-space: nowrap;
-  }
-
-  .timeline-mini__item span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 999px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    font-size: 0.78rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .qualification-link {
-    display: inline-flex;
-    margin-top: var(--space-md);
-    font-weight: 600;
-  }
-
-  .check-list li {
+  .fit-list li {
     position: relative;
     padding-left: var(--space-md);
   }
 
-  .check-list li::before {
+  .fit-list li::before {
     content: '+';
     position: absolute;
     left: 0;
@@ -295,28 +205,73 @@ import {
     font-weight: 700;
   }
 
+  .process-preview {
+    background-color: var(--color-white);
+  }
+
+  .insights-preview {
+    background-color: var(--color-light);
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .insights-preview__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .process-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    background-color: var(--color-light);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .insight-preview-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .insight-preview-card__meta {
+    margin-bottom: var(--space-sm);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .insight-preview-card p {
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
   .insight-preview-card a {
     font-weight: 600;
+  }
+
+  .process-card h3 {
+    font-size: 1.15rem;
   }
 
   .process-actions {
     display: flex;
     justify-content: center;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
     margin-top: var(--space-xl);
   }
 
-  @media (max-width: 900px) {
-    .qualification-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
   @media (max-width: 768px) {
-    .process-actions {
-      flex-direction: column;
-      align-items: stretch;
+    .fit-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
