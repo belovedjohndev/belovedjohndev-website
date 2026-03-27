@@ -130,12 +130,19 @@ import { caseStudies, ctaLabels } from '../../data/siteContent';
     background-color: var(--color-white);
     border: 1px solid rgba(38, 70, 83, 0.08);
     box-shadow: var(--shadow-md);
+    transition: var(--transition);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
   }
 
   .project-media {
     background: linear-gradient(135deg, rgba(38, 70, 83, 0.95), rgba(42, 157, 143, 0.72));
     border-radius: var(--border-radius);
     overflow: hidden;
+    min-height: 100%;
   }
 
   .project-image {
@@ -252,6 +259,10 @@ import { caseStudies, ctaLabels } from '../../data/siteContent';
     font-weight: 600;
   }
 
+  .project-links {
+    justify-content: flex-end;
+  }
+
   .projects-footer {
     justify-content: center;
     margin-top: var(--space-xl);
@@ -270,6 +281,10 @@ import { caseStudies, ctaLabels } from '../../data/siteContent';
     .projects-footer {
       flex-direction: column;
       align-items: stretch;
+    }
+
+    .project-links {
+      justify-content: flex-start;
     }
   }
 </style>

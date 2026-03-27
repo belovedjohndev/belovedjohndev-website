@@ -99,7 +99,7 @@ import {
     position: relative;
     overflow: hidden;
     color: var(--color-white);
-    padding: 7.2rem 0 4.75rem;
+    padding: 7.4rem 0 4.9rem;
     background:
       radial-gradient(circle at top right, rgba(240, 188, 116, 0.14), transparent 24%),
       radial-gradient(circle at left center, rgba(22, 138, 122, 0.18), transparent 28%),
@@ -124,7 +124,7 @@ import {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.78fr);
+    grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.82fr);
     gap: var(--space-xl);
     align-items: start;
   }
@@ -152,7 +152,7 @@ import {
     margin-bottom: var(--space-md);
     color: var(--color-white);
     line-height: 1.08;
-    max-width: 15ch;
+    max-width: 17ch;
   }
 
   .hero-subtitle,
@@ -179,6 +179,7 @@ import {
     display: flex;
     gap: var(--space-sm);
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .hero-points {
@@ -194,6 +195,7 @@ import {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(16px);
+    min-height: 100%;
   }
 
   .hero-point__title {
@@ -219,6 +221,7 @@ import {
   .hero-problems {
     margin-top: var(--space-lg);
     padding: 1.35rem;
+    max-width: 760px;
   }
 
   .hero-problem-list,
@@ -244,6 +247,8 @@ import {
     padding: 1.5rem;
     position: sticky;
     top: 6.25rem;
+    max-width: 30rem;
+    justify-self: end;
   }
 
   .hero-panel h2 {
@@ -321,6 +326,10 @@ import {
     font-weight: 600;
   }
 
+  .hero-panel__links a:hover {
+    color: var(--color-accent);
+  }
+
   @media (max-width: 960px) {
     .hero-grid {
       grid-template-columns: 1fr;
@@ -328,10 +337,12 @@ import {
 
     .hero-panel {
       position: static;
+      max-width: none;
+      justify-self: stretch;
     }
 
     .hero-points {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
@@ -347,6 +358,10 @@ import {
     .hero-actions {
       flex-direction: column;
       align-items: stretch;
+    }
+
+    .hero-points {
+      grid-template-columns: 1fr;
     }
   }
 </style>

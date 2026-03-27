@@ -1,6 +1,4 @@
 ---
-import { ctaLabels } from '../data/siteContent';
-
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -52,7 +50,7 @@ const showContactCta = !isActive('/contact');
       ))}
       {showContactCta && (
         <li class="nav-cta-item">
-          <a href="/contact" class="nav-cta">{ctaLabels.primary}</a>
+          <a href="/contact" class="nav-cta">Start a Project</a>
         </li>
       )}
     </ul>
@@ -78,6 +76,7 @@ const showContactCta = !isActive('/contact');
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-md);
   }
 
   .logo {
@@ -130,6 +129,8 @@ const showContactCta = !isActive('/contact');
     gap: 1.35rem;
     list-style: none;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .nav-links a {
@@ -174,12 +175,15 @@ const showContactCta = !isActive('/contact');
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.8rem 1.2rem;
+    padding: 0.72rem 1rem;
     border-radius: 999px;
     background: linear-gradient(135deg, var(--color-dark), var(--color-dark-soft));
     color: var(--color-white) !important;
     border: 1px solid rgba(16, 32, 51, 0.08);
     box-shadow: var(--shadow-sm);
+    font-size: 0.88rem;
+    line-height: 1.1;
+    white-space: nowrap;
   }
 
   .nav-cta::after {
@@ -210,6 +214,12 @@ const showContactCta = !isActive('/contact');
     border-radius: var(--border-radius-sm);
   }
 
+  @media (max-width: 1120px) {
+    .nav-cta-item {
+      display: none;
+    }
+  }
+
   @media (max-width: 768px) {
     .nav-links {
       display: none;
@@ -224,6 +234,7 @@ const showContactCta = !isActive('/contact');
       box-shadow: var(--shadow-md);
       gap: var(--space-sm);
       border-bottom: 1px solid rgba(16, 32, 51, 0.08);
+      flex-wrap: nowrap;
     }
 
     .nav-links.active {
