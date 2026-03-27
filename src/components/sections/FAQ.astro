@@ -2,17 +2,16 @@
 import { faqItems } from '../../data/siteContent';
 ---
 
-<section class="faq section-padding" id="faq">
+<section class="section-padding">
   <div class="container">
     <div class="section-title">
-      <p class="section-eyebrow">Buying questions</p>
-      <h2>Common questions before a project starts</h2>
-      <p>These are the questions that usually come up when a client is deciding whether custom workflow software is the right move.</p>
+      <p class="eyebrow">Sales FAQ</p>
+      <h2>Common questions before starting</h2>
     </div>
 
     <div class="faq-grid">
       {faqItems.map((faq) => (
-        <article class="faq-card">
+        <article class="surface-card faq-card">
           <h3>{faq.question}</h3>
           <p>{faq.answer}</p>
         </article>
@@ -22,41 +21,19 @@ import { faqItems } from '../../data/siteContent';
 </section>
 
 <style>
-  .faq {
-    background-color: var(--color-light);
-  }
-
-  .section-eyebrow {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-  }
-
   .faq-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-lg);
-  }
-
-  .faq-card {
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    background-color: var(--color-white);
-    border: 1px solid rgba(38, 70, 83, 0.08);
-    box-shadow: var(--shadow-md);
-  }
-
-  .faq-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-sm);
-    color: var(--color-dark);
   }
 
   .faq-card p {
     margin-bottom: 0;
-    color: var(--color-text);
-    line-height: 1.75;
+  }
+
+  @media (max-width: 900px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

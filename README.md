@@ -1,6 +1,6 @@
 # Beloved John Dev
 
-Marketing site for an independent business systems consultant focused on custom business systems, client portals, estimator tools, and automation for companies that have outgrown spreadsheets and manual workflows.
+Static Astro consultant website for an independent business systems developer focused on custom business systems, client portals, estimator tools, and automation for companies that have outgrown spreadsheets and manual workflows.
 
 Live site: [belovedjohndev.com](https://belovedjohndev.com)
 
@@ -21,6 +21,7 @@ It also includes:
 - Insight articles for authority building
 - A structured contact intake flow
 - Branded Open Graph image generation
+- Static deployment-ready architecture
 
 ## Stack
 
@@ -28,6 +29,7 @@ It also includes:
 - TypeScript
 - CSS with shared design tokens
 - Cloudflare Pages
+- Static site output
 
 ## Key Pages
 
@@ -39,7 +41,7 @@ It also includes:
 - `/insights/[slug]` individual insight pages
 - `/process` delivery process
 - `/about` consultant positioning and trust
-- `/contact` structured project brief intake
+- `/contact` structured project inquiry intake
 - `/home-service-estimator` focused niche offer page
 
 ## Project Structure
@@ -58,10 +60,12 @@ src/
   pages/
     about.astro
     contact.astro
+    home-service-estimator.astro
+    index.astro
     process.astro
-    services.astro
     case-studies/
     insights/
+    services/
     og/
     robots.txt.ts
     sitemap.xml.ts
@@ -100,14 +104,16 @@ That file drives:
 
 - services
 - case studies
-- testimonials
 - insights
+- positioning
+- FAQ
 - contact links
+- contact intake content
 - process steps
 
 ## Deployment
 
-This project is prepared for Cloudflare Pages.
+This project is prepared for Cloudflare Pages as a static Astro site.
 
 Recommended settings:
 
@@ -130,7 +136,9 @@ Additional deployment notes are in:
 
 ### Structured project intake
 
-The contact page includes a structured project brief form that helps qualify leads before the first conversation.
+The contact page includes a structured project inquiry form designed to qualify consulting leads before the first conversation.
+
+The current submission path uses a static external form backend rather than custom server code, which keeps the site deployable as a simple static Astro project.
 
 ### Dynamic OG images
 

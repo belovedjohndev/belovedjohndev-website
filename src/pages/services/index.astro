@@ -1,0 +1,162 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import { ctaLabels, servicePages } from '../../data/siteContent';
+---
+
+<MainLayout
+  title="Services | Beloved John Dev"
+  description="Three focused service lines for custom business systems, client portals and estimator tools, and automation work."
+  canonical="/services"
+  ogImage="/og/services.svg"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero">
+    <div class="container page-hero__content">
+      <p class="eyebrow">Services</p>
+      <h1>Three focused offers for companies with real workflow friction</h1>
+      <p class="page-hero__lead">
+        This site is not broad by accident. The work is intentionally centered on internal systems,
+        client-facing workflow tools, and automation that reduces operational drag.
+      </p>
+      <div class="hero-actions">
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container cards">
+      {servicePages.map((service) => (
+        <article class="surface-card service-card">
+          <div class="service-card__top">
+            <p class="eyebrow">Offer</p>
+            <h2>{service.title}</h2>
+            <p>{service.summary}</p>
+          </div>
+
+          <div class="service-card__grid">
+            <div>
+              <h3>Problem solved</h3>
+              <p>{service.problemStatement}</p>
+            </div>
+
+            <div>
+              <h3>Typical deliverables</h3>
+              <ul class="bullet-list">
+                {service.deliverables.slice(0, 3).map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+
+          <div class="service-card__footer">
+            <p class="muted">{service.startingScope}</p>
+            <Button href={`/services/${service.slug}`} variant="dark">View Service Details</Button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-padding compare-band">
+    <div class="container grid-3">
+      <article class="surface-card compare-card">
+        <p class="eyebrow">Custom systems</p>
+        <h3>When the core operation is the problem</h3>
+        <p>Choose this when the business needs a stronger internal operating system, not another workaround.</p>
+      </article>
+
+      <article class="surface-card compare-card">
+        <p class="eyebrow">Portals and estimators</p>
+        <h3>When the intake or client experience is weak</h3>
+        <p>Choose this when the website should collect better context, quote more clearly, or give clients structured access.</p>
+      </article>
+
+      <article class="surface-card compare-card">
+        <p class="eyebrow">Automation</p>
+        <h3>When the tools exist but the workflow is still fragile</h3>
+        <p>Choose this when the business needs cleaner movement of data, notifications, and reporting between systems.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Pick the closest fit, not the perfect label.</h2>
+      <p>
+        Buyers do not need to diagnose the engagement perfectly before reaching out. The right first phase is
+        usually confirmed after reviewing the workflow and deciding where the biggest operational friction lives.
+      </p>
+      <div class="hero-actions">
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .cards {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .service-card {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .service-card__top {
+    display: grid;
+    gap: 0.45rem;
+    max-width: 52rem;
+  }
+
+  .service-card__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    margin: 1.25rem 0;
+  }
+
+  .service-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(16, 32, 51, 0.08);
+  }
+
+  .compare-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .compare-card {
+    height: 100%;
+  }
+
+  .compare-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .service-card__grid,
+    .service-card__footer {
+      grid-template-columns: 1fr;
+      display: grid;
+    }
+
+    .service-card__footer :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,13 @@
+---
+import ServiceDetailPage from '../../components/templates/ServiceDetailPage.astro';
+import { getCaseStudyBySlug, getServiceBySlug } from '../../data/siteContent';
+
+const service = getServiceBySlug('custom-business-systems');
+const relatedCaseStudy = getCaseStudyBySlug('church-management-system');
+
+if (!service || !relatedCaseStudy) {
+  throw new Error('Missing service content for custom business systems.');
+}
+---
+
+<ServiceDetailPage service={service} relatedCaseStudy={relatedCaseStudy} />

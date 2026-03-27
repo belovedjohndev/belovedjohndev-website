@@ -1,36 +1,56 @@
-export interface ServiceOffer {
+export interface ServicePage {
   slug: string;
   title: string;
-  problem: string;
   summary: string;
-  description: string;
-  bestFor: string;
-  startingPrice: string;
-  pricingNote: string;
-  typicalTimeline: string;
-  examples: string[];
-  includes: string[];
-  outcomes: string[];
+  heroTitle: string;
+  heroSupportingCopy: string;
+  businessProblemTitle: string;
+  businessProblemIntro: string;
+  businessProblemBody: string;
+  problemStatement: string;
+  audienceSummary: string;
+  signsYouNeedIt: string[];
+  deliverables: string[];
+  firstPhase: string[];
+  firstPhaseNote: string;
+  useCases: string[];
+  techApproach: string[];
+  startingScope: string;
+  pricingGuidanceTitle: string;
+  pricingGuidanceIntro: string;
+  pricingGuidancePoints: string[];
+  pricingGuidanceClosing: string;
+  ctaTitle: string;
+  ctaCopy: string;
+  relatedCaseStudySlug: string;
 }
 
 export interface CaseStudy {
   slug: string;
   title: string;
-  category: string;
   summary: string;
-  audience: string;
-  proofPoints: Array<{
-    value: string;
-    label: string;
-    detail: string;
-  }>;
-  problem: string;
-  approach: string;
-  solution: string;
-  outcome: string;
-  features: string[];
-  results: string[];
-  stack: string[];
+  projectOverview: string[];
+  industry: string;
+  companySize: string;
+  projectType: string;
+  goal: string[];
+  homepageLabel?: string;
+  homepageSummary?: string;
+  homepageBuilt?: string[];
+  homepageOutcome?: string;
+  clientType: string;
+  serviceLine: string;
+  proof: string[];
+  businessProblem: string;
+  oldWorkflow: string[];
+  scopeDelivered: string[];
+  keyFeatures: string[];
+  architectureSummary: string;
+  technicalShape: string[];
+  constraints: string[];
+  keyDecisions: string[];
+  outcomes: string[];
+  demonstrates: string[];
   image: string;
   alt: string;
   referenceLabel: string;
@@ -44,16 +64,6 @@ export interface ProcessStep {
   number: string;
   title: string;
   description: string;
-}
-
-export interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  headline: string;
-  context: string;
-  proof: string[];
 }
 
 export interface InsightSection {
@@ -73,12 +83,77 @@ export interface InsightArticle {
   sections: InsightSection[];
 }
 
+export interface ContactProjectType {
+  title: string;
+  summary: string;
+}
+
+export interface ContactMethod {
+  label: string;
+  href: string;
+  value: string;
+  description: string;
+  external?: boolean;
+}
+
+export interface ContactFormOption {
+  value: string;
+  label: string;
+}
+
+export interface ContactPageContent {
+  hero: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    support: string;
+    responseTitle: string;
+    responseBody: string;
+    responsePoints: string[];
+  };
+  bestFit: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    projectTypes: ContactProjectType[];
+    supportTitle: string;
+    supportItems: string[];
+  };
+  checklist: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: string[];
+  };
+  inquiryForm: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    deliveryNote: string;
+    projectTypeOptions: readonly ContactFormOption[];
+    timelineOptions: readonly ContactFormOption[];
+    budgetRangeOptions: readonly ContactFormOption[];
+  };
+  nextSteps: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: string[];
+  };
+  alternateContact: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    methods: ContactMethod[];
+  };
+}
+
 export const contactLinks = {
   email: 'support@belovedjohndev.com',
   mailto:
     'mailto:support@belovedjohndev.com?subject=Project%20Inquiry%20from%20Beloved%20John%20Dev',
   whatsapp:
-    'https://wa.me/855963885424?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20business%20system%20project.',
+    'https://wa.me/855963885424?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20business%20systems%20project.',
   telegram: 'https://t.me/belovedjohndev',
   estimator:
     'https://wa.me/855963885424?text=Hi%2C%20I%27d%20like%20to%20discuss%20the%20home%20service%20estimator%20offer.',
@@ -88,343 +163,60 @@ export const contactLinks = {
 
 export const ctaLabels = {
   primary: 'Start a Project Conversation',
-  secondary: 'Review Case Studies',
-  services: 'Explore Service Lines',
-  workflow: 'Discuss Your Workflow',
-  contact: 'Open Contact Page',
+  secondary: 'View Case Studies',
 };
 
-export const homePainPoints = [
-  'Spreadsheets are running important workflows',
-  'Staff re-enter the same data across tools',
-  'Quote requests arrive with poor context',
-  'The website is disconnected from operations',
-  'Reporting is manual and hard to trust',
-  'Growth is creating process bottlenecks',
+export const sitePositioning = {
+  eyebrow: 'Independent business systems developer',
+  title:
+    'Custom business systems for service companies that have outgrown spreadsheets, manual handoffs, and disconnected tools.',
+  lead:
+    'I design and build internal tools, client portals, estimator flows, and automation that help businesses run operations more clearly, capture better information, and reduce manual work across the team.',
+  support:
+    'The site is intentionally positioned around operational software work, not generic brochure-site projects.',
+};
+
+export const operationalSymptoms = [
+  'Important workflows are still managed in spreadsheets',
+  'Staff re-enter the same information in multiple places',
+  'Quote or inquiry forms do not collect enough information',
+  'The website is disconnected from internal operations',
+  'Reporting requires manual checking and compiling',
+  'Administrative work increases every time the business grows',
 ];
 
-export const idealClients = [
-  'Service businesses with manual workflows',
-  'Agencies needing internal tools or client portals',
-  'Teams relying on spreadsheets for operations',
-  'Companies that need quoting or estimator flows',
-  'Businesses that need automation between systems',
-  'Founders who need custom software without agency overhead',
-];
-
-export const notIdealClients = [
-  'One-page brochure sites with no operational need',
-  'Cheap redesign requests with no business case',
-  'Teams that want a generic template instead of a custom workflow',
-];
-
-export const serviceOffers: ServiceOffer[] = [
+export const whyWorkWithMe = [
   {
-    slug: 'custom-business-systems',
-    title: 'Custom Business Systems',
-    problem:
-      'Your core operations are being managed through spreadsheets, inboxes, side notes, or SaaS workarounds that no longer match how the business actually runs.',
-    summary:
-      'Replace spreadsheets, disconnected tools, and fragile manual workflows with an internal system built around how your business actually operates.',
+    title: 'Direct builder access',
     description:
-      'This is the offer for companies that need internal software to run operations more clearly, with better visibility, fewer workarounds, and less dependency on manual coordination.',
-    bestFor:
-      'Businesses that have outgrown spreadsheets, patched-together tools, or admin processes that break under growth.',
-    startingPrice: '$3,000+',
-    pricingNote:
-      'Typical range depends on workflow complexity, number of roles, and whether reporting, permissions, or integrations are involved.',
-    typicalTimeline:
-      'Often scoped in phases, with a focused first version delivered before expanding the system.',
-    examples: [
-      'Internal dashboards for staff and management',
-      'Admin systems for records, approvals, and reporting',
-      'Operations software for inventory, workflows, and day-to-day execution',
-    ],
-    includes: [
-      'Internal dashboards and staff portals',
-      'Admin workflows for records, approvals, and reporting',
-      'Role-based access and maintainable backend architecture',
-      'Business rules designed around real operational processes',
-    ],
-    outcomes: [
-      'Less manual coordination',
-      'Cleaner data and reporting',
-      'More dependable day-to-day operations',
-    ],
+      'You work directly with the person designing and building the system, which keeps decisions fast and grounded in the actual technical tradeoffs.',
   },
   {
-    slug: 'client-portals-estimator-tools',
-    title: 'Client Portals and Estimator Tools',
-    problem:
-      'The website is generating interest, but the business is still dealing with vague inquiries, weak qualification, and too much manual follow-up after submission.',
-    summary:
-      'Build practical tools that turn website traffic into better inquiries, cleaner quoting, and more structured client interactions.',
+    title: 'Workflow-first scoping',
     description:
-      'This is for businesses that need something more useful than a contact form: estimator flows, lead qualification, booking, portals, or structured intake that helps the office team act faster.',
-    bestFor:
-      'Service companies and operators who need client-facing tools that support sales and reduce back-and-forth.',
-    startingPrice: '$2,000+',
-    pricingNote:
-      'Final scope depends on the number of steps in the flow, business rules, admin visibility, and whether the tool connects into existing systems.',
-    typicalTimeline:
-      'Usually delivered as a focused project, depending on flow complexity and any backend or admin requirements.',
-    examples: [
-      'Guided quote and estimator flows',
-      'Client portals with account or job visibility',
-      'Booking and intake tools that collect usable lead context',
-    ],
-    includes: [
-      'Guided estimate and quote flows',
-      'Client portals and intake experiences',
-      'Booking, qualification, and lead capture workflows',
-      'Website systems that support the office team after submission',
-    ],
-    outcomes: [
-      'Better lead quality',
-      'Faster quoting handoff',
-      'A website that contributes to operations',
-    ],
+      'Projects are scoped around the workflow problem first, not around unnecessary features that make the build larger without making it more useful.',
   },
   {
-    slug: 'automation-integrations',
-    title: 'Automation and Integrations',
-    problem:
-      'Teams are wasting time on copy-paste work, manual updates, and disconnected tools that should already be sharing information more cleanly.',
-    summary:
-      'Connect processes, reduce repetitive work, and move data between systems with cleaner, more reliable workflows.',
+    title: 'Maintainability and security in mind',
     description:
-      'This is the offer for teams that are wasting time on copy-paste work, repetitive admin steps, or disconnected tools that should already be talking to each other.',
-    bestFor:
-      'Teams that waste time on repetitive handling, copy-paste work, or disconnected software steps.',
-    startingPrice: '$1,500+',
-    pricingNote:
-      'Pricing depends on how many systems are involved, the reliability requirements, and whether cleanup, reporting, or custom admin tooling is part of the work.',
-    typicalTimeline:
-      'Smaller automation layers can move quickly, while multi-system integrations are usually phased for reliability.',
-    examples: [
-      'Workflow automation between tools and teams',
-      'Reporting pipelines, imports, and exports',
-      'Notifications, internal utilities, and API integrations',
-    ],
-    includes: [
-      'Workflow automation and custom utilities',
-      'Reporting pipelines, imports, and exports',
-      'API integrations and notifications',
-      'Operational tooling for staff visibility and follow-up',
-    ],
-    outcomes: [
-      'Less repetitive admin work',
-      'Fewer avoidable mistakes',
-      'Better flow between teams and tools',
-    ],
+      'Systems are built with maintainability, security, and long-term use in mind so the software still helps the business after launch.',
+  },
+  {
+    title: 'Serious custom work without agency overhead',
+    description:
+      'This is a good fit for companies that need serious custom work without the extra layers and overhead of a large agency.',
+  },
+  {
+    title: 'Operations-first focus',
+    description:
+      'The focus is on systems that support operations, not just websites that look good but stay disconnected from how the business actually runs.',
   },
 ];
 
-export const supportingCapabilities = [
-  'Reporting dashboards',
-  'API and backend development',
-  'Role-based access control',
-  'Data cleanup and migration utilities',
-  'Security hardening and deployment support',
-  'Operational websites with lead-focused flows',
-];
-
-export const heroValuePoints = [
-  {
-    title: 'What I build',
-    detail: 'Custom business systems, client portals, estimator tools, and automation designed around real workflows.',
-  },
-  {
-    title: 'Who it is for',
-    detail: 'Service businesses, agencies, and growing teams dealing with operational friction instead of one-off design-only needs.',
-  },
-  {
-    title: 'Why custom fits',
-    detail: 'When the workflow itself is the bottleneck, forcing the business into generic tools usually creates more manual work later.',
-  },
-];
-
-export const engagementHighlights = [
-  'Direct access to the builder',
-  'Reply within 24 hours',
-  'Scoped around the first useful phase',
-  'Built for operationally serious teams',
-];
-
-export const operationalProblemsSolved = [
-  'Spreadsheets quietly running important workflows',
-  'Quote requests arriving with weak context',
-  'Staff re-entering the same data across tools',
-  'Manual approvals and handoffs slowing delivery',
-  'Reporting that depends on one careful person',
-  'Websites that collect inquiries but do not help operations',
-];
-
-export const systemsCommonlyBuilt = [
-  'Internal dashboards for staff and managers',
-  'Admin systems for records, approvals, and reporting',
-  'Client portals with account, job, or project visibility',
-  'Guided estimator and lead qualification flows',
-  'Booking, intake, and structured inquiry tools',
-  'Automation layers, reporting pipelines, and API integrations',
-];
-
-export const caseStudies: CaseStudy[] = [
-  {
-    slug: 'home-service-estimate-engine',
-    title: 'Home Service Estimate Engine',
-    category: 'Focused Offer and Demo System',
-    summary:
-      'A guided estimate and lead capture experience designed for home service businesses that need more qualified quote requests.',
-    audience:
-      'Home service companies such as HVAC, roofing, plumbing, solar, restoration, and remodeling teams.',
-    proofPoints: [
-      {
-        value: 'Better-fit leads',
-        label: 'before the office team follows up',
-        detail: 'The estimator collects structured job details before contact information is submitted.',
-      },
-      {
-        value: 'Less intake friction',
-        label: 'for staff handling quote requests',
-        detail: 'The flow replaces vague form submissions with context the team can actually review and route.',
-      },
-      {
-        value: 'Dual-purpose asset',
-        label: 'for both outreach and proof',
-        detail: 'The project works as a niche offer page and as live software evidence during sales conversations.',
-      },
-    ],
-    problem:
-      'Generic contact forms were creating weak quote requests, repetitive intake work, and poor lead context for the office team.',
-    approach:
-      'I treated the estimator as both a productized service offer and working software proof so prospects could understand the business value and see the flow in action.',
-    solution:
-      'Built a focused estimator offer page tied to a live demo showing guided intake, estimate logic, and structured lead capture for service businesses.',
-    outcome:
-      'The project now works as both portfolio proof and a niche sales asset, giving prospects a clearer picture of what they could buy rather than just what I can code.',
-    features: [
-      'Guided estimate flow',
-      'Structured lead capture',
-      'Reusable offer architecture',
-      'Admin visibility for lead review',
-    ],
-    results: [
-      'Clearer pre-qualification before the office team steps in',
-      'More useful lead data than a standard quote form',
-      'A focused sales page that supports outreach and discovery calls',
-    ],
-    stack: ['Astro', 'Widget frontend', 'API-backed estimate flow'],
-    image: '/assets/images/home-service-demo.png',
-    alt: 'Home service estimate demo showing the guided lead capture flow',
-    referenceLabel: 'Offer page',
-    referenceHref: '/home-service-estimator',
-    referenceText: 'View the live estimator offer',
-    referenceExternal: false,
-  },
-  {
-    slug: 'church-management-system',
-    title: 'Church Management System',
-    category: 'Custom Business System',
-    summary:
-      'A full-stack management platform for member records, events, attendance, announcements, and secure internal coordination.',
-    audience:
-      'Private organizations that need centralized records, role-based access, and less administrative friction.',
-    proofPoints: [
-      {
-        value: '~60%',
-        label: 'less administrative workload',
-        detail: 'Manual record handling and day-to-day coordination were significantly reduced after rollout.',
-      },
-      {
-        value: 'One system',
-        label: 'replaced scattered records',
-        detail: 'Member, attendance, event, and announcement workflows moved into one operational platform.',
-      },
-      {
-        value: 'Role-based access',
-        label: 'for safer internal use',
-        detail: 'Staff and leadership could work inside the same platform with permissions shaped around their responsibilities.',
-      },
-    ],
-    problem:
-      'The organization was handling members, events, attendance, and announcements through disconnected manual processes, leading to duplicated work and inconsistent records.',
-    approach:
-      'I designed the system around a clear API-first architecture so business rules stayed centralized while the interface remained focused on usability and long-term maintainability.',
-    solution:
-      'Built a full-stack management platform covering member records, event scheduling, attendance tracking, announcements, and secure role-based access for staff and leadership.',
-    outcome:
-      'Administrative workload dropped by roughly 60 percent, and the organization moved from scattered records to a single operational system that supports day-to-day coordination.',
-    features: [
-      'Role-based access control',
-      'Centralized records and attendance',
-      'Event scheduling and announcements',
-      'Operational reporting for leadership',
-    ],
-    results: [
-      'Roughly 60 percent less administrative workload',
-      'One system replacing scattered records',
-      'Clearer day-to-day coordination for staff and leadership',
-    ],
-    stack: ['Django REST Framework', 'Next.js', 'TypeScript'],
-    image: '/assets/images/religious-org.png',
-    alt: 'Church management platform interface with structured navigation',
-    referenceLabel: 'Reference',
-    referenceText: 'Private and confidential',
-    confidential: true,
-  },
-  {
-    slug: 'travel-agency-website',
-    title: 'Travel Agency Website',
-    category: 'Operational Website',
-    summary:
-      'A lead-focused business website designed to create trust faster and give mobile visitors a clearer path to inquiry.',
-    audience:
-      'Service businesses that need their website to improve credibility, contact flow, and lead generation.',
-    proofPoints: [
-      {
-        value: 'Stronger first impression',
-        label: 'for new visitors comparing providers',
-        detail: 'The site was rebuilt to feel more credible and more structured from the first screen.',
-      },
-      {
-        value: 'Clearer mobile inquiry path',
-        label: 'for fast contact decisions',
-        detail: 'The layout and contact flow were designed so mobile users could reach out without friction.',
-      },
-      {
-        value: 'Low-maintenance delivery',
-        label: 'without platform overhead',
-        detail: 'The implementation gave the client a practical sales asset without introducing unnecessary maintenance burden.',
-      },
-    ],
-    problem:
-      'The agency needed a stronger digital presence and a clearer inquiry path because prospective customers were not getting enough structure, trust signals, or fast contact options.',
-    approach:
-      'I treated the site as an operational sales asset rather than a simple brochure, prioritizing mobile clarity, fast loading, direct contact paths, and maintainability.',
-    solution:
-      'Delivered a static business website with clear service sections, trust-building content, responsive layouts, and contact flows designed to turn interest into real inquiries.',
-    outcome:
-      'The business gained a more credible online presence and a smoother path from first visit to direct inquiry, especially for mobile users comparing providers and reaching out quickly.',
-    features: [
-      'Lead-focused structure',
-      'Mobile-first responsive layout',
-      'Low-maintenance implementation',
-      'Clear contact and inquiry paths',
-    ],
-    results: [
-      'Stronger first impression for new visitors',
-      'Simpler inquiry path for mobile users',
-      'More business value than a basic brochure site',
-    ],
-    stack: ['HTML5', 'CSS3', 'Vanilla JavaScript'],
-    image: '/assets/images/travel-agency.png',
-    alt: 'Travel agency website showing service sections and contact flow',
-    referenceLabel: 'Live reference',
-    referenceHref: 'https://blessedjourneyglobal.com',
-    referenceText: 'blessedjourneyglobal.com',
-    referenceExternal: true,
-  },
+export const heroProofPoints = [
+  'Direct access to the person designing and building the system',
+  'Architecture-first approach focused on maintainability and real operations',
+  'Best fit for companies that need more than a brochure website',
 ];
 
 export const processSteps: ProcessStep[] = [
@@ -432,216 +224,735 @@ export const processSteps: ProcessStep[] = [
     number: '01',
     title: 'Discovery and workflow review',
     description:
-      'We start with the business problem, the current process, and the point where spreadsheets, inboxes, or disconnected tools are creating friction.',
+      'We look at how the business currently operates and where the main friction points are.',
   },
   {
     number: '02',
-    title: 'Scope, architecture, and delivery plan',
+    title: 'Scope and architecture',
     description:
-      'I translate the workflow into a practical system shape, define the first useful scope, and outline how the work will be delivered in sensible milestones.',
+      'I recommend a practical first phase and define how the system should be structured.',
   },
   {
     number: '03',
     title: 'Build the core workflow first',
     description:
-      'The first priority is the part of the system that removes the biggest operational pain, not padding the project with low-value extras.',
+      'The first version focuses on the most important operational workflow.',
   },
   {
     number: '04',
-    title: 'Review, refine, and test',
+    title: 'Review, refine, and expand',
     description:
-      'As the system takes shape, we review it against real use cases, tighten edge cases, and make sure the workflow is clear for the people actually using it.',
-  },
-  {
-    number: '05',
-    title: 'Launch and support',
-    description:
-      'After launch, I stay available for fixes, refinements, and practical support so the handoff into real operations is stable and clear.',
+      'After the core system is in use, we refine and expand based on real usage.',
   },
 ];
 
-export const buyerGuidance = {
-  intro:
-    'The goal here is to help serious clients self-qualify before we talk. If the work touches operations, handoffs, reporting, or lead quality, it is usually worth a conversation.',
-  projectShape: [
-    'A focused internal system that replaces a spreadsheet-heavy workflow',
-    'A client-facing portal, intake flow, or estimator tied to office operations',
-    'An automation layer or integration project that removes repeated admin work',
-  ],
-  timelineGuidance: [
-    'Smaller automation or workflow improvements can move in a couple of weeks.',
-    'Client-facing tools and focused portals depend on flow complexity and any admin requirements.',
-    'Larger business systems are usually scoped and delivered in milestones rather than as one oversized launch.',
-  ],
-  pricingGuidance:
-    'Current service lines start from $1,500+, $2,000+, or $3,000+ depending on whether the work is automation, a client-facing tool, or a larger internal system.',
-  scopingGuidance:
-    'Projects are usually scoped after reviewing the current workflow, the people involved, the business rules, and the first useful phase to build.',
-};
-
-export const engagementModel = [
+export const servicePages: ServicePage[] = [
   {
-    title: 'Workflow-first discovery',
-    description:
-      'We start with the broken process, the people involved, and the handoffs or reporting gaps creating friction.',
-  },
-  {
-    title: 'Scoped first phase',
-    description:
-      'The project is shaped around the first useful version instead of a vague all-at-once spec that inflates scope.',
-  },
-  {
-    title: 'Milestone-based delivery',
-    description:
-      'Builds move in practical milestones with review points, testing, launch support, and room for follow-up improvements.',
-  },
-];
-
-export const aboutPrinciples = [
-  {
-    title: 'Direct communication',
-    description:
-      'Clients work directly with the builder, which keeps decisions fast and grounded in real technical tradeoffs.',
-  },
-  {
-    title: 'Operational thinking first',
-    description:
-      'I design around workflow, roles, handoffs, and data quality before worrying about cosmetic complexity.',
-  },
-  {
-    title: 'Maintainable architecture',
-    description:
-      'Clear structure, sensible dependencies, and role-based security matter more than trend-driven choices.',
-  },
-  {
-    title: 'Practical delivery',
-    description:
-      'I prefer milestones, clear priorities, and software that solves the immediate business problem before expanding scope.',
-  },
-];
-
-export const contactChecklist = [
-  'What the business does',
-  'Where the current workflow is breaking down',
-  'What tools or spreadsheets are involved today',
-  'Who will use the system',
-  'Any deadline, budget, or launch goal you already know',
-];
-
-export const contactExpectations = [
-  'A reply with follow-up questions or next steps',
-  'A recommendation on whether the project is a good fit',
-  'A clearer idea of scope before any build starts',
-];
-
-export const nextStepTimeline = [
-  {
-    step: '01',
-    title: 'Reply and fit feedback',
-    description:
-      'You can expect a response within 24 hours with follow-up questions, fit feedback, or a recommended next step.',
-  },
-  {
-    step: '02',
-    title: 'Workflow review',
-    description:
-      'If the project looks promising, we clarify the workflow, users, constraints, and the most useful first phase.',
-  },
-  {
-    step: '03',
-    title: 'Scope and delivery direction',
-    description:
-      'Before build starts, you get a clear recommendation on scope, pricing direction, and how the work would be delivered.',
-  },
-];
-
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      'The website gave us a much stronger first impression and made it easier for serious inquiries to reach us. The structure is clearer, the site feels more professional, and mobile visitors can act quickly.',
-    author: 'Travel Agency Client',
-    role: 'Owner',
-    company: 'Travel and Tourism Business',
-    headline: 'Stronger credibility and a clearer inquiry path',
-    context: 'For a service business that needed its website to work more like a sales asset.',
-    proof: [
-      'Clearer structure for first-time visitors',
-      'Faster mobile contact flow',
-      'A more professional online presence',
+    slug: 'custom-business-systems',
+    title: 'Custom Business Systems',
+    summary:
+      'Operations are being managed through spreadsheets, inboxes, and manual coordination.',
+    heroTitle: 'Custom internal systems built around how your business actually operates.',
+    heroSupportingCopy:
+      'When important workflows are managed in spreadsheets, inboxes, or disconnected tools, mistakes increase, reporting becomes difficult, and growth creates more administrative work instead of less. Custom internal systems replace manual coordination with structured workflows and clear visibility.',
+    businessProblemTitle: 'When operations depend on spreadsheets and manual coordination',
+    businessProblemIntro:
+      'Many growing companies reach a point where spreadsheets, shared drives, and inbox threads are no longer enough to manage day-to-day operations. Information gets duplicated, tasks get missed, and reporting requires manual effort every week.',
+    businessProblemBody:
+      'A custom business system centralizes your workflow so your team can track work, manage data, and see what is happening in the business without relying on manual processes.',
+    problemStatement:
+      'Operations are being managed through spreadsheets, inboxes, and manual coordination.',
+    audienceSummary:
+      'Companies that need clearer operations, better visibility, and less dependency on manual workarounds.',
+    signsYouNeedIt: [
+      'A spreadsheet is acting like a CRM, tracker, approval queue, or reporting system.',
+      'Important work slows down whenever one careful staff member is unavailable.',
+      'Managers cannot get reliable visibility without manual checking.',
+      'The workflow has business-specific rules that generic software does not fit well.',
     ],
+    deliverables: [
+      'Internal dashboards',
+      'Admin tools',
+      'Job tracking systems',
+      'Reporting tools',
+      'Workflow systems designed around how your business actually operates',
+    ],
+    firstPhase: [
+      'Workflow review and scope definition',
+      'Core data model and permissions design',
+      'Build of the primary staff workflow',
+      'Deployment of a first usable internal release',
+      'Basic reporting',
+      'Documentation and handoff',
+    ],
+    firstPhaseNote:
+      'Most projects start with a focused first phase that solves the most important workflow problem, then expand later if needed.',
+    useCases: [
+      'Job tracking systems',
+      'Internal CRM for managing clients and projects',
+      'Inventory tracking system',
+      'Staff task tracking dashboard',
+      'Reporting and analytics dashboard',
+      'Membership or records management system',
+    ],
+    techApproach: [
+      'Systems are designed around your workflow, not forced into a template',
+      'Database structure is planned first to protect data integrity',
+      'Role-based access and permissions are considered early',
+      'Systems are built for maintainability and future expansion',
+      'Security and data protection are considered in the architecture',
+      'The goal is long-term operational use, not a short-term prototype',
+    ],
+    startingScope: 'Typical first phase: workflow review, core model, primary admin flow, and first deployment.',
+    pricingGuidanceTitle: 'Engagement / Pricing Guidance',
+    pricingGuidanceIntro:
+      'Typical first phases for custom business systems start in the $3,000 - $10,000 range depending on scope and complexity.',
+    pricingGuidancePoints: [
+      'Smaller internal tools may be less',
+      'Larger multi-role systems may be more',
+    ],
+    pricingGuidanceClosing:
+      'After the first phase, many clients continue with additional phases as the system becomes part of daily operations.',
+    ctaTitle: 'If your business is running on spreadsheets and workarounds, we should talk.',
+    ctaCopy:
+      'Start with the workflow problem and the main operational friction. From there, we can define the right first phase and whether the system should expand over time.',
+    relatedCaseStudySlug: 'church-management-system',
   },
   {
-    quote:
-      'The management system replaced scattered admin work with one clear process. Member records, events, attendance, and communication are now much easier to handle, and the time savings have been significant.',
-    author: 'Organization Client',
-    role: 'Administrator',
-    company: 'Private Membership Organization',
-    headline: 'One system replaced scattered administrative work',
-    context: 'For an organization managing records, events, attendance, and internal coordination.',
-    proof: [
-      'Significant time savings',
-      'Less duplicated administrative work',
-      'Clearer day-to-day coordination',
+    slug: 'client-portals-estimator-tools',
+    title: 'Client Portals & Estimator Tools',
+    summary:
+      'A contact form is not giving your team enough information to quote, qualify, or move quickly.',
+    heroTitle: 'Client portals and estimator tools that capture better information and reduce back-and-forth.',
+    heroSupportingCopy:
+      'Instead of relying on basic contact forms, structured intake tools and portals help you collect the right information, qualify leads, and connect customer input directly to your internal workflow.',
+    businessProblemTitle: 'When the website creates interest but not enough usable information',
+    businessProblemIntro:
+      'Many service companies rely on contact forms that do not collect enough detail for quoting, routing, or qualifying a lead properly. The team then has to follow up just to gather basic information before real work can begin.',
+    businessProblemBody:
+      'Client portals and estimator tools create a clearer path for the customer while giving your team more structured information to work with from the start.',
+    problemStatement:
+      'A contact form is not giving your team enough information to quote, qualify, or move quickly.',
+    audienceSummary:
+      'Service companies that want better leads, better information, and less back-and-forth before a project starts.',
+    signsYouNeedIt: [
+      'Quote requests arrive without the details needed to route or price the work.',
+      'The team repeats the same early-stage questions in every sales conversation.',
+      'Customers need a clearer self-service path for estimates, records, or project visibility.',
+      'Your site gets inquiries, but does not help operations after submission.',
     ],
+    deliverables: [
+      'Estimator tools',
+      'Intake flows',
+      'Booking flows',
+      'Client portals that capture structured information',
+      'Workflow-connected lead capture',
+    ],
+    firstPhase: [
+      'Intake or estimator flow',
+      'Pricing or logic configuration',
+      'Lead capture and database',
+      'Admin view for submissions',
+      'Email notifications',
+      'Basic analytics',
+      'Deployment to website',
+    ],
+    firstPhaseNote:
+      'The first phase is usually designed to improve how leads or customer requests enter the business before expanding into deeper portal functionality.',
+    useCases: [
+      'Estimate tools',
+      'Guided quote forms',
+      'Client portals',
+      'Booking flows',
+      'Project intake systems',
+      'Lead qualification flows',
+      'Customer dashboards',
+      'Document upload portals',
+    ],
+    techApproach: [
+      'Customer-facing tools are designed to connect directly to your internal workflow, not sit alongside it',
+      'Form logic, data structure, and lead routing are planned before interface polish',
+      'Systems are built so information can be stored, reviewed, and expanded over time',
+      'Maintainability matters because these tools often become part of the daily sales process',
+      'Analytics, notifications, and admin visibility are treated as part of the system, not afterthoughts',
+      'The goal is better information and less back-and-forth before work starts',
+    ],
+    startingScope: 'Typical first phase: intake mapping, customer flow, admin review, and launch support.',
+    pricingGuidanceTitle: 'Engagement / Pricing Guidance',
+    pricingGuidanceIntro:
+      'Typical first phases for client portals and estimator tools often start in the $2,000 - $8,000 range depending on logic, admin requirements, and integration needs.',
+    pricingGuidancePoints: [
+      'Smaller intake or estimator tools may be less',
+      'Portal builds with more roles, visibility, or workflow logic may be more',
+    ],
+    pricingGuidanceClosing:
+      'Many of these projects begin with a focused intake or estimator system, then expand into a broader portal or workflow layer later.',
+    ctaTitle: 'If your website needs to collect better information and reduce intake friction, we should talk.',
+    ctaCopy:
+      'Bring the current lead flow, quote process, or client handoff. From there, we can define the right first phase for a better intake or portal system.',
+    relatedCaseStudySlug: 'estimate-engine',
   },
   {
-    quote:
-      'Communication was direct, timelines were clear, and the work stayed grounded in what the business actually needed. That made the whole process feel reliable from start to finish.',
-    author: 'Website Client',
-    role: 'Business Owner',
-    company: 'Service Business',
-    headline: 'Direct communication and practical delivery built trust',
-    context: 'For a client who needed clarity, reliability, and a project grounded in real business needs.',
-    proof: [
-      'Direct access to the builder',
-      'Clear scope and timelines',
-      'Decisions tied to practical business value',
+    slug: 'automation-integrations',
+    title: 'Automation & Integrations',
+    summary:
+      'Your team is spending too much time moving information between tools or repeating administrative work.',
+    heroTitle: 'Automation and integrations that reduce manual work and connect your tools.',
+    heroSupportingCopy:
+      'If your team is copying data between systems, sending the same emails repeatedly, or manually compiling reports, automation can save time and reduce errors.',
+    businessProblemTitle: 'When good tools still create too much manual work',
+    businessProblemIntro:
+      'A lot of teams already have useful software in place, but the workflow between those tools still depends on copy-paste work, repeated admin tasks, and manual follow-up.',
+    businessProblemBody:
+      'Automation and integrations reduce that operational drag by moving information more reliably, keeping systems in sync, and removing repetitive handling from the team.',
+    problemStatement:
+      'Your team is spending too much time moving information between tools or repeating administrative work.',
+    audienceSummary:
+      'Teams losing time to repetitive admin work and disconnected software.',
+    signsYouNeedIt: [
+      'Copy-paste between CRM, email, and spreadsheets',
+      'Manual lead assignment',
+      'Manual reporting',
+      'Repetitive admin tasks',
+      'Tools that do not talk to each other',
+      'Missed follow-ups or notifications',
     ],
+    deliverables: [
+      'Integrations',
+      'Automated notifications',
+      'Reporting pipelines',
+      'Workflow automation that reduces manual handling',
+      'System sync tooling',
+    ],
+    firstPhase: [
+      'Review current tools',
+      'Identify repetitive processes',
+      'Design automation workflow',
+      'Build integrations',
+      'Testing and monitoring',
+      'Documentation',
+    ],
+    firstPhaseNote:
+      'The first phase usually focuses on one or two high-friction processes so the business gets a practical win before expanding automation further.',
+    useCases: [
+      'CRM integrations',
+      'Email automation',
+      'Lead routing systems',
+      'Automated reports',
+      'Data sync between systems',
+      'Notification systems',
+      'API integrations',
+      'Scheduled data processing',
+    ],
+    techApproach: [
+      'Automation is designed around reliability first, not just speed',
+      'Integrations are planned around system boundaries, failure cases, and traceability',
+      'The workflow is reviewed before building so the automation supports the real process',
+      'Monitoring and basic safeguards are important when information moves between systems',
+      'Maintainability matters because automation often becomes invisible but business-critical',
+      'The goal is to reduce manual work without creating a brittle hidden layer',
+    ],
+    startingScope: 'Typical first phase: tool audit, one high-value integration path, rollout, and monitoring notes.',
+    pricingGuidanceTitle: 'Engagement / Pricing Guidance',
+    pricingGuidanceIntro:
+      'Typical first phases for automation and integrations often start in the $1,500 - $6,000 range depending on the number of systems involved and the reliability requirements.',
+    pricingGuidancePoints: [
+      'Simple automation layers may be less',
+      'Multi-system integrations or more sensitive workflows may be more',
+    ],
+    pricingGuidanceClosing:
+      'Many clients start with one repetitive or error-prone workflow, then add more automation in later phases once the first integration proves useful.',
+    ctaTitle: 'If your team is stuck doing repetitive admin work between tools, we should talk.',
+    ctaCopy:
+      'Bring the current systems, the repeated task, and where information keeps getting stuck. From there, we can define a practical first automation phase.',
+    relatedCaseStudySlug: 'multi-tenant-estimate-engine',
   },
 ];
+
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: 'estimate-engine',
+    title: 'Home Service Estimate Engine',
+    summary:
+      'A guided estimator flow for home service companies that needed better-qualified leads and a cleaner handoff from website traffic to office follow-up.',
+    projectOverview: [
+      'This project involved designing and building a web-based estimate and lead capture system for a home service company. The goal was to replace a basic contact form with a guided estimate tool that collected structured information, helped qualify leads, and gave the office better visibility into incoming requests.',
+      'The system was shaped as operational software, not just a nicer form. It needed to support lead intake, estimate logic, internal review, and future reuse across similar companies.',
+    ],
+    industry: 'Home Services',
+    companySize: 'Small team (5-15 staff)',
+    projectType: 'Estimate tool and lead management system',
+    goal: [
+      'Collect better information from customers before the office follow-up',
+      'Provide rough estimate ranges automatically',
+      'Store all leads in a structured database',
+      'Allow the system to be reused across multiple websites',
+      'Reduce manual intake work for the office',
+    ],
+    homepageLabel: 'Estimator Tool / Lead Qualification System',
+    homepageSummary:
+      'Built a guided estimate and lead capture system for a home service company to replace a basic contact form and improve quote qualification.',
+    homepageBuilt: [
+      'Guided estimate flow',
+      'Structured lead capture',
+      'Package selection logic',
+      'Admin visibility for incoming leads',
+      'Reusable system that can be deployed across multiple sites',
+    ],
+    homepageOutcome:
+      'Better lead information, less manual intake, and a clearer quoting process for the team.',
+    clientType: 'Home service companies handling quote requests and office-based lead qualification',
+    serviceLine: 'Client Portals & Estimator Tools',
+    proof: ['Config-driven quoting', 'Structured lead capture', 'Embeddable sales asset'],
+    businessProblem:
+      'Generic quote forms were creating weak inquiries, limited context, and too much manual intake before the office team could decide what to do next.',
+    oldWorkflow: [
+      'Visitors reached a standard form without being guided through service-specific questions.',
+      'Staff had to restart the discovery conversation manually after every submission.',
+      'Lead details arrived without enough structure to quote, route, or prioritize consistently.',
+    ],
+    scopeDelivered: [
+      'A focused estimate flow for service qualification',
+      'Structured lead capture tied to the estimator path',
+      'An admin-facing review view for submitted leads',
+      'A reusable offer page that doubles as live proof during sales conversations',
+    ],
+    keyFeatures: [
+      'Guided estimate flow',
+      'System size and configuration selection',
+      'Package selection logic',
+      'Structured lead capture form',
+      'Admin database for lead storage',
+      'Email notifications to office',
+      'Multi-client configuration support',
+      'Embeddable widget for WordPress sites',
+    ],
+    architectureSummary:
+      'The system was designed as a multi-tenant estimate engine with a centralized backend and a lightweight embeddable widget.',
+    technicalShape: [
+      'Frontend widget embedded on client websites',
+      'Backend API handling estimate calculation and lead submission',
+      'PostgreSQL database storing leads and configuration per client',
+      'Admin visibility for submitted leads',
+      'Email notification system for new submissions',
+      'Config-driven pricing and package logic per client',
+    ],
+    constraints: [
+      'The system needed to work across multiple client websites',
+      'The estimator needed to be easy for non-technical staff to use',
+      'Pricing logic had to be configurable per client',
+      'The widget needed to load quickly and not affect site performance',
+      'Lead submissions needed idempotency protection to prevent duplicates',
+    ],
+    keyDecisions: [
+      'Collected structured job details before requesting contact information.',
+      'Treated the estimator as an operational sales tool rather than a generic marketing gimmick.',
+      'Designed the first release around a focused quoting workflow instead of a broad portal scope.',
+    ],
+    outcomes: [
+      'More useful lead context before staff follow-up',
+      'Less intake friction for the office team',
+      'A clearer sales asset for explaining the engagement to qualified buyers',
+    ],
+    demonstrates: [
+      'Ability to combine conversion thinking with operational workflow design',
+      'Comfort building systems that live between marketing, qualification, and internal review',
+      'Productized delivery without flattening the technical depth behind the build',
+    ],
+    image: '/assets/images/home-service-demo.png',
+    alt: 'Home service estimate engine interface with guided lead capture',
+    referenceLabel: 'Live offer',
+    referenceHref: '/home-service-estimator',
+    referenceText: 'View the estimator offer page',
+    referenceExternal: false,
+  },
+  {
+    slug: 'church-management-system',
+    title: 'Church Management System',
+    summary:
+      'A role-based internal platform for records, attendance, events, and internal coordination built to replace scattered administrative workflows.',
+    projectOverview: [
+      'This project involved designing and building a centralized internal system for a private organization that needed to manage member records, attendance, events, and announcements in one place.',
+      'The goal was to replace disconnected manual processes with a structured internal platform that gave staff and administrators clearer workflows, stronger visibility, and more dependable records.',
+    ],
+    industry: 'Private Organization / Membership Administration',
+    companySize: 'Small administrative team with multiple internal roles',
+    projectType: 'Internal management system',
+    goal: [
+      'Centralize member records and profiles',
+      'Track attendance through a structured workflow',
+      'Manage events and announcements in one system',
+      'Reduce duplicated administrative work',
+      'Provide reporting and role-based visibility for administrators',
+    ],
+    homepageLabel: 'Internal Management System',
+    homepageSummary:
+      'Designed and built a centralized internal system to manage member records, attendance, events, and announcements for a private organization.',
+    homepageBuilt: [
+      'Role-based access',
+      'Member records and profiles',
+      'Attendance tracking',
+      'Event and announcement management',
+      'Reporting tools for administrators',
+    ],
+    homepageOutcome:
+      'Centralized records, reduced administrative workload, and fewer disconnected manual processes.',
+    clientType: 'Private organization with member records, event scheduling, and internal administration needs',
+    serviceLine: 'Custom Business Systems',
+    proof: ['Role-based access', 'API-first architecture', 'Operational consolidation'],
+    businessProblem:
+      'Critical records, attendance tracking, event management, and communication were spread across manual processes that created duplicated work and inconsistent data.',
+    oldWorkflow: [
+      'Member and attendance records were handled through disconnected manual tools.',
+      'Leadership visibility depended on fragmented updates and time-consuming admin coordination.',
+      'Administrative tasks required repeated handling across separate processes.',
+    ],
+    scopeDelivered: [
+      'Centralized member records and attendance workflows',
+      'Event scheduling and announcement management',
+      'Role-based access for staff and leadership',
+      'Operational reporting views tied to the same backend rules',
+    ],
+    keyFeatures: [
+      'Role-based access',
+      'Member records and profiles',
+      'Attendance tracking',
+      'Event and announcement management',
+      'Reporting tools for administrators',
+      'Centralized internal data model',
+    ],
+    architectureSummary:
+      'The platform was structured as a role-based internal management system with centralized business rules, an API-first backend, and interfaces tailored to the organization’s internal roles.',
+    technicalShape: [
+      'API-first backend architecture',
+      'Role-aware frontend application for internal staff use',
+      'Centralized business rules for records, attendance, events, and permissions',
+      'Operational reporting views tied to the same system',
+      'Full-stack delivery designed for long-term maintainability',
+    ],
+    constraints: [
+      'The system needed to support multiple internal roles with different visibility needs',
+      'Sensitive organizational data required careful access control',
+      'Project details had to remain generalized to respect client privacy',
+    ],
+    keyDecisions: [
+      'Centralized business logic so operational rules stayed consistent across the system.',
+      'Used role-based access to protect sensitive data while keeping workflows practical.',
+      'Focused the first build on the most repeated administrative pain before expanding features.',
+    ],
+    outcomes: [
+      'Roughly 60 percent less administrative workload',
+      'One clear system replacing scattered record handling',
+      'Better day-to-day coordination for staff and leadership',
+    ],
+    demonstrates: [
+      'Ability to scope and deliver real internal software for operations-heavy organizations',
+      'Architecture thinking that prioritizes roles, records, and maintainability',
+      'Comfort handling business-critical workflows beyond simple marketing sites',
+    ],
+    image: '/assets/images/religious-org.png',
+    alt: 'Internal management platform with structured navigation and records views',
+    referenceLabel: 'Availability',
+    referenceText: 'Private and confidential',
+    confidential: true,
+  },
+  {
+    slug: 'multi-tenant-estimate-engine',
+    title: 'Multi-Tenant Estimate Engine',
+    summary:
+      'A SaaS-like estimate platform designed to support multiple client configurations, reusable intake logic, and embeddable deployment across service business websites.',
+    projectOverview: [
+      'This project focused on designing a reusable estimate platform rather than a one-off form. The goal was to create a system that could support multiple service companies with configurable pricing logic, shared backend infrastructure, and lightweight website embedding.',
+      'It was effectively a product-style system: one engine, multiple client configurations, and a workflow that could serve both lead capture and operational review.',
+    ],
+    industry: 'Home Services / Productized Internal Platform',
+    companySize: 'Builder-owned product system for multiple small service businesses',
+    projectType: 'Multi-tenant estimate engine',
+    goal: [
+      'Create a reusable estimate engine instead of rebuilding a new form for each company',
+      'Support client-specific pricing and package logic',
+      'Centralize lead storage and notification workflows',
+      'Make the tool embeddable across multiple websites',
+      'Demonstrate product and SaaS-capable architecture thinking',
+    ],
+    clientType: 'Service businesses needing reusable lead qualification and estimate infrastructure',
+    serviceLine: 'Automation & Integrations',
+    proof: ['Multi-tenant architecture', 'Config-driven workflows', 'Embeddable product thinking'],
+    homepageLabel: 'Multi-Tenant Estimate Platform',
+    homepageSummary:
+      'Designed a reusable estimate engine that could be configured for multiple service businesses instead of building separate quote forms for each one.',
+    homepageBuilt: [
+      'Multi-client configuration model',
+      'Embeddable widget architecture',
+      'Shared backend logic for estimate calculation',
+      'Lead storage and notification workflows',
+      'Admin visibility per client configuration',
+    ],
+    homepageOutcome:
+      'Created a product-style system that could support multiple deployments while reducing repeated build work.',
+    businessProblem:
+      'Building a one-off estimator for each company would duplicate work, fragment logic, and make updates harder over time. A more scalable approach was to create a reusable engine that could be configured per client and deployed across multiple sites.',
+    oldWorkflow: [
+      'Each new estimator deployment risked becoming a separate build with repeated logic',
+      'Configuration changes would have to be managed manually per site',
+      'Lead capture and estimate logic would become harder to maintain across clients',
+      'There was no shared platform model for reuse or operational visibility',
+    ],
+    scopeDelivered: [
+      'Config-driven estimate engine',
+      'Multi-client configuration model',
+      'Embeddable widget architecture',
+      'Centralized lead storage and admin visibility',
+      'Notification workflows for new submissions',
+      'Reusable deployment pattern for additional client sites',
+    ],
+    keyFeatures: [
+      'Configurable pricing rules per client',
+      'Embeddable frontend widget',
+      'Centralized backend logic',
+      'Per-client lead storage and review',
+      'Notification workflows',
+      'Reusable deployment architecture',
+      'Shared system with client-specific configuration',
+    ],
+    architectureSummary:
+      'The system was designed as a multi-tenant estimate platform with shared backend infrastructure, client-specific configuration, and an embeddable frontend layer that could be deployed across multiple websites.',
+    technicalShape: [
+      'Embeddable frontend widget for website integration',
+      'Backend service handling estimate logic and lead submission',
+      'Centralized data storage for leads and per-client configuration',
+      'Client-aware routing for notifications and admin review',
+      'Reusable architecture supporting additional deployments',
+    ],
+    constraints: [
+      'The system needed to support multiple client websites without becoming fragile',
+      'Configuration needed to stay manageable for non-technical adjustments',
+      'The widget needed to stay lightweight enough for real-world site embedding',
+      'Architecture needed to support repeatable deployment without copy-paste sprawl',
+    ],
+    keyDecisions: [
+      'Separated estimate logic from individual website implementations',
+      'Used configuration to drive client-specific behavior instead of cloning the application',
+      'Designed the system for repeatable deployment from the beginning',
+      'Treated the project like a reusable platform rather than a one-off project asset',
+    ],
+    outcomes: [
+      'Reduced repeated implementation work for future estimator deployments',
+      'Created a clearer platform foundation for productized lead qualification',
+      'Demonstrated a SaaS-like architecture approach rather than one-off project thinking',
+    ],
+    demonstrates: [
+      'Designing systems around business workflow',
+      'Building structured lead intake systems',
+      'Multi-tenant system architecture',
+      'Database-backed web applications',
+      'Embeddable tools that integrate with existing websites',
+      'Automation of intake and notification workflows',
+    ],
+    image: '/assets/images/home-service-demo.png',
+    alt: 'Estimate engine interface representing reusable multi-tenant architecture',
+    referenceLabel: 'Availability',
+    referenceHref: '/home-service-estimator',
+    referenceText: 'View related estimator offer',
+    referenceExternal: false,
+  },
+];
+
+export const featuredCaseStudySlugs = ['estimate-engine', 'church-management-system'] as const;
 
 export const faqItems = [
   {
     question: 'What kinds of projects are the best fit?',
     answer:
-      'The best fit is work that solves an operational problem clearly: internal systems, admin tools, workflow software, automation, or business websites that support lead flow and delivery. If the project needs to be practical, maintainable, and aligned with real business use, that is usually a strong fit.',
+      'The best fit is work with a clear operational problem: internal systems, client portals, estimator flows, workflow automation, or software that improves handoffs, reporting, or lead quality.',
   },
   {
-    question: 'Do you work with clients internationally?',
+    question: 'Do you build brochure websites?',
     answer:
-      'Yes. I work remotely with international clients and keep communication straightforward through clear scope, written updates, and direct access to the builder throughout the project.',
+      'That is not the focus of the business. I am deliberately positioning around custom systems work, client-facing workflow tools, and operational software rather than low-complexity brochure-site projects.',
   },
   {
-    question: 'How long does a typical project take?',
+    question: 'Can you improve an existing workflow instead of rebuilding everything?',
     answer:
-      'That depends on scope. Smaller workflow improvements can move in a couple of weeks, while larger systems are usually delivered in milestones. I prefer mapping the first useful phase before expanding the build.',
+      'Yes. Some projects need a rebuild, but others only need the weakest handoff, intake flow, or spreadsheet-heavy process replaced first. I prefer the smallest useful phase that creates real operational value.',
   },
   {
-    question: 'What budget range should a serious client expect?',
+    question: 'What happens after I reach out?',
     answer:
-      'Current service lines start from $1,500+, $2,000+, or $3,000+ depending on whether the project is automation, a client-facing tool, or a larger custom system. Final scope depends on workflow complexity, integrations, and business rules.',
+      'You can expect fit feedback, follow-up questions, or a recommendation on the right next step. The early goal is to clarify the workflow problem and shape a sensible first phase, not jump straight into a giant scope.',
   },
   {
-    question: 'Can you improve an existing system or website?',
+    question: 'Can you help shape the scope if I do not have a full spec yet?',
     answer:
-      'Yes. Not every engagement needs a full rebuild. I can improve an existing website, streamline a workflow, add operational features, or replace the weakest part of a current process with something more reliable.',
-  },
-  {
-    question: 'How do you keep systems maintainable?',
-    answer:
-      'I keep the architecture straightforward, separate business logic cleanly, avoid unnecessary dependencies, and build around the actual workflow instead of overcomplicating the stack. That reduces technical debt and makes future updates easier.',
-  },
-  {
-    question: 'What happens after launch?',
-    answer:
-      'I stay available for post-launch fixes, improvements, and practical follow-up support. If the system becomes part of daily operations, that transition period matters, so I plan for it rather than treating launch as the end.',
-  },
-  {
-    question: 'How is payment structured?',
-    answer:
-      'For smaller projects I usually work with an upfront payment and final payment on completion. Larger projects are better handled through milestones. The structure is agreed clearly before work starts so there are no surprises.',
+      'Yes. A full specification is not required to start. If you can explain the current workflow, the people involved, and where the process is breaking down, that is usually enough to define the first useful scope.',
   },
 ];
+
+export const aboutPrinciples = [
+  {
+    title: 'Independent, not inflated',
+    description:
+      'The value is not pretending to be a large agency. It is giving clients direct technical ownership with calm, senior-level decision making.',
+  },
+  {
+    title: 'Workflow before interface',
+    description:
+      'I design around roles, data quality, approvals, and handoffs before polishing surface-level features.',
+  },
+  {
+    title: 'Business systems mindset',
+    description:
+      'The strongest projects here are not portfolio pieces. They are systems that reduce admin load, improve lead quality, or create clearer operational visibility.',
+  },
+  {
+    title: 'Scoped for usefulness',
+    description:
+      'I would rather ship a strong first phase that solves a real bottleneck than promise a larger system that gets harder to buy, build, or maintain.',
+  },
+];
+
+export const contactChecklist = [
+  'The current workflow problem and where the process is breaking down',
+  'Which tools, spreadsheets, forms, or manual steps are involved today',
+  'The desired outcome after the first phase is in place',
+  'Any timeline, budget direction, or rollout constraints you already know',
+];
+
+export const contactExpectations = [
+  'A reply within about 24 hours with fit feedback or follow-up questions',
+  'A recommendation on the right first phase, scope direction, or discovery step',
+  'A clear signal on whether the project fits systems, portals, or automation work',
+];
+
+export const fitSignals = [
+  'Service companies managing jobs, clients, or field work',
+  'Agencies needing internal tools or client portals',
+  'Teams relying on spreadsheets for operations',
+  'Businesses that need estimator tools, intake flows, or dashboards',
+  'Companies that want their website connected to real workflow, not just marketing pages',
+];
+
+export const notFitSignals = [
+  'One-page brochure site requests',
+  'Very small projects where a template solves the problem',
+  'Design-only projects without workflow or system requirements',
+  'Projects that do not require custom functionality',
+];
+
+export const contactPageContent: ContactPageContent = {
+  hero: {
+    eyebrow: 'Consulting intake',
+    title: 'Start with the workflow that needs better software.',
+    lead:
+      'This page is built for companies evaluating internal systems, client portals, estimator tools, or automation tied to real operations.',
+    support:
+      'You do not need a polished specification. A clear explanation of the current workflow, the tools involved, and the outcome you need is enough to start a serious project conversation.',
+    responseTitle: 'Qualified replies, not generic follow-up',
+    responseBody:
+      'The goal of this intake page is to surface fit, project shape, and the right first phase before anyone wastes time on vague back-and-forth.',
+    responsePoints: [
+      'Best fit for operational software work rather than brochure websites',
+      'Useful whether you already know the bottleneck or need help defining the first phase',
+      'Expect fit feedback, follow-up questions, or a recommended next step within about 24 hours',
+    ],
+  },
+  bestFit: {
+    eyebrow: 'Best-fit project types',
+    title: 'The strongest inquiries usually fall into one of these categories.',
+    intro:
+      'These are the consulting engagements the site is intentionally positioned around.',
+    projectTypes: [
+      {
+        title: 'Internal systems',
+        summary:
+          'Custom staff-facing software for operations that have outgrown spreadsheets, inbox coordination, and manual tracking.',
+      },
+      {
+        title: 'Client portals / estimator tools',
+        summary:
+          'Structured intake, quoting, and self-service workflows that collect better information and reduce repetitive back-and-forth.',
+      },
+      {
+        title: 'Automation / integrations',
+        summary:
+          'Connected workflows that move data between forms, spreadsheets, CRMs, inboxes, and third-party tools without manual re-entry.',
+      },
+    ],
+    supportTitle: 'Typical fit signals',
+    supportItems: fitSignals,
+  },
+  checklist: {
+    eyebrow: 'What to send',
+    title: 'A strong first message is specific about the workflow.',
+    intro:
+      'The most useful inquiries focus on the operational problem, the current toolset, and what success should look like after the first build phase.',
+    items: contactChecklist,
+  },
+  inquiryForm: {
+    eyebrow: 'Structured inquiry form',
+    title: 'Send a project brief that helps qualify the work.',
+    intro:
+      'Use this form to package the core buying context: company, industry, project type, workflow pain, current tools, desired outcome, timing, and budget direction.',
+    deliveryNote:
+      'Project inquiries are submitted through a static form service so the site can stay simple, fast, and fully static.',
+    projectTypeOptions: [
+      { value: 'internal-system', label: 'Internal system' },
+      { value: 'client-portal-estimator', label: 'Client portal / estimator' },
+      { value: 'automation-integration', label: 'Automation / integration' },
+      { value: 'not-sure-yet', label: 'Not sure yet' },
+    ],
+    timelineOptions: [
+      { value: 'asap', label: 'ASAP' },
+      { value: '1-3-months', label: '1-3 months' },
+      { value: '3-6-months', label: '3-6 months' },
+      { value: 'just-exploring', label: 'Just exploring' },
+    ],
+    budgetRangeOptions: [
+      { value: '2k-5k', label: '$2k-5k' },
+      { value: '5k-10k', label: '$5k-10k' },
+      { value: '10k-plus', label: '$10k+' },
+      { value: 'not-sure-yet', label: 'Not sure yet' },
+    ],
+  },
+  nextSteps: {
+    eyebrow: 'What happens next',
+    title: 'The first reply should help you judge fit quickly.',
+    intro:
+      'Once the inquiry is received, the next step is usually a short round of fit feedback and clarification rather than a vague sales sequence.',
+    items: contactExpectations,
+  },
+  alternateContact: {
+    eyebrow: 'Alternate contact methods',
+    title: 'Use the channel that fits how your team works.',
+    intro:
+      'If you would rather start directly, these channels stay aligned with the same consulting-first positioning.',
+    methods: [
+      {
+        label: 'Email',
+        href: contactLinks.mailto,
+        value: contactLinks.email,
+        description:
+          'Best for structured project context, attachments, and a more formal first message.',
+      },
+      {
+        label: 'WhatsApp',
+        href: contactLinks.whatsapp,
+        value: '+855 96 388 5424',
+        description:
+          'Useful if you want to begin with a shorter outline and continue the intake conversation quickly.',
+        external: true,
+      },
+      {
+        label: 'Telegram',
+        href: contactLinks.telegram,
+        value: '@belovedjohndev',
+        description:
+          'A good option for direct follow-up questions or opening the conversation before a call.',
+        external: true,
+      },
+    ],
+  },
+};
 
 export const insights: InsightArticle[] = [
   {
@@ -755,7 +1066,7 @@ export const insights: InsightArticle[] = [
       {
         title: 'The right question to ask',
         paragraphs: [
-          'The better question is not “can SaaS do this?” The better question is “how much operational friction are we still carrying because the software does not match how the business actually works?”',
+          'The better question is not "can SaaS do this?" The better question is "how much operational friction are we still carrying because the software does not match how the business actually works?"',
           'That framing usually leads to better decisions than comparing feature checklists alone.',
         ],
       },
@@ -801,3 +1112,7 @@ export const insights: InsightArticle[] = [
     ],
   },
 ];
+
+export const getServiceBySlug = (slug: string) => servicePages.find((service) => service.slug === slug);
+
+export const getCaseStudyBySlug = (slug: string) => caseStudies.find((study) => study.slug === slug);

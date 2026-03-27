@@ -1,0 +1,13 @@
+---
+import ServiceDetailPage from '../../components/templates/ServiceDetailPage.astro';
+import { getCaseStudyBySlug, getServiceBySlug } from '../../data/siteContent';
+
+const service = getServiceBySlug('client-portals-estimator-tools');
+const relatedCaseStudy = getCaseStudyBySlug('estimate-engine');
+
+if (!service || !relatedCaseStudy) {
+  throw new Error('Missing service content for client portals and estimator tools.');
+}
+---
+
+<ServiceDetailPage service={service} relatedCaseStudy={relatedCaseStudy} />

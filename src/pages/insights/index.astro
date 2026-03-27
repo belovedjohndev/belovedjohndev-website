@@ -8,7 +8,7 @@ import { ctaLabels, insights } from '../../data/siteContent';
 
 <MainLayout
   title="Insights | Beloved John Dev"
-  description="Short insights on spreadsheets, internal tools, lead flows, and custom business systems."
+  description="Short thinking on business systems, workflow bottlenecks, estimator tools, and custom software buying decisions."
   canonical="/insights"
   ogImage="/og/insights.svg"
   ogImageAlt="Beloved John Dev insights page share image"
@@ -18,37 +18,32 @@ import { ctaLabels, insights } from '../../data/siteContent';
   <section class="page-hero">
     <div class="container page-hero__content">
       <p class="eyebrow">Insights</p>
-      <h1>Short Thinking on Business Systems, Lead Flows, and Operational Software</h1>
+      <h1>Short writing on workflow friction, custom systems, and better buying decisions</h1>
       <p class="page-hero__lead">
-        This section is here to show how I think about workflow problems before code is written:
-        where friction comes from, what software should actually improve, and how to scope the right first move.
-      </p>
-      <p class="page-hero__lead">
-        It also gives prospective clients a clearer picture of the buying logic behind the service lines, not just the implementation side.
+        These articles are here to show how I think before code is written: where the operational friction comes
+        from, what software should actually improve, and how to choose the right first move.
       </p>
       <div class="hero-actions">
         <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
-        <Button href="/services" variant="secondary">View Service Lines</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
   </section>
 
   <section class="section-padding">
-    <div class="container insights-grid">
+    <div class="container insight-grid">
       {insights.map((article) => (
-        <article class="insight-card">
-          <p class="insight-meta">{article.category} | {article.readingTime}</p>
+        <article class="surface-card insight-card">
+          <p class="eyebrow">{article.category}</p>
           <h2>{article.title}</h2>
-          <p class="insight-summary">{article.summary}</p>
-          <p class="insight-audience"><strong>Best for:</strong> {article.audience}</p>
-
-          <div class="insight-takeaways" role="list">
+          <p>{article.summary}</p>
+          <p class="muted"><strong>{article.readingTime}</strong> | {article.audience}</p>
+          <div class="chip-row">
             {article.takeaways.slice(0, 3).map((takeaway) => (
-              <span class="insight-chip" role="listitem">{takeaway}</span>
+              <span class="chip">{takeaway}</span>
             ))}
           </div>
-
-          <a href={`/insights/${article.slug}`} class="insight-link">Read the insight</a>
+          <Button href={`/insights/${article.slug}`} variant="dark">Read the Insight</Button>
         </article>
       ))}
     </div>
@@ -58,105 +53,20 @@ import { ctaLabels, insights } from '../../data/siteContent';
 </MainLayout>
 
 <style>
-  .page-hero {
-    padding: 7rem 0 4rem;
-    color: var(--color-white);
-    background:
-      radial-gradient(circle at top right, rgba(240, 188, 116, 0.16), transparent 24%),
-      linear-gradient(135deg, rgba(10, 22, 35, 0.94), rgba(17, 50, 64, 0.9)),
-      url('/assets/images/hero-bg.png');
-    background-position: center;
-    background-size: cover;
-  }
-
-  .page-hero__content {
-    max-width: 860px;
-  }
-
-  .eyebrow {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-sm);
-  }
-
-  .page-hero h1 {
-    color: var(--color-white);
-  }
-
-  .page-hero__lead {
-    line-height: 1.75;
-    color: rgba(255, 255, 255, 0.92);
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-    margin-top: var(--space-lg);
-  }
-
-  .insights-grid {
+  .insight-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-lg);
   }
 
   .insight-card {
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    background-color: var(--color-white);
-    border: 1px solid rgba(38, 70, 83, 0.08);
-    box-shadow: var(--shadow-md);
+    display: grid;
+    gap: 1rem;
   }
 
-  .insight-meta {
-    margin-bottom: var(--space-sm);
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-  }
-
-  .insight-summary,
-  .insight-audience {
-    line-height: 1.75;
-    color: var(--color-text);
-  }
-
-  .insight-takeaways {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin: var(--space-md) 0;
-  }
-
-  .insight-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    background-color: rgba(42, 157, 143, 0.08);
-    color: var(--color-primary);
-    font-size: 0.82rem;
-    font-weight: 600;
-  }
-
-  .insight-link {
-    font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    .page-hero {
-      padding: 6rem 0 3rem;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
+  @media (max-width: 900px) {
+    .insight-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

@@ -1,0 +1,21 @@
+---
+import { whyWorkWithMe } from '../../data/siteContent';
+---
+
+<section class="section-padding">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">Why Work With Me</p>
+      <h2>Why clients choose this model</h2>
+    </div>
+
+    <div class="grid-2">
+      {whyWorkWithMe.map((item) => (
+        <article class="surface-card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

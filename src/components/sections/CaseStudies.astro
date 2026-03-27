@@ -1,0 +1,109 @@
+---
+import Button from '../ui/Button.astro';
+import { caseStudies, featuredCaseStudySlugs } from '../../data/siteContent';
+
+const featuredStudySet = new Set(featuredCaseStudySlugs);
+const featuredStudies = caseStudies.filter((study) =>
+  featuredStudySet.has(study.slug as (typeof featuredCaseStudySlugs)[number])
+);
+---
+
+<section class="section-padding proof-band">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">Featured Case Studies</p>
+      <h2>Selected projects built around operational bottlenecks</h2>
+    </div>
+
+    <div class="study-grid">
+      {featuredStudies.map((study) => (
+        <article class="surface-card study-card">
+          <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" />
+          <div class="study-card__body">
+            <p class="eyebrow">{study.homepageLabel ?? study.serviceLine}</p>
+            <h3>{study.title}</h3>
+            <p>{study.homepageSummary ?? study.summary}</p>
+
+            <div class="study-block">
+              <h4>What Was Built</h4>
+              <ul class="bullet-list">
+                {(study.homepageBuilt ?? study.scopeDelivered.slice(0, 5)).map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+
+            <div class="study-block">
+              <h4>Outcome</h4>
+              <p>{study.homepageOutcome ?? study.outcomes.join(', ')}.</p>
+            </div>
+
+            <div class="study-actions">
+              <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
+              {study.slug === 'estimate-engine' && study.referenceHref && (
+                <Button href={study.referenceHref} variant="primary">View Live Demo</Button>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .study-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .study-card {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .study-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .study-card__body {
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    gap: 1rem;
+    padding: var(--space-lg);
+  }
+
+  .study-block h4 {
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .study-block p {
+    margin-bottom: 0;
+  }
+
+  .study-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .study-actions :global(.btn) {
+    flex: 1 1 220px;
+  }
+
+  @media (max-width: 900px) {
+    .study-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

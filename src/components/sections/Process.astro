@@ -1,0 +1,43 @@
+---
+import { processSteps } from '../../data/siteContent';
+---
+
+<section class="section-padding process-band">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">Process Snapshot</p>
+      <h2>How projects typically move</h2>
+    </div>
+
+    <div class="grid-2">
+      {processSteps.map((step) => (
+        <article class="surface-card process-card">
+          <p class="eyebrow">{step.number}</p>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <p class="process-close">
+      The goal is to build something useful early, then improve it with real feedback.
+    </p>
+  </div>
+</section>
+
+<style>
+  .process-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .process-card p:last-child,
+  .process-close {
+    margin-bottom: 0;
+  }
+
+  .process-close {
+    margin-top: var(--space-lg);
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+</style>

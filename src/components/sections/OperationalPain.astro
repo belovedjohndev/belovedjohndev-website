@@ -1,0 +1,46 @@
+---
+import { operationalSymptoms } from '../../data/siteContent';
+---
+
+<section class="section-padding">
+  <div class="container">
+    <div class="section-title pain-title">
+      <p class="eyebrow">Operational Pain</p>
+      <h2>When the workflow is growing faster than the system</h2>
+      <p>
+        Most clients reach out when the business is growing, but the internal workflow is still being held together
+        by spreadsheets, inbox threads, and manual coordination.
+      </p>
+      <p>This usually shows up as a few recurring problems:</p>
+    </div>
+
+    <div class="grid-auto">
+      {operationalSymptoms.map((item) => (
+        <article class="simple-card pain-card">
+          <p>{item}</p>
+        </article>
+      ))}
+    </div>
+
+    <p class="pain-close">
+      At that point, the problem is usually not the website; it is the system behind the business.
+    </p>
+  </div>
+</section>
+
+<style>
+  .pain-title {
+    max-width: 780px;
+  }
+
+  .pain-card p,
+  .pain-close {
+    margin-bottom: 0;
+  }
+
+  .pain-close {
+    margin-top: var(--space-lg);
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+</style>

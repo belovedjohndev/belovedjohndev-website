@@ -3,7 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/ui/Button.astro';
-import { contactLinks } from '../data/siteContent';
+import { contactLinks, ctaLabels } from '../data/siteContent';
 
 const demoUrl = contactLinks.demo;
 
@@ -144,8 +144,8 @@ const valuePoints = [
       </p>
 
       <div class="offer-actions">
-        <Button href={demoUrl} variant="primary">View Demo</Button>
-        <Button href="#contact" variant="secondary">Start a Project Conversation</Button>
+        <Button href="#contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={demoUrl} variant="dark">View Demo</Button>
       </div>
 
       <div class="offer-points" role="list" aria-label="Core offer points">
@@ -257,15 +257,15 @@ const valuePoints = [
             a standard quote form can provide.
           </p>
           <div class="demo-actions">
-            <Button href={demoUrl} variant="primary">View Demo</Button>
-            <Button href="#contact" variant="dark">Start a Project Conversation</Button>
+            <Button href="#contact" variant="primary">{ctaLabels.primary}</Button>
+            <Button href={demoUrl} variant="dark">View Demo</Button>
           </div>
         </div>
 
         <div class="demo-status">
           <p class="demo-status__label">Current demo link</p>
           <p class="demo-status__url">{demoUrl}</p>
-          <p class="text-muted">
+          <p class="muted">
             Live estimator demo linked and ready to use for outreach, walkthroughs, and sales conversations.
           </p>
         </div>
@@ -340,10 +340,8 @@ const valuePoints = [
         actual quoting process.
       </p>
       <div class="final-cta__actions">
-        <Button href={demoUrl} variant="primary">View Demo</Button>
-        <Button href={contactLinks.estimator} variant="secondary">
-          Start a Project Conversation
-        </Button>
+        <Button href={contactLinks.estimator} variant="primary">{ctaLabels.primary}</Button>
+        <Button href={demoUrl} variant="secondary">View Demo</Button>
       </div>
     </div>
   </section>
@@ -353,10 +351,10 @@ const valuePoints = [
 
 <style>
   .offer-hero {
-    min-height: 88vh;
+    min-height: 0;
     display: flex;
     align-items: center;
-    padding: 6rem 0 4rem;
+    padding: 8rem 0 4.75rem;
     color: var(--color-white);
     background:
       radial-gradient(circle at top right, rgba(240, 188, 116, 0.16), transparent 24%),
@@ -369,6 +367,8 @@ const valuePoints = [
 
   .offer-hero__content {
     max-width: 820px;
+    display: grid;
+    gap: 0.75rem;
   }
 
   .offer-eyebrow,
@@ -401,7 +401,7 @@ const valuePoints = [
     color: rgba(255, 255, 255, 0.9);
     max-width: 720px;
     line-height: 1.75;
-    margin-bottom: var(--space-lg);
+    margin-bottom: calc(var(--space-sm) + 0.25rem);
   }
 
   .offer-actions,
@@ -410,6 +410,13 @@ const valuePoints = [
     display: flex;
     gap: var(--space-md);
     flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .offer-actions :global(.btn),
+  .demo-actions :global(.btn),
+  .final-cta__actions :global(.btn) {
+    min-width: 12.5rem;
   }
 
   .offer-note {
@@ -447,6 +454,8 @@ const valuePoints = [
   .section-heading {
     max-width: 760px;
     margin-bottom: var(--space-xl);
+    display: grid;
+    gap: 0.35rem;
   }
 
   .section-heading h2 {
@@ -479,6 +488,7 @@ const valuePoints = [
   .step-card,
   .included-card {
     padding: var(--space-lg);
+    height: 100%;
   }
 
   .industry-card {
@@ -531,6 +541,11 @@ const valuePoints = [
     line-height: 1.75;
   }
 
+  .demo-copy,
+  .demo-status {
+    height: 100%;
+  }
+
   .demo-status {
     background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.05));
   }
@@ -547,6 +562,7 @@ const valuePoints = [
 
   .demo-status__url {
     font-weight: 600;
+    overflow-wrap: anywhere;
     word-break: break-word;
     margin-bottom: var(--space-sm);
   }
@@ -630,6 +646,8 @@ const valuePoints = [
 
   .final-cta__content {
     max-width: 820px;
+    display: grid;
+    gap: 0.65rem;
   }
 
   .final-cta h2 {
@@ -650,8 +668,7 @@ const valuePoints = [
 
   @media (max-width: 768px) {
     .offer-hero {
-      min-height: auto;
-      padding: 5rem 0 3rem;
+      padding: 6.75rem 0 3.6rem;
     }
 
     .offer-actions,
@@ -659,6 +676,13 @@ const valuePoints = [
     .final-cta__actions {
       flex-direction: column;
       align-items: stretch;
+    }
+
+    .offer-actions :global(.btn),
+    .demo-actions :global(.btn),
+    .final-cta__actions :global(.btn) {
+      min-width: 0;
+      width: 100%;
     }
 
     .admin-card__grid {

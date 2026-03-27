@@ -16,11 +16,11 @@ export const GET: APIRoute = ({ params }) => {
 
   return createSvgResponse(
     renderOgImage({
-      eyebrow: `${study.category} Case Study`,
+      eyebrow: `${study.serviceLine} Case Study`,
       title: study.title,
       description: study.summary,
       footer: 'Case Study | Beloved John Dev',
-      chips: study.proofPoints.map((point) => point.value),
+      chips: study.proof,
     })
   );
 };

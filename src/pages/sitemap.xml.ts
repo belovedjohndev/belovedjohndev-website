@@ -13,6 +13,21 @@ const pages = [
     priority: '0.9',
   },
   {
+    path: '/services/custom-business-systems',
+    changefreq: 'monthly',
+    priority: '0.8',
+  },
+  {
+    path: '/services/client-portals-estimator-tools',
+    changefreq: 'monthly',
+    priority: '0.8',
+  },
+  {
+    path: '/services/automation-integrations',
+    changefreq: 'monthly',
+    priority: '0.8',
+  },
+  {
     path: '/case-studies',
     changefreq: 'weekly',
     priority: '0.9',

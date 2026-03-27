@@ -1,0 +1,41 @@
+---
+import Button from '../ui/Button.astro';
+import { contactLinks, ctaLabels } from '../../data/siteContent';
+---
+
+<section class="section-padding cta-frame">
+  <div class="container cta-frame__content">
+    <p class="eyebrow">Final CTA</p>
+    <h2>Start with the workflow problem, not a polished specification.</h2>
+    <p>
+      If your business is dealing with spreadsheet sprawl, manual handoffs, weak lead intake, or disconnected tools,
+      that is enough to start a conversation. From there, we can define a practical first phase and a system that
+      actually supports how your business runs.
+    </p>
+
+    <div class="hero-actions">
+      <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+      <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+    </div>
+
+    <div class="contact-links" role="list" aria-label="Contact options">
+      <a href={contactLinks.mailto} role="listitem">Email</a>
+      <a href={contactLinks.whatsapp} target="_blank" rel="noopener" role="listitem">WhatsApp</a>
+      <a href={contactLinks.telegram} target="_blank" rel="noopener" role="listitem">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-links {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+  }
+
+  .contact-links a {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 700;
+  }
+</style>

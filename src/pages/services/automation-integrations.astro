@@ -1,0 +1,13 @@
+---
+import ServiceDetailPage from '../../components/templates/ServiceDetailPage.astro';
+import { getCaseStudyBySlug, getServiceBySlug } from '../../data/siteContent';
+
+const service = getServiceBySlug('automation-integrations');
+const relatedCaseStudy = getCaseStudyBySlug('multi-tenant-estimate-engine');
+
+if (!service || !relatedCaseStudy) {
+  throw new Error('Missing service content for automation and integrations.');
+}
+---
+
+<ServiceDetailPage service={service} relatedCaseStudy={relatedCaseStudy} />

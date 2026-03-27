@@ -1,0 +1,213 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import Button from '../ui/Button.astro';
+import type { ServicePage, CaseStudy } from '../../data/siteContent';
+import { ctaLabels } from '../../data/siteContent';
+
+interface Props {
+  service: ServicePage;
+  relatedCaseStudy: CaseStudy;
+}
+
+const { service, relatedCaseStudy } = Astro.props;
+---
+
+<MainLayout
+  title={`${service.title} | Beloved John Dev`}
+  description={service.summary}
+  canonical={`/services/${service.slug}`}
+  ogImage="/og/services.svg"
+  ogImageAlt={`${service.title} service page share image`}
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Services</p>
+        <h1>{service.heroTitle}</h1>
+        <p class="page-hero__lead">{service.heroSupportingCopy}</p>
+        <div class="hero-actions">
+          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside">
+        <p class="eyebrow">Best fit</p>
+        <h2>{service.audienceSummary}</h2>
+        <p>{service.startingScope}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container content-stack">
+      <article class="surface-card">
+        <p class="eyebrow">The Business Problem</p>
+        <h2>{service.businessProblemTitle}</h2>
+        <p>{service.businessProblemIntro}</p>
+        <p>{service.businessProblemBody}</p>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Signs You Need This</p>
+        <h2>Common symptoms</h2>
+        <ul class="bullet-list">
+          {service.signsYouNeedIt.map((sign) => <li>{sign}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding section-band">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">What I Build</p>
+        <h2>What this can include</h2>
+        <ul class="bullet-list">
+          {service.deliverables.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">What The First Phase Looks Like</p>
+        <h2>Typical first phase</h2>
+        <ul class="bullet-list">
+          {service.firstPhase.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="section-note">{service.firstPhaseNote}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Example Use Cases</p>
+        <h2>Where this is commonly useful</h2>
+        <div class="chip-row">
+          {service.useCases.map((item) => (
+            <span class="chip">{item}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Technical Approach</p>
+        <h2>How the systems are designed</h2>
+        <ul class="bullet-list">
+          {service.techApproach.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding related-band">
+    <div class="container grid-2 related-grid">
+      <article class="surface-card related-card">
+        <p class="eyebrow">Related Case Study</p>
+        <h2>{relatedCaseStudy.title}</h2>
+        <p>{relatedCaseStudy.homepageOutcome ?? relatedCaseStudy.summary}</p>
+        <Button href={`/case-studies/${relatedCaseStudy.slug}`} variant="dark">Read Case Study</Button>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">{service.pricingGuidanceTitle}</p>
+        <h2>What this usually costs to start</h2>
+        <p>{service.pricingGuidanceIntro}</p>
+        <ul class="bullet-list">
+          {service.pricingGuidancePoints.map((item) => <li>{item}</li>)}
+        </ul>
+        <p>{service.pricingGuidanceClosing}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>{service.ctaTitle}</h2>
+      <p>{service.ctaCopy}</p>
+      <div class="hero-actions">
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid,
+  .related-grid,
+  .content-stack {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.72fr);
+    align-items: start;
+  }
+
+  .content-stack {
+    gap: var(--space-xl);
+  }
+
+  .hero-aside h2 {
+    font-size: 1.45rem;
+  }
+
+  .hero-aside p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+
+  .section-band,
+  .related-band {
+    background: rgba(255, 255, 255, 0.42);
+  }
+
+  .content-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .related-grid {
+    align-items: start;
+  }
+
+  .related-card {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    height: 100%;
+  }
+
+  .related-card p,
+  .related-card h2 {
+    margin-bottom: 0;
+  }
+
+  .grid-2 > .surface-card,
+  .content-stack > .surface-card {
+    height: 100%;
+  }
+
+  .section-note {
+    margin-top: var(--space-md);
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

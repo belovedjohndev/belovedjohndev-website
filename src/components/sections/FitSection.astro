@@ -1,0 +1,49 @@
+---
+import { fitSignals, notFitSignals } from '../../data/siteContent';
+---
+
+<section class="section-padding fit-band">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">Buyer Fit</p>
+      <h2>Who this work is for</h2>
+    </div>
+
+    <div class="grid-2">
+      <article class="surface-card fit-card">
+        <p class="eyebrow">Best Fit</p>
+        <ul class="bullet-list">
+          {fitSignals.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="surface-card fit-card fit-card--muted">
+        <p class="eyebrow">Usually Not a Fit</p>
+        <ul class="bullet-list">
+          {notFitSignals.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+
+    <p class="fit-close">
+      I focus on projects where the website or software is part of how the business actually runs.
+    </p>
+  </div>
+</section>
+
+<style>
+  .fit-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .fit-card--muted {
+    background: linear-gradient(135deg, rgba(14, 91, 98, 0.06), rgba(16, 32, 51, 0.04));
+  }
+
+  .fit-close {
+    margin-top: var(--space-lg);
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+</style>
