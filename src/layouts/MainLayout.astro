@@ -22,7 +22,7 @@ const {
   structuredDataType = 'ProfessionalService',
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.pages.dev';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const fullUrl = `${siteUrl}${canonical === '/' ? '' : canonical}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
@@ -38,9 +38,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content="Beloved John Dev" />
+    <meta name="theme-color" content="#102033" />
     <link rel="canonical" href={fullUrl} />
     
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={fullUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

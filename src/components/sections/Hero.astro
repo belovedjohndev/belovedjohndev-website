@@ -1,72 +1,109 @@
 ---
-import { homePainPoints } from '../../data/siteContent';
+import Button from '../ui/Button.astro';
+import {
+  buyerGuidance,
+  ctaLabels,
+  engagementHighlights,
+  heroValuePoints,
+  homePainPoints,
+} from '../../data/siteContent';
 ---
 
 <section class="hero" id="top">
-  <div class="container hero-content">
-    <p class="hero-eyebrow">Independent business systems developer</p>
-    <h1>
-      I build custom business systems that replace spreadsheets, manual workflows, and disconnected tools.
-    </h1>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Boutique business systems studio</p>
+      <h1>Custom business systems for teams tired of running operations through spreadsheets and manual handoffs.</h1>
 
-    <p class="hero-subtitle">
-      For service businesses, agencies, and growing teams, I design and build internal
-      tools, client portals, estimator flows, and automation that make operations easier
-      to run and easier to scale.
-    </p>
-
-    <p class="hero-location">
-      Best fit for companies that have outgrown spreadsheets, patched-together tools,
-      and manual handoffs but do not want bloated agency overhead.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="/contact" class="btn btn-primary">
-        Discuss Your Workflow
-      </a>
-
-      <a href="/case-studies" class="btn btn-secondary">
-        Review Case Studies
-      </a>
-
-      <a href="/services" class="btn btn-secondary btn-ghost">
-        See What I Build
-      </a>
-    </div>
-
-    <div class="hero-problems">
-      <p class="hero-offer__label">Common reasons clients reach out</p>
-      <p class="hero-problems__intro">
-        The pattern is usually the same: the business is growing, but the workflow is still being held together manually.
+      <p class="hero-subtitle">
+        I build internal tools, client portals, estimator flows, and automation for service businesses,
+        agencies, and growing teams that need cleaner operations, better lead qualification, and fewer
+        workflow bottlenecks.
       </p>
-      <div class="hero-problem-list" role="list" aria-label="Operational pain points">
-        {homePainPoints.slice(0, 4).map((painPoint) => (
-          <span class="hero-problem" role="listitem">{painPoint}</span>
+
+      <p class="hero-support">
+        Best fit for businesses with operational friction, not design-only brochure site projects.
+        When the workflow itself is the problem, custom software is often the clearer answer than
+        adding more patches around generic tools.
+      </p>
+
+      <div class="hero-actions">
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+        <Button href="/services" variant="dark">{ctaLabels.services}</Button>
+      </div>
+
+      <div class="hero-points" role="list" aria-label="Core positioning points">
+        {heroValuePoints.map((point) => (
+          <article class="hero-point" role="listitem">
+            <p class="hero-point__title">{point.title}</p>
+            <p class="hero-point__detail">{point.detail}</p>
+          </article>
         ))}
+      </div>
+
+      <div class="hero-problems">
+        <p class="hero-label">Common reasons clients reach out</p>
+        <div class="hero-problem-list" role="list" aria-label="Operational pain points">
+          {homePainPoints.slice(0, 6).map((painPoint) => (
+            <span class="hero-problem" role="listitem">{painPoint}</span>
+          ))}
+        </div>
       </div>
     </div>
 
-    <div class="hero-focuses" role="list" aria-label="Core focus areas">
-      <span class="hero-focus" role="listitem">Custom business systems</span>
-      <span class="hero-focus" role="listitem">Client portals and estimator tools</span>
-      <span class="hero-focus" role="listitem">Automation and integrations</span>
-    </div>
+    <aside class="hero-panel" aria-label="Buyer guidance">
+      <p class="hero-label">Buyer guidance</p>
+      <h2>What serious clients usually want to know before reaching out</h2>
+
+      <div class="hero-panel__blocks">
+        <article class="hero-panel__card">
+          <p class="hero-panel__title">Best fit</p>
+          <p>Operationally serious teams dealing with friction in quoting, admin work, reporting, approvals, or client handoff.</p>
+        </article>
+
+        <article class="hero-panel__card">
+          <p class="hero-panel__title">Starting ranges</p>
+          <p>{buyerGuidance.pricingGuidance}</p>
+        </article>
+
+        <article class="hero-panel__card">
+          <p class="hero-panel__title">Typical project shape</p>
+          <ul class="hero-panel__list">
+            {buyerGuidance.projectShape.slice(0, 3).map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+
+        <article class="hero-panel__card">
+          <p class="hero-panel__title">After inquiry</p>
+          <p>Expect a reply within 24 hours with fit feedback, follow-up questions, or a recommended next step.</p>
+        </article>
+      </div>
+
+      <div class="hero-highlights" role="list" aria-label="Engagement highlights">
+        {engagementHighlights.map((highlight) => (
+          <span class="hero-highlight" role="listitem">{highlight}</span>
+        ))}
+      </div>
+
+      <div class="hero-panel__links">
+        <a href="/process">See how projects are scoped</a>
+        <a href="/contact">See what happens after contact</a>
+      </div>
+    </aside>
   </div>
 </section>
 
 <style>
   .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
     position: relative;
     overflow: hidden;
     color: var(--color-white);
-    padding: 6.75rem 0 4.75rem;
+    padding: 7.2rem 0 4.75rem;
     background:
       radial-gradient(circle at top right, rgba(240, 188, 116, 0.14), transparent 24%),
       radial-gradient(circle at left center, rgba(22, 138, 122, 0.18), transparent 28%),
-      linear-gradient(135deg, rgba(10, 22, 35, 0.92), rgba(16, 50, 66, 0.9)),
+      linear-gradient(135deg, rgba(10, 22, 35, 0.94), rgba(16, 50, 66, 0.92)),
       url('/assets/images/hero-bg.png');
     background-size: cover;
     background-position: center;
@@ -77,123 +114,125 @@ import { homePainPoints } from '../../data/siteContent';
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      circle at center,
-      rgba(42, 157, 143, 0.15),
-      transparent 60%
-    );
     pointer-events: none;
-    animation: pulse 4s ease-in-out infinite;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.08), transparent 18%),
+      radial-gradient(circle at 85% 25%, rgba(240, 188, 116, 0.08), transparent 20%);
   }
 
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.85;
-    }
-  }
-
-  .hero-content {
+  .hero-grid {
     position: relative;
-    z-index: 2;
-    max-width: 840px;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.78fr);
+    gap: var(--space-xl);
+    align-items: start;
   }
 
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.85rem;
-    font-weight: 600;
+  .hero-copy {
+    max-width: 760px;
+  }
+
+  .hero-eyebrow,
+  .hero-label,
+  .hero-point__title,
+  .hero-panel__title {
+    font-size: 0.82rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .hero-eyebrow,
+  .hero-label {
     color: var(--color-accent);
-    margin-bottom: var(--space-sm);
   }
 
   .hero h1 {
     margin-bottom: var(--space-md);
     color: var(--color-white);
-    line-height: 1.2;
+    line-height: 1.08;
+    max-width: 15ch;
+  }
+
+  .hero-subtitle,
+  .hero-support,
+  .hero-point__detail,
+  .hero-panel p,
+  .hero-panel li {
+    line-height: 1.75;
   }
 
   .hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.28rem);
-    opacity: 0.95;
+    font-size: clamp(1.08rem, 2vw, 1.26rem);
     margin-bottom: var(--space-sm);
-    line-height: 1.8;
-    max-width: 760px;
+    color: rgba(255, 255, 255, 0.95);
   }
 
-  .hero-location {
-    font-size: 1rem;
-    opacity: 0.85;
+  .hero-support {
     margin-bottom: var(--space-lg);
-    line-height: 1.8;
-    max-width: 640px;
+    max-width: 720px;
+    color: rgba(255, 255, 255, 0.84);
   }
 
-  .hero-buttons {
+  .hero-actions {
     display: flex;
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
+    gap: var(--space-sm);
     flex-wrap: wrap;
   }
 
-  .hero-buttons .btn {
-    min-width: 180px;
+  .hero-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
   }
 
-  .btn-ghost {
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--color-white);
+  .hero-point {
+    padding: 1.1rem 1.15rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
   }
 
-  .btn-ghost:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.35);
+  .hero-point__title {
+    margin-bottom: 0.4rem;
+    color: var(--color-accent);
+  }
+
+  .hero-point__detail {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+  }
+
+  .hero-problems,
+  .hero-panel {
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-lg);
   }
 
   .hero-problems {
     margin-top: var(--space-lg);
     padding: 1.35rem;
-    max-width: 720px;
-    border-radius: var(--border-radius);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(16px);
-    box-shadow: var(--shadow-lg);
   }
 
-  .hero-offer__label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-xs);
-  }
-
-  .hero-problem-list {
+  .hero-problem-list,
+  .hero-highlights {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
   }
 
-  .hero-problems__intro {
-    margin-bottom: var(--space-sm);
-    color: rgba(255, 255, 255, 0.88);
-    line-height: 1.7;
-  }
-
-  .hero-problem {
+  .hero-problem,
+  .hero-highlight {
     display: inline-flex;
     align-items: center;
-    padding: 0.45rem 0.85rem;
+    padding: 0.45rem 0.8rem;
     border-radius: 999px;
     background-color: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -201,38 +240,113 @@ import { homePainPoints } from '../../data/siteContent';
     font-size: 0.9rem;
   }
 
-  .hero-focuses {
+  .hero-panel {
+    padding: 1.5rem;
+    position: sticky;
+    top: 6.25rem;
+  }
+
+  .hero-panel h2 {
+    margin-bottom: var(--space-md);
+    color: var(--color-white);
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    line-height: 1.15;
+  }
+
+  .hero-panel__blocks {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .hero-panel__card {
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(9, 20, 30, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-panel__title {
+    margin-bottom: 0.35rem;
+    color: var(--color-accent);
+  }
+
+  .hero-panel__card p {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+  }
+
+  .hero-panel__list {
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .hero-panel__list li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+  }
+
+  .hero-panel__list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .hero-highlights {
+    margin-top: var(--space-md);
+  }
+
+  .hero-highlight {
+    background-color: rgba(240, 188, 116, 0.12);
+    border-color: rgba(240, 188, 116, 0.2);
+    color: var(--color-white);
+    font-size: 0.84rem;
+  }
+
+  .hero-panel__links {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    margin-top: var(--space-lg);
+    margin-top: var(--space-md);
   }
 
-  .hero-focus {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.55rem 0.95rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background-color: rgba(255, 255, 255, 0.08);
+  .hero-panel__links a {
     color: var(--color-white);
-    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-panel {
+      position: static;
+    }
+
+    .hero-points {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {
     .hero {
-      min-height: auto;
-      padding: 5rem 0 3rem;
+      padding: 6rem 0 3rem;
     }
 
-    .hero-buttons {
+    .hero h1 {
+      max-width: none;
+    }
+
+    .hero-actions {
       flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-    }
-
-    .hero-buttons .btn {
-      width: 100%;
+      align-items: stretch;
     }
   }
 </style>

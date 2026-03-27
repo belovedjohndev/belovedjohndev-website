@@ -1,57 +1,17 @@
 ---
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-const faqs: FAQItem[] = [
-  {
-    question: 'What kinds of projects are the best fit?',
-    answer:
-      'The best fit is work that solves an operational problem clearly: internal systems, admin tools, workflow software, automation, or business websites that support lead flow and delivery. If the project needs to be practical, maintainable, and aligned with real business use, that is usually a strong fit.',
-  },
-  {
-    question: 'Do you work with clients internationally?',
-    answer:
-      'Yes. I work remotely with international clients and keep communication straightforward through clear scope, written updates, and direct access to the builder throughout the project.',
-  },
-  {
-    question: 'How long does a typical project take?',
-    answer:
-      'That depends on scope. Smaller tools can take a couple of weeks, while larger systems take longer. I usually break work into sensible milestones so you can see progress early and avoid committing to unnecessary scope.',
-  },
-  {
-    question: 'Can you improve an existing system or website?',
-    answer:
-      'Yes. Not every engagement needs a full rebuild. I can improve an existing website, streamline a workflow, add operational features, or replace the weakest part of a current process with something more reliable.',
-  },
-  {
-    question: 'How do you keep systems maintainable?',
-    answer:
-      'I keep the architecture straightforward, separate business logic cleanly, avoid unnecessary dependencies, and build around the actual workflow instead of overcomplicating the stack. That reduces technical debt and makes future updates easier.',
-  },
-  {
-    question: 'What happens after launch?',
-    answer:
-      'I stay available for post-launch fixes, improvements, and practical follow-up support. If the system becomes part of daily operations, that transition period matters, so I plan for it rather than treating launch as the end.',
-  },
-  {
-    question: 'How is payment structured?',
-    answer:
-      'For smaller projects I usually work with an upfront payment and final payment on completion. Larger projects are better handled through milestones. The structure is agreed clearly before work starts so there are no surprises.',
-  },
-];
+import { faqItems } from '../../data/siteContent';
 ---
 
 <section class="faq section-padding" id="faq">
   <div class="container">
     <div class="section-title">
-      <h2>FAQ</h2>
-      <p>Common questions from clients considering business systems or operational website work.</p>
+      <p class="section-eyebrow">Buying questions</p>
+      <h2>Common questions before a project starts</h2>
+      <p>These are the questions that usually come up when a client is deciding whether custom workflow software is the right move.</p>
     </div>
 
     <div class="faq-grid">
-      {faqs.map((faq) => (
+      {faqItems.map((faq) => (
         <article class="faq-card">
           <h3>{faq.question}</h3>
           <p>{faq.answer}</p>
@@ -66,6 +26,14 @@ const faqs: FAQItem[] = [
     background-color: var(--color-light);
   }
 
+  .section-eyebrow {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
   .faq-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -73,18 +41,11 @@ const faqs: FAQItem[] = [
   }
 
   .faq-card {
-    background-color: var(--color-white);
-    border-radius: var(--border-radius);
     padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
     box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    border-left: 4px solid transparent;
-  }
-
-  .faq-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-    border-left-color: var(--color-primary);
   }
 
   .faq-card h3 {
@@ -94,8 +55,8 @@ const faqs: FAQItem[] = [
   }
 
   .faq-card p {
-    color: var(--color-text);
     margin-bottom: 0;
-    line-height: 1.7;
+    color: var(--color-text);
+    line-height: 1.75;
   }
 </style>

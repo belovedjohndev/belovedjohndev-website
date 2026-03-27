@@ -4,12 +4,12 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/ui/Button.astro';
 import FAQ from '../components/sections/FAQ.astro';
-import { processSteps } from '../data/siteContent';
+import { ctaLabels, engagementModel, nextStepTimeline, processSteps } from '../data/siteContent';
 ---
 
 <MainLayout
   title="Process | Beloved John Dev"
-  description="A practical process for discovery, system design, development, launch, and support."
+  description="A practical process for discovery, scoping, development, launch, and post-launch support for business systems work."
   canonical="/process"
   ogImage="/og/process.svg"
   ogImageAlt="Beloved John Dev process share image"
@@ -19,14 +19,14 @@ import { processSteps } from '../data/siteContent';
   <section class="page-hero">
     <div class="container page-hero__content">
       <p class="eyebrow">Process</p>
-      <h1>A Practical Delivery Process for Business Software Projects</h1>
+      <h1>A practical process for operational software projects</h1>
       <p class="page-hero__lead">
-        Serious clients want to know how the work moves. The process is structured enough
-        to reduce risk and simple enough to stay focused on the real workflow problem.
+        Serious clients want to know how the work moves before they commit. The process here is structured enough
+        to reduce risk and practical enough to stay focused on the workflow that actually needs fixing.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">Start a Project Conversation</Button>
-        <Button href="/case-studies" variant="secondary">See the Work</Button>
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
   </section>
@@ -46,25 +46,32 @@ import { processSteps } from '../data/siteContent';
   <section class="section-padding section-light">
     <div class="container split-grid">
       <article class="panel">
-        <p class="eyebrow eyebrow--small">What clients can expect</p>
-        <h2>How I Try to Keep Projects Healthy</h2>
-        <ul class="check-list">
-          <li>Clear priorities before unnecessary features</li>
-          <li>Direct communication with the builder</li>
-          <li>Sensible milestones instead of vague long timelines</li>
-          <li>Architecture choices driven by maintainability</li>
-          <li>Post-launch support when the system enters real use</li>
-        </ul>
+        <p class="eyebrow eyebrow--small">Engagement model</p>
+        <h2>How projects are usually structured</h2>
+        <div class="engagement-list">
+          {engagementModel.map((item) => (
+            <article class="engagement-item">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
       </article>
 
       <article class="panel">
-        <p class="eyebrow eyebrow--small">Why this matters</p>
-        <h2>Operational Software Needs a Different Mindset</h2>
-        <p>
-          When software is tied to quoting, admin work, records, approvals, or client handoff,
-          the process has to stay grounded in real usage. The goal is not to impress with complexity.
-          It is to make the workflow clearer and more dependable.
-        </p>
+        <p class="eyebrow eyebrow--small">After inquiry</p>
+        <h2>What happens after the first message</h2>
+        <div class="timeline-list">
+          {nextStepTimeline.map((item) => (
+            <article class="timeline-item">
+              <p class="timeline-item__step">{item.step}</p>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </article>
     </div>
   </section>
@@ -74,13 +81,14 @@ import { processSteps } from '../data/siteContent';
   <section class="section-padding cta-band">
     <div class="container cta-band__content">
       <p class="eyebrow">Next step</p>
-      <h2>Bring the Workflow Problem First</h2>
+      <h2>Bring the broken workflow. I can help shape the first useful phase.</h2>
       <p>
-        If you can explain where the current process breaks, we can usually figure out whether
-        a custom system, a portal, or a focused automation layer makes the most sense.
+        You do not need a full requirements document to begin. A clear explanation of the bottleneck,
+        the spreadsheet pain, or the weak handoff is enough to make the first conversation useful.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">Discuss Your Project</Button>
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/services" variant="secondary">View service lines</Button>
       </div>
     </div>
   </section>
@@ -110,7 +118,8 @@ import { processSteps } from '../data/siteContent';
   }
 
   .eyebrow,
-  .process-number {
+  .process-number,
+  .timeline-item__step {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -123,7 +132,8 @@ import { processSteps } from '../data/siteContent';
   }
 
   .eyebrow--small,
-  .process-number {
+  .process-number,
+  .timeline-item__step {
     color: var(--color-primary);
   }
 
@@ -133,8 +143,15 @@ import { processSteps } from '../data/siteContent';
   }
 
   .page-hero__lead,
-  .cta-band p {
+  .cta-band p,
+  .process-card p,
+  .engagement-item p,
+  .timeline-item p {
     line-height: 1.75;
+  }
+
+  .page-hero__lead,
+  .cta-band p {
     color: rgba(255, 255, 255, 0.92);
   }
 
@@ -172,30 +189,29 @@ import { processSteps } from '../data/siteContent';
     background-color: var(--color-white);
   }
 
-  .process-card p,
-  .panel p {
-    line-height: 1.75;
-    color: var(--color-text);
-  }
-
-  .check-list {
-    list-style: none;
+  .engagement-list,
+  .timeline-list {
     display: grid;
+    gap: var(--space-md);
+  }
+
+  .engagement-item,
+  .timeline-item {
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-light);
+    border: 1px solid rgba(42, 157, 143, 0.12);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: var(--space-sm);
+    align-items: start;
   }
 
-  .check-list li {
-    position: relative;
-    padding-left: var(--space-md);
-    line-height: 1.7;
-  }
-
-  .check-list li::before {
-    content: '+';
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: 700;
+  .timeline-item__step {
+    margin: 0;
   }
 
   @media (max-width: 768px) {

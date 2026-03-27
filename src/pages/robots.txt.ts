@@ -1,8 +1,7 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = ({ site }) => {
-  const fallbackSite =
-    process.env.SITE_URL ?? process.env.CF_PAGES_URL ?? 'https://belovedjohndev.pages.dev';
+  const fallbackSite = import.meta.env.SITE || 'https://belovedjohndev.com';
   const baseUrl = (site ?? new URL(fallbackSite)).toString().replace(/\/$/, '');
 
   const body = `User-agent: *

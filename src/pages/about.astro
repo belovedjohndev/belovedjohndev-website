@@ -6,12 +6,12 @@ import Button from '../components/ui/Button.astro';
 import AboutSection from '../components/sections/About.astro';
 import WhyMe from '../components/sections/WhyMe.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
-import { aboutPrinciples } from '../data/siteContent';
+import { aboutPrinciples, ctaLabels, engagementModel } from '../data/siteContent';
 ---
 
 <MainLayout
   title="About | Beloved John Dev"
-  description="Independent business systems developer focused on practical, maintainable software for real operations."
+  description="Independent business systems studio focused on practical, maintainable software for operationally serious clients."
   canonical="/about"
   ogImage="/og/about.svg"
   ogImageAlt="Beloved John Dev about page share image"
@@ -21,14 +21,14 @@ import { aboutPrinciples } from '../data/siteContent';
   <section class="page-hero">
     <div class="container page-hero__content">
       <p class="eyebrow">About</p>
-      <h1>Independent Consultant Mindset, Systems-Focused Delivery</h1>
+      <h1>Independent consultant mindset, boutique systems delivery</h1>
       <p class="page-hero__lead">
-        The value is not just writing code. It is understanding the process underneath the request
+        The value here is not sounding like an agency. It is understanding the workflow underneath the request
         and turning it into software that stays useful after launch.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">Discuss Your Project</Button>
-        <Button href="/case-studies" variant="secondary">See Case Studies</Button>
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
   </section>
@@ -36,13 +36,31 @@ import { aboutPrinciples } from '../data/siteContent';
   <AboutSection />
 
   <section class="section-padding section-light">
-    <div class="container principles-grid">
-      {aboutPrinciples.map((principle) => (
-        <article class="principle-card">
-          <p class="eyebrow eyebrow--small">{principle.title}</p>
-          <p>{principle.description}</p>
-        </article>
-      ))}
+    <div class="container split-grid">
+      <article class="panel">
+        <p class="eyebrow eyebrow--small">Working principles</p>
+        <div class="principles-grid">
+          {aboutPrinciples.map((principle) => (
+            <article class="principle-card">
+              <h2>{principle.title}</h2>
+              <p>{principle.description}</p>
+            </article>
+          ))}
+        </div>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow eyebrow--small">Engagement model</p>
+        <h2>How I prefer to structure the work</h2>
+        <div class="engagement-list">
+          {engagementModel.map((item) => (
+            <article class="engagement-item">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </article>
     </div>
   </section>
 
@@ -101,13 +119,20 @@ import { aboutPrinciples } from '../data/siteContent';
     background-color: var(--color-white);
   }
 
-  .principles-grid {
+  .split-grid,
+  .principles-grid,
+  .engagement-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--space-lg);
   }
 
-  .principle-card {
+  .split-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel,
+  .principle-card,
+  .engagement-item {
     padding: var(--space-lg);
     border-radius: var(--border-radius);
     background-color: var(--color-white);
@@ -115,10 +140,32 @@ import { aboutPrinciples } from '../data/siteContent';
     box-shadow: var(--shadow-md);
   }
 
-  .principle-card p:last-child {
+  .principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: var(--space-md);
+  }
+
+  .engagement-list {
+    margin-top: var(--space-md);
+  }
+
+  .principle-card h2,
+  .engagement-item h3 {
+    font-size: 1.15rem;
+  }
+
+  .principle-card p,
+  .engagement-item p {
     margin-bottom: 0;
     line-height: 1.75;
     color: var(--color-text);
+  }
+
+  @media (max-width: 900px) {
+    .split-grid,
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {

@@ -3,15 +3,17 @@ interface Props {
   href?: string;
   variant?: 'primary' | 'secondary' | 'dark';
   class?: string;
+  target?: string;
+  rel?: string;
 }
 
-const { href, variant = 'primary', class: className = '' } = Astro.props;
+const { href, variant = 'primary', class: className = '', target, rel } = Astro.props;
 const baseClass = `btn btn-${variant}`;
 const finalClass = `${baseClass} ${className}`.trim();
 ---
 
 {href ? (
-  <a href={href} class={finalClass}>
+  <a href={href} class={finalClass} target={target} rel={rel}>
     <slot />
   </a>
 ) : (

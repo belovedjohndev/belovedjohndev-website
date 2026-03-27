@@ -1,11 +1,13 @@
 export interface ServiceOffer {
   slug: string;
   title: string;
+  problem: string;
   summary: string;
   description: string;
   bestFor: string;
   startingPrice: string;
   pricingNote: string;
+  typicalTimeline: string;
   examples: string[];
   includes: string[];
   outcomes: string[];
@@ -84,6 +86,14 @@ export const contactLinks = {
   demo: 'https://demo.belovedjohndev.com/',
 };
 
+export const ctaLabels = {
+  primary: 'Start a Project Conversation',
+  secondary: 'Review Case Studies',
+  services: 'Explore Service Lines',
+  workflow: 'Discuss Your Workflow',
+  contact: 'Open Contact Page',
+};
+
 export const homePainPoints = [
   'Spreadsheets are running important workflows',
   'Staff re-enter the same data across tools',
@@ -112,8 +122,10 @@ export const serviceOffers: ServiceOffer[] = [
   {
     slug: 'custom-business-systems',
     title: 'Custom Business Systems',
+    problem:
+      'Your core operations are being managed through spreadsheets, inboxes, side notes, or SaaS workarounds that no longer match how the business actually runs.',
     summary:
-      'Replace spreadsheets, disconnected tools, and fragile manual workflows with one system built around how your business actually operates.',
+      'Replace spreadsheets, disconnected tools, and fragile manual workflows with an internal system built around how your business actually operates.',
     description:
       'This is the offer for companies that need internal software to run operations more clearly, with better visibility, fewer workarounds, and less dependency on manual coordination.',
     bestFor:
@@ -121,6 +133,8 @@ export const serviceOffers: ServiceOffer[] = [
     startingPrice: '$3,000+',
     pricingNote:
       'Typical range depends on workflow complexity, number of roles, and whether reporting, permissions, or integrations are involved.',
+    typicalTimeline:
+      'Often scoped in phases, with a focused first version delivered before expanding the system.',
     examples: [
       'Internal dashboards for staff and management',
       'Admin systems for records, approvals, and reporting',
@@ -141,6 +155,8 @@ export const serviceOffers: ServiceOffer[] = [
   {
     slug: 'client-portals-estimator-tools',
     title: 'Client Portals and Estimator Tools',
+    problem:
+      'The website is generating interest, but the business is still dealing with vague inquiries, weak qualification, and too much manual follow-up after submission.',
     summary:
       'Build practical tools that turn website traffic into better inquiries, cleaner quoting, and more structured client interactions.',
     description:
@@ -150,6 +166,8 @@ export const serviceOffers: ServiceOffer[] = [
     startingPrice: '$2,000+',
     pricingNote:
       'Final scope depends on the number of steps in the flow, business rules, admin visibility, and whether the tool connects into existing systems.',
+    typicalTimeline:
+      'Usually delivered as a focused project, depending on flow complexity and any backend or admin requirements.',
     examples: [
       'Guided quote and estimator flows',
       'Client portals with account or job visibility',
@@ -170,6 +188,8 @@ export const serviceOffers: ServiceOffer[] = [
   {
     slug: 'automation-integrations',
     title: 'Automation and Integrations',
+    problem:
+      'Teams are wasting time on copy-paste work, manual updates, and disconnected tools that should already be sharing information more cleanly.',
     summary:
       'Connect processes, reduce repetitive work, and move data between systems with cleaner, more reliable workflows.',
     description:
@@ -179,6 +199,8 @@ export const serviceOffers: ServiceOffer[] = [
     startingPrice: '$1,500+',
     pricingNote:
       'Pricing depends on how many systems are involved, the reliability requirements, and whether cleanup, reporting, or custom admin tooling is part of the work.',
+    typicalTimeline:
+      'Smaller automation layers can move quickly, while multi-system integrations are usually phased for reliability.',
     examples: [
       'Workflow automation between tools and teams',
       'Reporting pipelines, imports, and exports',
@@ -205,6 +227,46 @@ export const supportingCapabilities = [
   'Data cleanup and migration utilities',
   'Security hardening and deployment support',
   'Operational websites with lead-focused flows',
+];
+
+export const heroValuePoints = [
+  {
+    title: 'What I build',
+    detail: 'Custom business systems, client portals, estimator tools, and automation designed around real workflows.',
+  },
+  {
+    title: 'Who it is for',
+    detail: 'Service businesses, agencies, and growing teams dealing with operational friction instead of one-off design-only needs.',
+  },
+  {
+    title: 'Why custom fits',
+    detail: 'When the workflow itself is the bottleneck, forcing the business into generic tools usually creates more manual work later.',
+  },
+];
+
+export const engagementHighlights = [
+  'Direct access to the builder',
+  'Reply within 24 hours',
+  'Scoped around the first useful phase',
+  'Built for operationally serious teams',
+];
+
+export const operationalProblemsSolved = [
+  'Spreadsheets quietly running important workflows',
+  'Quote requests arriving with weak context',
+  'Staff re-entering the same data across tools',
+  'Manual approvals and handoffs slowing delivery',
+  'Reporting that depends on one careful person',
+  'Websites that collect inquiries but do not help operations',
+];
+
+export const systemsCommonlyBuilt = [
+  'Internal dashboards for staff and managers',
+  'Admin systems for records, approvals, and reporting',
+  'Client portals with account, job, or project visibility',
+  'Guided estimator and lead qualification flows',
+  'Booking, intake, and structured inquiry tools',
+  'Automation layers, reporting pipelines, and API integrations',
 ];
 
 export const caseStudies: CaseStudy[] = [
@@ -398,6 +460,43 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
+export const buyerGuidance = {
+  intro:
+    'The goal here is to help serious clients self-qualify before we talk. If the work touches operations, handoffs, reporting, or lead quality, it is usually worth a conversation.',
+  projectShape: [
+    'A focused internal system that replaces a spreadsheet-heavy workflow',
+    'A client-facing portal, intake flow, or estimator tied to office operations',
+    'An automation layer or integration project that removes repeated admin work',
+  ],
+  timelineGuidance: [
+    'Smaller automation or workflow improvements can move in a couple of weeks.',
+    'Client-facing tools and focused portals depend on flow complexity and any admin requirements.',
+    'Larger business systems are usually scoped and delivered in milestones rather than as one oversized launch.',
+  ],
+  pricingGuidance:
+    'Current service lines start from $1,500+, $2,000+, or $3,000+ depending on whether the work is automation, a client-facing tool, or a larger internal system.',
+  scopingGuidance:
+    'Projects are usually scoped after reviewing the current workflow, the people involved, the business rules, and the first useful phase to build.',
+};
+
+export const engagementModel = [
+  {
+    title: 'Workflow-first discovery',
+    description:
+      'We start with the broken process, the people involved, and the handoffs or reporting gaps creating friction.',
+  },
+  {
+    title: 'Scoped first phase',
+    description:
+      'The project is shaped around the first useful version instead of a vague all-at-once spec that inflates scope.',
+  },
+  {
+    title: 'Milestone-based delivery',
+    description:
+      'Builds move in practical milestones with review points, testing, launch support, and room for follow-up improvements.',
+  },
+];
+
 export const aboutPrinciples = [
   {
     title: 'Direct communication',
@@ -433,6 +532,27 @@ export const contactExpectations = [
   'A reply with follow-up questions or next steps',
   'A recommendation on whether the project is a good fit',
   'A clearer idea of scope before any build starts',
+];
+
+export const nextStepTimeline = [
+  {
+    step: '01',
+    title: 'Reply and fit feedback',
+    description:
+      'You can expect a response within 24 hours with follow-up questions, fit feedback, or a recommended next step.',
+  },
+  {
+    step: '02',
+    title: 'Workflow review',
+    description:
+      'If the project looks promising, we clarify the workflow, users, constraints, and the most useful first phase.',
+  },
+  {
+    step: '03',
+    title: 'Scope and delivery direction',
+    description:
+      'Before build starts, you get a clear recommendation on scope, pricing direction, and how the work would be delivered.',
+  },
 ];
 
 export const testimonials: Testimonial[] = [
@@ -477,6 +597,49 @@ export const testimonials: Testimonial[] = [
       'Clear scope and timelines',
       'Decisions tied to practical business value',
     ],
+  },
+];
+
+export const faqItems = [
+  {
+    question: 'What kinds of projects are the best fit?',
+    answer:
+      'The best fit is work that solves an operational problem clearly: internal systems, admin tools, workflow software, automation, or business websites that support lead flow and delivery. If the project needs to be practical, maintainable, and aligned with real business use, that is usually a strong fit.',
+  },
+  {
+    question: 'Do you work with clients internationally?',
+    answer:
+      'Yes. I work remotely with international clients and keep communication straightforward through clear scope, written updates, and direct access to the builder throughout the project.',
+  },
+  {
+    question: 'How long does a typical project take?',
+    answer:
+      'That depends on scope. Smaller workflow improvements can move in a couple of weeks, while larger systems are usually delivered in milestones. I prefer mapping the first useful phase before expanding the build.',
+  },
+  {
+    question: 'What budget range should a serious client expect?',
+    answer:
+      'Current service lines start from $1,500+, $2,000+, or $3,000+ depending on whether the project is automation, a client-facing tool, or a larger custom system. Final scope depends on workflow complexity, integrations, and business rules.',
+  },
+  {
+    question: 'Can you improve an existing system or website?',
+    answer:
+      'Yes. Not every engagement needs a full rebuild. I can improve an existing website, streamline a workflow, add operational features, or replace the weakest part of a current process with something more reliable.',
+  },
+  {
+    question: 'How do you keep systems maintainable?',
+    answer:
+      'I keep the architecture straightforward, separate business logic cleanly, avoid unnecessary dependencies, and build around the actual workflow instead of overcomplicating the stack. That reduces technical debt and makes future updates easier.',
+  },
+  {
+    question: 'What happens after launch?',
+    answer:
+      'I stay available for post-launch fixes, improvements, and practical follow-up support. If the system becomes part of daily operations, that transition period matters, so I plan for it rather than treating launch as the end.',
+  },
+  {
+    question: 'How is payment structured?',
+    answer:
+      'For smaller projects I usually work with an upfront payment and final payment on completion. Larger projects are better handled through milestones. The structure is agreed clearly before work starts so there are no surprises.',
   },
 ];
 

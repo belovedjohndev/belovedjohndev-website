@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 const site =
   process.env.SITE_URL ??
   process.env.CF_PAGES_URL ??
-  'https://belovedjohndev.pages.dev';
+  'https://belovedjohndev.com';
 
 export default defineConfig({
   site,

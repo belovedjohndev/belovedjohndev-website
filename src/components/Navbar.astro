@@ -1,4 +1,6 @@
 ---
+import { ctaLabels } from '../data/siteContent';
+
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -50,7 +52,7 @@ const showContactCta = !isActive('/contact');
       ))}
       {showContactCta && (
         <li class="nav-cta-item">
-          <a href="/contact" class="nav-cta">Discuss Your System</a>
+          <a href="/contact" class="nav-cta">{ctaLabels.primary}</a>
         </li>
       )}
     </ul>

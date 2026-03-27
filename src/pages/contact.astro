@@ -3,12 +3,20 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/ui/Button.astro';
-import { contactChecklist, contactExpectations, contactLinks } from '../data/siteContent';
+import {
+  contactChecklist,
+  contactExpectations,
+  contactLinks,
+  ctaLabels,
+  idealClients,
+  nextStepTimeline,
+  notIdealClients,
+} from '../data/siteContent';
 ---
 
 <MainLayout
   title="Contact | Beloved John Dev"
-  description="Start a project conversation about business systems, client portals, estimator tools, or automation."
+  description="Start a project conversation about business systems, client portals, estimator tools, or automation work."
   canonical="/contact"
   ogImage="/og/contact.svg"
   ogImageAlt="Beloved John Dev contact page share image"
@@ -16,13 +24,21 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   <Navbar slot="navbar" />
 
   <section class="page-hero">
-    <div class="container page-hero__content">
-      <p class="eyebrow">Contact</p>
-      <h1>Start With the Problem You Need the System to Solve</h1>
-      <p class="page-hero__lead">
-        You do not need a perfect technical brief. A clear description of the broken process,
-        spreadsheet pain, or manual handoff is enough to begin.
-      </p>
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Contact</p>
+        <h1>Start with the workflow problem you need solved</h1>
+        <p class="page-hero__lead">
+          You do not need a polished technical brief. A clear description of the broken process, spreadsheet pain,
+          weak inquiry flow, or manual handoff is enough to start a useful project conversation.
+        </p>
+      </div>
+
+      <aside class="hero-panel">
+        <p class="hero-panel__label">Good to know</p>
+        <p>I typically reply within 24 hours with fit feedback, follow-up questions, or a recommended next step.</p>
+        <p>This is best for operationally serious projects, not brochure-site redesign requests.</p>
+      </aside>
     </div>
   </section>
 
@@ -30,9 +46,10 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     <div class="container contact-grid">
       <article class="panel panel--form">
         <p class="eyebrow eyebrow--small">Project brief</p>
-        <h2>Send a Structured Project Inquiry</h2>
+        <h2>Send a structured inquiry</h2>
         <p class="panel-note">
-          This form is designed to make the first message more useful. It helps you describe the workflow problem clearly before we talk about scope.
+          This form is designed to make the first message more useful. It helps qualify the project around workflow,
+          budget direction, and business outcomes before we talk about implementation details.
         </p>
 
         <form class="project-form" id="project-form">
@@ -53,7 +70,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
             </label>
 
             <label class="form-field">
-              <span>Service needed</span>
+              <span>Service line</span>
               <select name="service" required>
                 <option value="">Select one</option>
                 <option>Custom Business System</option>
@@ -64,7 +81,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
             </label>
 
             <label class="form-field">
-              <span>Budget range</span>
+              <span>Budget direction</span>
               <select name="budget" required>
                 <option value="">Select one</option>
                 <option>$1,500 to $3,000</option>
@@ -79,10 +96,10 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
               <span>Timeline</span>
               <select name="timeline" required>
                 <option value="">Select one</option>
-                <option>As soon as possible</option>
+                <option>As soon as practical</option>
                 <option>Within 2 to 4 weeks</option>
                 <option>Within 1 to 2 months</option>
-                <option>Flexible</option>
+                <option>Flexible / needs scoping</option>
               </select>
             </label>
           </div>
@@ -108,10 +125,10 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
           </label>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Send Brief on WhatsApp</button>
-            <button type="button" class="btn btn-dark" id="copy-brief-btn">Copy Brief</button>
+            <button type="submit" class="btn btn-primary">{ctaLabels.workflow} on WhatsApp</button>
+            <button type="button" class="btn btn-dark" id="copy-brief-btn">Copy brief</button>
             <a href={contactLinks.telegram} class="btn btn-dark" target="_blank" rel="noopener">Open Telegram</a>
-            <a href={contactLinks.mailto} class="btn btn-dark">Email Support</a>
+            <a href={contactLinks.mailto} class="btn btn-dark">Email support</a>
           </div>
 
           <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -119,23 +136,24 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
       </article>
 
       <article class="panel">
-        <p class="eyebrow eyebrow--small">Direct contact</p>
-        <h2>Reach Out on the Channel You Prefer</h2>
-        <div class="contact-actions">
-          <Button href={contactLinks.whatsapp} variant="dark">Start on WhatsApp</Button>
-          <Button href={contactLinks.telegram} variant="dark">Message on Telegram</Button>
-        </div>
-        <p class="panel-note">
-          Email: <a href={contactLinks.mailto}>{contactLinks.email}</a>
-        </p>
-        <p class="panel-note">
-          I typically reply within 24 hours with next steps, fit feedback, or follow-up questions.
-        </p>
+        <p class="eyebrow eyebrow--small">Best fit</p>
+        <h2>Clients this is built for</h2>
+        <ul class="check-list">
+          {idealClients.slice(0, 5).map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="panel panel--muted">
+        <p class="eyebrow eyebrow--small">Not a fit</p>
+        <h2>Projects I am deliberately not positioning around</h2>
+        <ul class="check-list">
+          {notIdealClients.map((item) => <li>{item}</li>)}
+        </ul>
       </article>
 
       <article class="panel">
         <p class="eyebrow eyebrow--small">Helpful details</p>
-        <h2>What to Include in Your First Message</h2>
+        <h2>What to include in the first message</h2>
         <ul class="check-list">
           {contactChecklist.map((item) => <li>{item}</li>)}
         </ul>
@@ -147,25 +165,29 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     <div class="container split-grid">
       <article class="panel">
         <p class="eyebrow eyebrow--small">What happens next</p>
-        <h2>What You Can Expect After Contacting Me</h2>
-        <ul class="check-list">
-          {contactExpectations.map((item) => <li>{item}</li>)}
-        </ul>
-        <p class="panel-note">
-          If pricing is a concern, I can usually tell you early whether the project fits the service ranges shown on the services page or needs a smaller first phase.
-        </p>
+        <h2>After you reach out</h2>
+        <div class="timeline-list">
+          {nextStepTimeline.map((item) => (
+            <article class="timeline-item">
+              <p class="timeline-item__step">{item.step}</p>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </article>
 
       <article class="panel">
-        <p class="eyebrow eyebrow--small">Focused offer</p>
-        <h2>Want a Faster Starting Point?</h2>
-        <p>
-          The home service estimator offer is already packaged as a focused landing page and demo.
-          If your business needs better website lead qualification, that is the fastest page to review.
-        </p>
+        <p class="eyebrow eyebrow--small">Response expectations</p>
+        <h2>What the first conversation should give you</h2>
+        <ul class="check-list">
+          {contactExpectations.map((item) => <li>{item}</li>)}
+        </ul>
         <div class="contact-actions">
-          <Button href="/home-service-estimator" variant="primary">View Estimator Offer</Button>
-          <Button href="/case-studies" variant="dark">See More Case Studies</Button>
+          <Button href="/services" variant="dark">Review service lines</Button>
+          <Button href="/case-studies" variant="primary">{ctaLabels.secondary}</Button>
         </div>
       </article>
     </div>
@@ -186,20 +208,39 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     background-size: cover;
   }
 
+  .hero-grid,
+  .contact-grid,
+  .split-grid,
+  .form-grid {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.72fr);
+    align-items: start;
+  }
+
   .page-hero__content {
     max-width: 820px;
   }
 
-  .eyebrow {
+  .eyebrow,
+  .hero-panel__label,
+  .timeline-item__step {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-sm);
   }
 
-  .eyebrow--small {
+  .eyebrow,
+  .hero-panel__label {
+    color: var(--color-accent);
+  }
+
+  .eyebrow--small,
+  .timeline-item__step {
     color: var(--color-primary);
   }
 
@@ -208,32 +249,47 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   }
 
   .page-hero__lead,
+  .hero-panel p,
   .panel p,
-  .panel-note {
+  .panel-note,
+  .timeline-item p,
+  .check-list li {
     line-height: 1.75;
   }
 
-  .page-hero__lead {
+  .page-hero__lead,
+  .hero-panel p {
     color: rgba(255, 255, 255, 0.92);
   }
 
-  .contact-grid,
-  .split-grid {
-    display: grid;
-    gap: var(--space-lg);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  .hero-panel,
   .panel {
     padding: var(--space-lg);
     border-radius: var(--border-radius);
-    background-color: var(--color-white);
     border: 1px solid rgba(38, 70, 83, 0.08);
     box-shadow: var(--shadow-md);
   }
 
+  .hero-panel {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel {
+    background-color: var(--color-white);
+  }
+
   .panel--form {
     grid-column: 1 / -1;
+  }
+
+  .panel--muted {
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
   }
 
   .section-light {
@@ -256,7 +312,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   .check-list li {
     position: relative;
     padding-left: var(--space-md);
-    line-height: 1.7;
+    color: var(--color-text);
   }
 
   .check-list li::before {
@@ -272,9 +328,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   }
 
   .form-grid {
-    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
     margin-bottom: var(--space-md);
   }
 
@@ -382,15 +436,38 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     font-weight: 500;
   }
 
-  @media (max-width: 768px) {
-    .page-hero {
-      padding: 6rem 0 3rem;
-    }
+  .timeline-list {
+    display: grid;
+    gap: var(--space-md);
+  }
 
+  .timeline-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-sm);
+    align-items: start;
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-light);
+    border: 1px solid rgba(42, 157, 143, 0.12);
+  }
+
+  .timeline-item__step {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
     .contact-grid,
     .split-grid,
     .form-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 6rem 0 3rem;
     }
 
     .contact-actions,
@@ -407,7 +484,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
   const formStatus = document.getElementById('form-status');
   const whatsappBase = 'https://wa.me/855963885424?text=';
 
-  const buildBrief = (formData) => {
+  const buildBrief = (formData: FormData) => {
     const entries = {
       name: formData.get('name')?.toString().trim() ?? '',
       company: formData.get('company')?.toString().trim() ?? '',
@@ -425,8 +502,8 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
       `Name: ${entries.name}`,
       `Company: ${entries.company}`,
       `Email: ${entries.email}`,
-      `Service needed: ${entries.service}`,
-      `Budget range: ${entries.budget}`,
+      `Service line: ${entries.service}`,
+      `Budget direction: ${entries.budget}`,
       `Timeline: ${entries.timeline}`,
       '',
       'Workflow problem:',
@@ -437,7 +514,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     ].join('\n');
   };
 
-  if (projectForm && formStatus) {
+  if (projectForm instanceof HTMLFormElement && formStatus) {
     projectForm.addEventListener('submit', (event) => {
       event.preventDefault();
       const formData = new FormData(projectForm);
@@ -447,7 +524,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
     });
   }
 
-  if (copyBriefBtn && projectForm && formStatus) {
+  if (copyBriefBtn && projectForm instanceof HTMLFormElement && formStatus) {
     copyBriefBtn.addEventListener('click', async () => {
       const formData = new FormData(projectForm);
       const brief = buildBrief(formData);

@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
-import { caseStudies } from '../../data/siteContent';
+import { caseStudies, ctaLabels } from '../../data/siteContent';
 ---
 
 <MainLayout
@@ -23,9 +23,12 @@ import { caseStudies } from '../../data/siteContent';
         Each project is framed around the same questions a serious client asks:
         what was broken, what was built, and what improved.
       </p>
+      <p class="page-hero__lead">
+        Use these as decision support, not just portfolio pieces. They are here to show how the work is scoped and what kind of business value the systems are meant to create.
+      </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">Discuss a Similar Project</Button>
-        <Button href="/services" variant="secondary">View Services</Button>
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/services" variant="secondary">View Service Lines</Button>
       </div>
     </div>
   </section>

@@ -5,7 +5,7 @@ interface Props {
 
 const { type = 'ProfessionalService' } = Astro.props;
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.pages.dev';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': type,
@@ -16,11 +16,55 @@ const structuredData = {
   description:
     'Independent business systems developer building custom business systems, client portals, and automation tools for international clients.',
   areaServed: 'Worldwide',
+  priceRange: '$1,500+',
   serviceType: [
     'Custom business systems',
     'Client portals and estimator tools',
     'Automation and integrations',
   ],
+  knowsAbout: [
+    'Business systems',
+    'Workflow automation',
+    'Client portals',
+    'Estimator tools',
+    'Operations software',
+  ],
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      email: 'support@belovedjohndev.com',
+      contactType: 'sales',
+      areaServed: 'Worldwide',
+      availableLanguage: ['en'],
+    },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Business systems services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Custom Business Systems',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Client Portals and Estimator Tools',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Automation and Integrations',
+        },
+      },
+    ],
+  },
   sameAs: [
     'https://wa.me/855963885424',
     'https://t.me/belovedjohndev',

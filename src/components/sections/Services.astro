@@ -1,45 +1,89 @@
 ---
-import { serviceOffers, supportingCapabilities } from '../../data/siteContent';
+import Button from '../ui/Button.astro';
+import { ctaLabels, serviceOffers, supportingCapabilities } from '../../data/siteContent';
 ---
 
 <section class="services section-padding" id="services">
   <div class="container">
     <div class="section-title">
-      <h2>What You Can Hire Me For</h2>
-      <p>Three focused offers for companies that need better operations, not just a nicer-looking website.</p>
-      <p class="text-muted">
-        This is intentionally not a list of everything I can code. It is a clear offer structure built around the problems I solve best.
+      <p class="section-eyebrow">Service lines</p>
+      <h2>Three focused ways to buy the work</h2>
+      <p>
+        These offers are designed to help serious clients identify the right starting point quickly.
+        They are built around business problems, not a generic list of technologies.
       </p>
     </div>
 
     <div class="services-grid">
       {serviceOffers.map((service) => (
         <article class="service-card">
-          <h3>{service.title}</h3>
-          <p class="service-description">{service.description}</p>
-          <ul class="service-features">
-            {service.includes.map((feature) => <li>{feature}</li>)}
-          </ul>
-          <p class="service-best-for"><strong>Best fit:</strong> {service.bestFor}</p>
+          <div class="service-card__top">
+            <p class="service-card__eyebrow">{service.title}</p>
+            <h3>{service.summary}</h3>
+            <p class="service-card__problem"><strong>Business problem:</strong> {service.problem}</p>
+          </div>
+
+          <div class="service-meta">
+            <div class="service-meta__item">
+              <span class="service-meta__label">Starting at</span>
+              <strong>{service.startingPrice}</strong>
+            </div>
+            <div class="service-meta__item">
+              <span class="service-meta__label">Delivery shape</span>
+              <strong>{service.typicalTimeline}</strong>
+            </div>
+          </div>
+
+          <div class="service-block">
+            <p class="service-block__title">What gets built</p>
+            <ul class="service-list">
+              {service.includes.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="service-block">
+            <p class="service-block__title">Examples</p>
+            <div class="chip-list" role="list">
+              {service.examples.map((item) => (
+                <span class="chip" role="listitem">{item}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="service-footer">
+            <p class="service-best-fit"><strong>Best fit buyer:</strong> {service.bestFor}</p>
+            <div class="service-outcomes">
+              {service.outcomes.map((outcome) => (
+                <span class="service-outcome">{outcome}</span>
+              ))}
+            </div>
+            <p class="service-pricing-note">{service.pricingNote}</p>
+          </div>
         </article>
       ))}
     </div>
 
-    <div class="capabilities-panel">
-      <p class="capabilities-label">Supporting capabilities</p>
-      <div class="capabilities-list" role="list">
-        {supportingCapabilities.map((capability) => (
-          <span class="capability-chip" role="listitem">{capability}</span>
-        ))}
-      </div>
-    </div>
+    <div class="support-grid">
+      <article class="support-card">
+        <p class="service-block__title">Common supporting capabilities</p>
+        <div class="chip-list" role="list">
+          {supportingCapabilities.map((capability) => (
+            <span class="chip chip--muted" role="listitem">{capability}</span>
+          ))}
+        </div>
+      </article>
 
-    <div class="services-cta">
-      <p class="cta-text">Need help deciding which offer best matches the bottleneck in your workflow?</p>
-      <div class="services-cta__actions">
-        <a href="/services" class="btn btn-dark">Explore the Services</a>
-        <a href="/contact" class="btn btn-primary">Discuss Your Workflow</a>
-      </div>
+      <article class="support-card support-card--action">
+        <p class="service-block__title">Need help choosing the right service line?</p>
+        <p>
+          Start with the workflow problem. If you can explain where the friction is, we can usually
+          tell whether the right move is a system, a client-facing tool, or an automation layer.
+        </p>
+        <div class="support-card__actions">
+          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/services" variant="dark">{ctaLabels.services}</Button>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -49,166 +93,190 @@ import { serviceOffers, supportingCapabilities } from '../../data/siteContent';
     background-color: var(--color-white);
   }
 
-  .section-title {
-    text-align: center;
-    margin-bottom: var(--space-2xl);
+  .section-eyebrow,
+  .service-card__eyebrow,
+  .service-block__title,
+  .service-meta__label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .section-title h2 {
-    position: relative;
-    display: inline-block;
-    margin-bottom: var(--space-sm);
-  }
-
-  .section-title h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: var(--color-primary);
-  }
-
-  .section-title p {
-    margin-bottom: var(--space-xs);
+  .section-eyebrow,
+  .service-card__eyebrow,
+  .service-block__title {
+    color: var(--color-primary);
   }
 
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--space-lg);
-    margin-bottom: var(--space-2xl);
+  }
+
+  .service-card,
+  .support-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    box-shadow: var(--shadow-md);
   }
 
   .service-card {
-    background-color: var(--color-white);
-    border-radius: var(--border-radius);
-    padding: var(--space-lg);
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    border: 1px solid var(--color-gray-light);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    gap: var(--space-md);
   }
 
   .service-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0 0 auto 0;
     height: 4px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   }
 
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary);
-  }
-
-  .service-card h3 {
+  .service-card__top h3 {
+    font-size: 1.6rem;
+    line-height: 1.2;
     margin-bottom: var(--space-sm);
-    color: var(--color-dark);
   }
 
-  .service-description {
-    color: var(--color-text-muted);
-    font-size: 0.95rem;
-    margin-bottom: var(--space-md);
-    line-height: 1.6;
-  }
-
-  .service-features {
-    list-style: none;
-    margin-top: var(--space-sm);
-    margin-bottom: var(--space-md);
-    flex-grow: 1;
-  }
-
-  .service-features li {
-    padding: var(--space-xs) 0;
-    padding-left: var(--space-md);
-    position: relative;
+  .service-card__problem,
+  .service-best-fit,
+  .service-pricing-note,
+  .support-card p {
+    line-height: 1.75;
     color: var(--color-text);
-    font-size: 0.9rem;
   }
 
-  .service-features li::before {
+  .service-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .service-meta__item {
+    padding: 0.95rem 1rem;
+    border-radius: var(--border-radius-sm);
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
+    border: 1px solid rgba(42, 157, 143, 0.14);
+  }
+
+  .service-meta__label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--color-primary);
+  }
+
+  .service-meta__item strong {
+    display: block;
+    color: var(--color-dark);
+    line-height: 1.5;
+    font-size: 0.98rem;
+  }
+
+  .service-list {
+    list-style: none;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .service-list li {
+    position: relative;
+    padding-left: var(--space-md);
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .service-list li::before {
     content: '+';
     position: absolute;
     left: 0;
     color: var(--color-primary);
-    font-weight: bold;
-  }
-
-  .service-best-for {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    margin-top: auto;
-    padding-top: var(--space-sm);
-    border-top: 1px solid var(--color-gray-light);
-  }
-
-  .capabilities-panel {
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
-    border: 1px solid rgba(42, 157, 143, 0.15);
-  }
-
-  .capabilities-label {
-    font-size: 0.85rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin-bottom: var(--space-sm);
   }
 
-  .capabilities-list {
+  .chip-list,
+  .service-outcomes,
+  .support-card__actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
   }
 
-  .capability-chip {
+  .chip,
+  .service-outcome {
     display: inline-flex;
     align-items: center;
     padding: 0.45rem 0.85rem;
     border-radius: 999px;
-    background-color: var(--color-white);
-    border: 1px solid rgba(38, 70, 83, 0.08);
-    color: var(--color-dark);
-    font-size: 0.9rem;
-    font-weight: 500;
+    background-color: rgba(42, 157, 143, 0.08);
+    color: var(--color-primary);
+    font-size: 0.88rem;
+    font-weight: 600;
   }
 
-  .services-cta {
-    text-align: center;
+  .chip--muted {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+  }
+
+  .service-footer {
+    margin-top: auto;
+    display: grid;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(38, 70, 83, 0.08);
+  }
+
+  .service-pricing-note {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  .support-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.9fr);
+    gap: var(--space-lg);
     margin-top: var(--space-xl);
   }
 
-  .services-cta__actions {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
+  .support-card--action {
+    background:
+      radial-gradient(circle at top right, rgba(240, 188, 116, 0.12), transparent 30%),
+      linear-gradient(135deg, rgba(16, 32, 51, 0.98), rgba(23, 50, 74, 0.96));
+    color: var(--color-white);
   }
 
-  .cta-text {
-    margin-bottom: var(--space-md);
-    color: var(--color-text-muted);
-    font-size: 1rem;
+  .support-card--action p {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .support-card--action .service-block__title {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 900px) {
+    .support-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {
-    .services-grid {
+    .services-grid,
+    .service-meta {
       grid-template-columns: 1fr;
+    }
+
+    .support-card__actions {
+      flex-direction: column;
+      align-items: stretch;
     }
   }
 </style>

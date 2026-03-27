@@ -3,7 +3,7 @@ interface OgImageOptions {
   title: string;
   description: string;
   footer?: string;
-  chips?: string[];
+  chips?: readonly string[];
 }
 
 const SVG_WIDTH = 1200;

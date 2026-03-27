@@ -1,0 +1,216 @@
+---
+import Button from '../ui/Button.astro';
+import {
+  buyerGuidance,
+  ctaLabels,
+  idealClients,
+  nextStepTimeline,
+  notIdealClients,
+} from '../../data/siteContent';
+---
+
+<section class="buyer-guide section-padding" id="buyer-guide">
+  <div class="container">
+    <div class="section-title">
+      <p class="section-eyebrow">Before you inquire</p>
+      <h2>Buyer guidance for serious projects</h2>
+      <p>{buyerGuidance.intro}</p>
+    </div>
+
+    <div class="buyer-guide__grid">
+      <article class="guide-card">
+        <p class="guide-card__label">Best fit</p>
+        <ul class="check-list">
+          {idealClients.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="guide-card guide-card--muted">
+        <p class="guide-card__label">Not a fit</p>
+        <ul class="check-list">
+          {notIdealClients.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="guide-card">
+        <p class="guide-card__label">Typical project shape</p>
+        <ul class="check-list">
+          {buyerGuidance.projectShape.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="guide-card">
+        <p class="guide-card__label">Timeline guidance</p>
+        <ul class="check-list">
+          {buyerGuidance.timelineGuidance.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+
+    <div class="buyer-guide__bottom">
+      <article class="decision-card decision-card--dark">
+        <p class="guide-card__label guide-card__label--light">Pricing and scoping</p>
+        <h3>How projects are usually scoped</h3>
+        <p>{buyerGuidance.pricingGuidance}</p>
+        <p>{buyerGuidance.scopingGuidance}</p>
+      </article>
+
+      <article class="decision-card">
+        <p class="guide-card__label">What happens after contact</p>
+        <div class="timeline-list">
+          {nextStepTimeline.map((item) => (
+            <div class="timeline-item">
+              <p class="timeline-item__step">{item.step}</p>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="decision-card__actions">
+          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/process" variant="dark">See the delivery process</Button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .buyer-guide {
+    background-color: var(--color-light);
+  }
+
+  .section-eyebrow,
+  .guide-card__label,
+  .timeline-item__step {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .section-eyebrow,
+  .guide-card__label,
+  .timeline-item__step {
+    color: var(--color-primary);
+  }
+
+  .guide-card__label--light {
+    color: var(--color-accent);
+  }
+
+  .buyer-guide__grid,
+  .buyer-guide__bottom {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .buyer-guide__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .buyer-guide__bottom {
+    grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.15fr);
+    margin-top: var(--space-lg);
+  }
+
+  .guide-card,
+  .decision-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    box-shadow: var(--shadow-md);
+  }
+
+  .guide-card--muted {
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
+  }
+
+  .decision-card--dark {
+    background:
+      radial-gradient(circle at top right, rgba(240, 188, 116, 0.12), transparent 28%),
+      linear-gradient(135deg, rgba(16, 32, 51, 0.98), rgba(23, 50, 74, 0.96));
+    color: var(--color-white);
+  }
+
+  .decision-card--dark h3,
+  .decision-card--dark p {
+    color: var(--color-white);
+  }
+
+  .check-list {
+    list-style: none;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .check-list li,
+  .decision-card p {
+    position: relative;
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  .check-list li {
+    padding-left: var(--space-md);
+  }
+
+  .check-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .timeline-list {
+    display: grid;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-sm);
+    align-items: start;
+  }
+
+  .timeline-item__step {
+    margin: 0;
+  }
+
+  .timeline-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .timeline-item p {
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  .decision-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 900px) {
+    .buyer-guide__grid,
+    .buyer-guide__bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .decision-card__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

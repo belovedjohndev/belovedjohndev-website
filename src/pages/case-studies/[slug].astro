@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
-import { caseStudies } from '../../data/siteContent';
+import { caseStudies, ctaLabels } from '../../data/siteContent';
 
 export function getStaticPaths() {
   return caseStudies.map((study) => ({
@@ -33,7 +33,7 @@ const { study } = Astro.props;
         <p class="page-hero__support"><strong>Best fit:</strong> {study.audience}</p>
 
         <div class="hero-actions">
-          <Button href="/contact" variant="primary">Discuss a Similar System</Button>
+          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
           <Button href="/case-studies" variant="secondary">Back to Case Studies</Button>
         </div>
       </div>
@@ -148,8 +148,8 @@ const { study } = Astro.props;
         the smallest useful version of the system.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">Discuss Your Project</Button>
-        <Button href="/services" variant="secondary">View Services</Button>
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/services" variant="secondary">View Service Lines</Button>
       </div>
     </div>
   </section>

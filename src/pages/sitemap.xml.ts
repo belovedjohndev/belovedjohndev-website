@@ -55,8 +55,7 @@ const pages = [
 ] as const;
 
 export const GET: APIRoute = ({ site }) => {
-  const fallbackSite =
-    process.env.SITE_URL ?? process.env.CF_PAGES_URL ?? 'https://belovedjohndev.pages.dev';
+  const fallbackSite = import.meta.env.SITE || 'https://belovedjohndev.com';
   const baseUrl = site ?? new URL(fallbackSite);
   const lastmod = new Date().toISOString().split('T')[0];
 

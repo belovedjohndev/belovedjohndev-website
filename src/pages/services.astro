@@ -2,18 +2,20 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import BuyerGuide from '../components/sections/BuyerGuide.astro';
 import Button from '../components/ui/Button.astro';
 import {
-  idealClients,
-  notIdealClients,
+  ctaLabels,
+  operationalProblemsSolved,
   serviceOffers,
   supportingCapabilities,
+  systemsCommonlyBuilt,
 } from '../data/siteContent';
 ---
 
 <MainLayout
   title="Services | Beloved John Dev"
-  description="Custom business systems, client portals, estimator tools, and automation services for companies with manual workflows."
+  description="Productized service lines for custom business systems, client portals, estimator tools, and automation work."
   canonical="/services"
   ogImage="/og/services.svg"
   ogImageAlt="Beloved John Dev services share image"
@@ -21,116 +23,107 @@ import {
   <Navbar slot="navbar" />
 
   <section class="page-hero">
-    <div class="container page-hero__content">
-      <p class="eyebrow">Services</p>
-      <h1>What You Can Hire Me to Build</h1>
-      <p class="page-hero__lead">
-        The offer is intentionally narrow: custom business systems, client-facing tools,
-        and automation for companies that have outgrown spreadsheets, manual work, and disconnected software.
-      </p>
-      <div class="hero-actions">
-        <Button href="/contact" variant="primary">Discuss Your Workflow</Button>
-        <Button href="/case-studies" variant="secondary">See Case Studies</Button>
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Services</p>
+        <h1>Productized service lines for businesses with real workflow friction</h1>
+        <p class="page-hero__lead">
+          The offer is intentionally narrow: custom business systems, client-facing tools, and automation work
+          for teams that need operational clarity more than another generic website project.
+        </p>
+        <div class="hero-actions">
+          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+        </div>
       </div>
+
+      <aside class="hero-panel">
+        <p class="hero-panel__label">How to use this page</p>
+        <p>
+          Start with the service line that best matches the bottleneck in your workflow. If more than one feels relevant,
+          the right first phase is usually chosen after reviewing the current process and handoffs.
+        </p>
+      </aside>
     </div>
   </section>
 
   <section class="section-padding">
-    <div class="container">
-      <div class="services-intro">
-        <p>
-          Each offer is designed to answer a simple hiring question: what kind of business problem am I solving, and what kind of system am I building to solve it?
-        </p>
-        <p class="services-intro__muted">
-          Pricing starts at the ranges below. Final scope depends on workflow complexity, integrations, and how much business logic needs to be built into the system.
-        </p>
-      </div>
-      <div class="services-grid">
-        {serviceOffers.map((service) => (
-          <article class="service-card">
+    <div class="container services-grid">
+      {serviceOffers.map((service) => (
+        <article class="service-card" id={service.slug}>
+          <div class="service-card__header">
             <p class="eyebrow eyebrow--small">{service.title}</p>
             <h2>{service.summary}</h2>
-            <p class="service-description">{service.description}</p>
+            <p class="service-problem"><strong>Business problem:</strong> {service.problem}</p>
+          </div>
 
-            <div class="pricing-panel">
-              <p class="pricing-panel__label">Starting at</p>
-              <p class="pricing-panel__price">{service.startingPrice}</p>
-              <p class="pricing-panel__note">{service.pricingNote}</p>
-            </div>
+          <div class="service-card__meta">
+            <article class="meta-card">
+              <p class="meta-card__label">Starting at</p>
+              <p class="meta-card__value">{service.startingPrice}</p>
+              <p>{service.pricingNote}</p>
+            </article>
 
-            <div class="service-block">
-              <h3>Common examples</h3>
-              <ul class="check-list">
-                {service.examples.map((item) => <li>{item}</li>)}
-              </ul>
-            </div>
+            <article class="meta-card">
+              <p class="meta-card__label">Typical delivery shape</p>
+              <p>{service.typicalTimeline}</p>
+              <p><strong>Best fit buyer:</strong> {service.bestFor}</p>
+            </article>
+          </div>
 
-            <div class="service-block">
-              <h3>What this can include</h3>
+          <div class="service-card__body">
+            <article class="service-block">
+              <h3>What gets built</h3>
               <ul class="check-list">
                 {service.includes.map((item) => <li>{item}</li>)}
               </ul>
-            </div>
+            </article>
 
-            <div class="service-block">
+            <article class="service-block">
+              <h3>Common examples</h3>
+              <div class="pill-list" role="list">
+                {service.examples.map((item) => (
+                  <span class="pill" role="listitem">{item}</span>
+                ))}
+              </div>
+            </article>
+
+            <article class="service-block">
               <h3>Typical outcomes</h3>
               <div class="pill-list" role="list">
                 {service.outcomes.map((outcome) => (
-                  <span class="pill" role="listitem">{outcome}</span>
+                  <span class="pill pill--dark" role="listitem">{outcome}</span>
                 ))}
               </div>
-            </div>
-
-            <p class="service-best-fit"><strong>Best fit:</strong> {service.bestFor}</p>
-          </article>
-        ))}
-      </div>
+            </article>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
   <section class="section-padding section-light">
-    <div class="container fit-grid">
-      <article class="fit-card">
-        <p class="eyebrow eyebrow--small">Best fit</p>
-        <h2>Clients I Want This Site to Attract</h2>
+    <div class="container capability-grid">
+      <article class="panel">
+        <p class="eyebrow eyebrow--small">Operational problems</p>
+        <h2>Common reasons these projects start</h2>
         <ul class="check-list">
-          {idealClients.map((item) => <li>{item}</li>)}
+          {operationalProblemsSolved.map((item) => <li>{item}</li>)}
         </ul>
       </article>
 
-      <article class="fit-card fit-card--muted">
-        <p class="eyebrow eyebrow--small">Not the focus</p>
-        <h2>Work I Am Deliberately De-Emphasizing</h2>
+      <article class="panel">
+        <p class="eyebrow eyebrow--small">Systems commonly built</p>
+        <h2>Typical shapes of the work</h2>
         <ul class="check-list">
-          {notIdealClients.map((item) => <li>{item}</li>)}
+          {systemsCommonlyBuilt.map((item) => <li>{item}</li>)}
         </ul>
       </article>
     </div>
-  </section>
 
-  <section class="section-padding">
-    <div class="container pricing-note-card">
-      <p class="eyebrow eyebrow--small">Pricing guidance</p>
-      <h2>Why I Show Starting Ranges</h2>
-      <p>
-        The goal is to help serious clients self-qualify early. These are not fixed packages.
-        They are consulting and build engagements shaped around the workflow, the number of users,
-        the integrations involved, and the level of internal complexity.
-      </p>
-      <p>
-        If the business problem is real but the right first version is smaller, I would rather scope
-        a practical first phase than inflate the build.
-      </p>
-    </div>
-  </section>
-
-  <section class="section-padding">
-    <div class="container capabilities-card">
+    <div class="container supporting-card">
       <p class="eyebrow eyebrow--small">Supporting capabilities</p>
-      <h2>Additional Technical Strength Around the Core Offers</h2>
-      <p class="capabilities-copy">
-        These are supporting capabilities that make the main offers more dependable, not separate generic services I am trying to sell on their own.
-      </p>
+      <h2>Technical depth that supports the core offers</h2>
       <div class="pill-list" role="list">
         {supportingCapabilities.map((capability) => (
           <span class="pill pill--dark" role="listitem">{capability}</span>
@@ -139,17 +132,19 @@ import {
     </div>
   </section>
 
+  <BuyerGuide />
+
   <section class="section-padding cta-band">
     <div class="container cta-band__content">
       <p class="eyebrow">Next step</p>
-      <h2>Start With the Workflow Problem, Not the Tech Stack</h2>
+      <h2>Bring the workflow problem first. The service line can be confirmed from there.</h2>
       <p>
-        If you already know the bottleneck, the spreadsheet pain, or the manual handoff that
-        needs fixing, that is enough to start a useful conversation. We can scope the first useful version from there.
+        If you already know where the spreadsheet pain, intake friction, or repetitive admin work is happening,
+        that is enough to start a useful scoping conversation.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">Discuss Your System</Button>
-        <Button href="/home-service-estimator" variant="secondary">View Estimator Offer</Button>
+        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/process" variant="secondary">See the process</Button>
       </div>
     </div>
   </section>
@@ -173,21 +168,62 @@ import {
     padding: 7rem 0 4rem;
   }
 
+  .hero-grid,
+  .capability-grid,
+  .service-card__meta,
+  .service-card__body {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.72fr);
+    align-items: start;
+  }
+
   .page-hero__content,
   .cta-band__content {
     max-width: 820px;
   }
 
-  .eyebrow {
+  .hero-panel,
+  .service-card,
+  .panel,
+  .supporting-card {
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(38, 70, 83, 0.08);
+    box-shadow: var(--shadow-md);
+  }
+
+  .hero-panel {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+  }
+
+  .hero-panel p {
+    margin-bottom: 0;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .eyebrow,
+  .hero-panel__label,
+  .meta-card__label {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-sm);
   }
 
-  .eyebrow--small {
+  .eyebrow,
+  .hero-panel__label {
+    color: var(--color-accent);
+  }
+
+  .eyebrow--small,
+  .meta-card__label {
     color: var(--color-primary);
   }
 
@@ -197,8 +233,16 @@ import {
   }
 
   .page-hero__lead,
-  .cta-band p {
+  .cta-band p,
+  .service-problem,
+  .meta-card p,
+  .service-block li,
+  .panel li {
     line-height: 1.75;
+  }
+
+  .page-hero__lead,
+  .cta-band p {
     color: rgba(255, 255, 255, 0.92);
   }
 
@@ -209,105 +253,43 @@ import {
     margin-top: var(--space-lg);
   }
 
-  .section-light {
-    background-color: var(--color-white);
-  }
-
-  .services-grid,
-  .fit-grid {
-    display: grid;
-    gap: var(--space-lg);
-  }
-
-  .services-intro {
-    max-width: 820px;
-    margin-bottom: var(--space-xl);
-  }
-
-  .services-intro p,
-  .capabilities-copy,
-  .pricing-note-card p {
-    line-height: 1.75;
-    color: var(--color-text);
-  }
-
-  .services-intro__muted {
-    color: var(--color-text-muted);
-  }
-
   .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: grid;
+    gap: var(--space-xl);
   }
 
-  .fit-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .service-card,
-  .fit-card,
-  .capabilities-card,
-  .pricing-note-card {
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
+  .service-card {
     background-color: var(--color-white);
-    border: 1px solid rgba(38, 70, 83, 0.08);
-    box-shadow: var(--shadow-md);
   }
 
-  .pricing-panel {
+  .service-card__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: var(--space-md);
-    padding: var(--space-md);
+  }
+
+  .meta-card {
+    padding: 1rem;
     border-radius: var(--border-radius-sm);
     background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
     border: 1px solid rgba(42, 157, 143, 0.16);
   }
 
-  .pricing-panel__label {
-    margin-bottom: 0.25rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-  }
-
-  .pricing-panel__price {
-    margin-bottom: 0.35rem;
+  .meta-card__value {
     font-size: 1.8rem;
     line-height: 1.2;
     font-weight: 700;
     color: var(--color-dark);
   }
 
-  .pricing-panel__note {
-    margin-bottom: 0;
-    color: var(--color-text);
-    line-height: 1.7;
-    font-size: 0.95rem;
+  .service-card__body {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: var(--space-lg);
   }
 
-  .fit-card--muted {
-    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
-  }
-
-  .service-card h2,
-  .fit-card h2,
-  .capabilities-card h2 {
-    font-size: 1.55rem;
-  }
-
-  .service-description,
-  .service-best-fit {
-    color: var(--color-text);
-    line-height: 1.75;
-  }
-
-  .service-block {
-    margin-top: var(--space-md);
-  }
-
-  .service-block h3 {
-    font-size: 1rem;
+  .service-block h3,
+  .panel h2,
+  .supporting-card h2 {
+    font-size: 1.2rem;
     margin-bottom: var(--space-sm);
   }
 
@@ -320,7 +302,6 @@ import {
   .check-list li {
     position: relative;
     padding-left: var(--space-md);
-    line-height: 1.7;
     color: var(--color-text);
   }
 
@@ -330,6 +311,23 @@ import {
     left: 0;
     color: var(--color-primary);
     font-weight: 700;
+  }
+
+  .section-light {
+    background-color: var(--color-white);
+  }
+
+  .capability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel,
+  .supporting-card {
+    background-color: var(--color-white);
+  }
+
+  .supporting-card {
+    margin-top: var(--space-lg);
   }
 
   .pill-list {
@@ -354,13 +352,18 @@ import {
     color: var(--color-dark);
   }
 
+  @media (max-width: 960px) {
+    .hero-grid,
+    .service-card__meta,
+    .service-card__body,
+    .capability-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 768px) {
     .page-hero {
       padding: 6rem 0 3rem;
-    }
-
-    .fit-grid {
-      grid-template-columns: 1fr;
     }
 
     .hero-actions {
