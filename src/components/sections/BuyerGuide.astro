@@ -6,6 +6,7 @@ import {
   idealClients,
   nextStepTimeline,
   notIdealClients,
+  serviceOffers,
 } from '../../data/siteContent';
 ---
 
@@ -48,11 +49,21 @@ import {
     </div>
 
     <div class="buyer-guide__bottom">
-      <article class="decision-card decision-card--dark">
-        <p class="guide-card__label guide-card__label--light">Pricing and scoping</p>
+      <article class="decision-card decision-card--pricing">
+        <p class="guide-card__label">Pricing and scoping</p>
         <h3>How projects are usually scoped</h3>
-        <p>{buyerGuidance.pricingGuidance}</p>
-        <p>{buyerGuidance.scopingGuidance}</p>
+        <div class="price-list">
+          {serviceOffers.map((offer) => (
+            <div class="price-row">
+              <span>{offer.title}</span>
+              <strong>{offer.startingPrice}</strong>
+            </div>
+          ))}
+        </div>
+        <ul class="scope-list">
+          <li>{buyerGuidance.scopingGuidance}</li>
+          <li>Smaller first phases are usually better than over-scoping a first release.</li>
+        </ul>
       </article>
 
       <article class="decision-card">
@@ -97,10 +108,6 @@ import {
     color: var(--color-primary);
   }
 
-  .guide-card__label--light {
-    color: var(--color-accent);
-  }
-
   .buyer-guide__grid,
   .buyer-guide__bottom {
     display: grid;
@@ -133,16 +140,8 @@ import {
     background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
   }
 
-  .decision-card--dark {
-    background:
-      radial-gradient(circle at top right, rgba(240, 188, 116, 0.12), transparent 28%),
-      linear-gradient(135deg, rgba(16, 32, 51, 0.98), rgba(23, 50, 74, 0.96));
-    color: var(--color-white);
-  }
-
-  .decision-card--dark h3,
-  .decision-card--dark p {
-    color: var(--color-white);
+  .decision-card--pricing {
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.1), rgba(240, 188, 116, 0.1));
   }
 
   .check-list {
@@ -174,6 +173,61 @@ import {
     display: grid;
     gap: var(--space-md);
     margin-top: var(--space-sm);
+  }
+
+  .price-list,
+  .scope-list {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .price-list {
+    margin-top: var(--space-md);
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    align-items: center;
+    padding: 0.9rem 1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(42, 157, 143, 0.14);
+  }
+
+  .price-row span,
+  .price-row strong {
+    color: var(--color-dark);
+  }
+
+  .price-row span {
+    line-height: 1.4;
+  }
+
+  .price-row strong {
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+
+  .scope-list {
+    list-style: none;
+    margin-top: var(--space-md);
+  }
+
+  .scope-list li {
+    position: relative;
+    padding-left: var(--space-md);
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  .scope-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
   }
 
   .timeline-item {

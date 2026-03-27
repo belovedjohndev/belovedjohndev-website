@@ -4,20 +4,18 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/sections/Hero.astro';
 import Services from '../components/sections/Services.astro';
-import BuyerGuide from '../components/sections/BuyerGuide.astro';
 import Projects from '../components/sections/Projects.astro';
-import WhyMe from '../components/sections/WhyMe.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
-import FAQ from '../components/sections/FAQ.astro';
 import ContactCTA from '../components/sections/ContactCTA.astro';
 import Button from '../components/ui/Button.astro';
 import {
+  buyerGuidance,
   ctaLabels,
-  engagementModel,
+  idealClients,
   insights,
-  operationalProblemsSolved,
+  nextStepTimeline,
   processSteps,
-  systemsCommonlyBuilt,
+  serviceOffers,
 } from '../data/siteContent';
 ---
 
@@ -31,46 +29,63 @@ import {
 
   <Hero />
 
-  <section class="diagnostic section-padding">
+  <section class="qualification-preview section-padding">
     <div class="container">
       <div class="section-title">
-        <p class="section-eyebrow">Operational focus</p>
-        <h2>This business is built around workflow problems, not generic web projects</h2>
+        <p class="section-eyebrow">Quick qualification</p>
+        <h2>The homepage version of what serious buyers usually need to know</h2>
         <p>
-          The strongest fit is when the business already feels the cost of manual handling, scattered data,
-          weak lead qualification, or tools that no longer reflect how the team actually works.
+          The full detail lives on the services, process, and contact pages. This section is here to make the first decision easier without turning the homepage into the whole site.
         </p>
       </div>
 
-      <div class="diagnostic-grid">
-        <article class="diagnostic-card">
-          <p class="diagnostic-card__label">Operational problems I solve</p>
+      <div class="qualification-grid">
+        <article class="qualification-card">
+          <p class="qualification-card__label">Best fit</p>
           <ul class="check-list">
-            {operationalProblemsSolved.map((item) => <li>{item}</li>)}
+            {idealClients.slice(0, 4).map((item) => <li>{item}</li>)}
           </ul>
         </article>
 
-        <article class="diagnostic-card">
-          <p class="diagnostic-card__label">Systems I commonly build</p>
-          <ul class="check-list">
-            {systemsCommonlyBuilt.map((item) => <li>{item}</li>)}
-          </ul>
+        <article class="qualification-card">
+          <p class="qualification-card__label">Typical project shape</p>
+          <div class="stack-list">
+            {buyerGuidance.projectShape.map((item) => (
+              <p class="stack-list__item">{item}</p>
+            ))}
+          </div>
         </article>
-      </div>
 
-      <div class="engagement-grid">
-        {engagementModel.map((item) => (
-          <article class="engagement-card">
-            <p class="engagement-card__title">{item.title}</p>
-            <p>{item.description}</p>
-          </article>
-        ))}
+        <article class="qualification-card qualification-card--accent">
+          <p class="qualification-card__label">Starting ranges</p>
+          <div class="price-list">
+            {serviceOffers.map((offer) => (
+              <div class="price-row">
+                <span>{offer.title}</span>
+                <strong>{offer.startingPrice}</strong>
+              </div>
+            ))}
+          </div>
+          <p class="qualification-note">Final scope depends on workflow complexity, integrations, and business rules.</p>
+        </article>
+
+        <article class="qualification-card">
+          <p class="qualification-card__label">After inquiry</p>
+          <div class="timeline-mini">
+            {nextStepTimeline.map((item) => (
+              <div class="timeline-mini__item">
+                <span>{item.step}</span>
+                <p>{item.title}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/contact" class="qualification-link">See the full contact process</a>
+        </article>
       </div>
     </div>
   </section>
 
   <Services />
-  <BuyerGuide />
   <Projects />
 
   <section class="process-preview section-padding">
@@ -124,9 +139,7 @@ import {
     </div>
   </section>
 
-  <WhyMe />
   <Testimonials />
-  <FAQ />
   <ContactCTA />
 
   <Footer slot="footer" />
@@ -134,8 +147,7 @@ import {
 
 <style>
   .section-eyebrow,
-  .diagnostic-card__label,
-  .engagement-card__title,
+  .qualification-card__label,
   .process-card__number,
   .insight-preview-card__meta {
     font-size: 0.82rem;
@@ -145,32 +157,25 @@ import {
   }
 
   .section-eyebrow,
-  .diagnostic-card__label,
-  .engagement-card__title,
+  .qualification-card__label,
   .process-card__number,
   .insight-preview-card__meta {
     color: var(--color-primary);
   }
 
-  .diagnostic {
+  .qualification-preview {
     background-color: var(--color-white);
   }
 
-  .diagnostic-grid,
-  .engagement-grid,
+  .qualification-grid,
   .process-grid,
   .insights-preview__grid {
     display: grid;
     gap: var(--space-lg);
   }
 
-  .diagnostic-grid {
+  .qualification-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .engagement-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: var(--space-lg);
   }
 
   .process-grid {
@@ -185,8 +190,7 @@ import {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 
-  .diagnostic-card,
-  .engagement-card,
+  .qualification-card,
   .process-card,
   .insight-preview-card {
     padding: var(--space-lg);
@@ -196,7 +200,7 @@ import {
     box-shadow: var(--shadow-md);
   }
 
-  .engagement-card {
+  .qualification-card--accent {
     background: linear-gradient(135deg, rgba(42, 157, 143, 0.08), rgba(38, 70, 83, 0.04));
   }
 
@@ -207,11 +211,75 @@ import {
   }
 
   .check-list li,
-  .engagement-card p,
+  .stack-list__item,
+  .qualification-note,
   .process-card p,
   .insight-preview-card p {
     line-height: 1.75;
     color: var(--color-text);
+  }
+
+  .stack-list {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .stack-list__item {
+    margin-bottom: 0;
+    padding: 0.9rem 1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-light);
+    border: 1px solid rgba(42, 157, 143, 0.08);
+  }
+
+  .price-list,
+  .timeline-mini {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .price-row,
+  .timeline-mini__item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    align-items: center;
+    padding: 0.8rem 0.95rem;
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(42, 157, 143, 0.12);
+  }
+
+  .price-row span,
+  .timeline-mini__item p {
+    margin-bottom: 0;
+    color: var(--color-text);
+    line-height: 1.45;
+  }
+
+  .price-row strong {
+    color: var(--color-dark);
+    white-space: nowrap;
+  }
+
+  .timeline-mini__item span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .qualification-link {
+    display: inline-flex;
+    margin-top: var(--space-md);
+    font-weight: 600;
   }
 
   .check-list li {
@@ -240,8 +308,7 @@ import {
   }
 
   @media (max-width: 900px) {
-    .diagnostic-grid,
-    .engagement-grid {
+    .qualification-grid {
       grid-template-columns: 1fr;
     }
   }
