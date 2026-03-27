@@ -3,8 +3,9 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/ui/Button.astro';
+import { contactLinks } from '../data/siteContent';
 
-const demoUrl = 'https://multi-tenant-estimate-engine.vercel.app/';
+const demoUrl = contactLinks.demo;
 
 const industries = [
   'HVAC',
@@ -340,7 +341,7 @@ const valuePoints = [
       </p>
       <div class="final-cta__actions">
         <Button href={demoUrl} variant="primary">View Demo</Button>
-        <Button href="https://wa.me/855963885424?text=Hi%2C%20I'd%20like%20to%20discuss%20the%20home%20service%20estimator%20offer." variant="secondary">
+        <Button href={contactLinks.estimator} variant="secondary">
           Start a Project Conversation
         </Button>
       </div>

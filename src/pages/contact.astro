@@ -111,6 +111,7 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
             <button type="submit" class="btn btn-primary">Send Brief on WhatsApp</button>
             <button type="button" class="btn btn-dark" id="copy-brief-btn">Copy Brief</button>
             <a href={contactLinks.telegram} class="btn btn-dark" target="_blank" rel="noopener">Open Telegram</a>
+            <a href={contactLinks.mailto} class="btn btn-dark">Email Support</a>
           </div>
 
           <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -124,6 +125,9 @@ import { contactChecklist, contactExpectations, contactLinks } from '../data/sit
           <Button href={contactLinks.whatsapp} variant="dark">Start on WhatsApp</Button>
           <Button href={contactLinks.telegram} variant="dark">Message on Telegram</Button>
         </div>
+        <p class="panel-note">
+          Email: <a href={contactLinks.mailto}>{contactLinks.email}</a>
+        </p>
         <p class="panel-note">
           I typically reply within 24 hours with next steps, fit feedback, or follow-up questions.
         </p>
