@@ -563,9 +563,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     image: '/assets/images/ict-get-my-estimate.png',
     alt: 'ICT HVAC estimate page showing the live get my estimate experience',
-    referenceLabel: 'Live site',
-    referenceHref: 'https://icthvac.com/',
-    referenceText: 'View the live client website',
+    referenceLabel: 'Live demo',
+    referenceHref: 'https://demo.belovedjohndev.com/',
+    referenceText: 'Open the live estimate demo',
     referenceExternal: true,
   },
   {
