@@ -24,10 +24,27 @@ import { ctaLabels, heroProofPoints, sitePositioning } from '../../data/siteCont
 
 <style>
   .home-hero {
-    padding: 8.5rem 0 5.75rem;
+    position: relative;
+    overflow: hidden;
+    padding: 8.75rem 0 5.75rem;
+    background:
+      linear-gradient(135deg, rgba(7, 18, 31, 0.9), rgba(12, 34, 48, 0.8)),
+      url('/assets/images/hero-bg.png') center / cover no-repeat;
+  }
+
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at top left, rgba(216, 161, 93, 0.2), transparent 24%),
+      linear-gradient(180deg, rgba(7, 18, 31, 0.12), rgba(7, 18, 31, 0.36));
+    pointer-events: none;
   }
 
   .home-hero .page-hero__content {
+    position: relative;
+    z-index: 1;
     max-width: 940px;
   }
 
@@ -53,7 +70,7 @@ import { ctaLabels, heroProofPoints, sitePositioning } from '../../data/siteCont
 
   @media (max-width: 768px) {
     .home-hero {
-      padding: 7rem 0 4.25rem;
+      padding: 7.5rem 0 4.25rem;
     }
   }
 </style>
