@@ -1,6 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
-import { caseStudies, ctaLabels } from '../../data/siteContent';
+import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
 ---
 
 <section class="projects section-padding" id="projects">
@@ -24,6 +24,7 @@ import { caseStudies, ctaLabels } from '../../data/siteContent';
               width="600"
               height="400"
               loading="lazy"
+              decoding="async"
               class="project-image"
             />
           </div>
@@ -91,7 +92,7 @@ import { caseStudies, ctaLabels } from '../../data/siteContent';
 
     <div class="projects-footer">
       <Button href="/case-studies" variant="dark">{ctaLabels.secondary}</Button>
-      <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+      <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
     </div>
   </div>
 </section>

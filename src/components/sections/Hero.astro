@@ -1,6 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
-import { ctaLabels, heroProofPoints, sitePositioning } from '../../data/siteContent';
+import { ctaLabels, heroProofPoints, primaryCtaHref, sitePositioning } from '../../data/siteContent';
 ---
 
 <section class="page-hero home-hero">
@@ -10,7 +10,7 @@ import { ctaLabels, heroProofPoints, sitePositioning } from '../../data/siteCont
     <p class="page-hero__lead">{sitePositioning.lead}</p>
 
     <div class="hero-actions">
-      <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+      <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
       <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
     </div>
 
@@ -29,7 +29,11 @@ import { ctaLabels, heroProofPoints, sitePositioning } from '../../data/siteCont
     padding: 8.75rem 0 5.75rem;
     background:
       linear-gradient(135deg, rgba(7, 18, 31, 0.9), rgba(12, 34, 48, 0.8)),
-      url('/assets/images/hero-bg.png?v=20260328b') center / cover no-repeat;
+      image-set(
+        url('/assets/images/hero-bg.webp') type('image/webp'),
+        url('/assets/images/hero-bg.png') type('image/png')
+      )
+        center / cover no-repeat;
   }
 
   .home-hero::before {

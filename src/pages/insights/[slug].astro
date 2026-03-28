@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
-import { ctaLabels, insights } from '../../data/siteContent';
+import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
 
 export function getStaticPaths() {
   return insights.map((article) => ({
@@ -25,14 +25,14 @@ const { article } = Astro.props;
   <Navbar slot="navbar" />
 
   <article>
-    <section class="page-hero">
+    <section class="page-hero page-hero--insights">
       <div class="container page-hero__content">
         <p class="eyebrow">{article.category}</p>
         <h1>{article.title}</h1>
         <p class="page-hero__lead">{article.summary}</p>
         <p class="page-hero__lead"><strong>{article.readingTime}</strong> | {article.audience}</p>
         <div class="hero-actions">
-          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
           <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
         </div>
       </div>
@@ -73,7 +73,7 @@ const { article } = Astro.props;
           The common thread is that the software should remove friction instead of adding more process around it.
         </p>
         <div class="hero-actions">
-          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
           <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
         </div>
       </div>

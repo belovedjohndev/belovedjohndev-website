@@ -4,7 +4,7 @@ import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 import Button from '../ui/Button.astro';
 import type { ServicePage, CaseStudy } from '../../data/siteContent';
-import { ctaLabels } from '../../data/siteContent';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
 
 interface Props {
   service: ServicePage;
@@ -23,14 +23,14 @@ const { service, relatedCaseStudy } = Astro.props;
 >
   <Navbar slot="navbar" />
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--services">
     <div class="container hero-grid">
       <div class="page-hero__content">
         <p class="eyebrow">Services</p>
         <h1>{service.heroTitle}</h1>
         <p class="page-hero__lead">{service.heroSupportingCopy}</p>
         <div class="hero-actions">
-          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
           <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
         </div>
       </div>
@@ -132,7 +132,7 @@ const { service, relatedCaseStudy } = Astro.props;
       <h2>{service.ctaTitle}</h2>
       <p>{service.ctaCopy}</p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>

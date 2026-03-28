@@ -1,6 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
-import { contactLinks, ctaLabels, nextStepTimeline } from '../../data/siteContent';
+import { contactLinks, ctaLabels, nextStepTimeline, primaryCtaHref } from '../../data/siteContent';
 ---
 
 <section class="contact-cta section-padding" id="contact">
@@ -14,7 +14,7 @@ import { contactLinks, ctaLabels, nextStepTimeline } from '../../data/siteConten
       </p>
 
       <div class="contact-cta__actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
 

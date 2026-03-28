@@ -3,7 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/ui/Button.astro';
-import { ctaLabels, processSteps } from '../data/siteContent';
+import { ctaLabels, primaryCtaHref, processSteps } from '../data/siteContent';
 ---
 
 <MainLayout
@@ -15,7 +15,7 @@ import { ctaLabels, processSteps } from '../data/siteContent';
 >
   <Navbar slot="navbar" />
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--process">
     <div class="container page-hero__content">
       <p class="eyebrow">Process</p>
       <h1>A practical four-step process for buying custom software without unnecessary friction</h1>
@@ -24,7 +24,7 @@ import { ctaLabels, processSteps } from '../data/siteContent';
         deliver software that improves the workflow instead of adding more overhead.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
@@ -75,7 +75,7 @@ import { ctaLabels, processSteps } from '../data/siteContent';
         roles, and bottleneck is usually enough to define the first useful phase.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>

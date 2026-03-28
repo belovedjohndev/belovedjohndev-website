@@ -6,6 +6,7 @@ import {
   idealClients,
   nextStepTimeline,
   notIdealClients,
+  primaryCtaHref,
   serviceOffers,
 } from '../../data/siteContent';
 ---
@@ -80,7 +81,7 @@ import {
           ))}
         </div>
         <div class="decision-card__actions">
-          <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
           <Button href="/process" variant="dark">See the delivery process</Button>
         </div>
       </article>

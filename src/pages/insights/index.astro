@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
-import { ctaLabels, insights } from '../../data/siteContent';
+import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
 ---
 
 <MainLayout
@@ -15,7 +15,7 @@ import { ctaLabels, insights } from '../../data/siteContent';
 >
   <Navbar slot="navbar" />
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--insights">
     <div class="container page-hero__content">
       <p class="eyebrow">Insights</p>
       <h1>Short writing on workflow friction, custom systems, and better buying decisions</h1>
@@ -24,7 +24,7 @@ import { ctaLabels, insights } from '../../data/siteContent';
         from, what software should actually improve, and how to choose the right first move.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>

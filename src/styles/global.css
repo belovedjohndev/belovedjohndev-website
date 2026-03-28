@@ -153,10 +153,73 @@ img {
 }
 
 .page-hero {
+  --page-hero-overlay-start: rgba(7, 18, 31, 0.9);
+  --page-hero-overlay-end: rgba(12, 34, 48, 0.84);
+  --page-hero-accent-primary: rgba(216, 161, 93, 0.18);
+  --page-hero-accent-secondary: rgba(108, 145, 188, 0.14);
+  --page-hero-bg-position: center;
+  --page-hero-glow-position: top right;
+  --page-hero-secondary-position: bottom left;
   background:
-    linear-gradient(135deg, rgba(7, 18, 31, 0.9), rgba(12, 34, 48, 0.84)),
-    radial-gradient(circle at top right, rgba(216, 161, 93, 0.18), transparent 24%),
-    url('/assets/images/hero-bg.png?v=20260328b') center / cover no-repeat;
+    linear-gradient(135deg, var(--page-hero-overlay-start), var(--page-hero-overlay-end)),
+    radial-gradient(circle at var(--page-hero-glow-position), var(--page-hero-accent-primary), transparent 24%),
+    radial-gradient(circle at var(--page-hero-secondary-position), var(--page-hero-accent-secondary), transparent 28%),
+    image-set(
+      url('/assets/images/hero-bg.webp') type('image/webp'),
+      url('/assets/images/hero-bg.png') type('image/png')
+    )
+      var(--page-hero-bg-position) / cover no-repeat;
+}
+
+.page-hero--services {
+  --page-hero-overlay-start: rgba(6, 19, 33, 0.92);
+  --page-hero-overlay-end: rgba(13, 43, 58, 0.86);
+  --page-hero-accent-primary: rgba(214, 170, 101, 0.2);
+  --page-hero-accent-secondary: rgba(92, 151, 198, 0.16);
+  --page-hero-bg-position: right center;
+}
+
+.page-hero--case-studies {
+  --page-hero-overlay-start: rgba(10, 21, 35, 0.9);
+  --page-hero-overlay-end: rgba(28, 39, 54, 0.82);
+  --page-hero-accent-primary: rgba(216, 161, 93, 0.22);
+  --page-hero-accent-secondary: rgba(120, 146, 172, 0.16);
+  --page-hero-bg-position: center;
+  --page-hero-glow-position: center right;
+}
+
+.page-hero--process {
+  --page-hero-overlay-start: rgba(6, 23, 34, 0.92);
+  --page-hero-overlay-end: rgba(13, 55, 62, 0.82);
+  --page-hero-accent-primary: rgba(93, 190, 197, 0.15);
+  --page-hero-accent-secondary: rgba(216, 161, 93, 0.16);
+  --page-hero-bg-position: left center;
+}
+
+.page-hero--about {
+  --page-hero-overlay-start: rgba(14, 23, 35, 0.9);
+  --page-hero-overlay-end: rgba(31, 41, 52, 0.82);
+  --page-hero-accent-primary: rgba(205, 156, 103, 0.18);
+  --page-hero-accent-secondary: rgba(145, 159, 176, 0.16);
+  --page-hero-bg-position: center right;
+  --page-hero-glow-position: top left;
+}
+
+.page-hero--insights {
+  --page-hero-overlay-start: rgba(7, 21, 34, 0.92);
+  --page-hero-overlay-end: rgba(18, 45, 58, 0.84);
+  --page-hero-accent-primary: rgba(112, 169, 214, 0.16);
+  --page-hero-accent-secondary: rgba(216, 161, 93, 0.14);
+  --page-hero-bg-position: top right;
+}
+
+.page-hero--contact {
+  --page-hero-overlay-start: rgba(9, 24, 38, 0.92);
+  --page-hero-overlay-end: rgba(14, 41, 56, 0.82);
+  --page-hero-accent-primary: rgba(216, 161, 93, 0.22);
+  --page-hero-accent-secondary: rgba(96, 174, 183, 0.14);
+  --page-hero-bg-position: center right;
+  --page-hero-secondary-position: center left;
 }
 
 .cta-frame {

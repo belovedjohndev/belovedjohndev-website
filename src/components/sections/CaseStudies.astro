@@ -1,11 +1,34 @@
 ---
 import Button from '../ui/Button.astro';
 import { caseStudies, featuredCaseStudySlugs } from '../../data/siteContent';
+import { getWebpVariant } from '../../utils/images';
 
 const featuredStudySet = new Set(featuredCaseStudySlugs);
 const featuredStudies = caseStudies.filter((study) =>
   featuredStudySet.has(study.slug as (typeof featuredCaseStudySlugs)[number])
 );
+
+const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
+  const badges = [study.homepageLabel ?? study.serviceLine];
+
+  if (study.referenceExternal) {
+    badges.push('Live client sample');
+  } else if (study.confidential) {
+    badges.push('Private system');
+  } else {
+    badges.push('Case study');
+  }
+
+  if (study.projectType.toLowerCase().includes('internal')) {
+    badges.push('Operations workflow');
+  } else if (study.projectType.toLowerCase().includes('estimate')) {
+    badges.push('Lead qualification');
+  } else {
+    badges.push('Workflow redesign');
+  }
+
+  return badges;
+};
 ---
 
 <section class="section-padding proof-band">
@@ -19,12 +42,27 @@ const featuredStudies = caseStudies.filter((study) =>
       {featuredStudies.map((study) => (
         <article class="surface-card study-card">
           <div class="study-card__media">
-            <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" />
+            <div class="study-card__badge-row" aria-hidden="true">
+              <span class="study-card__badge study-card__badge--primary">{study.serviceLine}</span>
+              <span class="study-card__badge">
+                {study.referenceExternal ? 'Live sample' : study.confidential ? 'Private build' : 'Case study'}
+              </span>
+            </div>
+            <picture>
+              <source srcset={getWebpVariant(study.image)} type="image/webp" />
+              <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="study-card__body">
             <p class="eyebrow">{study.homepageLabel ?? study.serviceLine}</p>
             <h3>{study.title}</h3>
             <p>{study.homepageSummary ?? study.summary}</p>
+
+            <div class="study-card__signals" role="list" aria-label={`${study.title} quick signals`}>
+              {getStudyBadges(study).map((badge) => (
+                <span class="study-card__signal" role="listitem">{badge}</span>
+              ))}
+            </div>
 
             <div class="study-block">
               <h4>What Was Built</h4>
@@ -68,6 +106,7 @@ const featuredStudies = caseStudies.filter((study) =>
   }
 
   .study-card__media {
+    position: relative;
     display: grid;
     place-items: center;
     min-height: clamp(16rem, 28vw, 24rem);
@@ -76,6 +115,47 @@ const featuredStudies = caseStudies.filter((study) =>
       linear-gradient(180deg, rgba(244, 246, 247, 0.96), rgba(233, 239, 242, 0.96)),
       radial-gradient(circle at top left, rgba(216, 161, 93, 0.18), transparent 28%);
     border-bottom: 1px solid rgba(16, 32, 51, 0.08);
+  }
+
+  .study-card__badge-row {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .study-card__badge,
+  .study-card__signal {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .study-card__badge {
+    padding: 0.45rem 0.75rem;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(16, 32, 51, 0.1);
+    box-shadow: 0 10px 24px rgba(16, 32, 51, 0.08);
+    color: var(--color-dark);
+    font-size: 0.75rem;
+  }
+
+  .study-card__badge--primary {
+    background: rgba(11, 31, 51, 0.92);
+    color: var(--color-white);
+    border-color: rgba(11, 31, 51, 0.2);
+  }
+
+  .study-card picture {
+    width: 100%;
   }
 
   .study-card img {
@@ -92,6 +172,19 @@ const featuredStudies = caseStudies.filter((study) =>
     grid-template-rows: auto auto auto 1fr auto;
     gap: 1rem;
     padding: var(--space-lg);
+  }
+
+  .study-card__signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .study-card__signal {
+    padding: 0.42rem 0.72rem;
+    background: rgba(14, 91, 98, 0.08);
+    color: var(--color-primary);
+    font-size: 0.8rem;
   }
 
   .study-block h4 {
@@ -120,6 +213,19 @@ const featuredStudies = caseStudies.filter((study) =>
   @media (max-width: 900px) {
     .study-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .study-card__badge-row {
+      top: 0.85rem;
+      left: 0.85rem;
+      right: 0.85rem;
+    }
+
+    .study-card__badge,
+    .study-card__signal {
+      white-space: normal;
     }
   }
 </style>

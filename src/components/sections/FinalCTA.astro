@@ -1,6 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
-import { contactLinks, ctaLabels } from '../../data/siteContent';
+import { contactLinks, ctaLabels, primaryCtaHref } from '../../data/siteContent';
 ---
 
 <section class="section-padding cta-frame">
@@ -14,7 +14,7 @@ import { contactLinks, ctaLabels } from '../../data/siteContent';
     </p>
 
     <div class="hero-actions">
-      <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+      <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
       <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
     </div>
 

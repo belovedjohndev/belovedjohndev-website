@@ -359,7 +359,10 @@ const valuePoints = [
     background:
       radial-gradient(circle at top right, rgba(240, 188, 116, 0.16), transparent 24%),
       linear-gradient(135deg, rgba(10, 22, 35, 0.94), rgba(17, 50, 64, 0.9)),
-      url('/assets/images/hero-bg.png?v=20260328b');
+      image-set(
+        url('/assets/images/hero-bg.webp') type('image/webp'),
+        url('/assets/images/hero-bg.png') type('image/png')
+      );
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

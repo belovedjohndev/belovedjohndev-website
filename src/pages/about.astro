@@ -3,7 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/ui/Button.astro';
-import { aboutPrinciples, ctaLabels } from '../data/siteContent';
+import { aboutPrinciples, ctaLabels, primaryCtaHref } from '../data/siteContent';
 ---
 
 <MainLayout
@@ -15,7 +15,7 @@ import { aboutPrinciples, ctaLabels } from '../data/siteContent';
 >
   <Navbar slot="navbar" />
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--about">
     <div class="container page-hero__content">
       <p class="eyebrow">About</p>
       <h1>Independent developer. Systems-first delivery. No agency theater.</h1>
@@ -24,7 +24,7 @@ import { aboutPrinciples, ctaLabels } from '../data/siteContent';
         want direct access to the person thinking through the architecture and shipping the work.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
@@ -80,7 +80,7 @@ import { aboutPrinciples, ctaLabels } from '../data/siteContent';
         specification.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>

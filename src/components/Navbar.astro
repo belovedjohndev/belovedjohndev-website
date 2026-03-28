@@ -1,5 +1,5 @@
 ---
-import { ctaLabels } from '../data/siteContent';
+import { ctaLabels, primaryCtaHref } from '../data/siteContent';
 
 const currentPath = Astro.url.pathname;
 
@@ -11,7 +11,8 @@ const navItems = [
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
 ];
-const logoAsset = '/assets/images/logo.png?v=20260328b';
+const logoAssetPng = '/assets/images/logo-ui.png';
+const logoAssetWebp = '/assets/images/logo-ui.webp';
 
 const isActive = (href: string) =>
   currentPath === href || (href !== '/' && currentPath.startsWith(`${href}/`));
@@ -20,14 +21,19 @@ const isActive = (href: string) =>
 <nav class="navbar" aria-label="Main navigation">
   <div class="container nav-shell">
     <a href="/" class="logo" aria-label="Beloved John Dev home">
-      <img
-        class="logo-mark"
-        src={logoAsset}
-        alt="Beloved John Dev logo"
-        width="72"
-        height="72"
-        loading="eager"
-      />
+      <picture>
+        <source srcset={logoAssetWebp} type="image/webp" />
+        <img
+          class="logo-mark"
+          src={logoAssetPng}
+          alt="Beloved John Dev logo"
+          width="72"
+          height="72"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+        />
+      </picture>
       <span class="logo-copy">
         <strong>Beloved John Dev</strong>
         <span>Business systems for service companies</span>
@@ -53,7 +59,7 @@ const isActive = (href: string) =>
         </li>
       ))}
       <li class="nav-cta-item">
-        <a href="/contact#project-inquiry" class="nav-cta">{ctaLabels.primary}</a>
+        <a href={primaryCtaHref} class="nav-cta">{ctaLabels.primary}</a>
       </li>
     </ul>
   </div>

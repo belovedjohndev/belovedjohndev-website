@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
-import { ctaLabels, servicePages } from '../../data/siteContent';
+import { ctaLabels, primaryCtaHref, servicePages } from '../../data/siteContent';
 ---
 
 <MainLayout
@@ -15,7 +15,7 @@ import { ctaLabels, servicePages } from '../../data/siteContent';
 >
   <Navbar slot="navbar" />
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--services">
     <div class="container page-hero__content">
       <p class="eyebrow">Services</p>
       <h1>Three focused offers for companies with real workflow friction</h1>
@@ -24,7 +24,7 @@ import { ctaLabels, servicePages } from '../../data/siteContent';
         client-facing workflow tools, and automation that reduces operational drag.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
@@ -94,7 +94,7 @@ import { ctaLabels, servicePages } from '../../data/siteContent';
         usually confirmed after reviewing the workflow and deciding where the biggest operational friction lives.
       </p>
       <div class="hero-actions">
-        <Button href="/contact" variant="primary">{ctaLabels.primary}</Button>
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
         <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>

@@ -1,14 +1,25 @@
 ---
-import { contactLinks, ctaLabels } from '../data/siteContent';
+import { contactLinks, ctaLabels, primaryCtaHref } from '../data/siteContent';
 
-const logoAsset = '/assets/images/logo.png?v=20260328b';
+const logoAssetPng = '/assets/images/logo-ui.png';
+const logoAssetWebp = '/assets/images/logo-ui.webp';
 ---
 
 <footer class="footer">
   <div class="container footer-layout">
     <div class="footer-brand">
       <a href="/" class="footer-logo" aria-label="Beloved John Dev home">
-        <img src={logoAsset} alt="Beloved John Dev logo" width="52" height="52" loading="lazy" />
+        <picture>
+          <source srcset={logoAssetWebp} type="image/webp" />
+          <img
+            src={logoAssetPng}
+            alt="Beloved John Dev logo"
+            width="52"
+            height="52"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
         <span>
           <strong>Beloved John Dev</strong>
           <span>Independent business systems developer</span>
@@ -39,7 +50,7 @@ const logoAsset = '/assets/images/logo.png?v=20260328b';
 
     <div class="footer-column">
       <p class="footer-heading">Start here</p>
-      <a href="/contact">{ctaLabels.primary}</a>
+      <a href={primaryCtaHref}>{ctaLabels.primary}</a>
       <a href="/case-studies">{ctaLabels.secondary}</a>
       <a href={contactLinks.mailto}>{contactLinks.email}</a>
       <a href={contactLinks.whatsapp} target="_blank" rel="noopener">WhatsApp</a>

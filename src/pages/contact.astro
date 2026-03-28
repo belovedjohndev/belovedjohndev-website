@@ -3,7 +3,7 @@ import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import Button from '../components/ui/Button.astro';
 import MainLayout from '../layouts/MainLayout.astro';
-import { contactLinks, contactPageContent, ctaLabels } from '../data/siteContent';
+import { contactLinks, contactPageContent, ctaLabels, primaryCtaHref } from '../data/siteContent';
 
 const { hero, bestFit, checklist, inquiryForm, nextSteps, alternateContact } = contactPageContent;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
@@ -20,7 +20,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
 >
   <Navbar slot="navbar" />
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--contact">
     <div class="container hero-grid">
       <div class="page-hero__content">
         <p class="eyebrow">{hero.eyebrow}</p>
@@ -29,7 +29,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
         <p class="page-hero__support">{hero.support}</p>
 
         <div class="hero-actions">
-          <Button href="#project-inquiry" variant="primary">{ctaLabels.primary}</Button>
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
           <a href="#alternate-contact" class="btn-fallback btn-fallback--hero">Alternate contact methods</a>
         </div>
       </div>

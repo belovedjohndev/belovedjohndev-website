@@ -166,6 +166,8 @@ export const ctaLabels = {
   secondary: 'View Case Studies',
 };
 
+export const primaryCtaHref = '/contact#project-inquiry';
+
 export const sitePositioning = {
   eyebrow: 'Independent business systems developer',
   title:
