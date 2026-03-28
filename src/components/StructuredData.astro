@@ -6,13 +6,14 @@ interface Props {
 const { type = 'ProfessionalService' } = Astro.props;
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const logoAsset = `${siteUrl}/assets/images/logo.png?v=20260328b`;
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': type,
   name: 'Beloved John Dev',
   url: siteUrl,
   email: 'support@belovedjohndev.com',
-  logo: `${siteUrl}/assets/images/logo.png`,
+  logo: logoAsset,
   description:
     'Independent business systems developer building custom business systems, client portals, estimator tools, and automation workflows for service companies and operations-heavy teams.',
   areaServed: 'Worldwide',

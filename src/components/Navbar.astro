@@ -11,6 +11,7 @@ const navItems = [
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
 ];
+const logoAsset = '/assets/images/logo.png?v=20260328b';
 
 const isActive = (href: string) =>
   currentPath === href || (href !== '/' && currentPath.startsWith(`${href}/`));
@@ -21,7 +22,7 @@ const isActive = (href: string) =>
     <a href="/" class="logo" aria-label="Beloved John Dev home">
       <img
         class="logo-mark"
-        src="/assets/images/logo.png"
+        src={logoAsset}
         alt="Beloved John Dev logo"
         width="72"
         height="72"

@@ -150,6 +150,16 @@ img {
 .page-hero,
 .cta-frame {
   color: var(--color-white);
+}
+
+.page-hero {
+  background:
+    linear-gradient(135deg, rgba(7, 18, 31, 0.9), rgba(12, 34, 48, 0.84)),
+    radial-gradient(circle at top right, rgba(216, 161, 93, 0.18), transparent 24%),
+    url('/assets/images/hero-bg.png?v=20260328b') center / cover no-repeat;
+}
+
+.cta-frame {
   background:
     radial-gradient(circle at top right, rgba(216, 161, 93, 0.16), transparent 25%),
     linear-gradient(135deg, rgba(11, 26, 42, 0.97), rgba(18, 43, 59, 0.92));
