@@ -164,4 +164,4 @@ The site includes:
 
 - Website: [belovedjohndev.com](https://belovedjohndev.com)
 - Demo: [demo.belovedjohndev.com](https://demo.belovedjohndev.com)
-- Email: [support@belovedjohndev.com](mailto:support@belovedjohndev.com)
+- Email: [belovedjohn.dev@gmail.com](mailto:belovedjohn.dev@gmail.com)

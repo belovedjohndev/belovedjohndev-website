@@ -178,9 +178,9 @@ export interface IntentLandingPage {
 }
 
 export const contactLinks = {
-  email: 'support@belovedjohndev.com',
+  email: 'belovedjohn.dev@gmail.com',
   mailto:
-    'mailto:support@belovedjohndev.com?subject=Project%20Inquiry%20from%20Beloved%20John%20Dev',
+    'mailto:belovedjohn.dev@gmail.com?subject=Project%20Inquiry%20from%20Beloved%20John%20Dev',
   whatsapp:
     'https://wa.me/855963885424?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20business%20systems%20project.',
   telegram: 'https://t.me/belovedjohndev',
