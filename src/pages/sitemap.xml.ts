@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { caseStudies, insights } from '../data/siteContent';
+import { caseStudies, insights, intentLandingPages } from '../data/siteContent';
 
 const pages = [
   {
@@ -57,6 +57,11 @@ const pages = [
     changefreq: 'monthly',
     priority: '0.8',
   },
+  ...intentLandingPages.map((page) => ({
+    path: `/${page.slug}`,
+    changefreq: 'monthly',
+    priority: '0.8',
+  })),
   ...caseStudies.map((study) => ({
     path: `/case-studies/${study.slug}`,
     changefreq: 'monthly',

@@ -32,19 +32,19 @@ import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
           <div class="project-content">
             <div class="project-header">
               <div>
-                <p class="project-category">{project.category}</p>
+                <p class="project-category">{project.serviceLine}</p>
                 <h3>{project.title}</h3>
               </div>
-              <p class="project-audience">{project.audience}</p>
+              <p class="project-audience">{project.clientType}</p>
             </div>
 
             <p class="project-summary">{project.summary}</p>
 
             <div class="project-proof-grid">
-              {project.proofPoints.slice(0, 3).map((point) => (
+              {project.proof.slice(0, 3).map((point) => (
                 <article class="project-proof-card">
-                  <p class="project-proof-card__value">{point.value}</p>
-                  <p class="project-proof-card__label">{point.label}</p>
+                  <p class="project-proof-card__value">{point}</p>
+                  <p class="project-proof-card__label">Proof point</p>
                 </article>
               ))}
             </div>
@@ -52,20 +52,20 @@ import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
             <div class="project-columns">
               <div class="project-section">
                 <p class="project-section__label">Problem</p>
-                <p>{project.problem}</p>
+                <p>{project.businessProblem}</p>
               </div>
 
               <div class="project-section">
                 <p class="project-section__label">What was built</p>
                 <ul class="check-list">
-                  {project.features.slice(0, 4).map((highlight) => <li>{highlight}</li>)}
+                  {project.scopeDelivered.slice(0, 4).map((highlight) => <li>{highlight}</li>)}
                 </ul>
               </div>
             </div>
 
             <div class="project-footer">
               <div class="project-tech" role="list" aria-label="Technology used">
-                {project.stack.map((tag) => (
+                {project.technicalShape.slice(0, 4).map((tag) => (
                   <span class="tech-tag" role="listitem">{tag}</span>
                 ))}
               </div>

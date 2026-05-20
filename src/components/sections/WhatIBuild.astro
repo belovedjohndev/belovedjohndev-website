@@ -1,0 +1,39 @@
+---
+import { whatIBuildHighlights } from '../../data/siteContent';
+---
+
+<section class="section-padding what-build-band" aria-labelledby="what-i-build-title">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">What I Build</p>
+      <h2 id="what-i-build-title">Fast clarity on the systems you can hire me to build</h2>
+    </div>
+
+    <div class="grid-3 what-build-grid">
+      {whatIBuildHighlights.map((item) => (
+        <article class="surface-card what-build-card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .what-build-band {
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .what-build-grid {
+    align-items: stretch;
+  }
+
+  .what-build-card {
+    height: 100%;
+  }
+
+  .what-build-card p {
+    margin-bottom: 0;
+  }
+</style>

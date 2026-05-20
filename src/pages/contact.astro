@@ -126,8 +126,8 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
           <input type="hidden" name="_captcha" value="true" />
 
           <div class="honeypot-field" aria-hidden="true">
-            <label for="website">Website</label>
-            <input type="text" id="website" name="_honey" tabindex="-1" autocomplete="off" />
+            <label for="hiddenWebsite">Website</label>
+            <input type="text" id="hiddenWebsite" name="_honey" tabindex="-1" autocomplete="off" />
           </div>
 
           <div class="form-grid">
@@ -144,6 +144,11 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
             <label class="form-field">
               <span>Company</span>
               <input type="text" id="company" name="company" autocomplete="organization" required />
+            </label>
+
+            <label class="form-field">
+              <span>Website</span>
+              <input type="url" id="businessWebsite" name="businessWebsite" autocomplete="url" required />
             </label>
 
             <label class="form-field">

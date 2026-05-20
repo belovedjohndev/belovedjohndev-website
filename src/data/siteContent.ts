@@ -148,6 +148,35 @@ export interface ContactPageContent {
   };
 }
 
+export interface WhatIBuildHighlight {
+  title: string;
+  description: string;
+}
+
+export interface WorkingModelItem {
+  title: string;
+  description: string;
+}
+
+export interface IntentLandingPage {
+  slug: string;
+  title: string;
+  metaDescription: string;
+  eyebrow: string;
+  heroTitle: string;
+  heroLead: string;
+  fitTitle: string;
+  fitIntro: string;
+  fitItems: string[];
+  buildTitle: string;
+  buildItems: string[];
+  proofTitle: string;
+  proofBody: string;
+  ctaTitle: string;
+  ctaCopy: string;
+  relatedServiceSlug: string;
+}
+
 export const contactLinks = {
   email: 'support@belovedjohndev.com',
   mailto:
@@ -169,11 +198,11 @@ export const ctaLabels = {
 export const primaryCtaHref = '/contact#project-inquiry';
 
 export const sitePositioning = {
-  eyebrow: 'Independent business systems developer',
+  eyebrow: 'Independent custom systems developer',
   title:
-    'Custom business systems for service companies that have outgrown spreadsheets, manual handoffs, and disconnected tools.',
+    'Custom-coded business systems for service companies that need more than a basic website.',
   lead:
-    'I design and build internal tools, client portals, estimator flows, and automation that help businesses run operations more clearly, capture better information, and reduce manual work across the team.',
+    'I build internal tools, client portals, estimator flows, booking systems, dashboards, and automation that reduce manual work, improve lead intake, and make operations easier to manage.',
   support:
     'The site is intentionally positioned around operational software work, not generic brochure-site projects.',
 };
@@ -216,9 +245,44 @@ export const whyWorkWithMe = [
 ];
 
 export const heroProofPoints = [
-  'Direct access to the person designing and building the system',
-  'Architecture-first approach focused on maintainability and real operations',
-  'Best fit for companies that need more than a brochure website',
+  'Custom-coded systems',
+  'Client portals and estimator tools',
+  'Workflow automation',
+  'Direct builder access',
+];
+
+export const whatIBuildHighlights: WhatIBuildHighlight[] = [
+  {
+    title: 'Custom Business Systems',
+    description:
+      'Internal dashboards, admin tools, job tracking systems, inventory tools, reporting systems, and workflow platforms.',
+  },
+  {
+    title: 'Client Portals & Estimator Tools',
+    description:
+      'Guided quote flows, booking request systems, customer portals, lead capture tools, and intake systems.',
+  },
+  {
+    title: 'Automation & Integrations',
+    description:
+      'Email notifications, CRM sync, reporting automation, data pipelines, and workflow tools that reduce copy-paste work.',
+  },
+];
+
+export const workingModelItems: WorkingModelItem[] = [
+  {
+    title: 'Direct technical owner',
+    description: 'You work directly with the person planning and building the system.',
+  },
+  {
+    title: 'Scoped first phase',
+    description: 'The first build focuses on the highest-value workflow before expanding.',
+  },
+  {
+    title: 'Production-minded delivery',
+    description:
+      'Data structure, permissions, maintainability, and handoff are considered from the start.',
+  },
 ];
 
 export const processSteps: ProcessStep[] = [
@@ -247,6 +311,12 @@ export const processSteps: ProcessStep[] = [
       'After the core system is in use, we refine and expand based on real usage.',
   },
 ];
+
+export const nextStepTimeline = processSteps.map((step) => ({
+  step: step.number,
+  title: step.title,
+  description: step.description,
+}));
 
 export const servicePages: ServicePage[] = [
   {
@@ -502,7 +572,7 @@ export const caseStudies: CaseStudy[] = [
       'Reusable system that can be deployed across multiple sites',
     ],
     homepageOutcome:
-      'Better lead information, less manual intake, and a clearer quoting process for the team.',
+      'Replaced a basic quote form with a guided estimator that collected structured job details, stored leads, routed notifications, and gave the team clearer information before follow-up.',
     clientType: 'Home service companies handling quote requests and office-based lead qualification',
     serviceLine: 'Client Portals & Estimator Tools',
     proof: ['Config-driven quoting', 'Structured lead capture', 'Embeddable sales asset'],
@@ -598,7 +668,7 @@ export const caseStudies: CaseStudy[] = [
       'Reporting tools for administrators',
     ],
     homepageOutcome:
-      'Centralized records, reduced administrative workload, and fewer disconnected manual processes.',
+      'Centralized records, attendance, events, announcements, and role-based access into one internal system, reducing duplicated admin work and improving staff visibility.',
     clientType: 'Private organization with member records, event scheduling, and internal administration needs',
     serviceLine: 'Custom Business Systems',
     proof: ['Role-based access', 'API-first architecture', 'Operational consolidation'],
@@ -841,6 +911,41 @@ export const notFitSignals = [
   'Projects that do not require custom functionality',
 ];
 
+export const idealClients = fitSignals;
+export const notIdealClients = notFitSignals;
+
+export const buyerGuidance = {
+  intro:
+    'Good custom systems projects usually start with a clear operational problem, a practical first phase, and enough business context to judge fit quickly.',
+  projectShape: [
+    'A real workflow is creating manual work, weak visibility, or repeated handoffs.',
+    'The first phase can focus on one important process before expanding.',
+    'The system needs custom logic, structured data, or integration with existing tools.',
+  ],
+  timelineGuidance: [
+    'Small automation and intake phases can often move faster than broader internal platforms.',
+    'Larger systems should leave time for workflow review, data modeling, permissions, and rollout.',
+    'A clear first workflow helps keep scope and timeline practical.',
+  ],
+  scopingGuidance:
+    'Most projects are priced after reviewing the workflow, required roles, integrations, and what the first phase must improve.',
+};
+
+export const serviceOffers = servicePages.map((service) => ({
+  title: service.title,
+  startingPrice: service.pricingGuidanceIntro.match(/\$[0-9,]+(?:\s*-\s*\$[0-9,]+)?/)?.[0] ?? 'Scoped after review',
+}));
+
+export const testimonials = caseStudies.map((study) => ({
+  headline: study.title,
+  context: study.clientType,
+  proof: study.proof,
+  quote: study.homepageOutcome ?? study.summary,
+  author: study.confidential ? 'Private client' : 'Project sample',
+  role: study.serviceLine,
+  company: study.industry,
+}));
+
 export const contactPageContent: ContactPageContent = {
   hero: {
     eyebrow: 'Consulting intake',
@@ -910,8 +1015,9 @@ export const contactPageContent: ContactPageContent = {
       { value: 'just-exploring', label: 'Just exploring' },
     ],
     budgetRangeOptions: [
-      { value: '2k-5k', label: '$2k-5k' },
-      { value: '5k-10k', label: '$5k-10k' },
+      { value: '1500-3k', label: '$1.5k-$3k' },
+      { value: '3k-6k', label: '$3k-$6k' },
+      { value: '6k-10k', label: '$6k-$10k' },
       { value: '10k-plus', label: '$10k+' },
       { value: 'not-sure-yet', label: 'Not sure yet' },
     ],
@@ -955,6 +1061,184 @@ export const contactPageContent: ContactPageContent = {
     ],
   },
 };
+
+export const intentLandingPages: IntentLandingPage[] = [
+  {
+    slug: 'custom-estimator-tools',
+    title: 'Custom Estimator Tools for Service Businesses | Beloved John Dev',
+    metaDescription:
+      'Custom-coded estimator tools that collect better lead information, guide quote requests, and connect customer intake to your internal workflow.',
+    eyebrow: 'Custom estimator tools',
+    heroTitle: 'Estimator tools that collect stronger quote requests before your team follows up.',
+    heroLead:
+      'I build guided estimate flows for service businesses that need more than a basic quote form. The goal is better lead context, cleaner routing, and a smoother handoff into the office workflow.',
+    fitTitle: 'Best fit when quote requests arrive without enough context',
+    fitIntro:
+      'A custom estimator makes sense when the team repeats the same early questions, needs structured job details, or wants the website to qualify requests before manual follow-up.',
+    fitItems: [
+      'Your contact form does not capture service type, scope, urgency, or fit clearly.',
+      'The office team has to restart discovery after every new inquiry.',
+      'Pricing or package logic needs to guide the visitor without exposing every internal rule.',
+      'Submissions should create structured lead records and notifications, not just inbox messages.',
+    ],
+    buildTitle: 'What the first phase can include',
+    buildItems: [
+      'Guided estimate or quote request flow',
+      'Structured job detail capture',
+      'Lead storage and admin review',
+      'Email notifications and routing rules',
+      'Configurable estimate or package logic',
+      'Website deployment and launch support',
+    ],
+    proofTitle: 'Built for operational use, not just conversion polish',
+    proofBody:
+      'The strongest estimator tools help the buyer understand the next step while giving your team usable information before follow-up. That is why the workflow, data model, notifications, and admin review matter as much as the customer-facing screen.',
+    ctaTitle: 'If quote requests are weak or repetitive, start with the intake problem.',
+    ctaCopy:
+      'Send the current quote flow, the questions your team repeats, and what a successful first phase should improve.',
+    relatedServiceSlug: 'client-portals-estimator-tools',
+  },
+  {
+    slug: 'custom-client-portals',
+    title: 'Custom Client Portals for Service Companies | Beloved John Dev',
+    metaDescription:
+      'Custom client portals that give customers a clearer self-service path while helping your team manage intake, records, requests, and communication.',
+    eyebrow: 'Custom client portals',
+    heroTitle: 'Client portals built around the information your customers and team actually need.',
+    heroLead:
+      'I build focused customer-facing portals for service companies that need structured intake, request management, status visibility, document handling, or recurring client workflows.',
+    fitTitle: 'Best fit when email threads and forms are carrying too much work',
+    fitIntro:
+      'A portal is useful when customers need a clearer path and your team needs the submitted information to connect to real internal workflows.',
+    fitItems: [
+      'Customers submit requests through scattered emails, forms, or messages.',
+      'Staff need a single place to review customer details, documents, or service history.',
+      'The same customer questions or uploads happen repeatedly.',
+      'Client-facing access needs role-aware permissions and maintainable records.',
+    ],
+    buildTitle: 'What the first phase can include',
+    buildItems: [
+      'Client login or structured access flow',
+      'Request intake and review screens',
+      'Customer records and document fields',
+      'Admin dashboard for staff follow-up',
+      'Notifications for new activity',
+      'Permission and data model planning',
+    ],
+    proofTitle: 'A portal should reduce coordination load',
+    proofBody:
+      'The point is not to add another place for customers to click. The point is to make requests, records, and handoffs clearer for both sides so the business spends less time chasing context.',
+    ctaTitle: 'If clients need a clearer self-service path, start with the workflow.',
+    ctaCopy:
+      'Send the current customer handoff, what customers need access to, and what staff should see after the first phase.',
+    relatedServiceSlug: 'client-portals-estimator-tools',
+  },
+  {
+    slug: 'internal-business-systems',
+    title: 'Internal Business Systems for Service Companies | Beloved John Dev',
+    metaDescription:
+      'Custom internal business systems for service companies that need dashboards, job tracking, records management, reporting, and workflow tools beyond spreadsheets.',
+    eyebrow: 'Internal business systems',
+    heroTitle: 'Internal systems for service companies that have outgrown spreadsheet operations.',
+    heroLead:
+      'I build staff-facing tools, dashboards, records systems, job trackers, and workflow platforms that centralize the information your team depends on every day.',
+    fitTitle: 'Best fit when operations depend on workarounds',
+    fitIntro:
+      'A custom internal system makes sense when spreadsheets, inboxes, or generic software are creating duplicated work, weak visibility, or fragile handoffs.',
+    fitItems: [
+      'A spreadsheet is acting like a CRM, approval queue, tracker, or reporting system.',
+      'Managers cannot see reliable status without manual checking.',
+      'Staff re-enter the same details across several places.',
+      'The workflow has business-specific rules that generic tools do not fit well.',
+    ],
+    buildTitle: 'What the first phase can include',
+    buildItems: [
+      'Core data model and workflow mapping',
+      'Admin dashboard or staff workspace',
+      'Records, job, inventory, or task tracking',
+      'Role-based permissions',
+      'Basic reporting and search',
+      'Deployment, documentation, and handoff',
+    ],
+    proofTitle: 'The first release should solve the highest-value workflow',
+    proofBody:
+      'The best internal systems usually start smaller than a full platform. A focused first phase can replace the most painful handoff, reporting gap, or records workflow before the system expands.',
+    ctaTitle: 'If daily operations rely on spreadsheets and memory, start there.',
+    ctaCopy:
+      'Send the current workflow, the tools involved, what is breaking, and what a successful first phase should improve.',
+    relatedServiceSlug: 'custom-business-systems',
+  },
+  {
+    slug: 'workflow-automation-for-service-businesses',
+    title: 'Workflow Automation for Service Businesses | Beloved John Dev',
+    metaDescription:
+      'Workflow automation for service businesses that need cleaner notifications, CRM sync, reporting automation, data movement, and less copy-paste work.',
+    eyebrow: 'Workflow automation',
+    heroTitle: 'Automation that removes repetitive admin work from service business workflows.',
+    heroLead:
+      'I build practical automation and integrations that move information between forms, spreadsheets, CRMs, email, dashboards, and internal tools with fewer manual steps.',
+    fitTitle: 'Best fit when the tools exist but the handoffs are still manual',
+    fitIntro:
+      'Automation is most useful when the same information is copied, routed, checked, or reported by hand again and again.',
+    fitItems: [
+      'Leads or requests need to route to the right person automatically.',
+      'Staff copy data between forms, spreadsheets, email, and CRM tools.',
+      'Reports require manual compiling every week or month.',
+      'Important notifications or follow-ups are easy to miss.',
+    ],
+    buildTitle: 'What the first phase can include',
+    buildItems: [
+      'Workflow and tool audit',
+      'One high-value automation path',
+      'Email or internal notifications',
+      'CRM, form, spreadsheet, or API sync',
+      'Scheduled reports or data processing',
+      'Testing, monitoring notes, and documentation',
+    ],
+    proofTitle: 'Automation should be reliable enough to disappear into the workflow',
+    proofBody:
+      'Good automation is not just faster. It is traceable, maintainable, and designed around what happens when data is missing, a third-party tool fails, or the workflow changes later.',
+    ctaTitle: 'If copy-paste work is slowing the team down, map the repeated task first.',
+    ctaCopy:
+      'Send the current tools, the repeated admin step, and what should happen automatically after the first phase.',
+    relatedServiceSlug: 'automation-integrations',
+  },
+  {
+    slug: 'custom-booking-systems',
+    title: 'Custom Booking Systems for Service Companies | Beloved John Dev',
+    metaDescription:
+      'Custom booking systems for service companies that need structured scheduling requests, intake rules, notifications, and cleaner handoff into operations.',
+    eyebrow: 'Custom booking systems',
+    heroTitle: 'Booking systems that connect scheduling requests to the real service workflow.',
+    heroLead:
+      'I build custom booking and request systems for service companies that need more context, routing, and operational control than a generic calendar widget can provide.',
+    fitTitle: 'Best fit when booking is tied to qualification or internal coordination',
+    fitIntro:
+      'A custom booking system is useful when the request needs service details, location rules, package selection, staff routing, or admin review before the next step.',
+    fitItems: [
+      'Customers need a clearer way to request service without a long email exchange.',
+      'Booking requests need qualification before confirmation.',
+      'The office team needs structured details before scheduling or dispatch.',
+      'Notifications, routing, or status tracking need to match your internal process.',
+    ],
+    buildTitle: 'What the first phase can include',
+    buildItems: [
+      'Booking request or intake flow',
+      'Service type and location rules',
+      'Admin review dashboard',
+      'Customer and staff notifications',
+      'Lead or request storage',
+      'Website integration and launch support',
+    ],
+    proofTitle: 'Booking should improve operations, not just collect dates',
+    proofBody:
+      'For service companies, booking often overlaps with qualification, dispatch, pricing, and follow-up. A custom system can collect the context the team needs before a request becomes operational work.',
+    ctaTitle: 'If booking requests still require too much manual sorting, start with that path.',
+    ctaCopy:
+      'Send the current booking process, what the team needs before confirmation, and what the first phase should make easier.',
+    relatedServiceSlug: 'client-portals-estimator-tools',
+  },
+];
 
 export const insights: InsightArticle[] = [
   {
@@ -1113,8 +1397,206 @@ export const insights: InsightArticle[] = [
       },
     ],
   },
+  {
+    slug: 'custom-business-system-vs-spreadsheet-workflow',
+    category: 'Comparison',
+    title: 'Custom Business System vs Spreadsheet Workflow',
+    summary:
+      'Spreadsheets are useful until the workflow needs permissions, reliable reporting, structured handoffs, and fewer manual edits.',
+    readingTime: '4 min read',
+    audience: 'For teams deciding whether a spreadsheet-heavy operation needs a custom system.',
+    takeaways: [
+      'A spreadsheet is flexible, but it rarely protects workflow quality by itself',
+      'Custom systems make sense when roles, rules, and reporting need structure',
+      'The right first build should replace the highest-friction part of the workflow',
+    ],
+    intro:
+      'A spreadsheet workflow is often the honest beginning of an internal system. It captures the fields, statuses, exceptions, and reporting needs before anyone formalizes the process. The issue starts when the spreadsheet becomes responsible for too much.',
+    sections: [
+      {
+        title: 'Where spreadsheets still win',
+        paragraphs: [
+          'Spreadsheets are fast, familiar, and easy to change. For early experiments, low-volume tracking, or simple lists, they are often the right tool.',
+          'The mistake is treating that early flexibility as proof that the spreadsheet can keep carrying the workflow as more people, rules, and handoffs depend on it.',
+        ],
+      },
+      {
+        title: 'Where the workflow starts breaking',
+        paragraphs: [
+          'The signal is not just that the sheet is messy. The signal is that staff need different permissions, managers need trustworthy status, records need history, and reporting cannot depend on manual cleanup.',
+          'At that point, the business does not just need cleaner rows. It needs a system that shapes how information enters, moves, and gets reviewed.',
+        ],
+      },
+      {
+        title: 'How to scope the first replacement',
+        paragraphs: [
+          'A custom system does not need to replace everything at once. The best first phase usually targets the workflow where errors, delay, or reporting pain create the most operational drag.',
+          'That could be a job tracker, records system, approval queue, dashboard, or intake process. The key is choosing the part where structure creates immediate usefulness.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'client-portal-vs-basic-contact-form',
+    category: 'Comparison',
+    title: 'Client Portal vs Basic Contact Form',
+    summary:
+      'A basic form captures a message. A client portal can structure requests, records, uploads, and follow-up around the workflow your team needs.',
+    readingTime: '3 min read',
+    audience: 'For service companies deciding whether intake needs a stronger customer-facing system.',
+    takeaways: [
+      'A form is enough only when the next step is simple',
+      'A portal helps when customer information needs review, history, or repeat access',
+      'The portal should reduce coordination work for both customer and staff',
+    ],
+    intro:
+      'A contact form is useful when the only goal is to start a conversation. But many service workflows need more than a name, email, and open-ended message.',
+    sections: [
+      {
+        title: 'What a contact form is good at',
+        paragraphs: [
+          'A basic form is quick to publish and easy for visitors to understand. It is often enough for simple inquiries, short messages, or low-complexity service requests.',
+          'The limitation is that it usually hands the hard work to the office team after submission.',
+        ],
+      },
+      {
+        title: 'What a portal changes',
+        paragraphs: [
+          'A portal can collect structured requests, preserve customer records, handle uploads, show status, and give staff a clearer review workflow.',
+          'That makes sense when customer interaction is recurring, information-heavy, or tied to internal follow-up that should not live in scattered inbox threads.',
+        ],
+      },
+      {
+        title: 'The buying question',
+        paragraphs: [
+          'The useful question is not whether a portal sounds impressive. The useful question is whether the current customer handoff creates repeated admin work or missing context.',
+          'If it does, a focused portal or intake tool may be a better first phase than another generic form.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'when-to-build-a-custom-estimator-tool',
+    category: 'Lead Flow',
+    title: 'When to Build a Custom Estimator Tool',
+    summary:
+      'A custom estimator tool makes sense when quote requests need guided questions, structured job details, and better qualification before follow-up.',
+    readingTime: '4 min read',
+    audience: 'For service businesses that want stronger quote requests from their website.',
+    takeaways: [
+      'Estimator tools work best when they improve both buyer clarity and staff follow-up',
+      'The tool should collect job context before asking for contact information',
+      'Pricing logic should support qualification without creating a brittle black box',
+    ],
+    intro:
+      'A custom estimator tool is not just a prettier quote form. Done well, it becomes a structured intake path that helps the customer understand the next step and gives the team better information before follow-up.',
+    sections: [
+      {
+        title: 'The strongest signal is repeated discovery',
+        paragraphs: [
+          'If every quote request forces the team to ask the same questions about service type, size, urgency, location, photos, or budget fit, the website is not doing enough intake work.',
+          'An estimator can collect that context in a guided way before a staff member spends time on the request.',
+        ],
+      },
+      {
+        title: 'A useful estimator supports the office team',
+        paragraphs: [
+          'The customer-facing flow matters, but the internal handoff matters just as much. Submissions should be stored clearly, routed properly, and easy for the team to review.',
+          'That is where a custom tool can outperform a generic form builder: it can be designed around the actual follow-up process.',
+        ],
+      },
+      {
+        title: 'Start with a focused first phase',
+        paragraphs: [
+          'The first version should usually handle one high-value estimate path, capture the important details, notify the right people, and create a useful admin view.',
+          'Once that works, the tool can expand into more services, deeper pricing logic, or portal functionality.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'internal-tool-vs-off-the-shelf-saas',
+    category: 'Comparison',
+    title: 'Internal Tool vs Off-the-Shelf SaaS',
+    summary:
+      'Off-the-shelf SaaS is often the right starting point, but custom internal tools make sense when the workflow mismatch becomes expensive.',
+    readingTime: '4 min read',
+    audience: 'For operators comparing a custom internal build with another subscription tool.',
+    takeaways: [
+      'SaaS wins when the workflow is common and the fit is close',
+      'Custom tools win when process mismatch creates ongoing admin cost',
+      'The decision should compare operational friction, not just feature lists',
+    ],
+    intro:
+      'Buying software is usually the right first move. It is faster, cheaper, and lower risk than building custom. But that does not mean another SaaS subscription is always the answer.',
+    sections: [
+      {
+        title: 'When SaaS is the better choice',
+        paragraphs: [
+          'If the workflow is standard, the team can adapt without much friction, and the tool already handles the important reporting and permission needs, buying is usually sensible.',
+          'A custom build should not exist just because the business wants something unique.',
+        ],
+      },
+      {
+        title: 'When custom starts to make sense',
+        paragraphs: [
+          'The case changes when staff keep building side spreadsheets, duplicate entry becomes normal, or managers still cannot see the right status without manual checking.',
+          'That means the company is paying for the subscription and for the workaround layer around it.',
+        ],
+      },
+      {
+        title: 'How to decide responsibly',
+        paragraphs: [
+          'Start by listing the recurring manual work created by the mismatch. Then compare that cost with a focused first phase that removes the most painful handoff.',
+          'If the custom tool can stay small and directly reduce that friction, it may be a better investment than forcing the workflow into another generic product.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-quote-forms-create-weak-leads',
+    category: 'Lead Flow',
+    title: 'Why Quote Forms Create Weak Leads',
+    summary:
+      'Most quote forms ask for contact details too early and leave the team without the structured context needed to qualify or respond well.',
+    readingTime: '3 min read',
+    audience: 'For service companies whose website inquiries still require too much manual intake.',
+    takeaways: [
+      'Weak leads often come from weak intake, not weak demand',
+      'Quote flows should collect practical context before the message box',
+      'Better lead data improves routing, follow-up, and buyer experience',
+    ],
+    intro:
+      'A quote form can look efficient while still creating a poor operational handoff. The form captured the lead, but the team still has to figure out what the visitor actually needs.',
+    sections: [
+      {
+        title: 'The message box is doing too much work',
+        paragraphs: [
+          'Generic forms usually depend on the visitor to explain scope clearly in a blank field. Some will. Many will not.',
+          'That leaves the office team sorting through vague messages, missing details, and follow-up questions that could have been collected earlier.',
+        ],
+      },
+      {
+        title: 'Better questions create better leads',
+        paragraphs: [
+          'A stronger quote flow guides the visitor through service type, scope, location, timing, and relevant details before the final submission.',
+          'The goal is not a longer form. The goal is a more useful path that captures the information your team already knows it needs.',
+        ],
+      },
+      {
+        title: 'The handoff is the real conversion point',
+        paragraphs: [
+          'A website conversion is only useful if the next team can act on it. Structured lead data makes routing, prioritization, quoting, and follow-up easier.',
+          'That is why the best intake tools are designed with both the customer and the internal workflow in mind.',
+        ],
+      },
+    ],
+  },
 ];
 
 export const getServiceBySlug = (slug: string) => servicePages.find((service) => service.slug === slug);
 
 export const getCaseStudyBySlug = (slug: string) => caseStudies.find((study) => study.slug === slug);
+
+export const getIntentLandingPageBySlug = (slug: string) =>
+  intentLandingPages.find((page) => page.slug === slug);

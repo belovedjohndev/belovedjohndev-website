@@ -1,0 +1,71 @@
+---
+import { workingModelItems } from '../../data/siteContent';
+---
+
+<section class="working-model-band" aria-labelledby="working-model-title">
+  <div class="container working-model-shell">
+    <div class="working-model-heading">
+      <p class="eyebrow">How projects are handled</p>
+      <h2 id="working-model-title">A direct working model for serious custom systems</h2>
+    </div>
+
+    <div class="working-model-grid">
+      {workingModelItems.map((item) => (
+        <article class="working-model-item">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .working-model-band {
+    padding: clamp(2.25rem, 4vw, 3.5rem) 0;
+    background: var(--color-surface-strong);
+    border-top: 1px solid rgba(16, 32, 51, 0.08);
+    border-bottom: 1px solid rgba(16, 32, 51, 0.08);
+  }
+
+  .working-model-shell {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.36fr) minmax(0, 1fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .working-model-heading h2 {
+    font-family: var(--font-family);
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+    letter-spacing: 0;
+  }
+
+  .working-model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .working-model-item {
+    padding-left: 1.15rem;
+    border-left: 3px solid rgba(14, 91, 98, 0.28);
+  }
+
+  .working-model-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .working-model-item p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 900px) {
+    .working-model-shell,
+    .working-model-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

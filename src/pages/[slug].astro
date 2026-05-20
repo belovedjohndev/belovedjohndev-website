@@ -1,0 +1,20 @@
+---
+import IntentLandingPage from '../components/templates/IntentLandingPage.astro';
+import { getServiceBySlug, intentLandingPages } from '../data/siteContent';
+
+export function getStaticPaths() {
+  return intentLandingPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const relatedService = getServiceBySlug(page.relatedServiceSlug);
+
+if (!relatedService) {
+  throw new Error(`Missing related service content for ${page.slug}.`);
+}
+---
+
+<IntentLandingPage page={page} relatedService={relatedService} />

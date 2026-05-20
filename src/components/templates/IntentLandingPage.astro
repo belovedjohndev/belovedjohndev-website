@@ -1,0 +1,128 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import Button from '../ui/Button.astro';
+import type { IntentLandingPage, ServicePage } from '../../data/siteContent';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+interface Props {
+  page: IntentLandingPage;
+  relatedService: ServicePage;
+}
+
+const { page, relatedService } = Astro.props;
+---
+
+<MainLayout
+  title={page.title}
+  description={page.metaDescription}
+  canonical={`/${page.slug}`}
+  ogImage="/og/services.svg"
+  ogImageAlt={`${page.heroTitle} share image`}
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">{page.eyebrow}</p>
+        <h1>{page.heroTitle}</h1>
+        <p class="page-hero__lead">{page.heroLead}</p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href={`/services/${relatedService.slug}`} variant="secondary">View Related Service</Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside">
+        <p class="eyebrow">Related service</p>
+        <h2>{relatedService.title}</h2>
+        <p>{relatedService.summary}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container grid-2 intent-grid">
+      <article class="surface-card">
+        <p class="eyebrow">Buyer fit</p>
+        <h2>{page.fitTitle}</h2>
+        <p>{page.fitIntro}</p>
+        <ul class="bullet-list">
+          {page.fitItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">First phase</p>
+        <h2>{page.buildTitle}</h2>
+        <ul class="bullet-list">
+          {page.buildItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding proof-strip">
+    <div class="container proof-strip__inner">
+      <p class="eyebrow">Why custom</p>
+      <h2>{page.proofTitle}</h2>
+      <p>{page.proofBody}</p>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>{page.ctaTitle}</h2>
+      <p>{page.ctaCopy}</p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.72fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .hero-aside h2 {
+    font-size: 1.45rem;
+  }
+
+  .hero-aside p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+
+  .intent-grid > .surface-card {
+    height: 100%;
+  }
+
+  .proof-strip {
+    background: rgba(255, 255, 255, 0.52);
+  }
+
+  .proof-strip__inner {
+    max-width: 840px;
+  }
+
+  .proof-strip__inner p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

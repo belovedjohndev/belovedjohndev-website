@@ -73,7 +73,7 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
 
             <div class="study-block">
               <h4>Outcome</h4>
-              <p>{study.homepageOutcome ?? study.outcomes.join(', ')}.</p>
+              <p>{study.homepageOutcome ?? `${study.outcomes.join(', ')}.`}</p>
             </div>
 
             <div class="study-actions">
