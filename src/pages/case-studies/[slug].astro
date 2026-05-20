@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
 import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
-import { getWebpVariant } from '../../utils/images';
+import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 
 export function getStaticPaths() {
   return caseStudies.map((study) => ({
@@ -39,7 +39,7 @@ const { study } = Astro.props;
 
       <div class="hero-media">
         <picture>
-          <source srcset={getWebpVariant(study.image)} type="image/webp" />
+          {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
           <img
             src={study.image}
             alt={study.alt}

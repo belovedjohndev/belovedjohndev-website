@@ -729,6 +729,101 @@ export const caseStudies: CaseStudy[] = [
     confidential: true,
   },
   {
+    slug: 'custom-project-management-web-app',
+    title: 'Custom Project Management Web App',
+    summary:
+      'A custom project management web app built as an internal workflow system for organizing projects, tracking work, and improving visibility across active tasks.',
+    projectOverview: [
+      'This project involved building a custom project management web app to help teams organize projects, track work, manage progress, and reduce scattered coordination across messages and spreadsheets.',
+      'The demo is framed as a custom business system and internal workflow app, not a landing page. It shows how a focused browser-based tool can make project information, task progress, and workflow status easier to review from one place.',
+    ],
+    industry: 'Professional Services / Internal Operations',
+    companySize: 'Small team managing project-based work',
+    projectType: 'Internal project management system',
+    goal: [
+      'Organize project information in one focused web app',
+      'Make task status and progress easier to review',
+      'Reduce scattered coordination across messages and spreadsheets',
+      'Show a workflow-focused system aligned with operational software needs',
+    ],
+    homepageLabel: 'Project Management Web App',
+    homepageSummary:
+      'Built a custom project management web app to help teams organize projects, track work, manage progress, and reduce scattered coordination across messages and spreadsheets.',
+    homepageBuilt: [
+      'Custom project dashboard',
+      'Project and task organization',
+      'Status and progress tracking',
+      'Workflow-focused web app interface',
+      'Live demo deployment',
+    ],
+    homepageOutcome:
+      'Clearer project visibility, better task organization, and a more structured workflow for managing work from one place.',
+    clientType: 'Teams that need a focused internal app for project coordination and workflow visibility',
+    serviceLine: 'Custom Business Systems',
+    proof: ['Project dashboard', 'Task tracking', 'Workflow-focused web app'],
+    businessProblem:
+      'Project work can become difficult to manage when updates, tasks, files, and decisions are spread across messages, spreadsheets, and disconnected tools. The goal was to create a focused web app that keeps project information and task progress easier to manage from one place.',
+    oldWorkflow: [
+      'Project details were scattered across multiple places.',
+      'Task status and progress were harder to review quickly.',
+      'Team coordination depended too much on manual updates.',
+      'There was no focused system shaped around the project workflow.',
+    ],
+    scopeDelivered: [
+      'Custom project dashboard',
+      'Project and task organization',
+      'Status and progress tracking',
+      'Workflow-focused web app interface',
+      'Clearer visibility into active work',
+      'Live demo deployment',
+    ],
+    keyFeatures: [
+      'Project dashboard',
+      'Task tracking',
+      'Status management',
+      'Progress visibility',
+      'Workflow organization',
+      'Responsive web app interface',
+    ],
+    architectureSummary:
+      'The system was structured as a custom project management web app focused on organizing project information, task progress, and workflow visibility in a browser-based interface.',
+    technicalShape: [
+      'Custom frontend web application',
+      'Project and task workflow views',
+      'Structured UI for progress tracking',
+      'Responsive interface for browser-based use',
+      'Demo deployment for public review',
+    ],
+    constraints: [
+      'The demo needed to communicate the app concept clearly.',
+      'The interface needed to feel organized and practical.',
+      "The project should support the site's positioning around custom workflow systems.",
+      'Public demo copy must avoid claiming private client results.',
+    ],
+    keyDecisions: [
+      'Framed the demo as an operational workflow app instead of a generic website.',
+      'Focused the interface around project visibility and task organization.',
+      'Kept the public proof asset simple enough to review quickly.',
+    ],
+    outcomes: [
+      'Clearer project visibility',
+      'Better task organization',
+      'More structured workflow management',
+    ],
+    demonstrates: [
+      'Building custom workflow applications',
+      'Designing project dashboards',
+      'Creating internal-tool style web apps',
+      'Structuring software around operational clarity',
+    ],
+    image: '/assets/images/custom-project-management-web-app.svg',
+    alt: 'Custom project management web app dashboard with project lists, task columns, and progress metrics',
+    referenceLabel: 'Live demo',
+    referenceHref: 'https://websitedemo-drab.vercel.app/',
+    referenceText: 'Open the live project management demo',
+    referenceExternal: true,
+  },
+  {
     slug: 'multi-tenant-estimate-engine',
     title: 'Multi-Tenant Estimate Engine',
     summary:

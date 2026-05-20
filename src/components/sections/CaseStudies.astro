@@ -1,7 +1,7 @@
 ---
 import Button from '../ui/Button.astro';
 import { caseStudies, featuredCaseStudySlugs } from '../../data/siteContent';
-import { getWebpVariant } from '../../utils/images';
+import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 
 const featuredStudySet = new Set(featuredCaseStudySlugs);
 const featuredStudies = caseStudies.filter((study) =>
@@ -49,7 +49,7 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
               </span>
             </div>
             <picture>
-              <source srcset={getWebpVariant(study.image)} type="image/webp" />
+              {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
               <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
             </picture>
           </div>

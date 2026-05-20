@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Custom project management web app interface preview</title>
+  <desc id="desc">A browser-based project dashboard with task lists, progress metrics, and workflow columns.</desc>
+  <rect width="1200" height="800" fill="#eef3f5"/>
+  <rect x="84" y="72" width="1032" height="656" rx="28" fill="#ffffff" stroke="#d4dde3" stroke-width="2"/>
+  <rect x="84" y="72" width="1032" height="86" rx="28" fill="#102033"/>
+  <rect x="84" y="128" width="1032" height="30" fill="#102033"/>
+  <circle cx="132" cy="115" r="10" fill="#d8a15d"/>
+  <circle cx="164" cy="115" r="10" fill="#6d7c89"/>
+  <circle cx="196" cy="115" r="10" fill="#0e5b62"/>
+  <text x="248" y="123" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Project Operations Dashboard</text>
+  <rect x="124" y="200" width="240" height="488" rx="18" fill="#f7f9fa" stroke="#dce5ea"/>
+  <text x="152" y="244" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Projects</text>
+  <rect x="152" y="274" width="184" height="44" rx="10" fill="#0e5b62"/>
+  <text x="172" y="303" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Client Portal Build</text>
+  <rect x="152" y="334" width="184" height="44" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+  <text x="172" y="363" fill="#243440" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Estimator Launch</text>
+  <rect x="152" y="394" width="184" height="44" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+  <text x="172" y="423" fill="#243440" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Workflow Audit</text>
+  <rect x="404" y="200" width="192" height="112" rx="18" fill="#fff7ec" stroke="#ead6bd"/>
+  <text x="432" y="241" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Active Tasks</text>
+  <text x="432" y="284" fill="#c18234" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">24</text>
+  <rect x="624" y="200" width="192" height="112" rx="18" fill="#edf7f7" stroke="#cce4e5"/>
+  <text x="652" y="241" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">In Progress</text>
+  <text x="652" y="284" fill="#0e5b62" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">11</text>
+  <rect x="844" y="200" width="232" height="112" rx="18" fill="#f4f6f7" stroke="#d7e0e5"/>
+  <text x="872" y="241" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Completion</text>
+  <text x="872" y="284" fill="#172a41" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">68%</text>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="404" y="352" width="208" height="296" rx="18" fill="#f7f9fa" stroke="#dce5ea"/>
+    <text x="432" y="392" fill="#102033" font-size="20" font-weight="700">Backlog</text>
+    <rect x="432" y="424" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="450" y="454" fill="#243440" font-size="15" font-weight="700">Map intake flow</text>
+    <rect x="432" y="492" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="450" y="522" fill="#243440" font-size="15" font-weight="700">Review roles</text>
+    <rect x="432" y="560" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="450" y="590" fill="#243440" font-size="15" font-weight="700">Scope reports</text>
+    <rect x="640" y="352" width="208" height="296" rx="18" fill="#f7f9fa" stroke="#dce5ea"/>
+    <text x="668" y="392" fill="#102033" font-size="20" font-weight="700">In Progress</text>
+    <rect x="668" y="424" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="686" y="454" fill="#243440" font-size="15" font-weight="700">Dashboard UI</text>
+    <rect x="668" y="492" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="686" y="522" fill="#243440" font-size="15" font-weight="700">Task states</text>
+    <rect x="876" y="352" width="208" height="296" rx="18" fill="#f7f9fa" stroke="#dce5ea"/>
+    <text x="904" y="392" fill="#102033" font-size="20" font-weight="700">Ready</text>
+    <rect x="904" y="424" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="922" y="454" fill="#243440" font-size="15" font-weight="700">Progress view</text>
+    <rect x="904" y="492" width="152" height="48" rx="10" fill="#ffffff" stroke="#d7e0e5"/>
+    <text x="922" y="522" fill="#243440" font-size="15" font-weight="700">Demo deploy</text>
+  </g>
+</svg>

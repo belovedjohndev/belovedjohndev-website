@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
 import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
-import { getWebpVariant } from '../../utils/images';
+import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 ---
 
 <MainLayout
@@ -36,7 +36,7 @@ import { getWebpVariant } from '../../utils/images';
       {caseStudies.map((study) => (
         <article class="surface-card case-card">
           <picture>
-            <source srcset={getWebpVariant(study.image)} type="image/webp" />
+            {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
             <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
           </picture>
           <div class="case-card__body">
