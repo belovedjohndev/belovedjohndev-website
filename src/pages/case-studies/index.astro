@@ -32,18 +32,20 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
   </section>
 
   <section class="section-padding" id="case-list">
-    <div class="container case-grid">
+    <div class="container case-study-grid">
       {caseStudies.map((study) => (
-        <article class="surface-card case-card">
-          <picture>
-            {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
-            <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
-          </picture>
-          <div class="case-card__body">
+        <article class="surface-card case-study-card">
+          <div class="case-study-media">
+            <picture>
+              {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
+              <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <div class="case-study-content">
             <p class="eyebrow">{study.projectType}</p>
             <h2>{study.title}</h2>
             <p>{study.summary}</p>
-            <p class="muted case-card__meta">
+            <p class="muted case-study-meta">
               <strong>Industry:</strong> {study.industry} | <strong>Company size:</strong> {study.companySize}
             </p>
             <div class="chip-row">
@@ -51,7 +53,9 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
                 <span class="chip">{item}</span>
               ))}
             </div>
-            <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
+            <div class="case-study-actions">
+              <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
+            </div>
           </div>
         </article>
       ))}
@@ -77,49 +81,79 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 </MainLayout>
 
 <style>
-  .case-grid {
+  .case-study-grid {
     display: grid;
-    gap: var(--space-xl);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
   }
 
-  .case-card {
+  .case-study-card {
     display: grid;
-    grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.1fr);
-    gap: var(--space-lg);
+    grid-template-rows: auto 1fr;
     overflow: hidden;
     padding: 0;
   }
 
-  .case-card img {
-    width: 100%;
-    height: 100%;
-    min-height: 280px;
-    object-fit: cover;
+  .case-study-media {
+    display: grid;
+    place-items: center;
+    min-height: 260px;
+    padding: 1rem;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 247, 0.96), rgba(233, 239, 242, 0.96)),
+      radial-gradient(circle at top left, rgba(216, 161, 93, 0.14), transparent 30%);
+    border-bottom: 1px solid rgba(16, 32, 51, 0.08);
   }
 
-  .case-card__body {
+  .case-study-media picture {
+    width: 100%;
+  }
+
+  .case-study-media img {
+    width: 100%;
+    height: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .case-study-content {
     display: grid;
-    align-content: start;
+    grid-template-rows: auto auto auto auto auto 1fr;
     gap: 1rem;
     padding: var(--space-lg);
   }
 
-  .case-card__meta {
+  .case-study-content h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .case-study-content p,
+  .case-study-content h2 {
+    margin-bottom: 0;
+  }
+
+  .case-study-meta {
     padding-bottom: 0.1rem;
     border-bottom: 1px solid rgba(16, 32, 51, 0.08);
   }
 
-  .case-card__body :global(.btn) {
+  .case-study-actions {
     align-self: start;
-    margin-top: 0.25rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+  }
+
+  .case-study-actions :global(.btn) {
+    width: 100%;
   }
 
   @media (max-width: 900px) {
-    .case-card {
+    .case-study-grid {
       grid-template-columns: 1fr;
     }
 
-    .case-card img {
+    .case-study-media {
       min-height: 220px;
     }
   }
