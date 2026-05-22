@@ -145,15 +145,3 @@ export const createSvgResponse = (svg: string) =>
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
-
-export const createPngResponse = async (svg: string) => {
-  const sharp = (await import('sharp')).default;
-  const png = await sharp(Buffer.from(svg)).png().toBuffer();
-
-  return new Response(new Uint8Array(png), {
-    headers: {
-      'Content-Type': 'image/png',
-      'Cache-Control': 'public, max-age=31536000, immutable',
-    },
-  });
-};
