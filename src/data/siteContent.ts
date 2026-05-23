@@ -375,7 +375,7 @@ export const servicePages: ServicePage[] = [
       'Security and data protection are considered in the architecture',
       'The goal is long-term operational use, not a short-term prototype',
     ],
-    startingScope: 'Typical first phase: workflow review, core model, primary admin flow, and first deployment.',
+    startingScope: 'Typical first phase: workflow review, core model, primary admin flow, and first usable release.',
     pricingGuidanceTitle: 'Engagement / Pricing Guidance',
     pricingGuidanceIntro:
       'Typical first phases for custom business systems start in the $3,000 - $10,000 range depending on scope and complexity.',
@@ -754,7 +754,7 @@ export const caseStudies: CaseStudy[] = [
       'Project and task organization',
       'Status and progress tracking',
       'Workflow-focused web app interface',
-      'Live demo deployment',
+      'Live demo available',
     ],
     homepageOutcome:
       'Clearer project visibility, better task organization, and a more structured workflow for managing work from one place.',
@@ -775,7 +775,7 @@ export const caseStudies: CaseStudy[] = [
       'Status and progress tracking',
       'Workflow-focused web app interface',
       'Clearer visibility into active work',
-      'Live demo deployment',
+      'Live demo available',
     ],
     keyFeatures: [
       'Project dashboard',
@@ -792,7 +792,7 @@ export const caseStudies: CaseStudy[] = [
       'Project and task workflow views',
       'Structured UI for progress tracking',
       'Responsive interface for browser-based use',
-      'Demo deployment for public review',
+      'Public demo for reviewing the workflow',
     ],
     constraints: [
       'The demo needed to communicate the app concept clearly.',
@@ -830,7 +830,7 @@ export const caseStudies: CaseStudy[] = [
       'A verified local business directory for Sen Monorom, Mondulkiri, built to help visitors find owner-confirmed cafes, restaurants, guesthouses, tours, and local services.',
     projectOverview: [
       'This project involved building a local business directory platform for Sen Monorom, Mondulkiri. The goal was to help visitors browse useful local categories while giving small businesses and independent operators a clearer path to be discovered.',
-      'The site is positioned as a custom local directory platform rather than a brochure website. It organizes verified listings, owner-confirmed business information, and visitor-focused category navigation into a lightweight static web app.',
+      'The site is positioned as a custom local directory platform rather than a brochure website. It organizes verified listings, owner-confirmed business information, and visitor-focused category navigation into a fast, practical web app.',
     ],
     industry: 'Local Tourism / Business Directory',
     companySize: 'Local small businesses and independent operators',
@@ -856,7 +856,7 @@ export const caseStudies: CaseStudy[] = [
       'Created a focused local discovery platform that helps visitors find verified businesses while giving local owners a simple path to request a listing.',
     clientType: 'Local businesses, tourism operators, and visitors in Sen Monorom, Mondulkiri',
     serviceLine: 'Custom Business Systems',
-    proof: ['Local directory platform', 'Verified listing structure', 'SEO-friendly static site'],
+    proof: ['Local directory platform', 'Verified listing structure', 'Search-friendly local guide'],
     businessProblem:
       'Visitors often rely on scattered Facebook pages, old directory listings, map results, and word-of-mouth when looking for local businesses in Sen Monorom. Local owners also need a simple way to be discovered without managing a full website.',
     oldWorkflow: [
@@ -872,7 +872,7 @@ export const caseStudies: CaseStudy[] = [
       'Submit-business flow',
       'Tourism-focused homepage',
       'Mobile-friendly browsing experience',
-      'SEO-friendly static site structure',
+      'Search-friendly local directory structure',
     ],
     keyFeatures: [
       'Verified local listings',
@@ -881,18 +881,18 @@ export const caseStudies: CaseStudy[] = [
       'Owner-confirmed status labels',
       'Contact and map links',
       'Submit-business call to action',
-      'Static site performance',
+      'Fast public browsing performance',
     ],
     architectureSummary:
-      'The site was structured as a lightweight local directory platform with category-based routes, reusable business listing components, and static deployment for speed, reliability, and simple maintenance.',
+      'The site was structured as a lightweight local directory platform with category-based pages, reusable listing patterns, and simple maintenance for speed and reliability.',
     technicalShape: [
-      'Astro static site',
+      'Astro site build',
       'Category-based content structure',
-      'Reusable listing card components',
+      'Reusable listing card patterns',
       'Mobile-first layout',
       'SEO-focused page structure',
       'External links for maps, phone, Facebook, and business websites',
-      'Static deployment on Vercel',
+      'Lightweight Vercel deployment',
     ],
     constraints: [
       'Business details needed to be presented carefully because local information can change.',
@@ -904,7 +904,7 @@ export const caseStudies: CaseStudy[] = [
       'Positioned the site around verified local information instead of scraped directory content.',
       'Used category-based browsing to make the guide easier for visitors.',
       'Added a submission path so local owners can request a listing.',
-      'Kept the platform static and fast for simple public access.',
+      'Kept the platform lightweight and fast for simple public access.',
     ],
     outcomes: [
       'Created a practical local discovery platform for visitors',
@@ -914,7 +914,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     demonstrates: [
       'Building local directory platforms',
-      'Structuring content-heavy static sites',
+      'Structuring content-heavy local guide sites',
       'Creating business listing systems',
       'Designing visitor-focused category navigation',
       'Turning local market research into a working digital product',
@@ -1199,7 +1199,7 @@ export const contactPageContent: ContactPageContent = {
     intro:
       'Use this form to package the core buying context: company, industry, project type, workflow pain, current tools, desired outcome, timing, and budget direction.',
     deliveryNote:
-      'Project inquiries are submitted through a static form service so the site can stay simple, fast, and fully static.',
+      'Use this form to send the key project context. A complete specification is not required.',
     projectTypeOptions: [
       { value: 'internal-system', label: 'Internal system' },
       { value: 'client-portal-estimator', label: 'Client portal / estimator' },
