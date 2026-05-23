@@ -232,10 +232,20 @@ const { study } = Astro.props;
 
   .hero-media img {
     width: 100%;
+    max-height: 34rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg);
-    aspect-ratio: 16 / 11;
-    object-fit: cover;
+    aspect-ratio: 16 / 10;
+    object-fit: contain;
+    object-position: center;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 246, 247, 0.96)),
+      radial-gradient(circle at top left, rgba(216, 161, 93, 0.14), transparent 32%);
+    padding: clamp(0.75rem, 1.8vw, 1.2rem);
+  }
+
+  .page-hero h1 {
+    overflow-wrap: anywhere;
   }
 
   .content-stack {

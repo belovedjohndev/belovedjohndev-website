@@ -147,8 +147,11 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
             </label>
 
             <label class="form-field">
-              <span>Website</span>
-              <input type="url" id="businessWebsite" name="businessWebsite" autocomplete="url" required />
+              <span>Website or current system URL</span>
+              <span class="form-helper" id="businessWebsite-help">
+                Optional. Use this for internal systems, pre-launch products, or agency/client work where there may not be a public site.
+              </span>
+              <input type="url" id="businessWebsite" name="businessWebsite" autocomplete="url" aria-describedby="businessWebsite-help" />
             </label>
 
             <label class="form-field">
@@ -194,33 +197,45 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
 
             <label class="form-field form-field--full">
               <span>Current workflow problem</span>
+              <span class="form-helper" id="currentWorkflowProblem-help">
+                Describe the real handoff, delay, repeated admin task, or visibility problem. A polished spec is not required.
+              </span>
               <textarea
                 id="currentWorkflowProblem"
                 name="currentWorkflowProblem"
                 rows="5"
                 placeholder="Describe the process, handoff, delay, or admin bottleneck that is creating friction."
+                aria-describedby="currentWorkflowProblem-help"
                 required
               ></textarea>
             </label>
 
             <label class="form-field form-field--full">
-              <span>Existing tools</span>
+              <span>Current tools/process</span>
+              <span class="form-helper" id="existingTools-help">
+                List the tools, spreadsheets, forms, inboxes, or manual steps involved today.
+              </span>
               <textarea
                 id="existingTools"
                 name="existingTools"
                 rows="4"
                 placeholder="List the tools, spreadsheets, forms, inboxes, or manual workarounds involved today."
+                aria-describedby="existingTools-help"
                 required
               ></textarea>
             </label>
 
             <label class="form-field form-field--full">
-              <span>Target outcome</span>
+              <span>Desired outcome</span>
+              <span class="form-helper" id="targetOutcome-help">
+                Explain what should be easier, clearer, faster, or more reliable after the first useful phase.
+              </span>
               <textarea
                 id="targetOutcome"
                 name="targetOutcome"
                 rows="4"
                 placeholder="Explain what should work more clearly after the first phase is delivered."
+                aria-describedby="targetOutcome-help"
                 required
               ></textarea>
             </label>
@@ -432,9 +447,15 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
     grid-column: 1 / -1;
   }
 
-  .form-field span {
+  .form-field > span:not(.form-helper) {
     font-weight: 800;
     color: var(--color-dark);
+  }
+
+  .form-helper {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   .form-field input,
