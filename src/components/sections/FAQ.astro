@@ -1,8 +1,24 @@
 ---
+import JsonLd from '../JsonLd.astro';
 import { faqItems } from '../../data/siteContent';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <section class="section-padding">
+  <JsonLd data={faqSchema} />
+
   <div class="container">
     <div class="section-title">
       <p class="eyebrow">Sales FAQ</p>

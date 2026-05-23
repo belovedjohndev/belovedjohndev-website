@@ -3,8 +3,9 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 import Button from '../ui/Button.astro';
+import JsonLd from '../JsonLd.astro';
 import type { ServicePage, CaseStudy } from '../../data/siteContent';
-import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
 
 interface Props {
   service: ServicePage;
@@ -12,6 +13,38 @@ interface Props {
 }
 
 const { service, relatedCaseStudy } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const serviceUrl = `${siteUrl}/services/${service.slug}`;
+const relatedGuideByServiceSlug: Record<string, string> = {
+  'custom-business-systems': 'custom-business-system-vs-spreadsheet-workflow',
+  'client-portals-estimator-tools': 'client-portal-vs-basic-contact-form',
+  'automation-integrations': 'internal-tools-vs-forcing-your-workflow-into-saas',
+};
+const relatedGuide = insights.find((article) => article.slug === relatedGuideByServiceSlug[service.slug]);
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: `${siteUrl}/services`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: service.title,
+      item: serviceUrl,
+    },
+  ],
+};
 ---
 
 <MainLayout
@@ -22,6 +55,7 @@ const { service, relatedCaseStudy } = Astro.props;
   ogImageAlt={`${service.title} service page share image`}
 >
   <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
 
   <section class="page-hero page-hero--services">
     <div class="container hero-grid">
@@ -123,6 +157,17 @@ const { service, relatedCaseStudy } = Astro.props;
         </ul>
         <p>{service.pricingGuidanceClosing}</p>
       </article>
+
+      {relatedGuide && (
+        <article class="surface-card related-links-card">
+          <p class="eyebrow">Related reading</p>
+          <h2>Helpful context before scoping this work</h2>
+          <div class="related-link-list">
+            <a href={`/case-studies/${relatedCaseStudy.slug}`}>Related proof: {relatedCaseStudy.title}</a>
+            <a href={`/insights/${relatedGuide.slug}`}>Guide: {relatedGuide.title}</a>
+          </div>
+        </article>
+      )}
     </div>
   </section>
 
@@ -187,8 +232,27 @@ const { service, relatedCaseStudy } = Astro.props;
     height: 100%;
   }
 
+  .related-links-card {
+    grid-column: 1 / -1;
+  }
+
+  .related-link-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .related-link-list a {
+    display: inline-flex;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(14, 91, 98, 0.08);
+    font-weight: 800;
+  }
+
   .related-card p,
-  .related-card h2 {
+  .related-card h2,
+  .related-links-card h2 {
     margin-bottom: 0;
   }
 

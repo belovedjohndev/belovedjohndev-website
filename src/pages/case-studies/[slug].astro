@@ -3,6 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
 import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
 import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 
@@ -14,6 +15,48 @@ export function getStaticPaths() {
 }
 
 const { study } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const caseStudyUrl = `${siteUrl}/case-studies/${study.slug}`;
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Case Studies',
+      item: `${siteUrl}/case-studies`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: study.title,
+      item: caseStudyUrl,
+    },
+  ],
+};
+const caseStudySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: study.title,
+  name: study.title,
+  description: study.summary,
+  url: caseStudyUrl,
+  articleSection: study.serviceLine,
+  about: [study.serviceLine, study.projectType],
+  publisher: {
+    '@type': 'Organization',
+    name: 'Beloved John Dev',
+    url: siteUrl,
+  },
+  inLanguage: 'en',
+};
 ---
 
 <MainLayout
@@ -24,6 +67,8 @@ const { study } = Astro.props;
   ogImageAlt={`${study.title} case study share image`}
 >
   <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+  <JsonLd data={caseStudySchema} />
 
   <section class="page-hero page-hero--case-studies">
     <div class="container hero-grid">

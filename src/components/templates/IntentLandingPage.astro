@@ -3,8 +3,9 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../Navbar.astro';
 import Footer from '../Footer.astro';
 import Button from '../ui/Button.astro';
+import JsonLd from '../JsonLd.astro';
 import type { IntentLandingPage, ServicePage } from '../../data/siteContent';
-import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+import { caseStudies, ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
 
 interface Props {
   page: IntentLandingPage;
@@ -12,6 +13,42 @@ interface Props {
 }
 
 const { page, relatedService } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/${page.slug}`;
+const relatedCaseStudyByIntentSlug: Record<string, string> = {
+  'custom-estimator-tools': 'estimate-engine',
+  'custom-client-portals': 'estimate-engine',
+  'internal-business-systems': 'church-management-system',
+  'workflow-automation-for-service-businesses': 'multi-tenant-estimate-engine',
+  'custom-booking-systems': 'estimate-engine',
+};
+const relatedGuideByIntentSlug: Record<string, string> = {
+  'custom-estimator-tools': 'when-to-build-a-custom-estimator-tool',
+  'custom-client-portals': 'client-portal-vs-basic-contact-form',
+  'internal-business-systems': 'custom-business-system-vs-spreadsheet-workflow',
+  'workflow-automation-for-service-businesses': 'internal-tools-vs-forcing-your-workflow-into-saas',
+  'custom-booking-systems': 'why-most-quote-forms-create-bad-leads',
+};
+const relatedCaseStudy = caseStudies.find((study) => study.slug === relatedCaseStudyByIntentSlug[page.slug]);
+const relatedGuide = insights.find((article) => article.slug === relatedGuideByIntentSlug[page.slug]);
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: page.heroTitle,
+      item: pageUrl,
+    },
+  ],
+};
 ---
 
 <MainLayout
@@ -22,6 +59,7 @@ const { page, relatedService } = Astro.props;
   ogImageAlt={`${page.heroTitle} share image`}
 >
   <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
 
   <section class="page-hero page-hero--services">
     <div class="container hero-grid">
@@ -72,6 +110,18 @@ const { page, relatedService } = Astro.props;
     </div>
   </section>
 
+  <section class="section-padding related-strip">
+    <div class="container related-links-card">
+      <p class="eyebrow">Related links</p>
+      <h2>Proof and context for this kind of project</h2>
+      <div class="related-link-list">
+        <a href={`/services/${relatedService.slug}`}>Service: {relatedService.title}</a>
+        {relatedCaseStudy && <a href={`/case-studies/${relatedCaseStudy.slug}`}>Case study: {relatedCaseStudy.title}</a>}
+        {relatedGuide && <a href={`/insights/${relatedGuide.slug}`}>Guide: {relatedGuide.title}</a>}
+      </div>
+    </div>
+  </section>
+
   <section class="section-padding cta-frame">
     <div class="container cta-frame__content">
       <p class="eyebrow">Next step</p>
@@ -112,12 +162,36 @@ const { page, relatedService } = Astro.props;
     background: rgba(255, 255, 255, 0.52);
   }
 
+  .related-strip {
+    background: rgba(255, 255, 255, 0.34);
+  }
+
   .proof-strip__inner {
     max-width: 840px;
   }
 
-  .proof-strip__inner p:last-child {
+  .proof-strip__inner p:last-child,
+  .related-links-card h2 {
     margin-bottom: 0;
+  }
+
+  .related-links-card {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .related-link-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .related-link-list a {
+    display: inline-flex;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(14, 91, 98, 0.08);
+    font-weight: 800;
   }
 
   @media (max-width: 900px) {
