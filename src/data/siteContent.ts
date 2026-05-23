@@ -1152,9 +1152,9 @@ export const contactPageContent: ContactPageContent = {
       'This page is built for companies evaluating internal systems, client portals, estimator tools, or automation tied to real operations.',
     support:
       'You do not need a polished specification. A clear explanation of the current workflow, the tools involved, and the outcome you need is enough to start a serious project conversation.',
-    responseTitle: 'Qualified replies, not generic follow-up',
+    responseTitle: "You'll get a practical reply, not a sales sequence.",
     responseBody:
-      'The goal of this intake page is to surface fit, project shape, and the right first phase before anyone wastes time on vague back-and-forth.',
+      "I'll review the workflow, project shape, and likely first phase so the next conversation is specific.",
     responsePoints: [
       'Best fit for operational software work rather than brochure websites',
       'Useful whether you already know the bottleneck or need help defining the first phase',
@@ -1163,9 +1163,9 @@ export const contactPageContent: ContactPageContent = {
   },
   bestFit: {
     eyebrow: 'Best-fit project types',
-    title: 'The strongest inquiries usually fall into one of these categories.',
+    title: 'Projects I can usually help with',
     intro:
-      'These are the consulting engagements the site is intentionally positioned around.',
+      'These are the types of workflow and systems projects that are usually the best fit.',
     projectTypes: [
       {
         title: 'Internal systems',
@@ -1188,16 +1188,16 @@ export const contactPageContent: ContactPageContent = {
   },
   checklist: {
     eyebrow: 'What to send',
-    title: 'A strong first message is specific about the workflow.',
+    title: 'Tell me what workflow needs to improve.',
     intro:
-      'The most useful inquiries focus on the operational problem, the current toolset, and what success should look like after the first build phase.',
+      'Share the current process, the tools involved, what is breaking, and what should improve.',
     items: contactChecklist,
   },
   inquiryForm: {
     eyebrow: 'Structured inquiry form',
-    title: 'Send a project brief that helps qualify the work.',
+    title: 'Send the project context.',
     intro:
-      'Use this form to package the core buying context: company, industry, project type, workflow pain, current tools, desired outcome, timing, and budget direction.',
+      'Send the workflow problem, current tools, desired outcome, timeline, and budget range.',
     deliveryNote:
       'Use this form to send the key project context. A complete specification is not required.',
     projectTypeOptions: [
@@ -1222,16 +1222,16 @@ export const contactPageContent: ContactPageContent = {
   },
   nextSteps: {
     eyebrow: 'What happens next',
-    title: 'The first reply should help you judge fit quickly.',
+    title: 'What happens after you send the form',
     intro:
-      'Once the inquiry is received, the next step is usually a short round of fit feedback and clarification rather than a vague sales sequence.',
+      "I'll review the details and reply with fit feedback, follow-up questions, or a recommended first phase.",
     items: contactExpectations,
   },
   alternateContact: {
     eyebrow: 'Alternate contact methods',
-    title: 'Use the channel that fits how your team works.',
+    title: 'Prefer a direct message?',
     intro:
-      'If you would rather start directly, these channels stay aligned with the same consulting-first positioning.',
+      'You can also reach me by email, WhatsApp, or Telegram.',
     methods: [
       {
         label: 'Email',
