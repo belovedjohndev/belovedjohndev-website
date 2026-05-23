@@ -54,6 +54,38 @@ const { study } = Astro.props;
     </div>
   </section>
 
+  <section class="case-signals-band" aria-label="Project signals">
+    <div class="container case-signals-grid">
+      <div class="case-signal">
+        <p class="case-signal__label">Service line</p>
+        <p class="case-signal__value">{study.serviceLine}</p>
+      </div>
+      <div class="case-signal">
+        <p class="case-signal__label">Project type</p>
+        <p class="case-signal__value">{study.projectType}</p>
+      </div>
+      <div class="case-signal">
+        <p class="case-signal__label">Proof signal</p>
+        <p class="case-signal__value">{study.proof[0]}</p>
+      </div>
+      <div class="case-signal">
+        <p class="case-signal__label">{study.referenceLabel}</p>
+        {study.referenceHref ? (
+          <a
+            class="case-signal__value case-signal__link"
+            href={study.referenceHref}
+            target={study.referenceExternal ? '_blank' : undefined}
+            rel={study.referenceExternal ? 'noopener nofollow' : undefined}
+          >
+            {study.referenceText}
+          </a>
+        ) : (
+          <p class="case-signal__value">{study.referenceText}</p>
+        )}
+      </div>
+    </div>
+  </section>
+
   <section class="section-padding">
     <div class="container content-stack">
       <article class="surface-card">
@@ -248,6 +280,52 @@ const { study } = Astro.props;
     overflow-wrap: anywhere;
   }
 
+  .case-signals-band {
+    padding: clamp(1rem, 2vw, 1.35rem) 0;
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid rgba(16, 32, 51, 0.08);
+  }
+
+  .case-signals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .case-signal {
+    min-width: 0;
+    padding: 0.95rem 1rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(16, 32, 51, 0.09);
+  }
+
+  .case-signal__label,
+  .case-signal__value {
+    margin-bottom: 0;
+  }
+
+  .case-signal__label {
+    margin-bottom: 0.3rem;
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-signal__value {
+    color: var(--color-dark);
+    font-weight: 800;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .case-signal__link {
+    display: inline-flex;
+    color: var(--color-primary);
+  }
+
   .content-stack {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
@@ -318,7 +396,8 @@ const { study } = Astro.props;
   @media (max-width: 900px) {
     .hero-grid,
     .grid-2,
-    .meta-grid {
+    .meta-grid,
+    .case-signals-grid {
       grid-template-columns: 1fr;
     }
   }
