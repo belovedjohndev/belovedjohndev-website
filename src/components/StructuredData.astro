@@ -1,4 +1,6 @@
 ---
+import { contactLinks } from '../data/siteContent';
+
 interface Props {
   type?: 'Person' | 'ProfessionalService';
 }
@@ -12,7 +14,7 @@ const structuredData = {
   '@type': type,
   name: 'Beloved John Dev',
   url: siteUrl,
-  email: 'belovedjohn.dev@gmail.com',
+  email: contactLinks.email,
   logo: logoAsset,
   description:
     'Independent business systems developer building custom business systems, client portals, estimator tools, and automation workflows for service companies and operations-heavy teams.',
@@ -33,7 +35,7 @@ const structuredData = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      email: 'belovedjohn.dev@gmail.com',
+      email: contactLinks.email,
       contactType: 'sales',
       areaServed: 'Worldwide',
       availableLanguage: ['en'],

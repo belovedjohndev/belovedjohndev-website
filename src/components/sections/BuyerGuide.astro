@@ -14,8 +14,8 @@ import {
 <section class="buyer-guide section-padding" id="buyer-guide">
   <div class="container">
     <div class="section-title">
-      <p class="section-eyebrow">Before you inquire</p>
-      <h2>Buyer guidance for serious projects</h2>
+      <p class="section-eyebrow">Before you reach out</p>
+      <h2>What makes a project a good fit</h2>
       <p>{buyerGuidance.intro}</p>
     </div>
 
@@ -35,14 +35,14 @@ import {
       </article>
 
       <article class="guide-card">
-        <p class="guide-card__label">Typical project shape</p>
+        <p class="guide-card__label">Project shape</p>
         <ul class="check-list">
           {buyerGuidance.projectShape.map((item) => <li>{item}</li>)}
         </ul>
       </article>
 
       <article class="guide-card">
-        <p class="guide-card__label">Timeline guidance</p>
+        <p class="guide-card__label">Timeline</p>
         <ul class="check-list">
           {buyerGuidance.timelineGuidance.map((item) => <li>{item}</li>)}
         </ul>
@@ -52,7 +52,7 @@ import {
     <div class="buyer-guide__bottom">
       <article class="decision-card decision-card--pricing">
         <p class="guide-card__label">Pricing and scoping</p>
-        <h3>How projects are usually scoped</h3>
+        <h3>How the first phase is usually scoped</h3>
         <div class="price-list">
           {serviceOffers.map((offer) => (
             <div class="price-row">

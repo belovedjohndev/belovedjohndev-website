@@ -57,7 +57,6 @@ const relatedLinksByInsightSlug: Record<string, { service: string; caseStudy: st
 const relatedLinkSlugs = relatedLinksByInsightSlug[article.slug];
 const relatedService = servicePages.find((service) => service.slug === relatedLinkSlugs?.service);
 const relatedCaseStudy = caseStudies.find((study) => study.slug === relatedLinkSlugs?.caseStudy);
-const minutes = Number(article.readingTime.match(/\d+/)?.[0] ?? 0);
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -90,7 +89,6 @@ const articleSchema = {
   url: articleUrl,
   mainEntityOfPage: articleUrl,
   articleSection: article.category,
-  timeRequired: minutes > 0 ? `PT${minutes}M` : undefined,
   author: {
     '@type': 'Person',
     name: 'Beloved John Dev',
@@ -125,7 +123,7 @@ const articleSchema = {
         <p class="eyebrow">{article.category}</p>
         <h1>{article.title}</h1>
         <p class="page-hero__lead">{article.summary}</p>
-        <p class="page-hero__lead"><strong>{article.readingTime}</strong> | {article.audience}</p>
+        <p class="page-hero__lead">{article.audience}</p>
         <div class="hero-actions">
           <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
           <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
@@ -162,8 +160,8 @@ const articleSchema = {
     {(relatedService || relatedCaseStudy) && (
       <section class="section-padding related-strip">
         <div class="container related-links-card">
-          <p class="eyebrow">Related next steps</p>
-          <h2>Proof and service context for this topic</h2>
+          <p class="eyebrow">Related proof</p>
+          <h2>Service and case study context</h2>
           <div class="related-link-list">
             {relatedService && <a href={`/services/${relatedService.slug}`}>Service: {relatedService.title}</a>}
             {relatedCaseStudy && <a href={`/case-studies/${relatedCaseStudy.slug}`}>Case study: {relatedCaseStudy.title}</a>}
@@ -175,9 +173,9 @@ const articleSchema = {
     <section class="section-padding cta-frame">
       <div class="container cta-frame__content">
         <p class="eyebrow">Next step</p>
-        <h2>If this article sounds familiar, the workflow probably needs a stronger system.</h2>
+        <h2>If this sounds familiar, start with the workflow problem.</h2>
         <p>
-          The right first phase might be a business system, an estimator tool, or a focused automation layer.
+          Share the current process, where it breaks down, and what the first useful phase should improve.
           The common thread is that the software should remove friction instead of adding more process around it.
         </p>
         <div class="hero-actions">

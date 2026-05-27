@@ -8,7 +8,7 @@ import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
 
 <MainLayout
   title="Guides | Beloved John Dev"
-  description="Practical guides on business systems, workflow bottlenecks, estimator tools, and custom software buying decisions."
+  description="Practical guides for deciding when a workflow needs a custom system, client portal, estimator tool, or automation."
   canonical="/insights"
   ogImage="/og/insights.svg"
   ogImageAlt="Beloved John Dev insights page share image"
@@ -18,10 +18,10 @@ import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
   <section class="page-hero page-hero--insights">
     <div class="container page-hero__content">
       <p class="eyebrow">Guides</p>
-      <h1>Practical guides on workflow friction, custom systems, and better buying decisions</h1>
+      <h1>Guides for deciding what your workflow needs next</h1>
       <p class="page-hero__lead">
-        These articles are here to show how I think before code is written: where the operational friction comes
-        from, what software should actually improve, and how to choose the right first move.
+        Use these articles to clarify the workflow problem, compare practical options, and decide what a useful first
+        phase should improve.
       </p>
       <div class="hero-actions">
         <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
@@ -37,13 +37,13 @@ import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
           <p class="eyebrow">{article.category}</p>
           <h2>{article.title}</h2>
           <p>{article.summary}</p>
-          <p class="muted"><strong>{article.readingTime}</strong> | {article.audience}</p>
+          <p class="muted">{article.audience}</p>
           <div class="chip-row">
             {article.takeaways.slice(0, 3).map((takeaway) => (
               <span class="chip">{takeaway}</span>
             ))}
           </div>
-          <Button href={`/insights/${article.slug}`} variant="dark">Read the Guide</Button>
+          <Button href={`/insights/${article.slug}`} variant="dark">Read Guide</Button>
         </article>
       ))}
     </div>

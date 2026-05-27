@@ -5,10 +5,15 @@ import Button from '../components/ui/Button.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { contactLinks, contactPageContent, ctaLabels, primaryCtaHref } from '../data/siteContent';
 
-const { hero, bestFit, checklist, inquiryForm, nextSteps, alternateContact } = contactPageContent;
+const { hero, inquiryForm, alternateContact } = contactPageContent;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const contactFormAction = `https://formsubmit.co/${contactLinks.email}`;
 const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
+const alternateContactAriaLabels: Record<string, string> = {
+  Email: 'Email Beloved John Dev',
+  WhatsApp: 'Open WhatsApp',
+  Telegram: 'Open Telegram',
+};
 ---
 
 <MainLayout
@@ -42,56 +47,6 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
           {hero.responsePoints.map((item) => <li>{item}</li>)}
         </ul>
       </aside>
-    </div>
-  </section>
-
-  <section class="section-padding">
-    <div class="container">
-      <div class="section-title">
-        <p class="eyebrow">{bestFit.eyebrow}</p>
-        <h2>{bestFit.title}</h2>
-        <p>{bestFit.intro}</p>
-      </div>
-
-      <div class="project-types-grid">
-        {bestFit.projectTypes.map((projectType) => (
-          <article class="surface-card project-type-card">
-            <p class="project-type-card__index">Best fit</p>
-            <h3>{projectType.title}</h3>
-            <p>{projectType.summary}</p>
-          </article>
-        ))}
-      </div>
-
-      <article class="surface-card fit-signals-card">
-        <div>
-          <p class="eyebrow">Fit signals</p>
-          <h3>{bestFit.supportTitle}</h3>
-        </div>
-
-        <ul class="bullet-list">
-          {bestFit.supportItems.map((item) => <li>{item}</li>)}
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="section-padding section-tint">
-    <div class="container">
-      <div class="section-title">
-        <p class="eyebrow">{checklist.eyebrow}</p>
-        <h2>{checklist.title}</h2>
-        <p>{checklist.intro}</p>
-      </div>
-
-      <div class="checklist-grid">
-        {checklist.items.map((item, index) => (
-          <article class="simple-card checklist-card">
-            <p class="checklist-card__number">{String(index + 1).padStart(2, '0')}</p>
-            <p>{item}</p>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -204,7 +159,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
                 id="currentWorkflowProblem"
                 name="currentWorkflowProblem"
                 rows="5"
-                placeholder="Describe the process, handoff, delay, or admin bottleneck that is creating friction."
+                placeholder="Example: quote requests need too much manual follow-up before the team can respond."
                 aria-describedby="currentWorkflowProblem-help"
                 required
               ></textarea>
@@ -219,7 +174,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
                 id="existingTools"
                 name="existingTools"
                 rows="4"
-                placeholder="List the tools, spreadsheets, forms, inboxes, or manual workarounds involved today."
+                placeholder="Example: website form, Google Sheets, shared inbox, CRM, booking calendar."
                 aria-describedby="existingTools-help"
                 required
               ></textarea>
@@ -234,7 +189,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
                 id="targetOutcome"
                 name="targetOutcome"
                 rows="4"
-                placeholder="Explain what should work more clearly after the first phase is delivered."
+                placeholder="Example: cleaner intake, faster review, and clearer status for the team."
                 aria-describedby="targetOutcome-help"
                 required
               ></textarea>
@@ -246,7 +201,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
           </div>
 
           <p class="form-status" id="form-status" aria-live="polite">
-            If the form does not submit, you can also reach me through email, WhatsApp, or Telegram below.
+            Trouble submitting? Use a direct contact option below.
           </p>
 
           <noscript>
@@ -260,43 +215,25 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
     </div>
   </section>
 
-  <section class="section-padding section-tint">
-    <div class="container">
-      <div class="section-title">
-        <p class="eyebrow">{nextSteps.eyebrow}</p>
-        <h2>{nextSteps.title}</h2>
-        <p>{nextSteps.intro}</p>
-      </div>
-
-      <div class="next-steps-grid">
-        {nextSteps.items.map((item, index) => (
-          <article class="simple-card next-step-card">
-            <p class="next-step-card__number">0{index + 1}</p>
-            <p>{item}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="section-padding" id="alternate-contact">
     <div class="container">
       <div class="section-title">
         <p class="eyebrow">{alternateContact.eyebrow}</p>
         <h2>{alternateContact.title}</h2>
-        <p>{alternateContact.intro}</p>
+        <p>Use email for detailed context, or WhatsApp/Telegram for a shorter first message.</p>
       </div>
 
-      <div class="alternate-contact-grid">
+      <div class="alternate-contact-actions" aria-label="Direct contact methods">
         {alternateContact.methods.map((method) => (
-          <article class="surface-card contact-method-card">
-            <p class="eyebrow">{method.label}</p>
-            <h3>{method.value}</h3>
-            <p>{method.description}</p>
-            <a href={method.href} target={method.external ? '_blank' : undefined} rel={method.external ? 'noopener' : undefined}>
-              Open {method.label}
-            </a>
-          </article>
+          <a
+            class="contact-action-link"
+            href={method.href}
+            target={method.external ? '_blank' : undefined}
+            rel={method.external ? 'noopener' : undefined}
+            aria-label={alternateContactAriaLabels[method.label] ?? `Open ${method.label}`}
+          >
+            {method.label}
+          </a>
         ))}
       </div>
     </div>
@@ -307,11 +244,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
 
 <style>
   .hero-grid,
-  .project-types-grid,
-  .checklist-grid,
-  .form-grid,
-  .next-steps-grid,
-  .alternate-contact-grid {
+  .form-grid {
     display: grid;
     gap: var(--space-lg);
   }
@@ -353,43 +286,6 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
     color: var(--color-white);
     text-decoration: none;
     background: rgba(255, 255, 255, 0.14);
-  }
-
-  .project-types-grid,
-  .checklist-grid,
-  .next-steps-grid,
-  .alternate-contact-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .project-type-card,
-  .checklist-card,
-  .next-step-card,
-  .contact-method-card {
-    height: 100%;
-  }
-
-  .project-type-card__index,
-  .checklist-card__number,
-  .next-step-card__number {
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent-strong);
-  }
-
-  .fit-signals-card {
-    display: grid;
-    grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
-    gap: var(--space-lg);
-    margin-top: var(--space-lg);
-    align-items: start;
-  }
-
-  .section-tint {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.72));
   }
 
   .inquiry-card__header {
@@ -499,14 +395,35 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
     font-weight: 700;
   }
 
-  .contact-method-card a {
-    display: inline-flex;
-    margin-top: 0.5rem;
-    font-weight: 800;
+  .alternate-contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
   }
 
-  .contact-method-card h3,
-  .contact-method-card p,
+  .contact-action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    min-width: 8.5rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid rgba(12, 31, 51, 0.12);
+    background: var(--color-surface-strong);
+    color: var(--color-dark);
+    font-weight: 800;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+  }
+
+  .contact-action-link:hover {
+    color: var(--color-white);
+    text-decoration: none;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
   .form-status,
   .form-noscript {
     overflow-wrap: anywhere;
@@ -514,12 +431,7 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
 
   @media (max-width: 900px) {
     .hero-grid,
-    .project-types-grid,
-    .checklist-grid,
-    .form-grid,
-    .next-steps-grid,
-    .alternate-contact-grid,
-    .fit-signals-card {
+    .form-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -532,6 +444,14 @@ const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
     .form-actions :global(.btn) {
       width: 100%;
       min-width: 0;
+    }
+
+    .alternate-contact-actions {
+      flex-direction: column;
+    }
+
+    .contact-action-link {
+      width: 100%;
     }
   }
 </style>

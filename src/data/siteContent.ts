@@ -178,9 +178,9 @@ export interface IntentLandingPage {
 }
 
 export const contactLinks = {
-  email: 'belovedjohn.dev@gmail.com',
+  email: 'support@belovedjohndev.com',
   mailto:
-    'mailto:belovedjohn.dev@gmail.com?subject=Project%20Inquiry%20from%20Beloved%20John%20Dev',
+    'mailto:support@belovedjohndev.com?subject=Project%20Inquiry%20from%20Beloved%20John%20Dev',
   whatsapp:
     'https://wa.me/855963885424?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20business%20systems%20project.',
   telegram: 'https://t.me/belovedjohndev',
@@ -919,8 +919,8 @@ export const caseStudies: CaseStudy[] = [
       'Designing visitor-focused category navigation',
       'Turning local market research into a working digital product',
     ],
-    image: '/assets/images/sen-monorom-local-guide.svg',
-    alt: 'Sen Monorom local guide directory interface with business categories and listing cards',
+    image: '/assets/images/sen-monorom-local-guide.webp',
+    alt: 'Sen Monorom Local Guide homepage showing a waterfall hero section for local business listings.',
     referenceLabel: 'Live site',
     referenceHref: 'https://senmonoromlocalguide.vercel.app/',
     referenceText: 'Open the live local guide',
@@ -1060,24 +1060,24 @@ export const faqItems = [
 
 export const aboutPrinciples = [
   {
-    title: 'Independent, not inflated',
+    title: 'Direct ownership',
     description:
-      'The value is not pretending to be a large agency. It is giving clients direct technical ownership with calm, senior-level decision making.',
+      'You work directly with the person responsible for shaping the scope, making system decisions, and delivering the first useful phase.',
   },
   {
     title: 'Workflow before interface',
     description:
-      'I design around roles, data quality, approvals, and handoffs before polishing surface-level features.',
+      'The work starts with roles, data quality, approvals, and handoffs so the interface supports the real process.',
   },
   {
     title: 'Business systems mindset',
     description:
-      'The strongest projects here are not portfolio pieces. They are systems that reduce admin load, improve lead quality, or create clearer operational visibility.',
+      'The strongest projects reduce admin load, improve lead quality, or create clearer operational visibility for the team.',
   },
   {
     title: 'Scoped for usefulness',
     description:
-      'I would rather ship a strong first phase that solves a real bottleneck than promise a larger system that gets harder to buy, build, or maintain.',
+      'A strong first phase should solve a real bottleneck before the system expands into lower-priority features.',
   },
 ];
 
@@ -1149,16 +1149,17 @@ export const contactPageContent: ContactPageContent = {
     eyebrow: 'Consulting intake',
     title: 'Start with the workflow that needs better software.',
     lead:
-      'This page is built for companies evaluating internal systems, client portals, estimator tools, or automation tied to real operations.',
+      'Use this page to start a serious project conversation about internal systems, client portals, estimator tools, or automation tied to real operations.',
     support:
-      'You do not need a polished specification. A clear explanation of the current workflow, the tools involved, and the outcome you need is enough to start a serious project conversation.',
+      'A complete specification is not required. Send the current workflow, where it breaks down, and what should improve.',
     responseTitle: "You'll get a practical reply, not a sales sequence.",
     responseBody:
-      "I'll review the workflow, project shape, and likely first phase so the next conversation is specific.",
+      'I review the project context and reply with the clearest next step.',
     responsePoints: [
-      'Best fit for operational software work rather than brochure websites',
-      'Useful whether you already know the bottleneck or need help defining the first phase',
-      'Expect fit feedback, follow-up questions, or a recommended next step within about 24 hours',
+      'Fit feedback',
+      'Follow-up questions if needed',
+      'Direction on the first useful phase',
+      'Usually within about 24 hours',
     ],
   },
   bestFit: {
@@ -1197,7 +1198,7 @@ export const contactPageContent: ContactPageContent = {
     eyebrow: 'Structured inquiry form',
     title: 'Send the project context.',
     intro:
-      'Send the workflow problem, current tools, desired outcome, timeline, and budget range.',
+      'Send enough context to judge fit and shape the first useful phase. A complete specification is not required.',
     deliveryNote:
       'Use this form to send the key project context. A complete specification is not required.',
     projectTypeOptions: [
