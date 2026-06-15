@@ -5,7 +5,7 @@ import Button from '../components/ui/Button.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { contactLinks, contactPageContent, ctaLabels, primaryCtaHref } from '../data/siteContent';
 
-const { hero, inquiryForm, alternateContact } = contactPageContent;
+const { hero, inquiryForm, expectation, fitReassurance, nextSteps, alternateContact } = contactPageContent;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const contactFormAction = `https://formsubmit.co/${contactLinks.email}`;
 const contactFormSuccessUrl = `${siteUrl}/contact?inquiry=sent#project-inquiry`;
@@ -17,8 +17,8 @@ const alternateContactAriaLabels: Record<string, string> = {
 ---
 
 <MainLayout
-  title="Contact | Beloved John Dev"
-  description="Qualified consulting intake for custom business systems, client portals, estimator tools, and workflow automation."
+  title="Start a Project | Beloved John Dev"
+  description="Send project context for a custom business system, client portal, estimator tool, dashboard, or workflow automation project."
   canonical="/contact"
   ogImage="/og/contact.svg"
   ogImageAlt="Beloved John Dev consulting intake page share image"
@@ -50,6 +50,17 @@ const alternateContactAriaLabels: Record<string, string> = {
     </div>
   </section>
 
+  <section class="section-padding expectation-section" aria-labelledby="expectation-heading">
+    <div class="container">
+      <article class="surface-card expectation-card">
+        <p class="eyebrow">{expectation.eyebrow}</p>
+        <h2 id="expectation-heading">{expectation.title}</h2>
+        <p>{expectation.copy}</p>
+        <p class="expectation-support">{expectation.support}</p>
+      </article>
+    </div>
+  </section>
+
   <section class="section-padding" id="project-inquiry">
     <div class="container">
       <article class="surface-card inquiry-card">
@@ -59,6 +70,12 @@ const alternateContactAriaLabels: Record<string, string> = {
           <p class="muted">{inquiryForm.intro}</p>
           <p class="delivery-note" id="delivery-note">{inquiryForm.deliveryNote}</p>
         </div>
+
+        <aside class="fit-reassurance" aria-labelledby="fit-reassurance-heading">
+          <p class="eyebrow">{fitReassurance.eyebrow}</p>
+          <h3 id="fit-reassurance-heading">{fitReassurance.title}</h3>
+          <p>{fitReassurance.copy}</p>
+        </aside>
 
         <div class="submission-feedback" id="submission-feedback" hidden>
           <p class="eyebrow">Inquiry submitted</p>
@@ -153,13 +170,13 @@ const alternateContactAriaLabels: Record<string, string> = {
             <label class="form-field form-field--full">
               <span>Current workflow problem</span>
               <span class="form-helper" id="currentWorkflowProblem-help">
-                Describe the real handoff, delay, repeated admin task, or visibility problem. A polished spec is not required.
+                Describe what currently happens, who is involved, and where it breaks down. Rough notes are fine.
               </span>
               <textarea
                 id="currentWorkflowProblem"
                 name="currentWorkflowProblem"
                 rows="5"
-                placeholder="Example: quote requests need too much manual follow-up before the team can respond."
+                placeholder="Describe what currently happens, who is involved, and where it breaks down. Rough notes are fine."
                 aria-describedby="currentWorkflowProblem-help"
                 required
               ></textarea>
@@ -174,14 +191,14 @@ const alternateContactAriaLabels: Record<string, string> = {
                 id="existingTools"
                 name="existingTools"
                 rows="4"
-                placeholder="Example: website form, Google Sheets, shared inbox, CRM, booking calendar."
+                placeholder="List the tools, spreadsheets, forms, inboxes, or manual steps involved today."
                 aria-describedby="existingTools-help"
                 required
               ></textarea>
             </label>
 
             <label class="form-field form-field--full">
-              <span>Desired outcome</span>
+              <span>What should be better after the first phase?</span>
               <span class="form-helper" id="targetOutcome-help">
                 Explain what should be easier, clearer, faster, or more reliable after the first useful phase.
               </span>
@@ -197,7 +214,7 @@ const alternateContactAriaLabels: Record<string, string> = {
           </div>
 
           <div class="form-actions">
-            <Button type="submit" variant="primary">Submit Project Inquiry</Button>
+            <Button type="submit" variant="primary">Send Project Context</Button>
           </div>
 
           <p class="form-status" id="form-status" aria-live="polite">
@@ -211,6 +228,15 @@ const alternateContactAriaLabels: Record<string, string> = {
             </p>
           </noscript>
         </form>
+
+        <section class="next-steps-panel" aria-labelledby="next-steps-heading">
+          <p class="eyebrow">{nextSteps.eyebrow}</p>
+          <h3 id="next-steps-heading">{nextSteps.title}</h3>
+          <p>{nextSteps.intro}</p>
+          <ol class="next-steps-list">
+            {nextSteps.items.map((item) => <li>{item}</li>)}
+          </ol>
+        </section>
       </article>
     </div>
   </section>
@@ -220,7 +246,7 @@ const alternateContactAriaLabels: Record<string, string> = {
       <div class="section-title">
         <p class="eyebrow">{alternateContact.eyebrow}</p>
         <h2>{alternateContact.title}</h2>
-        <p>Use email for detailed context, or WhatsApp/Telegram for a shorter first message.</p>
+        <p>{alternateContact.intro}</p>
       </div>
 
       <div class="alternate-contact-actions" aria-label="Direct contact methods">
@@ -279,6 +305,7 @@ const alternateContactAriaLabels: Record<string, string> = {
     background: rgba(255, 255, 255, 0.08);
     color: var(--color-white);
     font-weight: 800;
+    white-space: nowrap;
     transition: var(--transition);
   }
 
@@ -288,9 +315,43 @@ const alternateContactAriaLabels: Record<string, string> = {
     background: rgba(255, 255, 255, 0.14);
   }
 
+  .expectation-section {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .expectation-card {
+    max-width: 860px;
+  }
+
+  .expectation-card p:last-child,
+  .fit-reassurance p:last-child,
+  .next-steps-panel p {
+    margin-bottom: 0;
+  }
+
+  .expectation-support {
+    color: var(--color-primary-dark);
+    font-weight: 800;
+  }
+
   .inquiry-card__header {
     max-width: 760px;
     margin-bottom: var(--space-lg);
+  }
+
+  .fit-reassurance,
+  .next-steps-panel {
+    margin-bottom: var(--space-lg);
+    padding: 1.15rem 1.2rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid rgba(14, 91, 98, 0.18);
+    background: rgba(14, 91, 98, 0.08);
+  }
+
+  .fit-reassurance h3,
+  .next-steps-panel h3 {
+    margin-bottom: 0.6rem;
+    font-size: 1.25rem;
   }
 
   .delivery-note {
@@ -316,8 +377,25 @@ const alternateContactAriaLabels: Record<string, string> = {
 
   .project-form {
     display: grid;
-    gap: var(--space-lg);
+    gap: 1.35rem;
     margin-top: 1.5rem;
+  }
+
+  .next-steps-panel {
+    margin-top: var(--space-lg);
+    margin-bottom: 0;
+  }
+
+  .next-steps-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+  }
+
+  .next-steps-list li {
+    color: var(--color-text);
+    line-height: 1.65;
   }
 
   .honeypot-field {
@@ -330,7 +408,7 @@ const alternateContactAriaLabels: Record<string, string> = {
 
   .form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md) var(--space-lg);
+    gap: 1.2rem 1.5rem;
   }
 
   .form-field {
@@ -413,7 +491,7 @@ const alternateContactAriaLabels: Record<string, string> = {
     background: var(--color-surface-strong);
     color: var(--color-dark);
     font-weight: 800;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
   }
 
@@ -437,6 +515,11 @@ const alternateContactAriaLabels: Record<string, string> = {
   }
 
   @media (max-width: 768px) {
+    .btn-fallback {
+      width: 100%;
+      white-space: normal;
+    }
+
     .form-actions {
       justify-content: stretch;
     }

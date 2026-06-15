@@ -7,84 +7,46 @@ const featuredStudySet = new Set(featuredCaseStudySlugs);
 const featuredStudies = caseStudies.filter((study) =>
   featuredStudySet.has(study.slug as (typeof featuredCaseStudySlugs)[number])
 );
-
-const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
-  const badges = [study.homepageLabel ?? study.serviceLine];
-
-  if (study.referenceExternal) {
-    badges.push('Live client sample');
-  } else if (study.confidential) {
-    badges.push('Private system');
-  } else {
-    badges.push('Case study');
-  }
-
-  if (study.projectType.toLowerCase().includes('internal')) {
-    badges.push('Operations workflow');
-  } else if (study.projectType.toLowerCase().includes('estimate')) {
-    badges.push('Lead qualification');
-  } else {
-    badges.push('Workflow redesign');
-  }
-
-  return badges;
-};
 ---
 
 <section class="section-padding proof-band">
   <div class="container">
     <div class="section-title">
       <p class="eyebrow">Featured Case Studies</p>
-      <h2>Selected projects built around operational bottlenecks</h2>
+      <h2>Projects built around operational bottlenecks.</h2>
     </div>
 
     <div class="study-grid">
       {featuredStudies.map((study) => (
         <article class="surface-card study-card">
           <div class="study-card__media">
-            <div class="study-card__badge-row" aria-hidden="true">
-              <span class="study-card__badge study-card__badge--primary">{study.serviceLine}</span>
-              <span class="study-card__badge">
-                {study.referenceExternal ? 'Live sample' : study.confidential ? 'Private build' : 'Case study'}
-              </span>
-            </div>
             <picture>
               {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
               <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="study-card__body">
-            <p class="eyebrow">{study.homepageLabel ?? study.serviceLine}</p>
+            <p class="study-card__tag">{study.homepageLabel ?? study.serviceLine}</p>
             <h3>{study.title}</h3>
-            <p>{study.homepageSummary ?? study.summary}</p>
 
-            <div class="study-card__signals" role="list" aria-label={`${study.title} quick signals`}>
-              {getStudyBadges(study).map((badge) => (
-                <span class="study-card__signal" role="listitem">{badge}</span>
-              ))}
-            </div>
-
-            <div class="study-block">
-              <h4>What Was Built</h4>
-              <ul class="bullet-list">
-                {(study.homepageBuilt ?? study.scopeDelivered.slice(0, 5)).map((item) => <li>{item}</li>)}
-              </ul>
-            </div>
-
-            <div class="study-block">
-              <h4>Outcome</h4>
-              <p>{study.homepageOutcome ?? `${study.outcomes.join(', ')}.`}</p>
-            </div>
+            <p class="study-line"><strong>Problem:</strong> {study.problemOneLiner}</p>
+            <p class="study-line"><strong>Outcome:</strong> {study.outcomeOneLiner}</p>
 
             <div class="study-actions">
               <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
-              {study.slug === 'estimate-engine' && study.referenceHref && (
-                <Button href={study.referenceHref} variant="primary">View Live Demo</Button>
+              {study.referenceExternal && study.referenceHref && study.referenceLabel.toLowerCase().includes('demo') && (
+                <Button href={study.referenceHref} variant="primary" target="_blank" rel="noopener">
+                  View Live Demo
+                </Button>
               )}
             </div>
           </div>
         </article>
       ))}
+    </div>
+
+    <div class="study-more">
+      <Button href="/case-studies" variant="dark">View All Case Studies</Button>
     </div>
   </div>
 </section>
@@ -96,7 +58,7 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
 
   .study-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-lg);
   }
 
@@ -109,49 +71,12 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
     position: relative;
     display: grid;
     place-items: center;
-    min-height: clamp(16rem, 28vw, 24rem);
+    min-height: clamp(13rem, 20vw, 18rem);
     padding: clamp(1rem, 2vw, 1.35rem);
     background:
       linear-gradient(180deg, rgba(244, 246, 247, 0.96), rgba(233, 239, 242, 0.96)),
       radial-gradient(circle at top left, rgba(216, 161, 93, 0.18), transparent 28%);
     border-bottom: 1px solid rgba(16, 32, 51, 0.08);
-  }
-
-  .study-card__badge-row {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.65rem;
-    flex-wrap: wrap;
-  }
-
-  .study-card__badge,
-  .study-card__signal {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  .study-card__badge {
-    padding: 0.45rem 0.75rem;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(16, 32, 51, 0.1);
-    box-shadow: 0 10px 24px rgba(16, 32, 51, 0.08);
-    color: var(--color-dark);
-    font-size: 0.75rem;
-  }
-
-  .study-card__badge--primary {
-    background: rgba(11, 31, 51, 0.92);
-    color: var(--color-white);
-    border-color: rgba(11, 31, 51, 0.2);
   }
 
   .study-card picture {
@@ -160,7 +85,7 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
 
   .study-card img {
     width: 100%;
-    max-height: clamp(14rem, 25vw, 22rem);
+    max-height: clamp(11rem, 18vw, 16rem);
     object-fit: contain;
     object-position: center top;
     border-radius: calc(var(--border-radius) - 0.35rem);
@@ -169,34 +94,32 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
 
   .study-card__body {
     display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-    gap: 1rem;
+    gap: 0.9rem;
     padding: var(--space-lg);
   }
 
-  .study-card__signals {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-  }
-
-  .study-card__signal {
+  .study-card__tag {
+    width: fit-content;
+    margin-bottom: 0;
     padding: 0.42rem 0.72rem;
+    border-radius: 999px;
     background: rgba(14, 91, 98, 0.08);
     color: var(--color-primary);
     font-size: 0.8rem;
+    font-weight: 800;
   }
 
-  .study-block h4 {
-    margin-bottom: 0.35rem;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-  }
-
-  .study-block p {
+  .study-line {
     margin-bottom: 0;
+    padding: 0.85rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(244, 246, 247, 0.82);
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    line-height: 1.62;
+  }
+
+  .study-line strong {
+    color: var(--color-dark);
   }
 
   .study-actions {
@@ -210,22 +133,21 @@ const getStudyBadges = (study: (typeof featuredStudies)[number]) => {
     flex: 1 1 220px;
   }
 
-  @media (max-width: 900px) {
+  .study-more {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 1100px) {
     .study-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 560px) {
-    .study-card__badge-row {
-      top: 0.85rem;
-      left: 0.85rem;
-      right: 0.85rem;
-    }
-
-    .study-card__badge,
-    .study-card__signal {
-      white-space: normal;
+  @media (max-width: 760px) {
+    .study-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

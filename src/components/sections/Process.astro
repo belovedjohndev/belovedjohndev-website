@@ -1,12 +1,14 @@
 ---
-import { processSteps } from '../../data/siteContent';
+import { processSteps, whyWorkWithMe } from '../../data/siteContent';
+
+const processDifferentiators = whyWorkWithMe.slice(0, 2);
 ---
 
 <section class="section-padding process-band">
   <div class="container">
     <div class="section-title">
-      <p class="eyebrow">Process Snapshot</p>
-      <h2>How projects typically move</h2>
+      <p class="eyebrow">How It Works</p>
+      <h2>A direct, scoped-first working model.</h2>
     </div>
 
     <div class="grid-2">
@@ -15,6 +17,15 @@ import { processSteps } from '../../data/siteContent';
           <p class="eyebrow">{step.number}</p>
           <h3>{step.title}</h3>
           <p>{step.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="grid-2 process-differentiators" aria-label="Working model differentiators">
+      {processDifferentiators.map((item) => (
+        <article class="simple-card process-differentiator">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
         </article>
       ))}
     </div>
@@ -31,8 +42,17 @@ import { processSteps } from '../../data/siteContent';
   }
 
   .process-card p:last-child,
+  .process-differentiator p,
   .process-close {
     margin-bottom: 0;
+  }
+
+  .process-differentiators {
+    margin-top: var(--space-lg);
+  }
+
+  .process-differentiator {
+    border-left: 4px solid var(--color-primary);
   }
 
   .process-close {

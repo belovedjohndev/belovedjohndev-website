@@ -5,11 +5,59 @@ import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
 import { caseStudies, ctaLabels, primaryCtaHref } from '../../data/siteContent';
 import { getWebpVariant, hasWebpVariant } from '../../utils/images';
+
+const selectedCaseStudySlugs = [
+  'estimate-engine',
+  'church-management-system',
+  'multi-tenant-estimate-engine',
+] as const;
+
+const selectedCaseStudySet = new Set(selectedCaseStudySlugs);
+const selectedCaseStudies = caseStudies.filter((study) =>
+  selectedCaseStudySet.has(study.slug as (typeof selectedCaseStudySlugs)[number])
+);
+
+const proofSignals = [
+  'Workflow diagnosis',
+  'Structured data capture',
+  'Role-based/internal workflows',
+  'Lead intake and qualification',
+  'Multi-tenant or reusable architecture',
+  'Maintainable custom systems',
+];
+
+const getStatusLabel = (study: (typeof selectedCaseStudies)[number]) => {
+  if (study.referenceExternal && study.referenceHref) {
+    return 'Live demo';
+  }
+
+  if (study.confidential) {
+    return 'Private build';
+  }
+
+  if (study.referenceHref) {
+    return 'Related offer';
+  }
+
+  return study.referenceLabel;
+};
+
+const getReferenceLinkLabel = (study: (typeof selectedCaseStudies)[number]) => {
+  if (!study.referenceHref) {
+    return null;
+  }
+
+  if (study.referenceExternal && study.referenceLabel.toLowerCase().includes('demo')) {
+    return 'View Live Demo';
+  }
+
+  return study.referenceText;
+};
 ---
 
 <MainLayout
-  title="Case Studies | Beloved John Dev"
-  description="Systems-focused case studies showing workflow problems, architecture decisions, and business impact."
+  title="Systems Work & Custom Software Case Studies | Beloved John Dev"
+  description="Selected custom software projects built around operational bottlenecks: estimator tools, internal platforms, lead intake systems, and reusable workflow architecture."
   canonical="/case-studies"
   ogImage="/og/case-studies.svg"
   ogImageAlt="Beloved John Dev case studies page share image"
@@ -19,60 +67,102 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
   <section class="page-hero page-hero--case-studies">
     <div class="container page-hero__content">
       <p class="eyebrow">Case Studies</p>
-      <h1>Case studies written like systems work, not portfolio captions</h1>
+      <h1>Systems work built around real operational problems.</h1>
       <p class="page-hero__lead">
-        These projects are structured around workflow pain, goals, scope, architecture, decisions, and business
-        impact so future clients can see both technical depth and operational judgment.
+        These projects are framed the way serious buyers evaluate custom software: what was broken, what was built,
+        and what became easier or more reliable afterward.
       </p>
       <div class="hero-actions">
         <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
-        <Button href="#case-list" variant="secondary">{ctaLabels.secondary}</Button>
+        <Button href="#case-list" variant="secondary">View Case Studies</Button>
       </div>
     </div>
   </section>
 
-  <section class="section-padding" id="case-list">
-    <div class="container case-study-grid">
-      {caseStudies.map((study) => (
-        <article class="surface-card case-study-card">
-          <div class="case-study-media">
-            <picture>
-              {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
-              <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div class="case-study-content">
-            <p class="eyebrow">{study.projectType}</p>
-            <h2>{study.title}</h2>
-            <p>{study.summary}</p>
-            <p class="muted case-study-meta">
-              <strong>Industry:</strong> {study.industry} | <strong>Company size:</strong> {study.companySize}
-            </p>
-            <div class="chip-row">
-              {study.proof.map((item) => (
-                <span class="chip">{item}</span>
-              ))}
+  <section class="section-padding proof-framing" aria-labelledby="proof-framing-heading">
+    <div class="container proof-framing__layout">
+      <div class="section-title proof-framing__copy">
+        <p class="eyebrow">What this work demonstrates</p>
+        <h2 id="proof-framing-heading">Proof beyond screenshots.</h2>
+        <p>
+          Each project is included because it shows practical systems judgment, not because it is a decorative
+          portfolio piece.
+        </p>
+      </div>
+
+      <div class="proof-signal-grid" role="list" aria-label="Case study proof signals">
+        {proofSignals.map((signal) => (
+          <span class="proof-signal" role="listitem">{signal}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="case-list" aria-labelledby="case-list-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Selected work</p>
+        <h2 id="case-list-heading">Problem, build, outcome.</h2>
+      </div>
+
+      <div class="case-study-grid">
+        {selectedCaseStudies.map((study) => (
+          <article class="surface-card case-study-card">
+            <div class="case-study-media">
+              <picture>
+                {hasWebpVariant(study.image) && <source srcset={getWebpVariant(study.image)} type="image/webp" />}
+                <img src={study.image} alt={study.alt} width="900" height="600" loading="lazy" decoding="async" />
+              </picture>
             </div>
-            <div class="case-study-actions">
-              <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
+
+            <div class="case-study-content">
+              <div class="case-study-tags">
+                <span>{study.serviceLine}</span>
+                <span>{getStatusLabel(study)}</span>
+              </div>
+
+              <h3>{study.title}</h3>
+
+              <div class="case-study-lines">
+                <p><strong>Problem:</strong> {study.problemOneLiner}</p>
+                <p><strong>Outcome:</strong> {study.outcomeOneLiner}</p>
+              </div>
+
+              <div class="chip-row" role="list" aria-label={`${study.title} proof points`}>
+                {study.proof.slice(0, 3).map((item) => (
+                  <span class="chip" role="listitem">{item}</span>
+                ))}
+              </div>
+
+              <div class="case-study-actions">
+                <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
+                {getReferenceLinkLabel(study) && study.referenceHref && (
+                  <Button
+                    href={study.referenceHref}
+                    variant="primary"
+                    target={study.referenceExternal === false ? undefined : '_blank'}
+                    rel={study.referenceExternal === false ? undefined : 'noopener'}
+                  >
+                    {getReferenceLinkLabel(study)}
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="section-padding cta-frame">
     <div class="container cta-frame__content">
       <p class="eyebrow">Next step</p>
-      <h2>If one of these workflow problems feels familiar, that is enough to start a conversation.</h2>
+      <h2>Working through a similar bottleneck?</h2>
       <p>
-        The point of these case studies is to help serious buyers self-qualify. If the operational pain matches,
-        we can define a tool or system that fits your workflow.
+        Start with the workflow problem, the current tools, and what should be better after the first phase.
       </p>
       <div class="hero-actions">
         <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
-        <Button href="#case-list" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
   </section>
@@ -81,9 +171,48 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 </MainLayout>
 
 <style>
+  .proof-framing {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .proof-framing__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .proof-framing__copy {
+    margin-bottom: 0;
+  }
+
+  .proof-signal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .proof-signal,
+  .case-study-tags span {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+
+  .proof-signal {
+    padding: 0.42rem 0.7rem;
+    background: var(--color-white);
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    color: var(--color-dark);
+    font-size: 0.84rem;
+    box-shadow: var(--shadow-sm);
+  }
+
   .case-study-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-lg);
   }
 
@@ -97,7 +226,7 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
   .case-study-media {
     display: grid;
     place-items: center;
-    min-height: 260px;
+    min-height: clamp(13rem, 20vw, 18rem);
     padding: 1rem;
     background:
       linear-gradient(180deg, rgba(244, 246, 247, 0.96), rgba(233, 239, 242, 0.96)),
@@ -111,50 +240,81 @@ import { getWebpVariant, hasWebpVariant } from '../../utils/images';
 
   .case-study-media img {
     width: 100%;
-    height: 100%;
-    max-height: 320px;
+    max-height: clamp(11rem, 18vw, 16rem);
     object-fit: contain;
-    object-position: center;
+    object-position: center top;
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 14px 30px rgba(16, 32, 51, 0.1);
   }
 
   .case-study-content {
     display: grid;
-    grid-template-rows: auto auto auto auto auto 1fr;
     gap: 1rem;
     padding: var(--space-lg);
   }
 
-  .case-study-content h2 {
-    overflow-wrap: anywhere;
-  }
-
-  .case-study-content p,
-  .case-study-content h2 {
+  .case-study-content h3,
+  .case-study-lines p {
     margin-bottom: 0;
   }
 
-  .case-study-meta {
-    padding-bottom: 0.1rem;
-    border-bottom: 1px solid rgba(16, 32, 51, 0.08);
+  .case-study-tags,
+  .case-study-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .case-study-tags span {
+    padding: 0.42rem 0.72rem;
+    background: rgba(14, 91, 98, 0.08);
+    color: var(--color-primary);
+    font-size: 0.8rem;
+  }
+
+  .case-study-tags span:nth-child(2) {
+    background: rgba(16, 32, 51, 0.08);
+    color: var(--color-dark);
+  }
+
+  .case-study-lines {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .case-study-lines p {
+    padding: 0.85rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(244, 246, 247, 0.82);
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    line-height: 1.62;
+  }
+
+  .case-study-lines strong {
+    color: var(--color-dark);
   }
 
   .case-study-actions {
-    align-self: start;
+    align-self: end;
+    align-items: stretch;
     margin-top: auto;
-    padding-top: 0.25rem;
   }
 
   .case-study-actions :global(.btn) {
-    width: 100%;
+    flex: 1 1 210px;
+  }
+
+  @media (max-width: 1100px) {
+    .case-study-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 900px) {
+    .proof-framing__layout,
     .case-study-grid {
       grid-template-columns: 1fr;
-    }
-
-    .case-study-media {
-      min-height: 220px;
     }
   }
 </style>

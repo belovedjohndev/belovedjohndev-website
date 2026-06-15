@@ -6,7 +6,7 @@ import { fitSignals, notFitSignals } from '../../data/siteContent';
   <div class="container">
     <div class="section-title">
       <p class="eyebrow">Buyer Fit</p>
-      <h2>Who this work is for</h2>
+      <h2>Is this the right fit?</h2>
     </div>
 
     <div class="grid-2">
@@ -26,7 +26,8 @@ import { fitSignals, notFitSignals } from '../../data/siteContent';
     </div>
 
     <p class="fit-close">
-      I focus on projects where the website or software is part of how the business actually runs.
+      The focus is on projects where the software is part of how the business runs, not a standalone marketing page
+      disconnected from operations.
     </p>
   </div>
 </section>
@@ -38,6 +39,10 @@ import { fitSignals, notFitSignals } from '../../data/siteContent';
 
   .fit-card--muted {
     background: linear-gradient(135deg, rgba(14, 91, 98, 0.06), rgba(16, 32, 51, 0.04));
+  }
+
+  .fit-card:first-child {
+    border-top: 4px solid var(--color-primary);
   }
 
   .fit-close {

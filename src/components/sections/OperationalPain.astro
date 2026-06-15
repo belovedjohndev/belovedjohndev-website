@@ -5,16 +5,15 @@ import { operationalSymptoms } from '../../data/siteContent';
 <section class="section-padding">
   <div class="container">
     <div class="section-title pain-title">
-      <p class="eyebrow">Operational Pain</p>
-      <h2>When the workflow is growing faster than the system</h2>
+      <p class="eyebrow">Buyer Pain</p>
+      <h2>The business is growing. The back-office has not kept up.</h2>
       <p>
-        Most clients reach out when the business is growing, but the internal workflow is still being held together
-        by spreadsheets, inbox threads, and manual coordination.
+        Most clients reach out when revenue is moving in the right direction, but the operational layer is still held
+        together by workarounds.
       </p>
-      <p>This usually shows up as a few recurring problems:</p>
     </div>
 
-    <div class="grid-auto">
+    <div class="grid-2 pain-grid">
       {operationalSymptoms.map((item) => (
         <article class="simple-card pain-card">
           <p>{item}</p>
@@ -23,7 +22,7 @@ import { operationalSymptoms } from '../../data/siteContent';
     </div>
 
     <p class="pain-close">
-      At that point, the problem is usually not the website; it is the system behind the business.
+      The problem is usually not the website. It is the system behind the business.
     </p>
   </div>
 </section>
@@ -31,6 +30,14 @@ import { operationalSymptoms } from '../../data/siteContent';
 <style>
   .pain-title {
     max-width: 780px;
+  }
+
+  .pain-grid {
+    align-items: stretch;
+  }
+
+  .pain-card {
+    border-left: 4px solid var(--color-primary);
   }
 
   .pain-card p,

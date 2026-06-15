@@ -3,12 +3,39 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Button from '../../components/ui/Button.astro';
-import { ctaLabels, primaryCtaHref, servicePages } from '../../data/siteContent';
+import { caseStudies, ctaLabels, primaryCtaHref, servicePages } from '../../data/siteContent';
+
+const relatedProof = servicePages
+  .map((service) => ({
+    service,
+    study: caseStudies.find((caseStudy) => caseStudy.slug === service.relatedCaseStudySlug),
+  }))
+  .filter((item): item is { service: (typeof servicePages)[number]; study: (typeof caseStudies)[number] } =>
+    Boolean(item.study)
+  );
+
+const decisionRules = [
+  {
+    signal: 'If the internal team is the bottleneck',
+    serviceTitle: 'Custom Business Systems',
+    href: '/services/custom-business-systems',
+  },
+  {
+    signal: 'If intake or lead quality is the problem',
+    serviceTitle: 'Client Portals & Estimator Tools',
+    href: '/services/client-portals-estimator-tools',
+  },
+  {
+    signal: 'If tools exist but handoffs are still manual',
+    serviceTitle: 'Automation & Integrations',
+    href: '/services/automation-integrations',
+  },
+];
 ---
 
 <MainLayout
-  title="Services | Beloved John Dev"
-  description="Three focused service lines for custom business systems, client portals and estimator tools, and automation work."
+  title="Custom Business Systems, Client Portals & Workflow Automation | Beloved John Dev"
+  description="Three focused service lines for operations-heavy teams: internal systems, client-facing workflow tools, and automation connected to real business processes."
   canonical="/services"
   ogImage="/og/services.svg"
   ogImageAlt="Beloved John Dev services page share image"
@@ -18,44 +45,57 @@ import { ctaLabels, primaryCtaHref, servicePages } from '../../data/siteContent'
   <section class="page-hero page-hero--services">
     <div class="container page-hero__content">
       <p class="eyebrow">Services</p>
-      <h1>Three focused offers for companies with real workflow friction</h1>
+      <h1>Three ways to replace manual workflow with better software.</h1>
       <p class="page-hero__lead">
-        This site is not broad by accident. The work is intentionally centered on internal systems,
-        client-facing workflow tools, and automation that reduces operational drag.
+        The work is intentionally focused: internal systems, client-facing workflow tools, and automation for businesses
+        that need software connected to real operations.
       </p>
       <div class="hero-actions">
         <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
-        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
+        <Button href="#choose-service" variant="secondary">Compare Services</Button>
       </div>
     </div>
   </section>
 
-  <section class="section-padding">
-    <div class="container cards">
+  <section class="section-padding" id="choose-service" aria-labelledby="choose-service-heading">
+    <div class="container services-decision">
+      <div class="section-title">
+        <p class="eyebrow">Choose by friction</p>
+        <h2 id="choose-service-heading">Which workflow problem are you trying to solve?</h2>
+      </div>
+
       {servicePages.map((service) => (
-        <article class="surface-card service-card">
-          <div class="service-card__top">
-            <p class="eyebrow">Offer</p>
-            <h2>{service.title}</h2>
-            <p>{service.summary}</p>
+        <article class="surface-card service-block">
+          <div class="service-block__header">
+            <p class="service-block__tag">{service.previewTag}</p>
+            <h3>{service.title}</h3>
           </div>
 
-          <div class="service-card__grid">
+          <div class="service-block__grid">
             <div>
-              <h3>Problem solved</h3>
-              <p>{service.problemStatement}</p>
+              <h4>Buyer situation</h4>
+              <p>{service.decisionSituation}</p>
             </div>
 
             <div>
-              <h3>Typical deliverables</h3>
+              <h4>What I build</h4>
               <ul class="bullet-list">
-                {service.deliverables.slice(0, 3).map((item) => <li>{item}</li>)}
+                {service.previewDeliverables.map((item) => <li>{item}</li>)}
               </ul>
             </div>
+
+            <div>
+              <h4>Best fit</h4>
+              <p>{service.decisionBestFit}</p>
+            </div>
+
+            <div>
+              <h4>Outcome</h4>
+              <p>{service.decisionOutcome}</p>
+            </div>
           </div>
 
-          <div class="service-card__footer">
-            <p class="muted">{service.startingScope}</p>
+          <div class="service-block__action">
             <Button href={`/services/${service.slug}`} variant="dark">View Service Details</Button>
           </div>
         </article>
@@ -63,39 +103,62 @@ import { ctaLabels, primaryCtaHref, servicePages } from '../../data/siteContent'
     </div>
   </section>
 
-  <section class="section-padding compare-band">
-    <div class="container grid-3">
-      <article class="surface-card compare-card">
-        <p class="eyebrow">Custom systems</p>
-        <h3>When the core operation is the problem</h3>
-        <p>Choose this when the business needs a stronger internal operating system, not another workaround.</p>
-      </article>
+  <section class="section-padding helper-band" aria-labelledby="decision-helper-heading">
+    <div class="container helper-layout">
+      <div class="section-title helper-title">
+        <p class="eyebrow">Decision helper</p>
+        <h2 id="decision-helper-heading">Not sure which one fits?</h2>
+        <p>Start with where the friction is.</p>
+      </div>
 
-      <article class="surface-card compare-card">
-        <p class="eyebrow">Portals and estimators</p>
-        <h3>When the intake or client experience is weak</h3>
-        <p>Choose this when the website should collect better context, quote more clearly, or give clients structured access.</p>
-      </article>
+      <div class="helper-list" role="list">
+        {decisionRules.map((rule) => (
+          <a class="helper-row" href={rule.href} role="listitem">
+            <span>{rule.signal}</span>
+            <strong>{rule.serviceTitle}</strong>
+          </a>
+        ))}
+      </div>
 
-      <article class="surface-card compare-card">
-        <p class="eyebrow">Automation</p>
-        <h3>When the tools exist but the workflow is still fragile</h3>
-        <p>Choose this when the business needs cleaner movement of data, notifications, and reporting between systems.</p>
-      </article>
+      <p class="helper-close">
+        Most real projects touch more than one category. The first step is to identify the workflow that should improve
+        first.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="related-proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Related proof</p>
+        <h2 id="related-proof-heading">One relevant case study for each service.</h2>
+      </div>
+
+      <div class="proof-grid">
+        {relatedProof.map(({ service, study }) => (
+          <article class="surface-card proof-card">
+            <p class="service-block__tag">{service.previewTag}</p>
+            <h3>{study.title}</h3>
+            <p><strong>Service:</strong> {service.title}</p>
+            <p><strong>Problem:</strong> {study.problemOneLiner}</p>
+            <p><strong>Outcome:</strong> {study.outcomeOneLiner}</p>
+            <Button href={`/case-studies/${study.slug}`} variant="dark">Read Case Study</Button>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="section-padding cta-frame">
     <div class="container cta-frame__content">
       <p class="eyebrow">Next step</p>
-      <h2>Pick the closest fit, not the perfect label.</h2>
+      <h2>Start with the workflow problem.</h2>
       <p>
-        Buyers do not need to diagnose the engagement perfectly before reaching out. The right first phase is
-        usually confirmed after reviewing the workflow and deciding where the biggest operational friction lives.
+        You do not need a polished specification. Send the current process, where it breaks down, and what should be
+        better after the first phase.
       </p>
       <div class="hero-actions">
         <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
-        <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
       </div>
     </div>
   </section>
@@ -104,58 +167,158 @@ import { ctaLabels, primaryCtaHref, servicePages } from '../../data/siteContent'
 </MainLayout>
 
 <style>
-  .cards {
+  .services-decision {
     display: grid;
-    gap: var(--space-lg);
+    gap: 1.4rem;
   }
 
-  .service-card {
+  .service-block {
     display: grid;
-    gap: var(--space-lg);
+    gap: 1.35rem;
   }
 
-  .service-card__top {
+  .service-block__header {
     display: grid;
-    gap: 0.45rem;
-    max-width: 52rem;
+    gap: 0.65rem;
   }
 
-  .service-card__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-lg);
-    margin: 1.25rem 0;
-  }
-
-  .service-card__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-md);
-    padding-top: 1.1rem;
-    border-top: 1px solid rgba(16, 32, 51, 0.08);
-  }
-
-  .compare-band {
-    background: rgba(255, 255, 255, 0.45);
-  }
-
-  .compare-card {
-    height: 100%;
-  }
-
-  .compare-card p:last-child {
+  .service-block__header h3 {
     margin-bottom: 0;
   }
 
-  @media (max-width: 900px) {
-    .service-card__grid,
-    .service-card__footer {
+  .service-block__tag {
+    width: fit-content;
+    margin-bottom: 0;
+    padding: 0.38rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(14, 91, 98, 0.08);
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .service-block__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .service-block__grid > div {
+    min-width: 0;
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(244, 246, 247, 0.74);
+    border: 1px solid rgba(16, 32, 51, 0.08);
+  }
+
+  .service-block__grid h4 {
+    margin-bottom: 0.35rem;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .service-block__grid p,
+  .proof-card p {
+    margin-bottom: 0;
+    line-height: 1.65;
+  }
+
+  .service-block__action {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .helper-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .helper-layout {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .helper-title {
+    max-width: 720px;
+  }
+
+  .helper-list {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .helper-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-md);
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-sm);
+    border-left: 3px solid rgba(14, 91, 98, 0.28);
+  }
+
+  .helper-row:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .helper-row span {
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+
+  .helper-row strong {
+    color: var(--color-dark);
+  }
+
+  .helper-close {
+    max-width: 760px;
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .proof-card {
+    display: grid;
+    gap: 0.9rem;
+    height: 100%;
+  }
+
+  .proof-card strong {
+    color: var(--color-dark);
+  }
+
+  .proof-card :global(.btn) {
+    align-self: end;
+  }
+
+  @media (max-width: 1100px) {
+    .service-block__grid,
+    .proof-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .service-block__grid,
+    .proof-grid,
+    .helper-row {
       grid-template-columns: 1fr;
-      display: grid;
     }
 
-    .service-card__footer :global(.btn) {
+    .service-block__action :global(.btn),
+    .proof-card :global(.btn) {
       width: 100%;
     }
   }

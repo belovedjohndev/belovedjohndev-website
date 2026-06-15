@@ -1,33 +1,33 @@
 ---
 import Button from '../ui/Button.astro';
 import { servicePages } from '../../data/siteContent';
+
+const serviceAccents = ['#3B8EEA', '#22B5A0', '#E8A838'];
 ---
 
 <section class="section-padding">
   <div class="container">
     <div class="section-title">
-      <p class="eyebrow">Three Offers</p>
-      <h2>Three ways I typically help</h2>
+      <p class="eyebrow">Services Preview</p>
+      <h2>Three offers, each built around a different operational problem.</h2>
     </div>
 
     <div class="grid-3 offer-grid">
-      {servicePages.map((service) => (
-        <article class="surface-card offer-card">
+      {servicePages.map((service, index) => (
+        <article class="surface-card offer-card" style={`--service-accent: ${serviceAccents[index]}`}>
+          <p class="service-tag">{service.previewTag}</p>
           <h3>{service.title}</h3>
 
           <div class="offer-block">
             <h4>Problem</h4>
-            <p>{service.problemStatement}</p>
+            <p>{service.previewSummary}</p>
           </div>
 
           <div class="offer-block">
-            <h4>What I Build</h4>
-            <p>{service.deliverables.slice(0, 5).join(', ')}.</p>
-          </div>
-
-          <div class="offer-block">
-            <h4>Best Fit</h4>
-            <p>{service.audienceSummary}</p>
+            <h4>What I build</h4>
+            <ul class="bullet-list">
+              {service.previewDeliverables.map((item) => <li>{item}</li>)}
+            </ul>
           </div>
 
           <Button href={`/services/${service.slug}`} variant="dark">View Service Details</Button>
@@ -45,12 +45,24 @@ import { servicePages } from '../../data/siteContent';
   .offer-card {
     display: grid;
     grid-template-rows: auto auto auto 1fr auto;
-    gap: 1rem;
+    gap: 0.9rem;
     height: 100%;
+    border-top: 4px solid var(--service-accent);
   }
 
   .offer-card h3 {
     margin-bottom: 0;
+  }
+
+  .service-tag {
+    width: fit-content;
+    margin-bottom: 0;
+    padding: 0.38rem 0.65rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--service-accent) 12%, white);
+    color: var(--color-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
   }
 
   .offer-block h4 {
@@ -63,6 +75,13 @@ import { servicePages } from '../../data/siteContent';
 
   .offer-block p {
     margin-bottom: 0;
+  }
+
+  .offer-block {
+    padding: 0.95rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(244, 246, 247, 0.72);
+    border: 1px solid rgba(16, 32, 51, 0.08);
   }
 
   .offer-card :global(.btn) {

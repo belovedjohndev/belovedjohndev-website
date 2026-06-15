@@ -46,6 +46,7 @@ const finalClass = `${baseClass} ${className}`.trim();
     letter-spacing: 0.005em;
     line-height: 1.2;
     text-align: center;
+    white-space: nowrap;
     cursor: pointer;
     transition: var(--transition);
     box-shadow: 0 12px 28px rgba(16, 32, 51, 0.08);
@@ -71,6 +72,7 @@ const finalClass = `${baseClass} ${className}`.trim();
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
     color: var(--color-white);
+    box-shadow: none;
   }
 
   .btn-secondary:hover {
@@ -88,5 +90,12 @@ const finalClass = `${baseClass} ${className}`.trim();
   .btn-dark:hover {
     color: var(--color-white);
     box-shadow: 0 18px 32px rgba(16, 32, 51, 0.18);
+  }
+
+  @media (max-width: 520px) {
+    .btn {
+      width: 100%;
+      white-space: normal;
+    }
   }
 </style>

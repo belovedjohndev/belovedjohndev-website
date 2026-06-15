@@ -31,12 +31,12 @@
 
   --container-max-width: 1180px;
   --container-padding: 1.5rem;
-  --border-radius: 20px;
-  --border-radius-sm: 12px;
+  --border-radius: 10px;
+  --border-radius-sm: 8px;
 
-  --shadow-sm: 0 12px 28px rgba(16, 32, 51, 0.06);
-  --shadow-md: 0 20px 48px rgba(16, 32, 51, 0.1);
-  --shadow-lg: 0 28px 72px rgba(16, 32, 51, 0.14);
+  --shadow-sm: 0 10px 22px rgba(16, 32, 51, 0.05);
+  --shadow-md: 0 18px 40px rgba(16, 32, 51, 0.08);
+  --shadow-lg: 0 24px 58px rgba(16, 32, 51, 0.12);
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }

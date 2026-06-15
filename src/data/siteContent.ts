@@ -20,6 +20,12 @@ export interface ServicePage {
   pricingGuidanceIntro: string;
   pricingGuidancePoints: string[];
   pricingGuidanceClosing: string;
+  previewTag: string;
+  previewSummary: string;
+  previewDeliverables: string[];
+  decisionSituation: string;
+  decisionOutcome: string;
+  decisionBestFit: string;
   ctaTitle: string;
   ctaCopy: string;
   relatedCaseStudySlug: string;
@@ -36,6 +42,8 @@ export interface CaseStudy {
   goal: string[];
   homepageLabel?: string;
   homepageSummary?: string;
+  problemOneLiner: string;
+  outcomeOneLiner: string;
   homepageBuilt?: string[];
   homepageOutcome?: string;
   clientType: string;
@@ -134,6 +142,17 @@ export interface ContactPageContent {
     timelineOptions: readonly ContactFormOption[];
     budgetRangeOptions: readonly ContactFormOption[];
   };
+  expectation: {
+    eyebrow: string;
+    title: string;
+    copy: string;
+    support: string;
+  };
+  fitReassurance: {
+    eyebrow: string;
+    title: string;
+    copy: string;
+  };
   nextSteps: {
     eyebrow: string;
     title: string;
@@ -198,22 +217,21 @@ export const ctaLabels = {
 export const primaryCtaHref = '/contact#project-inquiry';
 
 export const sitePositioning = {
-  eyebrow: 'Independent custom systems developer',
-  title:
-    'Custom-coded business systems for service companies that need more than a basic website.',
+  eyebrow: 'Custom business systems',
+  title: 'Your workflow has outgrown the tools holding it together.',
   lead:
-    'I build internal tools, client portals, estimator flows, booking systems, dashboards, and automation that reduce manual work, improve lead intake, and make operations easier to manage.',
+    'I build internal systems, client portals, estimator tools, and workflow automation for service companies that need software built around real operations — not templates.',
   support:
     'The site is intentionally positioned around operational software work, not generic brochure-site projects.',
 };
 
 export const operationalSymptoms = [
-  'Important workflows are still managed in spreadsheets',
+  'Quotes still go out by email or phone',
   'Staff re-enter the same information in multiple places',
-  'Quote or inquiry forms do not collect enough information',
-  'The website is disconnected from internal operations',
-  'Reporting requires manual checking and compiling',
-  'Administrative work increases every time the business grows',
+  'Job tracking lives in a spreadsheet nobody trusts',
+  'The contact form does not collect enough to qualify a lead',
+  'Reporting requires someone to manually pull and compile',
+  'Administrative work grows every time you add a client',
 ];
 
 export const whyWorkWithMe = [
@@ -246,9 +264,9 @@ export const whyWorkWithMe = [
 
 export const heroProofPoints = [
   'Custom-coded systems',
-  'Client portals and estimator tools',
-  'Workflow automation',
   'Direct builder access',
+  'Architecture-first',
+  'Production delivery',
 ];
 
 export const whatIBuildHighlights: WhatIBuildHighlight[] = [
@@ -290,25 +308,25 @@ export const processSteps: ProcessStep[] = [
     number: '01',
     title: 'Discovery and workflow review',
     description:
-      'We look at how the business currently operates and where the main friction points are.',
+      'We look at how the business currently operates, who is involved, and where the main friction points are. A full spec is not required.',
   },
   {
     number: '02',
     title: 'Scope and architecture',
     description:
-      'I recommend a practical first phase and define how the system should be structured.',
+      'I recommend a practical first phase centered on the highest-value workflow, then define the structure needed to support it.',
   },
   {
     number: '03',
-    title: 'Build the core workflow first',
+    title: 'Build the core system first',
     description:
-      'The first version focuses on the most important operational workflow.',
+      'The first version focuses on the most important operational problem so the system becomes useful before it grows wider.',
   },
   {
     number: '04',
-    title: 'Review, refine, and expand',
+    title: 'Refine and expand',
     description:
-      'After the core system is in use, we refine and expand based on real usage.',
+      'After the core system is in use, we review real usage and decide what to improve next based on actual friction.',
   },
 ];
 
@@ -385,6 +403,21 @@ export const servicePages: ServicePage[] = [
     ],
     pricingGuidanceClosing:
       'After the first phase, many clients continue with additional phases as the system becomes part of daily operations.',
+    previewTag: 'Internal Systems',
+    previewSummary:
+      'When operations are managed through spreadsheets, inboxes, and manual coordination, the team needs a real system, not another workaround.',
+    previewDeliverables: [
+      'Internal dashboards',
+      'Job and client tracking',
+      'Admin tools and reporting',
+      'Workflow platforms',
+    ],
+    decisionSituation:
+      'The internal team is relying on spreadsheets, inboxes, and manual coordination to keep important work moving.',
+    decisionOutcome:
+      'Better visibility, clearer workflows, less manual admin, and more reliable day-to-day operations.',
+    decisionBestFit:
+      'Service companies, agencies, and operations-heavy teams that need a structured internal system around real business rules.',
     ctaTitle: 'If your business is running on spreadsheets and workarounds, we should talk.',
     ctaCopy:
       'Start with the workflow problem and the main operational friction. From there, we can define the right first phase and whether the system should expand over time.',
@@ -459,6 +492,21 @@ export const servicePages: ServicePage[] = [
     ],
     pricingGuidanceClosing:
       'Many of these projects begin with a focused intake or estimator system, then expand into a broader portal or workflow layer later.',
+    previewTag: 'Client-Facing Tools',
+    previewSummary:
+      'When a contact form is not giving your team enough information to quote, qualify, or move quickly, the intake path needs to do more work.',
+    previewDeliverables: [
+      'Guided estimator flows',
+      'Intake and booking systems',
+      'Client dashboards',
+      'Lead qualification tools',
+    ],
+    decisionSituation:
+      'The website or intake process does not collect enough useful information before follow-up.',
+    decisionOutcome:
+      'Better lead context, cleaner qualification, less back-and-forth, and a better client experience.',
+    decisionBestFit:
+      'Service businesses that need stronger quote requests, guided intake, client portals, or customer-facing workflow tools.',
     ctaTitle: 'If your website needs to collect better information and reduce intake friction, we should talk.',
     ctaCopy:
       'Bring the current lead flow, quote process, or client handoff. From there, we can define the right first phase for a better intake or portal system.',
@@ -534,6 +582,21 @@ export const servicePages: ServicePage[] = [
     ],
     pricingGuidanceClosing:
       'Many clients start with one repetitive or error-prone workflow, then add more automation in later phases once the first integration proves useful.',
+    previewTag: 'Workflow Automation',
+    previewSummary:
+      'When the tools exist but the movement between them is still manual, automation can reduce repeated handling and missed follow-up.',
+    previewDeliverables: [
+      'CRM and email integrations',
+      'Automated notifications and reports',
+      'Data sync and pipeline tools',
+      'Repetitive admin workflow automation',
+    ],
+    decisionSituation:
+      'The tools exist, but staff still move information manually between systems.',
+    decisionOutcome:
+      'Less repetitive admin work, fewer errors, and more reliable handoffs and reporting.',
+    decisionBestFit:
+      'Teams that already use useful tools but still rely on copy-paste work, manual updates, or fragile reporting handoffs.',
     ctaTitle: 'If your team is stuck doing repetitive admin work between tools, we should talk.',
     ctaCopy:
       'Bring the current systems, the repeated task, and where information keeps getting stuck. From there, we can define a practical first automation phase.',
@@ -564,6 +627,10 @@ export const caseStudies: CaseStudy[] = [
     homepageLabel: 'Estimator Tool / Lead Qualification System',
     homepageSummary:
       'Built a guided estimate and lead capture system for a home service company to replace a basic contact form and improve quote qualification.',
+    problemOneLiner:
+      'A basic contact form collected too little useful information before office follow-up.',
+    outcomeOneLiner:
+      'Replaced it with a guided estimator that captures job details, stores structured leads, and routes notifications before the first call.',
     homepageBuilt: [
       'Guided estimate flow',
       'Structured lead capture',
@@ -660,6 +727,10 @@ export const caseStudies: CaseStudy[] = [
     homepageLabel: 'Internal Management System',
     homepageSummary:
       'Designed and built a centralized internal system to manage member records, attendance, events, and announcements for a private organization.',
+    problemOneLiner:
+      'Member records, attendance, events, and reports were managed across disconnected tools with limited central visibility.',
+    outcomeOneLiner:
+      'Consolidated them into a role-based internal platform with shared records, reporting, and clearer staff workflows.',
     homepageBuilt: [
       'Role-based access',
       'Member records and profiles',
@@ -749,6 +820,10 @@ export const caseStudies: CaseStudy[] = [
     homepageLabel: 'Project Management Web App',
     homepageSummary:
       'Built a custom project management web app to help teams organize projects, track work, manage progress, and reduce scattered coordination across messages and spreadsheets.',
+    problemOneLiner:
+      'Project work was harder to coordinate because tasks, status, and progress lived across scattered tools.',
+    outcomeOneLiner:
+      'Built a workflow-first project app with dashboards, task tracking, and deadline visibility for one shared operational view.',
     homepageBuilt: [
       'Custom project dashboard',
       'Project and task organization',
@@ -845,6 +920,10 @@ export const caseStudies: CaseStudy[] = [
     homepageLabel: 'Local Directory Platform',
     homepageSummary:
       'Built a local business directory platform for Sen Monorom to organize verified listings across cafes, restaurants, guesthouses, tours, and local services.',
+    problemOneLiner:
+      'Local business information was scattered across social pages, maps, and informal recommendations.',
+    outcomeOneLiner:
+      'Created a focused directory platform for verified listings, category browsing, and owner listing requests.',
     homepageBuilt: [
       'Category-based local business directory',
       'Verified business listing structure',
@@ -951,6 +1030,10 @@ export const caseStudies: CaseStudy[] = [
     homepageLabel: 'Multi-Tenant Estimate Platform',
     homepageSummary:
       'Designed a reusable estimate engine that could be configured for multiple service businesses instead of building separate quote forms for each one.',
+    problemOneLiner:
+      'Each new estimator deployment risked becoming a separate build with repeated quote logic and duplicated maintenance.',
+    outcomeOneLiner:
+      'Created a reusable multi-tenant estimate platform with shared backend logic, client configuration, and embeddable deployment.',
     homepageBuilt: [
       'Multi-client configuration model',
       'Embeddable widget architecture',
@@ -1028,33 +1111,37 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const featuredCaseStudySlugs = ['estimate-engine', 'church-management-system'] as const;
+export const featuredCaseStudySlugs = [
+  'estimate-engine',
+  'church-management-system',
+  'multi-tenant-estimate-engine',
+] as const;
 
 export const faqItems = [
   {
     question: 'What kinds of projects are the best fit?',
     answer:
-      'The best fit is work with a clear operational problem: internal systems, client portals, estimator flows, workflow automation, or software that improves handoffs, reporting, or lead quality.',
+      'Internal systems, client portals, estimator flows, workflow automation, and software that improves handoffs, reporting, or lead quality. The common thread is a clear operational problem with a real friction point.',
   },
   {
-    question: 'Do you build brochure websites?',
+    question: 'Do you build brochure websites or marketing pages?',
     answer:
-      'That is not the focus of the business. I am deliberately positioning around custom systems work, client-facing workflow tools, and operational software rather than low-complexity brochure-site projects.',
+      'No. The work is deliberately positioned around custom systems, client-facing workflow tools, and operational software. If a template solves the problem, I am not the right builder.',
   },
   {
     question: 'Can you improve an existing workflow instead of rebuilding everything?',
     answer:
-      'Yes. Some projects need a rebuild, but others only need the weakest handoff, intake flow, or spreadsheet-heavy process replaced first. I prefer the smallest useful phase that creates real operational value.',
+      'Yes. Some projects need a rebuild, but others only need the weakest handoff, intake flow, or spreadsheet-heavy process replaced first. I prefer the smallest useful phase that creates real operational improvement.',
   },
   {
-    question: 'What happens after I reach out?',
+    question: 'Do I need a full specification to reach out?',
     answer:
-      'You can expect fit feedback, follow-up questions, or a recommendation on the right next step. The early goal is to clarify the workflow problem and shape a sensible first phase, not jump straight into a giant scope.',
+      'No. If you can describe the current workflow, the people involved, and where the process is breaking down, that is usually enough to define a sensible first phase.',
   },
   {
-    question: 'Can you help shape the scope if I do not have a full spec yet?',
+    question: 'What happens after I contact you?',
     answer:
-      'Yes. A full specification is not required to start. If you can explain the current workflow, the people involved, and where the process is breaking down, that is usually enough to define the first useful scope.',
+      'You get a practical reply with fit feedback, follow-up questions if needed, and direction on the first useful step. The early goal is to clarify the workflow problem, not force a giant scope.',
   },
 ];
 
@@ -1089,9 +1176,10 @@ export const contactChecklist = [
 ];
 
 export const contactExpectations = [
-  'A reply within about 24 hours with fit feedback or follow-up questions',
-  'A recommendation on the right first phase, scope direction, or discovery step',
-  'A clear signal on whether the project fits systems, portals, or automation work',
+  'I review the project context and check fit.',
+  'I reply with fit feedback, specific questions, or a first-phase recommendation.',
+  'If the fit is good, we can schedule a short call to clarify the workflow and scope.',
+  'From there, you receive a practical proposal for the first useful phase.',
 ];
 
 export const fitSignals = [
@@ -1099,14 +1187,13 @@ export const fitSignals = [
   'Agencies needing internal tools or client portals',
   'Teams relying on spreadsheets for operations',
   'Businesses that need estimator tools, intake flows, or dashboards',
-  'Companies that want their website connected to real workflow, not just marketing pages',
+  'Companies that want their site connected to real workflow',
 ];
 
 export const notFitSignals = [
-  'One-page brochure site requests',
+  'Single-page brochure sites or design-only requests',
   'Very small projects where a template solves the problem',
-  'Design-only projects without workflow or system requirements',
-  'Projects that do not require custom functionality',
+  'Projects that do not require custom logic, data, or workflow',
 ];
 
 export const idealClients = fitSignals;
@@ -1221,18 +1308,31 @@ export const contactPageContent: ContactPageContent = {
       { value: 'not-sure-yet', label: 'Not sure yet' },
     ],
   },
+  expectation: {
+    eyebrow: 'What to expect',
+    title: 'Here’s what to expect.',
+    copy:
+      'After submitting, I read the project context and reply with a practical next step. That may be fit feedback, a few specific questions about the workflow, or a recommendation for the first useful phase.',
+    support: 'No sales sequence. No template response. The goal is clarity.',
+  },
+  fitReassurance: {
+    eyebrow: 'Fit check',
+    title: 'Not sure if this is a fit?',
+    copy:
+      'The clearest signal is whether the workflow has a specific breakdown point — a handoff, a manual process, an intake problem, or a visibility gap. If it does, it is worth sending the context.',
+  },
   nextSteps: {
     eyebrow: 'What happens next',
-    title: 'What happens after you send the form',
+    title: 'What happens next',
     intro:
-      "I'll review the details and reply with fit feedback, follow-up questions, or a recommended first phase.",
+      'After the form is submitted, the next step is practical review, not an automated sales sequence.',
     items: contactExpectations,
   },
   alternateContact: {
     eyebrow: 'Alternate contact methods',
     title: 'Prefer a direct message?',
     intro:
-      'You can also reach me by email, WhatsApp, or Telegram.',
+      'Prefer a shorter first message? Send a sentence or two about the workflow problem and I’ll reply with the right next step.',
     methods: [
       {
         label: 'Email',

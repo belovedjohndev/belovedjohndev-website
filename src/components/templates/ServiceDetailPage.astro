@@ -15,6 +15,27 @@ interface Props {
 const { service, relatedCaseStudy } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const serviceUrl = `${siteUrl}/services/${service.slug}`;
+const serviceSeoBySlug: Record<string, { title: string; description: string }> = {
+  'custom-business-systems': {
+    title: 'Internal Tools & Custom Business Systems | Beloved John Dev',
+    description:
+      'Custom internal tools and business systems for teams relying on spreadsheets, inboxes, and manual coordination.',
+  },
+  'client-portals-estimator-tools': {
+    title: 'Client Portals, Estimator Tools & Intake Systems | Beloved John Dev',
+    description:
+      'Client portals, estimator tools, and intake systems that collect better lead context and reduce back-and-forth.',
+  },
+  'automation-integrations': {
+    title: 'Workflow Automation & System Integrations | Beloved John Dev',
+    description:
+      'Workflow automation and integrations for teams moving information manually between tools, reports, and handoffs.',
+  },
+};
+const serviceSeo = serviceSeoBySlug[service.slug] ?? {
+  title: `${service.title} | Beloved John Dev`,
+  description: service.summary,
+};
 const relatedGuideByServiceSlug: Record<string, string> = {
   'custom-business-systems': 'custom-business-system-vs-spreadsheet-workflow',
   'client-portals-estimator-tools': 'client-portal-vs-basic-contact-form',
@@ -48,8 +69,8 @@ const breadcrumbSchema = {
 ---
 
 <MainLayout
-  title={`${service.title} | Beloved John Dev`}
-  description={service.summary}
+  title={serviceSeo.title}
+  description={serviceSeo.description}
   canonical={`/services/${service.slug}`}
   ogImage="/og/services.svg"
   ogImageAlt={`${service.title} service page share image`}
