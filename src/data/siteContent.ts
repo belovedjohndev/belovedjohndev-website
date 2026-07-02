@@ -61,11 +61,18 @@ export interface CaseStudy {
   demonstrates: string[];
   image: string;
   alt: string;
+  screenshots?: CaseStudyScreenshot[];
   referenceLabel: string;
   referenceHref?: string;
   referenceText: string;
   referenceExternal?: boolean;
   confidential?: boolean;
+}
+
+export interface CaseStudyScreenshot {
+  image: string;
+  alt: string;
+  label: string;
 }
 
 export interface ProcessStep {
@@ -1109,12 +1116,153 @@ export const caseStudies: CaseStudy[] = [
     referenceText: 'View related estimator offer',
     referenceExternal: false,
   },
+  {
+    slug: 'readyfolio-resource-portal',
+    title: 'ReadyFolio Resource Portal',
+    summary:
+      'A portfolio builder and resource portal for beginner VAs and freelancers, combining public profile creation, downloadable resources, portfolio setup workflows, and admin resource management.',
+    projectOverview: [
+      'ReadyFolio is a portal-style product system for beginner VAs and freelancers who need a structured way to build a simple public portfolio and access practical client-ready resources.',
+      'The build combines a public landing page, authenticated portfolio workspace, resource library, downloadable templates, publishing controls, and admin-side resource inventory visibility.',
+    ],
+    industry: 'Freelancer Education / Resource Platform',
+    companySize: 'Solo-built product system for beginner freelancers and VAs',
+    projectType: 'Portfolio builder and resource portal',
+    goal: [
+      'Give beginner freelancers a structured place to create a public portfolio profile',
+      'Organize services, skills, sample work, and contact links in one workspace',
+      'Provide categorized downloadable resources and templates',
+      'Give admins visibility into resource inventory and download activity',
+      'Keep publishing controls explicit so incomplete profiles can stay private',
+    ],
+    homepageLabel: 'Resource Portal / Portfolio Builder',
+    homepageSummary:
+      'Built a portfolio workspace and resource portal that helps beginner freelancers create a public profile, organize services and sample work, access practical resources, and manage portfolio publishing.',
+    problemOneLiner:
+      'Beginner freelancers needed a structured place to build a simple public portfolio, access client-ready resources, and manage profile content without using a website builder or receiving scattered files manually.',
+    outcomeOneLiner:
+      'Created a centralized portal where users can build a client-ready portfolio, access practical resources, and where admins can manage resource files and download visibility from one place.',
+    homepageBuilt: [
+      'Public profile builder',
+      'Portfolio setup checklist',
+      'Categorized resource library',
+      'Downloadable resources and templates',
+      'Admin resource inventory and download visibility',
+    ],
+    homepageOutcome:
+      'Created one central workspace for beginner freelancers to build a client-ready profile, download practical resources, and manage publishing without a full website builder.',
+    clientType:
+      'Beginner VAs, freelancers, students, and career shifters building a client-ready profile',
+    serviceLine: 'Custom Business Systems',
+    proof: [
+      'Portfolio workspace',
+      'Resource library',
+      'Admin inventory',
+      'Download tracking',
+      'Publishing controls',
+      'Password reset',
+    ],
+    businessProblem:
+      'Beginner freelancers often need a simple way to present services, skills, sample work, and contact links, but using a full website builder is too much friction. Resource materials also become hard to manage when they are shared manually across folders, messages, or separate downloads.',
+    oldWorkflow: [
+      'Users had to build a portfolio manually or rely on scattered social/profile links.',
+      'Course materials, templates, and client documents could become disconnected from the portfolio-building workflow.',
+      'Admins had limited visibility into which resources existed, how they were categorized, and what users were downloading.',
+      'Publishing a clean, shareable profile required too many separate steps for beginners.',
+    ],
+    scopeDelivered: [
+      'Public landing page for ReadyFolio',
+      'User account and portfolio workspace',
+      'Profile, services, skills, sample work, and contact link sections',
+      'Portfolio setup checklist and publishing flow',
+      'Resource library with categories and downloadable files',
+      'Admin resource inventory',
+      'Resource analytics and download visibility',
+      'Password reset and account support foundation',
+    ],
+    keyFeatures: [
+      'Public profile builder',
+      'Portfolio setup checklist',
+      'Service and skills management',
+      'Sample work management',
+      'Contact link management',
+      'Resource library',
+      'Category filters',
+      'Downloadable PDFs and templates',
+      'Admin resource inventory',
+      'Download analytics',
+      'Publishing controls',
+      'Password reset flow',
+    ],
+    architectureSummary:
+      'ReadyFolio was structured as a portal-style application with a user-facing portfolio workspace, a categorized resource library, and an admin resource inventory layer. The system separates public portfolio presentation from authenticated editing and admin resource management, so users can build their profile while admins maintain downloadable materials from a controlled interface.',
+    technicalShape: [
+      'React/Vite frontend for the authenticated portal experience',
+      'Backend API for account, profile, resource, and admin workflows',
+      'PostgreSQL-backed data model for users, portfolio content, resources, categories, and downloads',
+      'Role-aware admin area for resource inventory and operational visibility',
+      'Downloadable resource management with file metadata',
+      'Password reset foundation for account recovery',
+      'Publishing controls so users can keep profiles private until ready',
+    ],
+    constraints: [
+      'The product needed to stay beginner-friendly and avoid the complexity of a full website builder.',
+      'Resource files needed to be organized clearly without exposing private server paths.',
+      'Admin screens needed to show useful resource inventory details without overwhelming the operator.',
+      'The public profile workflow needed to support incomplete drafts before publishing.',
+      'The system needed to communicate practical value without promising income or guaranteed client results.',
+    ],
+    keyDecisions: [
+      'Focused the product around a simple portfolio workflow instead of a full website builder.',
+      'Separated resource access from profile editing so users can both build their page and download practical materials.',
+      'Added an admin resource inventory so resources can be managed and reviewed without touching code.',
+      'Kept publishing controls explicit so users can keep their page private until the profile is ready.',
+      'Used categorized resources to make beginner materials easier to find and apply.',
+    ],
+    outcomes: [
+      'Created one central workspace for beginner freelancers to build a client-ready profile.',
+      'Organized practical resources into a searchable and category-based library.',
+      'Added admin visibility into resources, categories, and download activity.',
+      'Reduced the need to manually share files or explain portfolio setup steps one by one.',
+      'Created a reusable product foundation that can expand with more resources and workflow features.',
+    ],
+    demonstrates: [
+      'Portal-style product thinking',
+      'User dashboard and admin dashboard design',
+      'Resource library workflows',
+      'Role-aware application structure',
+      'Downloadable file and resource management',
+      'Beginner-friendly workflow design',
+      'Building a practical SaaS-style MVP without overcomplicating the first version',
+    ],
+    image: '/assets/images/readyfolio-homepage-hero.webp',
+    alt: 'ReadyFolio landing page showing the portfolio builder and public profile preview',
+    screenshots: [
+      {
+        image: '/assets/images/readyfolio-more-01.webp',
+        alt: 'ReadyFolio portfolio workspace showing setup checklist and profile sections',
+        label: 'Portfolio workspace and setup checklist',
+      },
+      {
+        image: '/assets/images/readyfolio-more-02.webp',
+        alt: 'ReadyFolio resource library showing categorized downloadable resources',
+        label: 'Categorized resource library',
+      },
+      {
+        image: '/assets/images/readyfolio-more-03.webp',
+        alt: 'ReadyFolio admin resource inventory showing resource analytics and file management',
+        label: 'Admin resource inventory and analytics',
+      },
+    ],
+    referenceLabel: 'Private product demo',
+    referenceText: 'No public link available',
+  },
 ];
 
 export const featuredCaseStudySlugs = [
   'estimate-engine',
   'church-management-system',
-  'multi-tenant-estimate-engine',
+  'readyfolio-resource-portal',
 ] as const;
 
 export const faqItems = [
