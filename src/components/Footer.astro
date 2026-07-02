@@ -31,12 +31,9 @@ const logoAssetWebp = '/assets/images/logo-ui.webp';
         operations-heavy teams that need software built around real workflows.
       </p>
 
-      <div class="footer-signals" role="list" aria-label="Working style">
-        <span role="listitem">Custom-coded systems</span>
-        <span role="listitem">Direct builder access</span>
-        <span role="listitem">Architecture-first delivery</span>
-        <span role="listitem">Scoped first phases</span>
-      </div>
+      <p class="footer-trust" aria-label="Working style">
+        Custom-coded systems · Direct builder access · Architecture-first delivery · Scoped first phases
+      </p>
     </div>
 
     <div class="footer-column">
@@ -53,9 +50,18 @@ const logoAssetWebp = '/assets/images/logo-ui.webp';
       <p class="footer-heading">Start here</p>
       <a href={primaryCtaHref}>{ctaLabels.primary}</a>
       <a href="/case-studies">{ctaLabels.secondary}</a>
-      <a href={contactLinks.mailto}>{contactLinks.email}</a>
-      <a href={contactLinks.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
-      <a href={contactLinks.telegram} target="_blank" rel="noopener">Telegram</a>
+      <a href={contactLinks.mailto} aria-label="Email Beloved John Dev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        {contactLinks.email}
+      </a>
+      <a href={contactLinks.whatsapp} target="_blank" rel="noopener" aria-label="Message on WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+        WhatsApp
+      </a>
+      <a href={contactLinks.telegram} target="_blank" rel="noopener" aria-label="Message on Telegram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+        Telegram
+      </a>
     </div>
   </div>
 
@@ -70,7 +76,6 @@ const logoAssetWebp = '/assets/images/logo-ui.webp';
     padding: 4rem 0 1.5rem;
     color: var(--color-white);
     background:
-      radial-gradient(circle at top right, rgba(216, 161, 93, 0.18), transparent 20%),
       linear-gradient(180deg, #0f1d2d 0%, #0b1622 100%);
   }
 
@@ -119,22 +124,13 @@ const logoAssetWebp = '/assets/images/logo-ui.webp';
     line-height: 1.8;
   }
 
-  .footer-signals {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
+  .footer-trust {
     margin-top: 1.1rem;
-  }
-
-  .footer-signals span {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.4rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.7;
   }
 
   .footer-column {
@@ -153,6 +149,9 @@ const logoAssetWebp = '/assets/images/logo-ui.webp';
   }
 
   .footer-column a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
     overflow-wrap: anywhere;

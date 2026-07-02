@@ -18,9 +18,18 @@ import { contactLinks, ctaLabels, primaryCtaHref } from '../../data/siteContent'
     </div>
 
     <div class="contact-links" role="list" aria-label="Contact options">
-      <a href={contactLinks.mailto} role="listitem">Email</a>
-      <a href={contactLinks.whatsapp} target="_blank" rel="noopener" role="listitem">WhatsApp</a>
-      <a href={contactLinks.telegram} target="_blank" rel="noopener" role="listitem">Telegram</a>
+      <a href={contactLinks.mailto} role="listitem" aria-label="Email Beloved John Dev">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href={contactLinks.whatsapp} target="_blank" rel="noopener" role="listitem" aria-label="Message on WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+        WhatsApp
+      </a>
+      <a href={contactLinks.telegram} target="_blank" rel="noopener" role="listitem" aria-label="Message on Telegram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+        Telegram
+      </a>
     </div>
   </div>
 </section>
@@ -34,6 +43,9 @@ import { contactLinks, ctaLabels, primaryCtaHref } from '../../data/siteContent'
   }
 
   .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     color: rgba(255, 255, 255, 0.92);
     font-weight: 700;
   }
