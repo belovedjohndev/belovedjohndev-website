@@ -34,9 +34,9 @@
   --border-radius: 10px;
   --border-radius-sm: 8px;
 
-  --shadow-sm: 0 10px 22px rgba(16, 32, 51, 0.05);
-  --shadow-md: 0 18px 40px rgba(16, 32, 51, 0.08);
-  --shadow-lg: 0 24px 58px rgba(16, 32, 51, 0.12);
+  --shadow-sm: 0 4px 14px rgba(16, 32, 51, 0.04);
+  --shadow-md: 0 8px 24px rgba(16, 32, 51, 0.06);
+  --shadow-lg: 0 12px 32px rgba(16, 32, 51, 0.08);
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
