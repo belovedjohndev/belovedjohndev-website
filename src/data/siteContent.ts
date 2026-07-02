@@ -713,6 +713,173 @@ export const caseStudies: CaseStudy[] = [
     referenceExternal: true,
   },
   {
+    slug: 'agbi-academic-ministry-portal',
+    title: 'AGBI Academic & Ministry Operations Portal',
+    summary:
+      'A custom internal portal for Abundant Grace Bible Institute to manage student records, academic terms, field ministry deployment, extension batches, graduation reviews, audit logs, and staff access.',
+    projectOverview: [
+      'AGBI Portal is a custom internal academic and ministry operations system for Abundant Grace Bible Institute. It helps staff manage student records, academic terms, field ministry deployment, extension program batches, graduation reviews, audit logs, and user access.',
+      'The system is positioned as operational software, not a generic dashboard. It separates registry, academic setup, ministry workflows, extension attendance, graduation review, and administration into clear staff-facing areas.',
+    ],
+    industry: 'Bible Institute / Education / Ministry Administration',
+    companySize: 'Small academic and ministry administration team',
+    projectType: 'Academic administration and ministry workflow portal',
+    goal: [
+      'Centralize student registry records and academic stages',
+      'Manage academic years and Year 1 semester terms',
+      'Track Year 2 and Year 3 field study sessions',
+      'Record ministry deployments and extension program batches',
+      'Support manual graduation review and role-aware administration',
+    ],
+    homepageLabel: 'Internal Academic Operations System',
+    homepageSummary:
+      'Built a role-aware internal portal for academic records, ministry deployment, extension attendance, graduation review, audit logs, and staff administration.',
+    problemOneLiner:
+      'AGBI needed one structured system to manage academic records, ministry deployment, extension attendance, graduation review, and staff administration instead of relying on scattered manual records and disconnected workflows.',
+    outcomeOneLiner:
+      'Built a role-aware internal portal that centralizes student registry, academic setup, ministry workflows, graduation review, audit logs, and staff user management in one operational system.',
+    homepageBuilt: [
+      'Student registry and academic stage tracking',
+      'Academic year and Year 1 semester setup',
+      'Field ministry deployment records',
+      'Extension batches with attendance workflow support',
+      'Graduation review, audit logs, and staff administration',
+    ],
+    homepageOutcome:
+      'Centralized academic records, ministry deployment, extension attendance, graduation review, audit logs, and staff administration in one role-aware internal portal.',
+    clientType:
+      'Bible institute staff managing academic records, field ministry, extension students, graduation review, and administrative access',
+    serviceLine: 'Custom Business Systems',
+    proof: [
+      'Student registry',
+      'Academic setup',
+      'Field ministry tracking',
+      'Extension batches',
+      'Graduation reviews',
+      'Audit logs',
+      'User management',
+      'Role-aware access',
+    ],
+    businessProblem:
+      'AGBI manages more than a simple student list. The school has academic-year records, Year 1 terms, Year 2 and Year 3 field ministry workflows, extension batches with strict attendance requirements, and graduation review rules that require manual leadership approval. Without a structured internal system, these workflows are harder to track, audit, and manage consistently.',
+    oldWorkflow: [
+      'Student, academic, ministry, and graduation records could become separated across manual records or disconnected tracking methods.',
+      'Field ministry deployment and extension attendance required clear status tracking after Year 1 training.',
+      'Graduation could not be treated as automatic because leadership recommendation and approval were required.',
+      'Administrative actions needed better traceability for accountability and review.',
+      'Staff access needed to be controlled by role instead of handled informally.',
+    ],
+    scopeDelivered: [
+      'Student registry with academic stage and deployment status tracking',
+      'Academic setup for academic years and Year 1 semesters',
+      'Field study session management for Year 2 and Year 3 students',
+      'Ministry deployment records',
+      'Extension program batch management',
+      'Graduation review workflow with manual recommendation and approval steps',
+      'Audit logs for administrative and registrar actions',
+      'User management for staff accounts and access control',
+      'Light and dark mode interface support',
+    ],
+    keyFeatures: [
+      'Student registry',
+      'Academic year setup',
+      'Year 1 semester tracking',
+      'Field study sessions',
+      'Deployment records',
+      'Extension program batches',
+      'Graduation review queue',
+      'Manual approval workflow',
+      'Audit logs',
+      'User management',
+      'Role-aware administration',
+      'Light/dark mode',
+    ],
+    architectureSummary:
+      'AGBI Portal was structured as a role-aware internal operations system with separate workflow areas for registry, academics, ministry deployment, extension programs, graduation review, auditing, and staff administration. The system centralizes domain rules so academic and ministry records can be managed consistently from one portal.',
+    technicalShape: [
+      'ASP.NET Core Web API backend',
+      'React/Vite frontend',
+      'PostgreSQL database',
+      'Entity-based data model for students, academic years, terms, deployments, field study sessions, extension batches, reviews, users, and audit logs',
+      'Role-aware access for administrative and registrar workflows',
+      'Manual graduation review state handling',
+      'Audit logging for administrative actions',
+      'Light/dark mode UI support',
+    ],
+    constraints: [
+      'Graduation could not be automatic; it required manual recommendation and approval.',
+      'Extension students needed strict attendance-day tracking before deployment.',
+      'Year 2 and Year 3 field study workflows had different requirements from Year 1 academic tracking.',
+      'The portal needed to remain understandable for non-technical staff.',
+      'Sensitive student and staff records required role-aware access and audit visibility.',
+    ],
+    keyDecisions: [
+      'Separated student registry, academic setup, ministry deployment, extension, graduation, and administration into clear workflow areas.',
+      "Kept graduation review manual to match the institute's leadership approval process.",
+      'Added audit logs so administrative and registrar actions can be reviewed later.',
+      'Used role-aware administration to separate normal staff workflows from admin-only controls.',
+      'Included light/dark mode to support different staff preferences and working conditions.',
+    ],
+    outcomes: [
+      'Centralized academic and ministry administration into one internal portal.',
+      'Made student stage, deployment, extension, and graduation status easier to review.',
+      'Created clearer workflows for academic setup, field study, extension batches, and graduation review.',
+      'Added admin visibility through audit logs and user management.',
+      'Reduced reliance on scattered manual tracking across important school workflows.',
+    ],
+    demonstrates: [
+      'Internal operations software design',
+      'Education/ministry domain modeling',
+      'Role-aware admin workflows',
+      'Student registry and academic tracking',
+      'Manual approval workflow design',
+      'Audit logging and accountability',
+      'ASP.NET Core, React, and PostgreSQL full-stack delivery',
+    ],
+    image: '/assets/images/agbi-screenshot-02.webp',
+    alt: 'AGBI Portal dashboard showing academic, ministry, and administration workflows',
+    screenshots: [
+      {
+        image: '/assets/images/agbi-screenshot-07.webp',
+        alt: 'AGBI Portal student registry showing student records and academic stages',
+        label: 'Student registry and academic stage tracking',
+      },
+      {
+        image: '/assets/images/agbi-screenshot-01.webp',
+        alt: 'AGBI Portal academic setup showing academic years and Year 1 semesters',
+        label: 'Academic setup for years and semesters',
+      },
+      {
+        image: '/assets/images/agbi-screenshot-04.webp',
+        alt: 'AGBI Portal graduation review workflow with manual review queue',
+        label: 'Manual graduation review workflow',
+      },
+      {
+        image: '/assets/images/agbi-screenshot-11.webp',
+        alt: 'AGBI Portal audit logs showing administrative action history',
+        label: 'Audit logs and action history',
+      },
+      {
+        image: '/assets/images/agbi-screenshot-12.webp',
+        alt: 'AGBI Portal user management showing staff accounts and roles',
+        label: 'Staff user management and role-aware administration',
+      },
+      {
+        image: '/assets/images/agbi-screenshot-05.webp',
+        alt: 'AGBI Portal light mode sign-in screen for staff access',
+        label: 'Staff sign-in in light mode',
+      },
+      {
+        image: '/assets/images/agbi-screenshot-06.webp',
+        alt: 'AGBI Portal dark mode sign-in screen for staff access',
+        label: 'Staff sign-in in dark mode',
+      },
+    ],
+    referenceLabel: 'Private internal system',
+    referenceText: 'No public link available',
+    confidential: true,
+  },
+  {
     slug: 'church-management-system',
     title: 'Church Management System',
     summary:
@@ -1261,7 +1428,7 @@ export const caseStudies: CaseStudy[] = [
 
 export const featuredCaseStudySlugs = [
   'estimate-engine',
-  'church-management-system',
+  'agbi-academic-ministry-portal',
   'readyfolio-resource-portal',
 ] as const;
 
