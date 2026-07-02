@@ -38,11 +38,11 @@ import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
           <h2>{article.title}</h2>
           <p>{article.summary}</p>
           <p class="muted">{article.audience}</p>
-          <div class="chip-row">
+          <ul class="takeaway-list">
             {article.takeaways.slice(0, 3).map((takeaway) => (
-              <span class="chip">{takeaway}</span>
+              <li>{takeaway}</li>
             ))}
-          </div>
+          </ul>
           <Button href={`/insights/${article.slug}`} variant="dark">Read Insight</Button>
         </article>
       ))}
@@ -62,6 +62,33 @@ import { ctaLabels, insights, primaryCtaHref } from '../../data/siteContent';
   .insight-card {
     display: grid;
     gap: 1rem;
+  }
+
+  .takeaway-list {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .takeaway-list li {
+    position: relative;
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .takeaway-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.45;
   }
 
   @media (max-width: 900px) {
