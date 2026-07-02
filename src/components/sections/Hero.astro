@@ -14,11 +14,11 @@ import { ctaLabels, heroProofPoints, primaryCtaHref, sitePositioning } from '../
       <Button href="/case-studies" variant="secondary">{ctaLabels.secondary}</Button>
     </div>
 
-    <div class="proof-row" role="list" aria-label="Hero proof points">
-      {heroProofPoints.map((item) => (
-        <span class="proof-pill" role="listitem">{item}</span>
+    <p class="proof-line" aria-label="Hero proof points">
+      {heroProofPoints.map((item, i) => (
+        <span>{item}{i < heroProofPoints.length - 1 && <span class="proof-sep" aria-hidden="true">·</span>}</span>
       ))}
-    </div>
+    </p>
   </div>
 </section>
 
@@ -41,8 +41,7 @@ import { ctaLabels, heroProofPoints, primaryCtaHref, sitePositioning } from '../
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at top left, rgba(216, 161, 93, 0.2), transparent 24%),
-      linear-gradient(180deg, rgba(7, 18, 31, 0.12), rgba(7, 18, 31, 0.36));
+      linear-gradient(180deg, rgba(7, 18, 31, 0.08), rgba(7, 18, 31, 0.28));
     pointer-events: none;
   }
 
@@ -52,24 +51,20 @@ import { ctaLabels, heroProofPoints, primaryCtaHref, sitePositioning } from '../
     max-width: 940px;
   }
 
-  .proof-row {
-    display: flex;
-    gap: 0.65rem;
-    flex-wrap: wrap;
+  .proof-line {
+    display: block;
     margin-top: calc(var(--space-sm) + 0.25rem);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     max-width: 58rem;
+    line-height: 1.8;
   }
 
-  .proof-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.4rem 0.72rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 0.82rem;
-    font-weight: 700;
+  .proof-sep {
+    margin: 0 0.35rem;
+    opacity: 0.5;
   }
 
   @media (max-width: 768px) {

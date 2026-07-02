@@ -19,8 +19,7 @@ body {
   line-height: var(--line-height-base);
   color: var(--color-text);
   background:
-    radial-gradient(circle at top right, rgba(216, 161, 93, 0.12), transparent 22%),
-    linear-gradient(180deg, #f2efe8 0%, #f7f5f0 35%, #f4f6f7 100%);
+    linear-gradient(180deg, #f2efe8 0%, #f7f5f0 40%, #f4f6f7 100%);
   overflow-x: hidden;
   min-width: 320px;
   -webkit-font-smoothing: antialiased;
@@ -162,8 +161,6 @@ img {
   --page-hero-secondary-position: bottom left;
   background:
     linear-gradient(135deg, var(--page-hero-overlay-start), var(--page-hero-overlay-end)),
-    radial-gradient(circle at var(--page-hero-glow-position), var(--page-hero-accent-primary), transparent 24%),
-    radial-gradient(circle at var(--page-hero-secondary-position), var(--page-hero-accent-secondary), transparent 28%),
     image-set(
       url('/assets/images/hero-bg.webp') type('image/webp'),
       url('/assets/images/hero-bg.png') type('image/png')
@@ -224,7 +221,6 @@ img {
 
 .cta-frame {
   background:
-    radial-gradient(circle at top right, rgba(216, 161, 93, 0.16), transparent 25%),
     linear-gradient(135deg, rgba(11, 26, 42, 0.97), rgba(18, 43, 59, 0.92));
 }
 
@@ -326,12 +322,15 @@ img {
 }
 
 .bullet-list li::before {
-  content: '+';
+  content: '';
   position: absolute;
   left: 0;
-  top: 0;
-  color: var(--color-primary);
-  font-weight: 800;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.5;
 }
 
 .chip-row {
@@ -343,12 +342,9 @@ img {
 .chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.36rem 0.64rem;
-  border-radius: 999px;
-  background: rgba(14, 91, 98, 0.08);
-  color: var(--color-primary);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--color-text-muted);
   line-height: 1.25;
 }
 
@@ -373,19 +369,23 @@ img {
 }
 
 .skip-link {
-  position: absolute;
-  top: -40px;
-  left: 10px;
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 9999;
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
   background: var(--color-dark);
   color: var(--color-white);
-  padding: var(--space-xs) var(--space-sm);
-  z-index: 10000;
-  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
   font-weight: 700;
+  transform: translateY(-150%);
+  transition: transform 0.15s ease;
 }
 
-.skip-link:focus {
-  top: 10px;
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 main {
