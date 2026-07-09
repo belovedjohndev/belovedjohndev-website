@@ -1,0 +1,340 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'Clinic Appointment System & Patient Intake Software | Beloved John Dev';
+const description =
+  'Custom clinic appointment request, patient intake, and registration workflow software for small practices that need clearer staff review and safer form design.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries/clinics`;
+
+const workflowProblems = [
+  'Appointment requests arrive through phone calls, email, and generic contact forms with no clear staff queue.',
+  'New patient registration details are collected too late, duplicated by hand, or spread across disconnected notes.',
+  'Patients are asked for too much information online because the form is not designed around safe intake boundaries.',
+  'Clinic staff have limited visibility into request type, urgency, follow-up status, and who should respond next.',
+];
+
+const workflowSystems = [
+  'Appointment request forms that collect contact details, preferred timing, patient type, and a general visit reason.',
+  'Registration workflow steps that separate request capture from staff confirmation and next-step instructions.',
+  'Admin review screens that help staff see new requests, update status, and avoid losing follow-up context.',
+  'Privacy-conscious form design that avoids collecting diagnoses, detailed symptoms, medical history, or insurance details unless separately scoped.',
+];
+
+const firstPhaseItems = [
+  'Appointment request intake and confirmation workflow',
+  'New and returning patient routing',
+  'Staff review dashboard for request status and follow-up',
+  'Registration checklist or next-step messaging',
+  'Email notifications or internal handoff alerts',
+  'Clear safety notes for emergencies and sensitive information',
+];
+
+const safeguards = [
+  'The first phase should reduce manual intake work without turning the website into a medical-record system.',
+  'Compliance, protected health information handling, access controls, audit trails, and vendor review need to be scoped explicitly when required.',
+  'The system should make staff review easier while keeping final scheduling and care decisions with the clinic team.',
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Clinics',
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries/clinics"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Clinic workflow software</p>
+        <h1>Clinic appointment request and patient intake systems built around staff review.</h1>
+        <p class="page-hero__lead">
+          I build custom clinic software for appointment requests, patient intake, registration workflows, and admin
+          visibility when generic forms create too much manual work and too little context.
+        </p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href="#clinic-proof" variant="secondary">View Clinic Example</Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside" aria-label="Clinic workflow positioning">
+        <p class="eyebrow">Positioning</p>
+        <h2>Request, review, confirm.</h2>
+        <p>
+          The goal is not to promise instant booking. The goal is a safer request-and-confirm workflow that helps clinic
+          staff respond with the right context.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="clinic-problem-heading">
+    <div class="container grid-2 problem-solution-grid">
+      <article class="surface-card">
+        <p class="eyebrow">Common friction</p>
+        <h2 id="clinic-problem-heading">Where clinic intake breaks down</h2>
+        <ul class="bullet-list">
+          {workflowProblems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Custom system fit</p>
+        <h2>What a focused first version can handle</h2>
+        <ul class="bullet-list">
+          {workflowSystems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding proof-section" id="clinic-proof" aria-labelledby="clinic-proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Portfolio example</p>
+        <h2 id="clinic-proof-heading">Portfolio example: clinic appointment request workflow</h2>
+        <p>
+          This demo shows a privacy-conscious clinic landing page with appointment request flow, patient type selection,
+          staff confirmation messaging, and safety notes that avoid collecting sensitive medical information online.
+        </p>
+        <p>
+          The point is not instant booking. The point is a clearer request-and-confirm workflow that gives clinic staff
+          enough context to respond without turning the website into a medical-record system.
+        </p>
+      </div>
+
+      <div class="proof-gallery" aria-label="Clinic workflow demo screenshots">
+        <figure class="proof-gallery__hero">
+          <img
+            src="/images/industries/clinics/greenfield-hero.webp"
+            alt="Greenfield Medical demo landing page for an appointment request workflow"
+            width="1365"
+            height="768"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>Landing page entry point for appointment requests and staff confirmation messaging.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/images/industries/clinics/greenfield-workflow.webp"
+            alt="Greenfield Medical demo registration workflow with privacy notice"
+            width="1366"
+            height="1683"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Registration flow that sets expectations before patients submit a request.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/images/industries/clinics/greenfield-form.webp"
+            alt="Greenfield Medical demo appointment request form with patient type selection"
+            width="1366"
+            height="1356"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Appointment request form with patient type selection and sensitive-information guidance.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="first-phase-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">First phase scope</p>
+        <h2 id="first-phase-heading">A useful clinic MVP should narrow the workflow first.</h2>
+        <p>
+          Small practices usually do not need a vague full platform first. They need one maintainable workflow that
+          reduces intake friction, gives staff visibility, and leaves room for stronger controls when the system grows.
+        </p>
+      </div>
+
+      <div class="grid-3 phase-grid">
+        {firstPhaseItems.map((item) => (
+          <article class="simple-card">
+            <h3>{item}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding safeguards-band" aria-labelledby="safeguards-heading">
+    <div class="container safeguards-layout">
+      <div class="section-title safeguards-title">
+        <p class="eyebrow">Healthcare caution</p>
+        <h2 id="safeguards-heading">Careful form design matters.</h2>
+        <p>
+          A clinic intake workflow has to be more careful than a standard lead form. The system should collect only what
+          is needed for staff review and make sensitive information boundaries clear.
+        </p>
+      </div>
+
+      <div class="safeguard-list" role="list">
+        {safeguards.map((item) => (
+          <article class="surface-card" role="listitem">
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Start with the clinic workflow that needs less manual handling.</h2>
+      <p>
+        Send the current appointment request, intake, or registration process and where staff lose time. I can help scope
+        a focused first version around request capture, review, confirmation, and maintainable admin visibility.
+      </p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/services" variant="secondary">View Services</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.68fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .hero-aside {
+    margin-top: 0.45rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .hero-aside h2 {
+    font-size: 1.45rem;
+  }
+
+  .hero-aside p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+
+  .problem-solution-grid > .surface-card {
+    height: 100%;
+  }
+
+  .proof-section {
+    background: rgba(255, 255, 255, 0.52);
+  }
+
+  .proof-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .proof-gallery figure {
+    overflow: hidden;
+    border: 1px solid rgba(16, 32, 51, 0.1);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .proof-gallery__hero {
+    grid-column: 1 / -1;
+  }
+
+  .proof-gallery img {
+    width: 100%;
+    background: #f4f6f7;
+  }
+
+  .proof-gallery figcaption {
+    padding: 0.95rem 1rem 1.05rem;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .phase-grid .simple-card {
+    min-height: 100%;
+  }
+
+  .phase-grid h3 {
+    margin-bottom: 0;
+    font-size: 1.08rem;
+  }
+
+  .safeguards-band {
+    background: rgba(255, 255, 255, 0.34);
+  }
+
+  .safeguards-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .safeguards-title {
+    margin-bottom: 0;
+  }
+
+  .safeguard-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .safeguard-list .surface-card {
+    padding: 1.2rem;
+  }
+
+  .safeguard-list p {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .proof-gallery,
+    .safeguards-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
