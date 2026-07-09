@@ -24,8 +24,7 @@ const {
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const fullUrl = `${siteUrl}${canonical === '/' ? '' : canonical}`;
-const previewImage = ogImage.endsWith('.svg') ? '/assets/images/hero-bg.png' : ogImage;
-const ogImageUrl = previewImage.startsWith('http') ? previewImage : `${siteUrl}${previewImage}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>

@@ -18,8 +18,8 @@ If you do not set `SITE_URL`, the site falls back to Cloudflare's `CF_PAGES_URL`
 ## Why this matters
 
 - Canonical URLs use `SITE_URL`
-- `sitemap.xml` uses `SITE_URL`
-- `robots.txt` uses `SITE_URL`
+- Astro sitemap output uses `SITE_URL`
+- `public/robots.txt` points to the production sitemap index
 - Structured data and Open Graph image URLs use `SITE_URL`
 
 ## Recommended launch steps
@@ -34,5 +34,5 @@ If you do not set `SITE_URL`, the site falls back to Cloudflare's `CF_PAGES_URL`
 ## Notes
 
 - `public/_headers` includes security headers, asset caching, and `noindex` for `pages.dev` preview domains.
-- `robots.txt` is generated dynamically from the configured site URL.
+- `public/robots.txt` is emitted as a static file and points to the production sitemap index.
 - The old `vercel.json` file has been removed because this repo is now prepared for Cloudflare Pages instead.

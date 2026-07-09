@@ -18,6 +18,7 @@ const { study } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const caseStudyUrl = `${siteUrl}/case-studies/${study.slug}`;
 const caseStudyMetaDescription = study.outcomeOneLiner ?? study.summary;
+const caseStudyImageUrl = study.image.startsWith('http') ? study.image : `${siteUrl}${study.image}`;
 
 const getStatusLabel = () => {
   if (study.referenceExternal && study.referenceHref) {
@@ -78,6 +79,7 @@ const caseStudySchema = {
   name: study.title,
   description: study.summary,
   url: caseStudyUrl,
+  image: caseStudyImageUrl,
   articleSection: study.serviceLine,
   about: [study.serviceLine, study.projectType],
   publisher: {
@@ -93,7 +95,7 @@ const caseStudySchema = {
   title={`${study.title} Case Study | Beloved John Dev`}
   description={caseStudyMetaDescription}
   canonical={`/case-studies/${study.slug}`}
-  ogImage={`/og/case-studies/${study.slug}.svg`}
+  ogImage={`/og/case-studies/${study.slug}.png`}
   ogImageAlt={`${study.title} case study share image`}
 >
   <Navbar slot="navbar" />

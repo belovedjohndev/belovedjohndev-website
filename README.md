@@ -20,7 +20,7 @@ It also includes:
 - Case study pages with proof points
 - Insight articles for authority building
 - A structured contact intake flow
-- Branded Open Graph image generation
+- Static branded Open Graph PNG images
 - Static deployment-ready architecture
 
 ## Stack
@@ -55,8 +55,6 @@ src/
     siteContent.ts
   layouts/
     MainLayout.astro
-  lib/
-    og.ts
   pages/
     about.astro
     contact.astro
@@ -66,12 +64,12 @@ src/
     case-studies/
     insights/
     services/
-    og/
-    robots.txt.ts
-    sitemap.xml.ts
   styles/
     global.css
     tokens.css
+public/
+  og/
+  robots.txt
 ```
 
 ## Local Development
@@ -140,14 +138,11 @@ The contact page includes a structured project inquiry form designed to qualify 
 
 The current submission path uses a static external form backend rather than custom server code, which keeps the site deployable as a simple static Astro project.
 
-### Dynamic OG images
+### Open Graph images
 
-Reusable SVG-based social share images are generated from:
+Static branded PNG social share images live in:
 
-- [`src/lib/og.ts`](src/lib/og.ts)
-- [`src/pages/og/[slug].svg.ts`](src/pages/og/[slug].svg.ts)
-- [`src/pages/og/case-studies/[slug].svg.ts`](src/pages/og/case-studies/[slug].svg.ts)
-- [`src/pages/og/insights/[slug].svg.ts`](src/pages/og/insights/[slug].svg.ts)
+- [`public/og/`](public/og/)
 
 ### SEO and metadata
 
@@ -157,8 +152,8 @@ The site includes:
 - Open Graph metadata
 - Twitter metadata
 - structured data
-- generated `robots.txt`
-- generated `sitemap.xml`
+- static `robots.txt`
+- generated `sitemap-index.xml` and `sitemap-0.xml`
 
 ## Contact
 
