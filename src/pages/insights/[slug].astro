@@ -49,10 +49,6 @@ const relatedLinksByInsightSlug: Record<string, { service: string; caseStudy: st
     service: 'custom-business-systems',
     caseStudy: 'custom-project-management-web-app',
   },
-  'why-quote-forms-create-weak-leads': {
-    service: 'client-portals-estimator-tools',
-    caseStudy: 'estimate-engine',
-  },
 };
 const relatedLinkSlugs = relatedLinksByInsightSlug[article.slug];
 const relatedService = servicePages.find((service) => service.slug === relatedLinkSlugs?.service);

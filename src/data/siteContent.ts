@@ -2167,45 +2167,6 @@ export const insights: InsightArticle[] = [
       },
     ],
   },
-  {
-    slug: 'why-quote-forms-create-weak-leads',
-    category: 'Lead Flow',
-    title: 'Why Quote Forms Create Weak Leads',
-    summary:
-      'Most quote forms ask for contact details too early and leave the team without the structured context needed to qualify or respond well.',
-    readingTime: '3 min read',
-    audience: 'For service companies whose website inquiries still require too much manual intake.',
-    takeaways: [
-      'Weak leads often come from weak intake, not weak demand',
-      'Quote flows should collect practical context before the message box',
-      'Better lead data improves routing, follow-up, and buyer experience',
-    ],
-    intro:
-      'A quote form can look efficient while still creating a poor operational handoff. The form captured the lead, but the team still has to figure out what the visitor actually needs.',
-    sections: [
-      {
-        title: 'The message box is doing too much work',
-        paragraphs: [
-          'Generic forms usually depend on the visitor to explain scope clearly in a blank field. Some will. Many will not.',
-          'That leaves the office team sorting through vague messages, missing details, and follow-up questions that could have been collected earlier.',
-        ],
-      },
-      {
-        title: 'Better questions create better leads',
-        paragraphs: [
-          'A stronger quote flow guides the visitor through service type, scope, location, timing, and relevant details before the final submission.',
-          'The goal is not a longer form. The goal is a more useful path that captures the information your team already knows it needs.',
-        ],
-      },
-      {
-        title: 'The handoff is the real conversion point',
-        paragraphs: [
-          'A website conversion is only useful if the next team can act on it. Structured lead data makes routing, prioritization, quoting, and follow-up easier.',
-          'That is why the best intake tools are designed with both the customer and the internal workflow in mind.',
-        ],
-      },
-    ],
-  },
 ];
 
 export const getServiceBySlug = (slug: string) => servicePages.find((service) => service.slug === slug);
