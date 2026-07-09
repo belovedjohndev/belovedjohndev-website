@@ -1,0 +1,13 @@
+---
+import ServiceDetailPage from '../../components/templates/ServiceDetailPage.astro';
+import { getCaseStudyBySlug, getServiceBySlug } from '../../data/siteContent';
+
+const service = getServiceBySlug('saas-mvp-development');
+const relatedCaseStudy = getCaseStudyBySlug('readyfolio-resource-portal');
+
+if (!service || !relatedCaseStudy) {
+  throw new Error('Missing service content for SaaS MVP development.');
+}
+---
+
+<ServiceDetailPage service={service} relatedCaseStudy={relatedCaseStudy} />

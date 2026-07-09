@@ -26,6 +26,11 @@ const serviceSeoBySlug: Record<string, { title: string; description: string }> =
     description:
       'Client portals, estimator tools, and intake systems that collect better lead context and reduce back-and-forth.',
   },
+  'saas-mvp-development': {
+    title: 'SaaS MVP Developer for Custom Software MVPs | Beloved John Dev',
+    description:
+      'Custom SaaS MVP development for founders, agencies, and service businesses that need a focused React and TypeScript first release.',
+  },
   'automation-integrations': {
     title: 'Workflow Automation & System Integrations | Beloved John Dev',
     description:
@@ -39,6 +44,7 @@ const serviceSeo = serviceSeoBySlug[service.slug] ?? {
 const relatedGuideByServiceSlug: Record<string, string> = {
   'custom-business-systems': 'custom-business-system-vs-spreadsheet-workflow',
   'client-portals-estimator-tools': 'client-portal-vs-basic-contact-form',
+  'saas-mvp-development': 'what-to-define-before-building-a-custom-system',
   'automation-integrations': 'internal-tools-vs-forcing-your-workflow-into-saas',
 };
 const relatedGuide = insights.find((article) => article.slug === relatedGuideByServiceSlug[service.slug]);

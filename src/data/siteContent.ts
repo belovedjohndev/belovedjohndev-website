@@ -520,6 +520,93 @@ export const servicePages: ServicePage[] = [
     relatedCaseStudySlug: 'estimate-engine',
   },
   {
+    slug: 'saas-mvp-development',
+    title: 'SaaS MVP Development',
+    summary:
+      'You need a focused first version of a SaaS product or productized workflow, not a vague full-platform build.',
+    heroTitle: 'SaaS MVP development for founders and service businesses that need a focused first version.',
+    heroSupportingCopy:
+      'A useful SaaS MVP should prove the core workflow, reduce launch risk, and create a maintainable product foundation without pretending the first release needs every future feature. I build focused React and TypeScript MVPs around the first workflow that needs to work reliably.',
+    businessProblemTitle: 'When the product idea is clear, but the first version is too broad',
+    businessProblemIntro:
+      'Founders, agencies, and service businesses often know the workflow they want to productize, but the first build can expand too quickly into dashboards, roles, billing, settings, and edge cases before the core value has been validated.',
+    businessProblemBody:
+      'A focused SaaS MVP defines the smallest useful product slice, protects the core data model, and ships the first workflow in a way that can support learning, demos, early users, and future expansion.',
+    problemStatement:
+      'You need a focused first version of a SaaS product or productized workflow, not a vague full-platform build.',
+    audienceSummary:
+      'Founders, agencies, and service businesses that need a scoped SaaS MVP with clear product boundaries and maintainable architecture.',
+    signsYouNeedIt: [
+      'The product idea is real, but the first version keeps expanding before anything ships.',
+      'You need a clickable, usable MVP for demos, pilots, or early customer validation.',
+      'A service workflow could become a repeatable product if the first version is scoped carefully.',
+      'You need technical ownership that can push back on unnecessary features and protect the product foundation.',
+    ],
+    deliverables: [
+      'SaaS MVP scoping and feature prioritization',
+      'React and TypeScript product interfaces',
+      'User dashboards and admin workflows',
+      'Authentication-ready application structure',
+      'Database-backed product workflows',
+      'Launch-ready first release for validation and iteration',
+    ],
+    firstPhase: [
+      'Product workflow review and MVP scope definition',
+      'Core user roles, data model, and permission boundaries',
+      'Build of the primary product workflow',
+      'Admin or operator view for managing the first release',
+      'Deployment of a usable MVP',
+      'Technical notes for iteration, handoff, and future phases',
+    ],
+    firstPhaseNote:
+      'The first phase is intentionally scoped around the workflow that proves the product direction. Billing, advanced automation, and secondary roles can be added later when they are justified.',
+    useCases: [
+      'SaaS MVP for a productized service workflow',
+      'Founder MVP for customer demos or pilot users',
+      'Agency-built MVP for a client product idea',
+      'Internal tool being turned into a customer-facing product',
+      'Niche portal or dashboard product',
+      'Resource platform, workflow app, or lightweight multi-user SaaS',
+    ],
+    techApproach: [
+      'Scope starts with the core product workflow, not a long feature wishlist',
+      'React and TypeScript are used for maintainable product interfaces',
+      'Data modeling and role boundaries are planned before screens multiply',
+      'The first release is built to support demos, pilots, and product learning without fake scale assumptions',
+      'Architecture leaves room for later billing, onboarding, admin controls, and integrations',
+      'The goal is a useful MVP foundation that can be improved responsibly after real feedback',
+    ],
+    startingScope: 'Typical first phase: MVP scope, core workflow, user/admin views, deployment, and iteration notes.',
+    pricingGuidanceTitle: 'Engagement / Pricing Guidance',
+    pricingGuidanceIntro:
+      'Typical first phases for SaaS MVP development often start in the $4,000 - $12,000 range depending on user roles, workflow complexity, and launch requirements.',
+    pricingGuidancePoints: [
+      'Lean MVPs with one core workflow may be less',
+      'Products with multiple roles, dashboards, or complex data rules may be more',
+    ],
+    pricingGuidanceClosing:
+      'The first phase should be scoped tightly enough to launch and learn, then expanded only when the product direction is clearer.',
+    previewTag: 'SaaS MVPs',
+    previewSummary:
+      'When a product idea or service workflow needs a focused first version, the MVP should prove the core workflow before becoming a full platform.',
+    previewDeliverables: [
+      'React TypeScript MVPs',
+      'User and admin workflows',
+      'Product dashboards',
+      'Launch-ready first releases',
+    ],
+    decisionSituation:
+      'A founder, agency, or service business needs the first usable version of a SaaS or productized workflow.',
+    decisionOutcome:
+      'A focused MVP with clearer scope, lower launch risk, and a maintainable foundation for product validation.',
+    decisionBestFit:
+      'Founders, agencies, and service businesses that need a practical SaaS MVP or custom software MVP before committing to a larger platform.',
+    ctaTitle: 'If you need a focused SaaS MVP instead of a vague full-platform build, we should talk.',
+    ctaCopy:
+      'Bring the product idea, the first workflow that must work, and what you need to validate. From there, we can define a practical MVP scope and build path.',
+    relatedCaseStudySlug: 'readyfolio-resource-portal',
+  },
+  {
     slug: 'automation-integrations',
     title: 'Automation & Integrations',
     summary:
