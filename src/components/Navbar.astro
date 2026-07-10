@@ -6,6 +6,7 @@ const currentPath = Astro.url.pathname;
 const navItems = [
   { href: '/case-studies', label: 'Work' },
   { href: '/services', label: 'Services' },
+  { href: '/industries', label: 'Industries' },
   { href: '/process', label: 'Process' },
   { href: '/about', label: 'About' },
   { href: '/insights', label: 'Insights' },
@@ -205,15 +206,21 @@ const isActive = (href: string) =>
 
   @media (max-width: 1150px) {
     .nav-links {
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .nav-links a {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
     }
 
     .nav-cta {
-      padding-inline: 0.85rem;
+      padding-inline: 0.75rem;
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .nav-cta-item {
+      display: none;
     }
   }
 
@@ -229,10 +236,6 @@ const isActive = (href: string) =>
 
     .nav-links {
       gap: 0.7rem;
-    }
-
-    .nav-cta-item {
-      display: none;
     }
   }
 

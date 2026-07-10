@@ -1,0 +1,374 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'Industries Served | Custom Business Systems | Beloved John Dev';
+const description =
+  'Custom software, intake systems, portals, and workflow tools for clinics, HVAC companies, schools, ministries, and nonprofits.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries`;
+
+const industryCards = [
+  {
+    label: 'Healthcare intake',
+    title: 'Clinics and Medical Practices',
+    problem:
+      'Appointment requests, patient registration, and staff review are still handled through basic forms, inboxes, or manual follow-up.',
+    buildItems: [
+      'appointment request systems',
+      'patient intake workflows',
+      'registration forms',
+      'staff review dashboards',
+      'status tracking',
+    ],
+    outcome: 'Clearer intake, fewer repeated questions, better staff visibility, and safer form boundaries.',
+    href: '/industries/clinics/',
+    relatedProof: null,
+  },
+  {
+    label: 'Home service intake',
+    title: 'HVAC and Home Service Companies',
+    problem:
+      'Generic contact forms do not capture enough system, property, or service context before the office team follows up.',
+    buildItems: [
+      'estimator tools',
+      'guided quote flows',
+      'service-request intake',
+      'package presentation',
+      'lead handoff workflows',
+    ],
+    outcome: 'Better-qualified requests, less phone-only intake, clearer package options, and faster office review.',
+    href: '/industries/hvac/',
+    relatedProof: {
+      href: '/case-studies/estimate-engine/',
+      label: 'Indoor Comfort Team HVAC Estimate Engine',
+    },
+  },
+  {
+    label: 'Education and ministry operations',
+    title: 'Schools, Ministries, and Nonprofits',
+    problem:
+      'Registration, attendance, records, reporting, campaigns, and public communication are spread across spreadsheets, paper forms, inboxes, and disconnected websites.',
+    buildItems: [
+      'student and member record systems',
+      'attendance tracking',
+      'graduation review',
+      'program and ministry workflows',
+      'public nonprofit websites',
+    ],
+    outcome: 'Clearer records, better reporting, more reliable administration, and stronger public communication.',
+    href: '/industries/schools-nonprofits/',
+    relatedProof: {
+      href: '/case-studies/agbi-academic-ministry-portal/',
+      label: 'AGBI Academic Ministry Portal',
+    },
+  },
+];
+
+const decisionRows = [
+  {
+    signal: 'If the problem is appointment requests or patient intake',
+    label: 'Clinics',
+    href: '/industries/clinics/',
+  },
+  {
+    signal: 'If the problem is estimator flow or service lead qualification',
+    label: 'HVAC',
+    href: '/industries/hvac/',
+  },
+  {
+    signal: 'If the problem is records, registration, reporting, or ministry communication',
+    label: 'Schools & Nonprofits',
+    href: '/industries/schools-nonprofits/',
+  },
+];
+
+const pageTypes = [
+  {
+    label: 'Services',
+    href: '/services/',
+    copy: 'Services explain what I build.',
+  },
+  {
+    label: 'Industries',
+    href: '/industries/',
+    copy: 'Industries explain how those systems apply to a specific business context.',
+  },
+  {
+    label: 'Work',
+    href: '/case-studies/',
+    copy: 'Work shows what was actually delivered.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Industries',
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container page-hero__content">
+      <p class="eyebrow">Industries</p>
+      <h1>Custom systems shaped around the workflows of real service organizations.</h1>
+      <p class="page-hero__lead">
+        Different industries have different operational bottlenecks. The common thread is usually the same: too much
+        manual coordination, weak intake, disconnected tools, and limited visibility. These pages show how the same
+        systems approach can be adapted to specific business contexts.
+      </p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies/" variant="secondary">View Relevant Work</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="industry-list-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Browse by context</p>
+        <h2 id="industry-list-heading">Industry pages for common workflow problems.</h2>
+      </div>
+
+      <div class="industry-grid">
+        {industryCards.map((industry) => (
+          <article class="surface-card industry-card">
+            <div>
+              <p class="industry-label">{industry.label}</p>
+              <h3>{industry.title}</h3>
+            </div>
+
+            <div class="industry-section">
+              <h4>Buyer problem</h4>
+              <p>{industry.problem}</p>
+            </div>
+
+            <div class="industry-section">
+              <h4>What can be built</h4>
+              <ul class="bullet-list">
+                {industry.buildItems.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+
+            <div class="industry-section">
+              <h4>Business outcome</h4>
+              <p>{industry.outcome}</p>
+            </div>
+
+            <div class="industry-actions">
+              <Button href={industry.href} variant="dark">View Industry Page</Button>
+              {industry.relatedProof && <a href={industry.relatedProof.href}>Related proof: {industry.relatedProof.label}</a>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding decision-band" aria-labelledby="decision-heading">
+    <div class="container decision-layout">
+      <div class="section-title">
+        <p class="eyebrow">Decision helper</p>
+        <h2 id="decision-heading">Which industry page should you start with?</h2>
+      </div>
+
+      <div class="decision-list" role="list">
+        {decisionRows.map((row) => (
+          <a class="decision-row" href={row.href} role="listitem">
+            <span>{row.signal}</span>
+            <strong>{row.label}</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="fit-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">How to use the site</p>
+        <h2 id="fit-heading">How these pages fit together</h2>
+      </div>
+
+      <div class="fit-grid">
+        {pageTypes.map((item) => (
+          <a class="surface-card fit-card" href={item.href}>
+            <h3>{item.label}</h3>
+            <p>{item.copy}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Have a workflow problem that does not fit neatly into one industry page?</h2>
+      <p>
+        Start with the current process, where it breaks down, and what information or visibility your team needs before
+        the first phase is useful.
+      </p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/services/" variant="secondary">Compare Services</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .industry-card {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .industry-card h3 {
+    margin-bottom: 0;
+  }
+
+  .industry-label {
+    width: fit-content;
+    margin-bottom: 0.4rem;
+    color: var(--color-primary);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .industry-section {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .industry-section h4 {
+    margin-bottom: 0;
+    color: var(--color-primary);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .industry-section p,
+  .fit-card p {
+    margin-bottom: 0;
+  }
+
+  .industry-actions {
+    display: grid;
+    gap: 0.75rem;
+    align-items: end;
+  }
+
+  .industry-actions a:not(.btn) {
+    font-weight: 800;
+  }
+
+  .decision-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .decision-layout {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .decision-list {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .decision-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-md);
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .decision-row:hover,
+  .fit-card:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .decision-row span {
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+
+  .decision-row strong {
+    color: var(--color-dark);
+  }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .fit-card {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--color-text);
+  }
+
+  .fit-card h3 {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1050px) {
+    .industry-grid,
+    .fit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .decision-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
