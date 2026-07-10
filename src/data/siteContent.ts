@@ -1,3 +1,8 @@
+export interface RelatedLink {
+  href: string;
+  label: string;
+}
+
 export interface ServicePage {
   slug: string;
   title: string;
@@ -29,6 +34,7 @@ export interface ServicePage {
   ctaTitle: string;
   ctaCopy: string;
   relatedCaseStudySlug: string;
+  relatedIndustryLink?: RelatedLink;
 }
 
 export interface CaseStudy {
@@ -66,6 +72,7 @@ export interface CaseStudy {
   referenceHref?: string;
   referenceText: string;
   referenceExternal?: boolean;
+  relatedIndustryLink?: RelatedLink;
   confidential?: boolean;
 }
 
@@ -518,6 +525,10 @@ export const servicePages: ServicePage[] = [
     ctaCopy:
       'Bring the current lead flow, quote process, or client handoff. From there, we can define the right first phase for a better intake or portal system.',
     relatedCaseStudySlug: 'estimate-engine',
+    relatedIndustryLink: {
+      href: '/industries/hvac/',
+      label: 'HVAC estimator and lead intake systems',
+    },
   },
   {
     slug: 'saas-mvp-development',
@@ -701,103 +712,145 @@ export const servicePages: ServicePage[] = [
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'estimate-engine',
-    title: 'Home Service Estimate Engine',
+    title: 'Indoor Comfort Team HVAC Estimate Engine',
     summary:
-      'A guided estimator flow for home service companies that needed better-qualified leads and a cleaner handoff from website traffic to office follow-up.',
+      'A guided HVAC estimator flow that captures homeowner contact details, system context, package interest, and submission details before office follow-up.',
     projectOverview: [
-      'This project involved designing and building a web-based estimate and lead capture system for a home service company. The goal was to replace a basic contact form with a guided estimate tool that collected structured information, helped qualify leads, and gave the office better visibility into incoming requests.',
-      'The system was shaped as operational software, not just a nicer form. It needed to support lead intake, estimate logic, internal review, and future reuse across similar companies.',
+      'Indoor Comfort Team needed an estimate path that could sit inside an existing HVAC website and guide homeowners through the information the office team needs before follow-up.',
+      'The project was shaped as a lead-first estimator, not a generic quote form. The workflow captures contact details, system type, home size, heating fuel, package interest, and submission status in a sequence that is easier for homeowners to complete and easier for staff to review.',
     ],
-    industry: 'Home Services',
-    companySize: 'Small team (5-15 staff)',
-    projectType: 'Estimate tool and lead management system',
+    industry: 'HVAC / Home Services',
+    companySize: 'Local HVAC contractor',
+    projectType: 'HVAC estimator and lead intake workflow',
     goal: [
-      'Collect better information from customers before the office follow-up',
-      'Provide rough estimate ranges automatically',
-      'Store all leads in a structured database',
-      'Allow the system to be reused across multiple websites',
-      'Reduce manual intake work for the office',
+      'Collect homeowner contact details before the estimator logic begins',
+      'Guide visitors through HVAC system type, sizing, and fuel configuration',
+      'Present package options in a structured way without hiding follow-up behind a generic form',
+      'Submit qualified estimate requests to the HVAC team for review',
+      'Integrate the estimator experience with the existing Indoor Comfort Team website',
     ],
-    homepageLabel: 'Estimator Tool / Lead Qualification System',
+    homepageLabel: 'HVAC Estimator / Lead Intake System',
     homepageSummary:
-      'Built a guided estimate and lead capture system for a home service company to replace a basic contact form and improve quote qualification.',
+      'Built a guided HVAC estimate flow for Indoor Comfort Team to collect better job context before office follow-up.',
     problemOneLiner:
-      'A basic contact form collected too little useful information before office follow-up.',
+      'A standard website form could not capture the HVAC-specific context needed before a useful estimate conversation.',
     outcomeOneLiner:
-      'Replaced it with a guided estimator that captures job details, stores structured leads, and routes notifications before the first call.',
+      'The finished estimator guides homeowners through contact capture, system configuration, estimate options, and submission confirmation before handoff.',
     homepageBuilt: [
       'Guided estimate flow',
       'Structured lead capture',
-      'Package selection logic',
-      'Admin visibility for incoming leads',
-      'Reusable system that can be deployed across multiple sites',
+      'System type and sizing steps',
+      'Package option presentation',
+      'Website-integrated estimate entry point',
     ],
     homepageOutcome:
-      'Replaced a basic quote form with a guided estimator that collected structured job details, stored leads, routed notifications, and gave the team clearer information before follow-up.',
-    clientType: 'Home service companies handling quote requests and office-based lead qualification',
+      'Turned the HVAC estimate request path into a guided workflow that collects contact details, system context, and package interest before the office team follows up.',
+    clientType: 'HVAC contractor handling estimate requests and office-based lead qualification',
     serviceLine: 'Client Portals & Estimator Tools',
-    proof: ['Config-driven quoting', 'Structured lead capture', 'Embeddable sales asset'],
+    proof: ['Guided HVAC estimator', 'Structured lead capture', 'Website-integrated workflow'],
     businessProblem:
-      'Generic quote forms were creating weak inquiries, limited context, and too much manual intake before the office team could decide what to do next.',
+      'HVAC estimate requests need more context than a name, phone number, and message. Without guided intake, staff often have to repeat the same questions about system type, home size, configuration, and customer expectations before they can move the lead forward.',
     oldWorkflow: [
-      'Visitors reached a standard form without being guided through service-specific questions.',
-      'Staff had to restart the discovery conversation manually after every submission.',
-      'Lead details arrived without enough structure to quote, route, or prioritize consistently.',
+      'Homeowners could reach the website, but the estimate path did not walk them through HVAC-specific details.',
+      'The office team still needed to ask repeated intake questions after a request came in.',
+      'Package expectations and equipment context were not captured in a structured sequence before follow-up.',
     ],
     scopeDelivered: [
-      'A focused estimate flow for service qualification',
-      'Structured lead capture tied to the estimator path',
-      'An admin-facing review view for submitted leads',
-      'A reusable offer page that doubles as live proof during sales conversations',
+      'A focused HVAC estimate entry experience on the existing website',
+      'Lead-first contact capture before system configuration',
+      'System type, home size, and heating fuel selection steps',
+      'Package option presentation for homeowner review',
+      'Submission confirmation and business handoff messaging',
     ],
     keyFeatures: [
-      'Guided estimate flow',
-      'System size and configuration selection',
-      'Package selection logic',
-      'Structured lead capture form',
-      'Admin database for lead storage',
-      'Email notifications to office',
-      'Multi-client configuration support',
-      'Embeddable widget for WordPress sites',
+      'Website estimate entry page',
+      'Contact information step',
+      'System type selection',
+      'Home size and tonnage selection',
+      'Heating fuel configuration',
+      'Estimated package option presentation',
+      'Submission success state',
+      'Lead handoff for office follow-up',
     ],
     architectureSummary:
-      'The system was designed as a multi-tenant estimate engine with a centralized backend and a lightweight embeddable widget.',
+      'The estimator was structured as a deterministic, step-based workflow that can live alongside an existing HVAC website while keeping business rules and submission handling maintainable.',
     technicalShape: [
-      'Frontend widget embedded on client websites',
-      'Backend API handling estimate calculation and lead submission',
-      'PostgreSQL database storing leads and configuration per client',
-      'Admin visibility for submitted leads',
-      'Email notification system for new submissions',
-      'Config-driven pricing and package logic per client',
+      'Step-based frontend flow for contact capture and HVAC configuration',
+      'Deterministic option logic based on selected system details',
+      'Server-side validation for submitted customer details',
+      'Clear submission state after the request is sent',
+      'Integration path designed for the existing HVAC website',
+      'Configuration kept maintainable so package and workflow changes do not require a redesign',
     ],
     constraints: [
-      'The system needed to work across multiple client websites',
-      'The estimator needed to be easy for non-technical staff to use',
-      'Pricing logic had to be configurable per client',
-      'The widget needed to load quickly and not affect site performance',
-      'Lead submissions needed idempotency protection to prevent duplicates',
+      'The estimator needed to match the existing HVAC website instead of feeling like an unrelated app',
+      'The workflow had to collect useful lead context without creating a long, confusing form',
+      'Option presentation needed to guide the homeowner without promising a final installed price',
+      'The handoff had to be clear so the business could follow up after submission',
     ],
     keyDecisions: [
-      'Collected structured job details before requesting contact information.',
-      'Treated the estimator as an operational sales tool rather than a generic marketing gimmick.',
-      'Designed the first release around a focused quoting workflow instead of a broad portal scope.',
+      'Captured contact information early so the business had a reachable lead before deeper configuration.',
+      'Split HVAC qualification into focused steps instead of one large form.',
+      'Used package options to frame the next conversation without claiming the estimator replaces staff review.',
+      'Kept the first release focused on estimate intake and handoff rather than CRM replacement, dispatching, or financing workflows.',
     ],
     outcomes: [
-      'More useful lead context before staff follow-up',
-      'Less intake friction for the office team',
-      'A clearer sales asset for explaining the engagement to qualified buyers',
+      'A clearer estimate request path for homeowners',
+      'More structured system context before office follow-up',
+      'A production-ready proof point for HVAC estimator and lead intake work',
     ],
     demonstrates: [
-      'Ability to combine conversion thinking with operational workflow design',
-      'Comfort building systems that live between marketing, qualification, and internal review',
-      'Productized delivery without flattening the technical depth behind the build',
+      'Ability to turn a contractor website CTA into a guided qualification workflow',
+      'Careful separation between estimate guidance and final business confirmation',
+      'Practical integration of customer-facing UX, business rules, validation, and handoff',
     ],
-    image: '/assets/images/ict-get-my-estimate.png',
-    alt: 'ICT HVAC estimate page showing the live get my estimate experience',
+    image: '/images/industries/hvac/estimate-entry.webp',
+    alt: 'Indoor Comfort Team HVAC estimate entry page',
+    screenshots: [
+      {
+        image: '/images/industries/hvac/estimate-entry.webp',
+        alt: 'Indoor Comfort Team HVAC estimate entry page',
+        label: 'Estimator entry point on the HVAC website',
+      },
+      {
+        image: '/images/industries/hvac/contact-step.webp',
+        alt: 'Indoor Comfort Team estimator contact information step',
+        label: 'Lead-first contact capture',
+      },
+      {
+        image: '/images/industries/hvac/system-type-step.webp',
+        alt: 'Indoor Comfort Team HVAC system type selection',
+        label: 'System type selection',
+      },
+      {
+        image: '/images/industries/hvac/system-size-step.webp',
+        alt: 'Indoor Comfort Team system size selection',
+        label: 'Home size and tonnage selection',
+      },
+      {
+        image: '/images/industries/hvac/fuel-type-step.webp',
+        alt: 'Indoor Comfort Team heating fuel type selection',
+        label: 'Heating fuel configuration',
+      },
+      {
+        image: '/images/industries/hvac/options-step.webp',
+        alt: 'Indoor Comfort Team estimated package options',
+        label: 'Package option presentation',
+      },
+      {
+        image: '/images/industries/hvac/submission-success.webp',
+        alt: 'Indoor Comfort Team estimate submission confirmation',
+        label: 'Successful lead submission',
+      },
+    ],
     referenceLabel: 'Live demo',
     referenceHref: 'https://demo.belovedjohndev.com/',
     referenceText: 'Open the live estimate demo',
     referenceExternal: true,
+    relatedIndustryLink: {
+      href: '/industries/hvac/',
+      label: 'Explore HVAC estimator and workflow solutions',
+    },
   },
   {
     slug: 'agbi-academic-ministry-portal',

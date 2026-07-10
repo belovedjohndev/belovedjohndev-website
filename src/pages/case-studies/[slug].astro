@@ -290,6 +290,12 @@ const caseStudySchema = {
         )}
 
         {study.confidential && <p class="muted">Some project details are generalized to respect client privacy.</p>}
+
+        {study.relatedIndustryLink && (
+          <p class="reference-line">
+            <a href={study.relatedIndustryLink.href}>{study.relatedIndustryLink.label}</a>
+          </p>
+        )}
       </article>
 
       <article class="surface-card">

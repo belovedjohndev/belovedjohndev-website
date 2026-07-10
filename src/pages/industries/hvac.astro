@@ -1,0 +1,363 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'HVAC Estimator & Lead Intake Systems | Beloved John Dev';
+const description =
+  'Custom HVAC estimator and lead intake systems that help contractors capture better job details, reduce manual qualification, and give homeowners a clearer path to request service.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries/hvac`;
+
+const leadProblems = [
+  'Service requests arrive without system type, home-size context, or equipment details.',
+  'Office staff have to qualify every lead by phone before they know what the homeowner needs.',
+  'Estimate expectations are unclear because the website only offers a generic contact form.',
+  'Website inquiries, estimator interest, and office follow-up are not connected in one clear handoff.',
+];
+
+const estimatorBenefits = [
+  'Guide homeowners through the right questions before they submit.',
+  'Capture structured job details your office team can review quickly.',
+  'Route service, install, maintenance, and quote requests with clearer context.',
+  'Present packages or next-step options without pretending the tool replaces staff review.',
+  'Reduce repeated intake questions and make the first follow-up more useful.',
+  'Give customers a more confident path than a blank message box.',
+];
+
+const firstPhaseItems = [
+  'Map the current lead flow from website CTA to office follow-up',
+  'Define the required intake data for service, install, or estimate requests',
+  'Build the guided estimator or service-request flow',
+  'Add system, property, and equipment configuration steps',
+  'Add package or option presentation where it helps the buyer decide',
+  'Connect submissions to email, admin review, or an existing handoff process',
+  'Deploy and document the first release',
+];
+
+const laterPhaseItems = [
+  'Full CRM replacement',
+  'Dispatching and technician scheduling',
+  'Technician mobile app workflows',
+  'Financing integrations',
+  'Advanced pricing engine',
+  'Membership management',
+  'Complex reporting dashboards',
+];
+
+const technicalApproach = [
+  'Business rules are defined before screens are built.',
+  'Configuration logic should be deterministic and easy to review.',
+  'Customer details need server-side validation and predictable submission handling.',
+  'The handoff should be reliable, whether it goes to email, an admin screen, or another workflow.',
+  'Package language should support follow-up without making fake estimate promises.',
+  'The first release should stay maintainable enough to adjust as the office team learns from real leads.',
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'HVAC',
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries/hvac"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">HVAC workflow systems</p>
+        <h1>HVAC estimator and lead intake systems built to capture better job details before the first call.</h1>
+        <p class="page-hero__lead">
+          Generic contact forms force HVAC teams to restart the conversation manually. A guided estimator or
+          service-request flow can collect system type, home size, equipment context, and customer details before the
+          office team follows up.
+        </p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies/estimate-engine/" variant="secondary">View HVAC Estimator Case Study</Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside" aria-label="HVAC estimator positioning">
+        <p class="eyebrow">Best first phase</p>
+        <h2>Improve intake before rebuilding operations.</h2>
+        <p>
+          The highest-leverage first release is often a guided request flow that improves lead quality without forcing a
+          full CRM, dispatch, or pricing-platform rebuild.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="hvac-problems-heading">
+    <div class="container grid-2 problem-grid">
+      <article class="surface-card">
+        <p class="eyebrow">Common HVAC lead problems</p>
+        <h2 id="hvac-problems-heading">The office team should not have to rebuild the lead from scratch.</h2>
+        <ul class="bullet-list">
+          {leadProblems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Estimator value</p>
+        <h2>What an HVAC estimator can improve</h2>
+        <ul class="bullet-list">
+          {estimatorBenefits.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding proof-section" aria-labelledby="hvac-proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Portfolio proof</p>
+        <h2 id="hvac-proof-heading">HVAC estimator workflow in practice</h2>
+        <p>
+          This estimator guides homeowners from the website into a structured estimate path before submitting a qualified
+          request to the HVAC team.
+        </p>
+        <p>
+          The industry page shows the business value. The full case study documents the implementation decisions and
+          complete workflow.
+        </p>
+        <a class="text-link" href="/case-studies/estimate-engine/">Read the full Indoor Comfort Team estimator case study</a>
+      </div>
+
+      <div class="proof-gallery" aria-label="HVAC estimator proof screenshots">
+        <figure>
+          <img
+            src="/images/industries/hvac/indoor-comfort-home.webp"
+            alt="Indoor Comfort Team homepage with HVAC estimator call to action"
+            width="1366"
+            height="1164"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>Website entry point that makes the estimator visible.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/images/industries/hvac/system-type-step.webp"
+            alt="Indoor Comfort Team estimator system type step"
+            width="1366"
+            height="588"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Guided system choice for better lead context.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/images/industries/hvac/options-step.webp"
+            alt="Indoor Comfort Team estimator package options step"
+            width="1366"
+            height="597"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Option framing before the office follows up.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="first-phase-heading">
+    <div class="container phase-layout">
+      <div class="section-title">
+        <p class="eyebrow">Recommended first phase</p>
+        <h2 id="first-phase-heading">Start with the lead workflow that happens every day.</h2>
+        <p>
+          A useful HVAC estimator starts by making the current intake path clearer, not by replacing every tool the
+          business uses.
+        </p>
+      </div>
+
+      <div class="phase-list" role="list">
+        {firstPhaseItems.map((item) => (
+          <article class="simple-card" role="listitem">
+            <h3>{item}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding wait-band" aria-labelledby="later-phase-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Usually later</p>
+        <h2 id="later-phase-heading">What should usually wait</h2>
+        <p>
+          These can be useful later, but they often add cost and risk before the lead-intake workflow has proven useful.
+        </p>
+        <div class="chip-row">
+          {laterPhaseItems.map((item) => <span class="chip">{item}</span>)}
+        </div>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Technical approach</p>
+        <h2>Build the estimator like operational software.</h2>
+        <ul class="bullet-list">
+          {technicalApproach.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Need a better HVAC estimator or service-request workflow?</h2>
+      <p>
+        Send the current intake process, what your office team asks repeatedly, and what information should be collected
+        before follow-up. The best first phase is usually the workflow that improves lead quality without forcing a full
+        platform rebuild.
+      </p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies/estimate-engine/" variant="secondary">View HVAC Estimator Case Study</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.68fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .hero-aside {
+    margin-top: 0.45rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .hero-aside h2 {
+    font-size: 1.45rem;
+  }
+
+  .hero-aside p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+
+  .problem-grid > .surface-card {
+    height: 100%;
+  }
+
+  .proof-section,
+  .wait-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .text-link {
+    display: inline-flex;
+    width: fit-content;
+    font-weight: 800;
+  }
+
+  .proof-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .proof-gallery figure {
+    overflow: hidden;
+    border: 1px solid rgba(16, 32, 51, 0.1);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .proof-gallery img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top center;
+    background: #f4f6f7;
+  }
+
+  .proof-gallery figcaption {
+    padding: 0.95rem 1rem 1.05rem;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .phase-layout {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .phase-list {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .phase-list .simple-card {
+    padding: 1rem;
+    min-height: 100%;
+  }
+
+  .phase-list h3 {
+    margin-bottom: 0;
+    color: var(--color-dark);
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .wait-band .chip-row {
+    margin-top: var(--space-md);
+  }
+
+  @media (max-width: 1180px) {
+    .phase-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .proof-gallery,
+    .phase-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

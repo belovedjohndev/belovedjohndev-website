@@ -185,13 +185,16 @@ const breadcrumbSchema = {
         <p>{service.pricingGuidanceClosing}</p>
       </article>
 
-      {relatedGuide && (
+      {(relatedGuide || service.relatedIndustryLink) && (
         <article class="surface-card related-links-card">
           <p class="eyebrow">Related reading</p>
           <h2>Helpful context before scoping this work</h2>
           <div class="related-link-list">
             <a href={`/case-studies/${relatedCaseStudy.slug}`}>Related proof: {relatedCaseStudy.title}</a>
-            <a href={`/insights/${relatedGuide.slug}`}>Guide: {relatedGuide.title}</a>
+            {relatedGuide && <a href={`/insights/${relatedGuide.slug}`}>Guide: {relatedGuide.title}</a>}
+            {service.relatedIndustryLink && (
+              <a href={service.relatedIndustryLink.href}>Industry use case: {service.relatedIndustryLink.label}</a>
+            )}
           </div>
         </article>
       )}
