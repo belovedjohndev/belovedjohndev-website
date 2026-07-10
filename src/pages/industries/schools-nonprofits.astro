@@ -1,0 +1,433 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'School, Ministry & Nonprofit Systems | Beloved John Dev';
+const description =
+  'Custom systems and websites for schools, ministries, churches, and nonprofits that need clearer registration, records, reporting, communication, and supporter engagement.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries/schools-nonprofits`;
+
+const operationalProblems = [
+  'Student, member, or supporter records are spread across spreadsheets and inboxes.',
+  'Attendance, program status, and graduation review are tracked manually.',
+  'Registration forms are disconnected from internal records.',
+  'Program and ministry reporting has to be compiled by hand.',
+  'Public websites explain the mission but do not guide people toward the next action clearly.',
+  'Volunteer, supporter, and inquiry follow-up depends on informal manual handoffs.',
+];
+
+const buildOptions = [
+  'Student registration and records systems',
+  'Attendance tracking',
+  'Academic year and term management',
+  'Graduation review workflows',
+  'Church or ministry member records',
+  'Program and outreach tracking',
+  'Supporter or volunteer inquiry flows',
+  'Public ministry websites',
+  'Donation or partnership pathways',
+  'Internal dashboards and reporting',
+];
+
+const firstPhaseItems = [
+  'Map the current operational workflow',
+  'Define roles and permissions',
+  'Structure records and status rules',
+  'Build the primary registration or records flow',
+  'Add admin review',
+  'Add basic reporting',
+  'Deploy the first usable version',
+  'Document handoff and next-phase options',
+];
+
+const laterPhaseItems = [
+  'Full accounting',
+  'Payroll',
+  'Donor CRM replacement',
+  'Complex LMS functionality',
+  'Mobile apps',
+  'Advanced analytics',
+  'Large ERP scope',
+  'Deep integrations before the core workflow is proven',
+];
+
+const technicalApproach = [
+  'Data model before screens.',
+  'Role-based access for staff, administrators, and reviewers.',
+  'Clear status rules for records, terms, programs, approvals, and follow-up.',
+  'Database constraints where data integrity matters.',
+  'Audit-friendly workflow decisions when staff actions need traceability.',
+  'Secure deployment defaults and maintainable architecture.',
+  'Practical scope boundaries so the first release can actually be used.',
+];
+
+const proofItems = [
+  {
+    title: 'AGBI Academic Ministry Portal',
+    href: '/case-studies/agbi-academic-ministry-portal/',
+    label: 'Primary systems proof',
+    body:
+      'A role-aware academic and ministry operations portal for student records, academic years, terms, attendance workflows, graduation review, and internal visibility.',
+  },
+  {
+    title: 'Church Management System',
+    href: '/case-studies/church-management-system/',
+    label: 'Internal administration proof',
+    body:
+      'A centralized internal platform for member records, administration, role-based workflows, reporting visibility, and ministry operations support.',
+  },
+  {
+    title: 'Catch the Vision Ministry Website',
+    href: '/case-studies/catch-the-vision-ministry-website/',
+    label: 'Public-facing website proof',
+    body:
+      'A public-facing ministry website designed to explain the organization mission, outreach locations, current campaign, and ways supporters can pray, give, share, or connect.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Schools & Nonprofits',
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries/schools-nonprofits"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Schools, ministries, and nonprofits</p>
+        <h1>Systems and websites built around mission, records, registration, and community engagement.</h1>
+        <p class="page-hero__lead">
+          Schools, ministries, churches, and nonprofits often depend on spreadsheets, paper forms, inboxes, and
+          disconnected websites to manage people, programs, reporting, and communication. A focused custom system can
+          reduce manual work internally, while a clearer public website helps people understand the mission and take the
+          next step.
+        </p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies/agbi-academic-ministry-portal/" variant="secondary">
+            View Academic Portal Case Study
+          </Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside" aria-label="Schools and nonprofits positioning">
+        <p class="eyebrow">Best first phase</p>
+        <h2>Start with the workflow that keeps records or follow-up from staying clear.</h2>
+        <p>
+          The right first release is usually a registration, records, review, reporting, or supporter pathway that staff
+          can use immediately.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="problems-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Common operational problems</p>
+        <h2 id="problems-heading">Manual records make mission work harder to manage.</h2>
+        <ul class="bullet-list">
+          {operationalProblems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">What can be built</p>
+        <h2>Focused systems for records, programs, communication, and follow-up.</h2>
+        <div class="chip-row">
+          {buildOptions.map((item) => <span class="chip">{item}</span>)}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding proof-section" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Relevant proof</p>
+        <h2 id="proof-heading">Relevant work for schools, ministries, and nonprofits</h2>
+        <p>
+          These examples show both sides of the work: internal systems for records and operations, plus public websites
+          for mission communication and supporter next steps.
+        </p>
+      </div>
+
+      <div class="proof-card-grid">
+        {proofItems.map((item) => (
+          <article class="surface-card proof-card">
+            <p class="proof-label">{item.label}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+            <a href={item.href}>Read case study</a>
+          </article>
+        ))}
+      </div>
+
+      <div class="ctv-gallery" aria-label="Catch the Vision Ministry website screenshots">
+        <figure>
+          <img
+            src="/images/industries/schools-nonprofits/catch-the-vision-hero.webp"
+            alt="Catch the Vision Ministry mission and campaign hero"
+            width="1352"
+            height="598"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Ministry mission and campaign hero.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/images/industries/schools-nonprofits/catch-the-vision-mission-locations.webp"
+            alt="Catch the Vision Ministry mission locations and outreach context"
+            width="1366"
+            height="1403"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Mission locations and outreach context.</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/images/industries/schools-nonprofits/catch-the-vision-join-and-contact.webp"
+            alt="Catch the Vision Ministry supporter partnership and contact pathways"
+            width="1364"
+            height="1725"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Supporter partnership and contact pathways.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="first-phase-heading">
+    <div class="container phase-layout">
+      <div class="section-title">
+        <p class="eyebrow">Recommended first phase</p>
+        <h2 id="first-phase-heading">Make the core workflow stable before expanding scope.</h2>
+        <p>
+          For schools and nonprofits, a useful first release usually starts with records, registration, review, or
+          reporting before larger platform ambitions.
+        </p>
+      </div>
+
+      <div class="phase-list" role="list">
+        {firstPhaseItems.map((item) => (
+          <article class="simple-card" role="listitem">
+            <h3>{item}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding wait-band" aria-labelledby="later-phase-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Usually later</p>
+        <h2 id="later-phase-heading">What should usually wait</h2>
+        <p>
+          These may be valid later phases, but they can distract from the first workflow that needs to become reliable.
+        </p>
+        <div class="chip-row">
+          {laterPhaseItems.map((item) => <span class="chip">{item}</span>)}
+        </div>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Technical approach</p>
+        <h2>Build around records, roles, and real status rules.</h2>
+        <ul class="bullet-list">
+          {technicalApproach.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Need a clearer system or website for school, ministry, or nonprofit work?</h2>
+      <p>
+        Send the current records, registration, reporting, or public communication workflow. The best first phase is
+        usually the one that makes daily administration clearer without forcing a large platform rebuild.
+      </p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies/catch-the-vision-ministry-website/" variant="secondary">
+          View Ministry Website Case Study
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.7fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .hero-aside {
+    margin-top: 0.45rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .hero-aside h2 {
+    font-size: 1.45rem;
+  }
+
+  .hero-aside p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+
+  .proof-section,
+  .wait-band {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .proof-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .proof-card {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .proof-card p {
+    margin-bottom: 0;
+  }
+
+  .proof-card a,
+  .proof-label {
+    font-weight: 800;
+  }
+
+  .proof-label {
+    width: fit-content;
+    color: var(--color-primary);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ctv-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .ctv-gallery figure {
+    overflow: hidden;
+    border: 1px solid rgba(16, 32, 51, 0.1);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ctv-gallery img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top center;
+    background: #f4f6f7;
+  }
+
+  .ctv-gallery figcaption {
+    padding: 0.95rem 1rem 1.05rem;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .phase-layout {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .phase-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .phase-list .simple-card {
+    padding: 1rem;
+    min-height: 100%;
+  }
+
+  .phase-list h3 {
+    margin-bottom: 0;
+    color: var(--color-dark);
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .wait-band .chip-row {
+    margin-top: var(--space-md);
+  }
+
+  @media (max-width: 1050px) {
+    .proof-card-grid,
+    .ctv-gallery,
+    .phase-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .proof-card-grid,
+    .ctv-gallery,
+    .phase-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

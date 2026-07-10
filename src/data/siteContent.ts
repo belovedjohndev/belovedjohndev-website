@@ -436,6 +436,10 @@ export const servicePages: ServicePage[] = [
     ctaCopy:
       'Start with the workflow problem and the main operational friction. From there, we can define the right first phase and whether the system should expand over time.',
     relatedCaseStudySlug: 'church-management-system',
+    relatedIndustryLink: {
+      href: '/industries/schools-nonprofits/',
+      label: 'school, ministry, and nonprofit systems',
+    },
   },
   {
     slug: 'client-portals-estimator-tools',
@@ -1017,6 +1021,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     referenceLabel: 'Private internal system',
     referenceText: 'No public link available',
+    relatedIndustryLink: {
+      href: '/industries/schools-nonprofits/',
+      label: 'Explore school, ministry, and nonprofit systems',
+    },
     confidential: true,
   },
   {
@@ -1111,7 +1119,145 @@ export const caseStudies: CaseStudy[] = [
     alt: 'Internal management platform with structured navigation and records views',
     referenceLabel: 'Availability',
     referenceText: 'Private and confidential',
+    relatedIndustryLink: {
+      href: '/industries/schools-nonprofits/',
+      label: 'Explore school, ministry, and nonprofit systems',
+    },
     confidential: true,
+  },
+  {
+    slug: 'catch-the-vision-ministry-website',
+    title: 'Catch the Vision Ministry Website',
+    summary:
+      'A public-facing ministry website built to communicate mission, outreach locations, current campaign priorities, and clear supporter next steps.',
+    projectOverview: [
+      'Catch the Vision Ministry needed a clearer public website for explaining the ministry, showing where it serves, presenting the Cambodia 2026 mission, and giving supporters practical next steps.',
+      'The project is public-facing communication work, not an internal operations platform. It organizes mission context, outreach locations, campaign details, partnership paths, and contact information into one responsive website.',
+    ],
+    industry: 'Ministry / Nonprofit Website',
+    companySize: 'Volunteer-based ministry',
+    projectType: 'Public-facing ministry website',
+    goal: [
+      'Explain the ministry mission clearly',
+      'Show outreach locations and current campaign context',
+      'Present ways supporters can pray, give, share, or connect',
+      'Make contact options easier to find',
+      'Create a responsive website that can support ministry communication',
+    ],
+    homepageLabel: 'Ministry Website',
+    homepageSummary:
+      'Built a public-facing ministry website for mission communication, outreach context, campaign details, and supporter next steps.',
+    problemOneLiner:
+      'The ministry needed a clearer way to explain its purpose, show where it serves, present the Cambodia 2026 mission, and guide visitors toward prayer, giving, sharing, or direct contact.',
+    outcomeOneLiner:
+      'Created a public-facing website that organizes the ministry message, outreach locations, campaign context, and supporter pathways in one place.',
+    homepageBuilt: [
+      'Mission-focused homepage',
+      'Ministry overview',
+      'Outreach and activities sections',
+      'Mission locations',
+      'Campaign feature',
+      'Supporter pathways and contact section',
+    ],
+    homepageOutcome:
+      'Organized the ministry mission, outreach context, campaign details, and supporter next steps into one responsive public website.',
+    clientType: 'Ministry or nonprofit organization communicating mission, outreach, and supporter pathways',
+    serviceLine: 'Custom Business Systems',
+    proof: ['Mission website', 'Campaign communication', 'Supporter pathways'],
+    businessProblem:
+      'A ministry website needs to do more than look presentable. It has to explain the mission, show where the work is happening, make the current campaign understandable, and guide supporters toward the next action without creating confusion.',
+    oldWorkflow: [
+      'Mission context, outreach details, and supporter next steps were not organized in one clear public flow.',
+      'Visitors needed a simpler path to understand the Cambodia 2026 mission and ways to partner.',
+      'Contact and supporter actions needed to be easier to find from the same website experience.',
+    ],
+    scopeDelivered: [
+      'Mission-focused homepage hero',
+      'About and ministry overview section',
+      'Service and outreach activity cards',
+      'Mission location and campaign sections',
+      'Partnership pathways for prayer, giving, sharing, and contact',
+      'Contact section and footer navigation',
+      'Responsive public website layout',
+    ],
+    keyFeatures: [
+      'Mission introduction',
+      'Ministry overview',
+      'Ways-we-serve section',
+      'Mission locations',
+      'Cambodia 2026 campaign section',
+      'Ways to partner',
+      'Contact pathways',
+      'Responsive layout',
+    ],
+    architectureSummary:
+      'The website was structured as a static public ministry site with reusable content sections, clear page hierarchy, and a responsive layout focused on mission communication and supporter navigation.',
+    technicalShape: [
+      'Static public website build',
+      'Section-based page composition',
+      'Responsive layout for mobile and desktop visitors',
+      'Image-led mission and campaign presentation',
+      'Clear anchor-style pathways for mission, partner, and contact content',
+      'Deployment-ready public site structure',
+    ],
+    constraints: [
+      'The project needed to communicate ministry purpose without inventing fundraising or outreach metrics.',
+      'Supporter pathways had to be clear without implying unverified campaign outcomes.',
+      'The site needed to stay focused on public communication rather than internal operations scope.',
+      'Copy and presentation needed to respect the ministry context.',
+    ],
+    keyDecisions: [
+      'Kept the site focused on mission, outreach, campaign context, and supporter pathways.',
+      'Used screenshots and sections to make the ministry story easier to scan.',
+      'Separated public-facing website proof from deeper internal systems proof in the portfolio.',
+    ],
+    outcomes: [
+      'A clearer public website for explaining the ministry and its current campaign.',
+      'More organized presentation of outreach locations and ways to partner.',
+      'A focused proof item for nonprofit and ministry communication work.',
+    ],
+    demonstrates: [
+      'Public-facing ministry website design',
+      'Mission and campaign communication structure',
+      'Supporter pathway organization',
+      'Responsive static site delivery',
+      'Ability to support nonprofit communication alongside internal systems work',
+    ],
+    image: '/images/industries/schools-nonprofits/catch-the-vision-hero.webp',
+    alt: 'Catch the Vision Ministry website hero section with mission message and partnership calls to action',
+    screenshots: [
+      {
+        image: '/images/industries/schools-nonprofits/catch-the-vision-full-page.webp',
+        alt: 'Catch the Vision Ministry full page website overview',
+        label: 'Full-page ministry website overview',
+      },
+      {
+        image: '/images/industries/schools-nonprofits/catch-the-vision-hero.webp',
+        alt: 'Catch the Vision Ministry hero and mission introduction',
+        label: 'Hero and mission introduction',
+      },
+      {
+        image: '/images/industries/schools-nonprofits/catch-the-vision-about-and-serve.webp',
+        alt: 'Catch the Vision Ministry about section and ways served',
+        label: 'About the ministry and ways served',
+      },
+      {
+        image: '/images/industries/schools-nonprofits/catch-the-vision-mission-locations.webp',
+        alt: 'Catch the Vision Ministry mission locations and campaign section',
+        label: 'Mission locations and Cambodia 2026 campaign',
+      },
+      {
+        image: '/images/industries/schools-nonprofits/catch-the-vision-join-and-contact.webp',
+        alt: 'Catch the Vision Ministry partnership and contact sections',
+        label: 'Partnership and contact pathways',
+      },
+    ],
+    referenceLabel: 'Project type',
+    referenceText: 'Public-facing ministry website project',
+    relatedIndustryLink: {
+      href: '/industries/schools-nonprofits/',
+      label: 'Explore school, ministry, and nonprofit systems',
+    },
   },
   {
     slug: 'custom-project-management-web-app',
