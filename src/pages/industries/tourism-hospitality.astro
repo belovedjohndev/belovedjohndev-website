@@ -1,0 +1,336 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'Travel Agency & Tourism Website Systems | Beloved John Dev';
+const description =
+  'Custom websites, inquiry flows, booking-request systems, and workflow tools for travel agencies, tour operators, guides, and hospitality businesses.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries/tourism-hospitality`;
+
+const operationalProblems = [
+  'Package information is scattered across social posts, messages, and documents.',
+  'Inquiries arrive without travel dates, budget, party size, or destination details.',
+  'Staff repeat the same quote questions before they can prepare an option.',
+  'Customers cannot clearly tell the difference between an inquiry and a confirmed booking.',
+  'Hotel, visa, airfare, and package requests are handled through manual follow-up.',
+  'Location, credentials, and other trust information can be difficult to verify.',
+  'There is no clear handoff from website inquiry to staff review and response.',
+];
+
+const buildOptions = [
+  'Travel agency websites',
+  'Guided quote forms',
+  'Tour package inquiry flows',
+  'Booking-request systems',
+  'Traveler intake forms',
+  'Itinerary request workflows',
+  'Document upload portals',
+  'Client portals',
+  'Admin inquiry dashboards',
+  'Email notifications',
+  'Quote status tracking',
+  'Separately scoped payment or deposit workflows',
+];
+
+const bestFitOrganizations = [
+  'Travel agencies',
+  'Tour operators',
+  'Local guides',
+  'Destination management companies',
+  'Guesthouses and boutique accommodations',
+  'Transport and activity providers',
+  'Tourism startups',
+  'Agencies that need a better website and inquiry workflow',
+];
+
+const firstPhaseItems = [
+  'Map the current inquiry and quote process',
+  'Define the trip details staff need',
+  'Organize service and package presentation',
+  'Build a guided inquiry flow',
+  'Add contact and notification handling',
+  'Add admin review when needed',
+  'Deploy the first usable version',
+  'Document next-phase options',
+];
+
+const laterPhaseItems = [
+  'Real-time airline inventory',
+  'Complex GDS integrations',
+  'Channel manager integrations',
+  'A full property management system',
+  'Native mobile apps',
+  'Advanced dynamic pricing',
+  'Multi-currency payment workflows',
+  'A large CRM replacement',
+];
+
+const technicalApproach = [
+  'Map the customer journey before visual polish.',
+  'Keep inquiry and confirmed booking states clearly distinct.',
+  'Capture trip details as structured data.',
+  'Use server-side validation for customer-facing forms.',
+  'Keep package and service content maintainable.',
+  'Handle customer details with explicit security boundaries.',
+  'Design responsive experiences for travelers using mobile devices.',
+  'Use fast static delivery where it fits the workflow.',
+  'Define integration boundaries before implementation.',
+];
+
+const proofScreenshots = [
+  {
+    src: '/images/industries/tourism-hospitality/blessed-journey-hero.webp',
+    alt: 'Blessed Journey travel agency homepage and quote actions',
+    caption: 'Travel agency positioning and the primary quote path.',
+  },
+  {
+    src: '/images/industries/tourism-hospitality/blessed-journey-services-about.webp',
+    alt: 'Blessed Journey travel services and trust-building content',
+    caption: 'Services, credibility, and customer decision support.',
+  },
+  {
+    src: '/images/industries/tourism-hospitality/blessed-journey-contact-page.webp',
+    alt: 'Blessed Journey travel inquiry form and contact details',
+    caption: 'Structured inquiry details and direct contact options.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` },
+    { '@type': 'ListItem', position: 3, name: 'Tourism & Hospitality', item: pageUrl },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries/tourism-hospitality"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Tourism and hospitality</p>
+        <h1>Travel websites and inquiry systems built to turn interest into clearer booking and quote conversations.</h1>
+        <p class="page-hero__lead">
+          Travel agencies and tourism operators often rely on social messages, scattered service information, and
+          manual quote follow-up. A focused website or inquiry workflow can present services clearly, collect better
+          trip details, and give customers a more reliable path from discovery to contact.
+        </p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies/blessed-journey-travel-agency-website/" variant="secondary">
+            View Travel Agency Case Study
+          </Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside" aria-label="Tourism systems positioning">
+        <p class="eyebrow">Clear scope boundary</p>
+        <h2>A booking request is not a confirmed booking.</h2>
+        <p>
+          The first phase can improve service presentation, trip intake, and staff handoff without claiming real-time
+          airline, hotel, payment, or availability infrastructure that has not been integrated.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="problems-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Common workflow problems</p>
+        <h2 id="problems-heading">Interest arrives, but the details needed for a useful quote do not.</h2>
+        <ul class="bullet-list">{operationalProblems.map((item) => <li>{item}</li>)}</ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">What can be built</p>
+        <h2>Customer-facing tools connected to a clearer staff handoff.</h2>
+        <div class="chip-row">{buildOptions.map((item) => <span class="chip">{item}</span>)}</div>
+        <p class="scope-note">
+          Real-time airline or hotel inventory requires a separately defined integration; it is not implied by a
+          booking-request or inquiry flow.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding fit-band" aria-labelledby="best-fit-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Best fit</p>
+        <h2 id="best-fit-heading">Organizations that need clearer service presentation and inquiry handling.</h2>
+      </div>
+      <div class="fit-grid" role="list">
+        {bestFitOrganizations.map((item) => <span class="simple-card" role="listitem">{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding proof-section" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Relevant proof</p>
+        <h2 id="proof-heading">Relevant work for tourism and travel businesses</h2>
+        <h3>Blessed Journey Travel Agency Website</h3>
+        <p>
+          A custom-coded travel agency website designed to present airline, hotel, visa, package, and insurance
+          services clearly while guiding visitors toward quotes, inquiries, location details, and direct contact.
+        </p>
+        <a href="/case-studies/blessed-journey-travel-agency-website/">
+          Read the full Blessed Journey case study
+        </a>
+      </div>
+
+      <div class="proof-gallery" aria-label="Blessed Journey website screenshots">
+        {proofScreenshots.map((screenshot) => (
+          <figure>
+            <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
+            <figcaption>{screenshot.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="first-phase-heading">
+    <div class="container phase-layout">
+      <div class="section-title">
+        <p class="eyebrow">Recommended first phase</p>
+        <h2 id="first-phase-heading">Stabilize inquiry and quote handoff before adding larger integrations.</h2>
+      </div>
+      <div class="phase-list" role="list">
+        {firstPhaseItems.map((item) => <article class="simple-card" role="listitem"><h3>{item}</h3></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding later-band" aria-labelledby="later-phase-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Usually later</p>
+        <h2 id="later-phase-heading">What should usually wait</h2>
+        <p>
+          These may be valuable later phases, but they are safer to scope after the inquiry and quote workflow is stable
+          and the integration requirements are known.
+        </p>
+        <div class="chip-row">{laterPhaseItems.map((item) => <span class="chip">{item}</span>)}</div>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Technical approach</p>
+        <h2>Build around the customer journey, structured trip data, and explicit handoffs.</h2>
+        <ul class="bullet-list">{technicalApproach.map((item) => <li>{item}</li>)}</ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Need a clearer travel inquiry or booking-request workflow?</h2>
+      <p>Start with the current service information, quote questions, staff handoff, and what customers need to know.</p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies/blessed-journey-travel-agency-website/" variant="secondary">
+          View Travel Agency Case Study
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid,
+  .grid-2,
+  .phase-layout {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.7fr);
+    align-items: start;
+  }
+
+  .hero-aside {
+    margin-top: 0.45rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .hero-aside h2 { font-size: 1.45rem; }
+  .hero-aside p, .scope-note { margin-bottom: 0; color: var(--color-text-muted); }
+  .scope-note { margin-top: var(--space-md); font-weight: 700; }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fit-band, .proof-section, .later-band { background: rgba(255, 255, 255, 0.45); }
+
+  .fit-grid,
+  .phase-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .fit-grid .simple-card { font-weight: 800; color: var(--color-dark); }
+  .phase-list h3 { margin-bottom: 0; color: var(--color-dark); font-size: 0.98rem; line-height: 1.35; }
+
+  .proof-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .proof-gallery figure {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid rgba(16, 32, 51, 0.1);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .proof-gallery img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top center;
+    background: #f4f6f7;
+  }
+
+  .proof-gallery figcaption {
+    padding: 0.95rem 1rem 1.05rem;
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1050px) {
+    .fit-grid, .phase-list, .proof-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .fit-grid, .phase-list, .proof-gallery { grid-template-columns: 1fr; }
+  }
+</style>

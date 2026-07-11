@@ -1710,6 +1710,159 @@ export const caseStudies: CaseStudy[] = [
     referenceLabel: 'Private product demo',
     referenceText: 'No public link available',
   },
+  {
+    slug: 'blessed-journey-travel-agency-website',
+    title: 'Blessed Journey Travel Agency Website',
+    summary:
+      'A custom-coded travel agency website built to present services clearly, establish trust, and guide visitors toward quote and inquiry actions.',
+    projectOverview: [
+      'The agency needed a clearer way to present airline booking, hotel reservations, visa processing, customized tour packages, and travel insurance in one place.',
+      'The project focused on creating a structured public-facing website that helps visitors understand the offer, verify the agency\'s credibility, find the office, and move toward a quote or inquiry.',
+    ],
+    industry: 'Travel Agency / Tourism',
+    companySize: 'Small travel agency',
+    projectType: 'Custom travel agency website and inquiry flow',
+    goal: [
+      'Present the agency\'s core travel services in a consistent structure',
+      'Make quote and inquiry actions clear across the customer journey',
+      'Surface location, contact details, and business credentials',
+      'Provide a responsive public-facing experience for mobile and desktop visitors',
+    ],
+    problemOneLiner:
+      'Services, location, credentials, and inquiry options needed to become one clear customer journey instead of scattered information and direct messaging alone.',
+    outcomeOneLiner:
+      'The finished site gives the agency a clearer service presentation, stronger trust signals, and a direct path from discovery to quote or inquiry.',
+    clientType:
+      'Travel agencies and tourism operators that need clearer service presentation, credibility, and customer inquiry pathways',
+    serviceLine: 'Custom Business Systems',
+    proof: ['Travel-specific content hierarchy', 'Quote and inquiry pathways', 'Responsive static delivery'],
+    businessProblem:
+      'The agency\'s services, location, credentials, and inquiry path needed to be organized into a clearer customer journey instead of relying on scattered information and direct messaging alone.',
+    oldWorkflow: [
+      'Service information was difficult to present consistently.',
+      'Visitors needed a clearer path from discovery to inquiry.',
+      'Trust signals and business credentials needed stronger visibility.',
+      'Office location and contact options needed to be easier to find.',
+      'Quote requests needed a more structured entry point.',
+    ],
+    scopeDelivered: [
+      'Responsive custom-coded website',
+      'Homepage with clear travel positioning',
+      'Service overview and service detail content',
+      'About and credibility sections',
+      'Quote-focused calls to action',
+      'Contact inquiry form',
+      'Office location and directions',
+      'Business credentials and registration signals',
+      'Mobile-responsive navigation and footer',
+      'Optimized static deployment',
+    ],
+    keyFeatures: [
+      'Service cards and detailed service sections',
+      'About and story page',
+      'Contact form',
+      'Office location section',
+      'Repeated quote calls to action',
+      'Business credentials',
+      'Responsive layout and consistent navigation',
+      'Structured footer',
+      'Travel-agency-specific content hierarchy',
+    ],
+    architectureSummary:
+      'The site was implemented as a static Astro website focused on performance, maintainability, responsive behavior, and clear customer inquiry paths.',
+    technicalShape: [
+      'Astro static site',
+      'Reusable page sections and components',
+      'Responsive layouts',
+      'Optimized image assets',
+      'Structured metadata',
+      'Static deployment',
+      'Contact form integration',
+    ],
+    constraints: [
+      'The site needed to remain easy to maintain.',
+      'The experience needed to work well on mobile.',
+      'Multiple services needed to be presented without overwhelming visitors.',
+      'Trust needed to be built without unsupported claims.',
+      'The inquiry path needed to stay clear.',
+    ],
+    keyDecisions: [
+      'Grouped services into clear categories that match common traveler needs.',
+      'Used repeated quote calls to action without turning the site into a cluttered sales page.',
+      'Surfaced location, credentials, and trust content throughout the experience.',
+      'Kept booking claims limited to inquiry and assistance rather than real-time inventory.',
+      'Structured each page around the decisions a prospective traveler needs to make.',
+    ],
+    outcomes: [
+      'Clearer service presentation',
+      'Stronger business credibility',
+      'Easier quote and inquiry path',
+      'Clearer access to contact and office information',
+      'A more coherent public-facing brand presence',
+    ],
+    demonstrates: [
+      'Ability to build custom-coded business websites',
+      'Conversion-focused information architecture',
+      'Responsive implementation',
+      'Trust and inquiry flow design',
+      'Practical positioning for service businesses',
+    ],
+    image: '/images/industries/tourism-hospitality/blessed-journey-hero.webp',
+    alt: 'Blessed Journey Global travel agency homepage and quote actions',
+    screenshots: [
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-hero.webp',
+        alt: 'Blessed Journey Global travel agency homepage hero',
+        label: 'Travel agency homepage and primary quote path',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-services-about.webp',
+        alt: 'Blessed Journey service overview and about section',
+        label: 'Service overview and trust-building content',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-services-page.webp',
+        alt: 'Blessed Journey detailed travel services page',
+        label: 'Detailed travel services page',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-about-page.webp',
+        alt: 'Blessed Journey agency story and credentials page',
+        label: 'Agency story and credentials',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-contact-page.webp',
+        alt: 'Blessed Journey inquiry form and contact information',
+        label: 'Inquiry and contact experience',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-location.webp',
+        alt: 'Blessed Journey office location and directions section',
+        label: 'Office location and directions',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-why-choose-us.webp',
+        alt: 'Blessed Journey trust signals and footer',
+        label: 'Trust signals and service footer',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-ready-footer.webp',
+        alt: 'Blessed Journey final quote call to action and footer',
+        label: 'Final quote CTA and next step',
+      },
+      {
+        image: '/images/industries/tourism-hospitality/blessed-journey-full-page.webp',
+        alt: 'Full Blessed Journey travel services page overview',
+        label: 'Full-page travel services overview',
+      },
+    ],
+    referenceLabel: 'Project proof',
+    referenceText: 'Screens from the delivered static website',
+    relatedIndustryLink: {
+      href: '/industries/tourism-hospitality/',
+      label: 'Explore tourism and hospitality website and workflow solutions',
+    },
+  },
 ];
 
 export const featuredCaseStudySlugs = [

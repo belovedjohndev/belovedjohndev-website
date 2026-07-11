@@ -8,7 +8,7 @@ import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
 
 const title = 'Industries Served | Custom Business Systems | Beloved John Dev';
 const description =
-  'Custom software, intake systems, portals, and workflow tools for clinics, HVAC companies, schools, ministries, and nonprofits.';
+  'Custom software, intake systems, portals, and workflow tools for clinics, HVAC companies, schools, nonprofits, travel agencies, and tourism businesses.';
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
 const pageUrl = `${siteUrl}/industries`;
 
@@ -67,6 +67,25 @@ const industryCards = [
       label: 'AGBI Academic Ministry Portal',
     },
   },
+  {
+    label: 'Travel inquiry and handoff',
+    title: 'Tourism and Hospitality',
+    problem:
+      'Travel services, packages, inquiries, and booking requests are often handled through scattered content and repeated manual follow-up.',
+    buildItems: [
+      'travel agency websites',
+      'package inquiry flows',
+      'booking-request systems',
+      'client portals',
+      'admin inquiry workflows',
+    ],
+    outcome: 'Clearer services, better-qualified inquiries, stronger trust, and a more reliable customer handoff.',
+    href: '/industries/tourism-hospitality/',
+    relatedProof: {
+      href: '/case-studies/blessed-journey-travel-agency-website/',
+      label: 'Blessed Journey Travel Agency Website',
+    },
+  },
 ];
 
 const decisionRows = [
@@ -84,6 +103,11 @@ const decisionRows = [
     signal: 'If the problem is records, registration, reporting, or ministry communication',
     label: 'Schools & Nonprofits',
     href: '/industries/schools-nonprofits/',
+  },
+  {
+    signal: 'If the problem is travel service presentation, quote intake, or booking-request handoff',
+    label: 'Tourism & Hospitality',
+    href: '/industries/tourism-hospitality/',
   },
 ];
 
