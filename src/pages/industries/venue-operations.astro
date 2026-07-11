@@ -1,0 +1,283 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'Venue Operations & Analytics Systems | Beloved John Dev';
+const description =
+  'Custom dashboards, reporting systems, upload workflows, and analytics tools for venues that need clearer revenue, utilization, zone, and operational visibility.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries/venue-operations`;
+
+const operationalProblems = [
+  'Operational data is spread across exports and spreadsheets.',
+  'Revenue is reviewed without enough zone-level context.',
+  'Utilization and covers are difficult to compare consistently.',
+  'Weekly reports are assembled manually.',
+  'Underperforming zones are identified too late.',
+  'Operational signals are mixed into raw data instead of surfaced clearly.',
+  'Management lacks one consistent reporting view.',
+  'Report settings and retention rules are unclear.',
+];
+
+const buildOptions = [
+  'Venue performance dashboards',
+  'Zone analytics',
+  'Utilization reporting',
+  'Revenue and covers tracking',
+  'Staff productivity metrics',
+  'Upload and validation workflows',
+  'Report generation and archives',
+  'PDF and CSV exports',
+  'Operational alerts or signals',
+  'Management dashboards',
+  'Configurable reporting settings',
+];
+
+const bestFitOrganizations = [
+  'Event venues',
+  'Entertainment venues',
+  'Clubs',
+  'Premium lounges',
+  'Multi-zone hospitality venues',
+  'Conference facilities',
+  'Venue groups',
+  'Operations teams managing floor, zone, or capacity data',
+];
+
+const firstPhaseItems = [
+  'Map the current reporting workflow',
+  'Define required metrics and zone structure',
+  'Identify the available data sources',
+  'Build the upload and validation path',
+  'Build the overview dashboard',
+  'Add core analytics views',
+  'Add management reporting',
+  'Deploy the first usable version',
+  'Document next-phase options',
+];
+
+const laterPhaseItems = [
+  'Real-time POS integrations',
+  'Predictive forecasting',
+  'Complex staffing optimization',
+  'Multi-location benchmarking',
+  'Advanced billing',
+  'Native mobile apps',
+  'Live alerting across multiple venues',
+  'Deep external integrations',
+];
+
+const technicalApproach = [
+  'Define the operational model before choosing charts.',
+  'Give every metric a clear and consistent definition.',
+  'Keep calculations deterministic and reviewable.',
+  'Validate uploaded data before it reaches reporting views.',
+  'Use a reusable zone model across overview and analysis screens.',
+  'Add role-aware reporting when different teams need different visibility.',
+  'Handle operational data with explicit security boundaries.',
+  'Keep report generation audit-friendly.',
+  'Use a maintainable dashboard architecture.',
+  'Render dense tables and charts with performance in mind.',
+];
+
+const proofScreenshots = [
+  {
+    src: '/images/industries/venue-operations/meridian-overview.webp',
+    alt: 'Meridian venue performance overview dashboard',
+    caption: 'Revenue, utilization, service-hour performance, and zone signals in one overview.',
+  },
+  {
+    src: '/images/industries/venue-operations/meridian-floor-analytics.webp',
+    alt: 'Meridian floor analytics and zone comparisons',
+    caption: 'Filtered comparisons across revenue, covers, spend, turns, and venue zones.',
+  },
+  {
+    src: '/images/industries/venue-operations/meridian-reports.webp',
+    alt: 'Meridian weekly operational report interface',
+    caption: 'Management-ready weekly reporting with archived report context.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` },
+    { '@type': 'ListItem', position: 3, name: 'Venue Operations', item: pageUrl },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries/venue-operations"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Venue operations</p>
+        <h1>Venue analytics and reporting systems built to make revenue, utilization, and zone performance easier to act on.</h1>
+        <p class="page-hero__lead">
+          Multi-zone venues often generate useful operational data but still rely on spreadsheets, exports, and
+          manually assembled reports. A focused dashboard can turn raw venue data into clearer comparisons, trends,
+          alerts, and management-ready reporting.
+        </p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies/meridian-venue-intelligence-platform/" variant="secondary">
+            View Venue Intelligence Case Study
+          </Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside" aria-label="Venue operations first-phase guidance">
+        <p class="eyebrow">Best first phase</p>
+        <h2>Make the reporting workflow reliable before adding live integrations.</h2>
+        <p>
+          Start with metric definitions, zone structure, upload validation, and the management views needed for a
+          repeatable reporting cycle.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="problems-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Common venue operations problems</p>
+        <h2 id="problems-heading">Useful performance data exists, but management visibility stays fragmented.</h2>
+        <ul class="bullet-list">{operationalProblems.map((item) => <li>{item}</li>)}</ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">What can be built</p>
+        <h2>Dashboards and reporting workflows shaped around venue operations.</h2>
+        <div class="chip-row">{buildOptions.map((item) => <span class="chip">{item}</span>)}</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding fit-band" aria-labelledby="best-fit-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Best fit</p>
+        <h2 id="best-fit-heading">Operations teams managing zones, capacity, utilization, and recurring reports.</h2>
+      </div>
+      <div class="fit-grid" role="list">
+        {bestFitOrganizations.map((item) => <span class="simple-card" role="listitem">{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding proof-section" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Relevant proof</p>
+        <h2 id="proof-heading">Venue intelligence workflow in practice</h2>
+        <h3>Meridian Venue Intelligence Platform</h3>
+        <p>
+          A product-style venue operations dashboard designed to turn uploaded performance data into clearer revenue,
+          utilization, zone, and reporting views.
+        </p>
+        <a href="/case-studies/meridian-venue-intelligence-platform/">Read the full Meridian case study</a>
+      </div>
+
+      <div class="proof-gallery" aria-label="Meridian venue intelligence screenshots">
+        {proofScreenshots.map((screenshot) => (
+          <figure>
+            <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
+            <figcaption>{screenshot.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="first-phase-heading">
+    <div class="container phase-layout">
+      <div class="section-title">
+        <p class="eyebrow">Recommended first phase</p>
+        <h2 id="first-phase-heading">Build one dependable reporting cycle before expanding the platform.</h2>
+      </div>
+      <div class="phase-list" role="list">
+        {firstPhaseItems.map((item) => <article class="simple-card" role="listitem"><h3>{item}</h3></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding later-band" aria-labelledby="later-phase-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Usually later</p>
+        <h2 id="later-phase-heading">What should usually wait</h2>
+        <p>
+          These can become useful later phases once the core reporting workflow, metric definitions, and data quality
+          are stable enough to support them.
+        </p>
+        <div class="chip-row">{laterPhaseItems.map((item) => <span class="chip">{item}</span>)}</div>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Technical approach</p>
+        <h2>Build around deterministic metrics, validated data, and reusable venue structure.</h2>
+        <ul class="bullet-list">{technicalApproach.map((item) => <li>{item}</li>)}</ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Need a clearer venue reporting or operational analytics workflow?</h2>
+      <p>Start with the current exports, zone structure, recurring reports, and the decisions management needs to make.</p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies/meridian-venue-intelligence-platform/" variant="secondary">
+          View Venue Intelligence Case Study
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid, .grid-2, .phase-layout { display: grid; gap: var(--space-lg); }
+  .hero-grid { grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.7fr); align-items: start; }
+  .hero-aside { margin-top: 0.45rem; background: rgba(255, 255, 255, 0.94); }
+  .hero-aside h2 { font-size: 1.45rem; }
+  .hero-aside p { margin-bottom: 0; color: var(--color-text-muted); }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fit-band, .proof-section, .later-band { background: rgba(255, 255, 255, 0.45); }
+  .fit-grid, .phase-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.8rem; }
+  .fit-grid .simple-card { color: var(--color-dark); font-weight: 800; }
+  .phase-list h3 { margin-bottom: 0; color: var(--color-dark); font-size: 0.98rem; line-height: 1.35; }
+  .proof-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+  .proof-gallery figure { overflow: hidden; margin: 0; border: 1px solid rgba(16, 32, 51, 0.1); border-radius: var(--border-radius); background: var(--color-white); box-shadow: var(--shadow-sm); }
+  .proof-gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; background: #f4f6f7; }
+  .proof-gallery figcaption { padding: 0.95rem 1rem 1.05rem; color: var(--color-text-muted); font-size: 0.92rem; font-weight: 700; line-height: 1.55; }
+
+  @media (max-width: 1050px) {
+    .fit-grid, .phase-list, .proof-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .fit-grid, .phase-list, .proof-gallery { grid-template-columns: 1fr; }
+  }
+</style>

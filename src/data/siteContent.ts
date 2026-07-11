@@ -35,6 +35,7 @@ export interface ServicePage {
   ctaCopy: string;
   relatedCaseStudySlug: string;
   relatedIndustryLink?: RelatedLink;
+  additionalIndustryLinks?: RelatedLink[];
 }
 
 export interface CaseStudy {
@@ -440,6 +441,12 @@ export const servicePages: ServicePage[] = [
       href: '/industries/schools-nonprofits/',
       label: 'school, ministry, and nonprofit systems',
     },
+    additionalIndustryLinks: [
+      {
+        href: '/industries/venue-operations/',
+        label: 'venue operations and analytics systems',
+      },
+    ],
   },
   {
     slug: 'client-portals-estimator-tools',
@@ -1709,6 +1716,144 @@ export const caseStudies: CaseStudy[] = [
     ],
     referenceLabel: 'Private product demo',
     referenceText: 'No public link available',
+  },
+  {
+    slug: 'meridian-venue-intelligence-platform',
+    title: 'Meridian Venue Intelligence Platform',
+    summary:
+      'A venue operations analytics platform that turns uploaded performance data into clearer revenue, utilization, zone, and reporting insights.',
+    projectOverview: [
+      'Meridian was designed as a product-style operations dashboard for multi-zone venues. The system organizes uploaded performance data into revenue, covers, utilization, spend, zone performance, and management-ready reports.',
+      'The project focused on helping operators move from raw exports and manual analysis toward a clearer weekly reporting workflow with filters, comparisons, operational signals, and configurable report settings.',
+    ],
+    industry: 'Venue Operations / Hospitality Analytics',
+    companySize: 'Operations team managing a multi-zone venue',
+    projectType: 'Operational analytics and reporting platform',
+    goal: [
+      'Turn uploaded venue performance data into a coherent weekly overview',
+      'Make revenue, covers, utilization, and zone performance easier to compare',
+      'Separate overview, diagnostics, reporting, and configuration into clear workflows',
+      'Present management-ready reports without implying unsupported production integrations',
+    ],
+    problemOneLiner:
+      'Venue operators needed a clearer way to review revenue, covers, utilization, zone performance, and weekly signals without repeatedly assembling reports by hand.',
+    outcomeOneLiner:
+      'The product concept centralizes venue performance views, structured upload guidance, zone comparisons, weekly reports, and reporting configuration in one application flow.',
+    clientType:
+      'Venue operators and management teams that need clearer reporting, zone-level performance visibility, and repeatable operational analysis',
+    serviceLine: 'Custom Business Systems',
+    proof: ['Venue operations dashboard', 'Structured upload workflow', 'Management reporting interface'],
+    businessProblem:
+      'Venue operators needed a clearer way to review revenue, covers, utilization, zone performance, and weekly operational signals without manually combining exports and rebuilding reports.',
+    oldWorkflow: [
+      'Raw CSV or spreadsheet exports required manual review.',
+      'Zone performance was difficult to compare consistently.',
+      'Weekly reporting depended on repeated manual assembly.',
+      'Management visibility was spread across multiple metrics and sources.',
+      'Underperforming areas were harder to identify quickly.',
+      'Report formatting and retention settings lacked one central place.',
+    ],
+    scopeDelivered: [
+      'Overview dashboard with revenue and utilization KPIs',
+      'Hourly revenue chart, floor heat, and zone comparisons',
+      'Operational signals and zone leaderboard',
+      'CSV and XLSX upload workflow with schema guidance and preview',
+      'Floor analytics filters and comparison views',
+      'Reports archive and weekly brief view',
+      'Represented PDF and CSV export controls',
+      'Venue settings, reporting preferences, and data-retention configuration',
+      'Responsive application layout',
+    ],
+    keyFeatures: [
+      'Venue performance overview',
+      'Revenue by service hour',
+      'Floor utilization heatmap',
+      'Zone performance tables',
+      'Spend per guest and covers by time window',
+      'Table turn comparison',
+      'Upload and schema-validation interface',
+      'Report generation and archive views',
+      'Workspace, account, and access settings',
+    ],
+    architectureSummary:
+      'The application was designed as a product-style analytics interface with reusable dashboard patterns, structured data ingestion flows, configurable reporting views, and operational reporting screens.',
+    technicalShape: [
+      'Dashboard application',
+      'Structured data upload and schema-validation interface',
+      'Analytics views with configurable filters',
+      'Reporting interface and represented export controls',
+      'Settings and workspace configuration',
+      'Reusable component system',
+      'Responsive design',
+    ],
+    constraints: [
+      'Dense operational data needed to remain readable without becoming visually overwhelming.',
+      'The product needed to support multiple venue zones.',
+      'Weekly reporting needed to stay readable for management review.',
+      'Overview, analytics, reports, and configuration needed distinct hierarchy.',
+      'Desktop-sized data tables needed to retain clear visual priority.',
+      'Operational signals needed careful wording without unsupported conclusions.',
+    ],
+    keyDecisions: [
+      'Separated overview, diagnostics, reporting, and settings into clear workflows.',
+      'Used zone-level comparisons rather than relying only on top-level totals.',
+      'Surfaced operational signals separately from raw metrics.',
+      'Designed uploads around schema clarity and retry-safe processing language.',
+      'Made reporting settings explicit instead of hiding them.',
+      'Kept the interface product-focused instead of using a generic admin template.',
+    ],
+    outcomes: [
+      'Centralized venue performance reporting',
+      'Clearer comparison across zones',
+      'Easier review of revenue, utilization, and spend',
+      'A more coherent weekly reporting workflow',
+      'Stronger visibility into underperforming areas',
+      'More structured data-ingestion and report-configuration flows',
+    ],
+    demonstrates: [
+      'Operational dashboard design',
+      'Data-heavy interface design',
+      'Reporting workflow design',
+      'Structured upload and validation UX',
+      'Analytics product thinking and management visibility',
+      'Product-quality internal software UI',
+      'Custom systems positioning',
+    ],
+    image: '/images/industries/venue-operations/meridian-overview.webp',
+    alt: 'Meridian venue performance overview dashboard',
+    screenshots: [
+      {
+        image: '/images/industries/venue-operations/meridian-overview.webp',
+        alt: 'Meridian venue performance overview dashboard',
+        label: 'Venue performance overview',
+      },
+      {
+        image: '/images/industries/venue-operations/meridian-upload-data.webp',
+        alt: 'Meridian structured data upload and schema guidance',
+        label: 'Structured data ingestion and validation',
+      },
+      {
+        image: '/images/industries/venue-operations/meridian-floor-analytics.webp',
+        alt: 'Meridian floor analytics with zone comparisons',
+        label: 'Zone and floor analytics',
+      },
+      {
+        image: '/images/industries/venue-operations/meridian-reports.webp',
+        alt: 'Meridian weekly operational report interface',
+        label: 'Weekly operational reporting',
+      },
+      {
+        image: '/images/industries/venue-operations/meridian-settings.webp',
+        alt: 'Meridian venue and reporting configuration',
+        label: 'Venue and reporting configuration',
+      },
+    ],
+    referenceLabel: 'Portfolio application',
+    referenceText: 'Product concept shown through the portfolio interface',
+    relatedIndustryLink: {
+      href: '/industries/venue-operations/',
+      label: 'Explore venue operations and analytics systems',
+    },
   },
   {
     slug: 'blessed-journey-travel-agency-website',

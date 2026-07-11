@@ -195,6 +195,9 @@ const breadcrumbSchema = {
             {service.relatedIndustryLink && (
               <a href={service.relatedIndustryLink.href}>Industry use case: {service.relatedIndustryLink.label}</a>
             )}
+            {service.additionalIndustryLinks?.map((link) => (
+              <a href={link.href}>Industry use case: {link.label}</a>
+            ))}
           </div>
         </article>
       )}
