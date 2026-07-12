@@ -13,28 +13,28 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjoh
 const pageUrl = `${siteUrl}/industries/tourism-hospitality`;
 
 const operationalProblems = [
+  'Booking requests arrive through calls, social messages, and multiple contact channels.',
+  'Room availability and offline blocks are tracked manually.',
   'Package information is scattered across social posts, messages, and documents.',
   'Inquiries arrive without travel dates, budget, party size, or destination details.',
   'Staff repeat the same quote questions before they can prepare an option.',
   'Customers cannot clearly tell the difference between an inquiry and a confirmed booking.',
-  'Hotel, visa, airfare, and package requests are handled through manual follow-up.',
-  'Location, credentials, and other trust information can be difficult to verify.',
-  'There is no clear handoff from website inquiry to staff review and response.',
+  'Public listing details and direct guest communication lack one consistent handoff.',
 ];
 
 const buildOptions = [
+  'Guesthouse booking-request systems',
+  'Room availability and blocking tools',
+  'Owner operations portals',
+  'Offline and direct booking entry',
+  'Public accommodation listings',
   'Travel agency websites',
   'Guided quote forms',
   'Tour package inquiry flows',
-  'Booking-request systems',
   'Traveler intake forms',
   'Itinerary request workflows',
   'Document upload portals',
-  'Client portals',
-  'Admin inquiry dashboards',
-  'Email notifications',
-  'Quote status tracking',
-  'Separately scoped payment or deposit workflows',
+  'Direct guest communication pathways',
 ];
 
 const bestFitOrganizations = [
@@ -51,10 +51,11 @@ const bestFitOrganizations = [
 const firstPhaseItems = [
   'Map the current inquiry and quote process',
   'Define the trip details staff need',
-  'Organize service and package presentation',
+  'Define room, availability, or package structure',
   'Build a guided inquiry flow',
   'Add contact and notification handling',
-  'Add admin review when needed',
+  'Add owner or staff review when needed',
+  'Add availability and blocking controls when relevant',
   'Deploy the first usable version',
   'Document next-phase options',
 ];
@@ -74,6 +75,7 @@ const technicalApproach = [
   'Map the customer journey before visual polish.',
   'Keep inquiry and confirmed booking states clearly distinct.',
   'Capture trip details as structured data.',
+  'Model rooms, availability, and offline blocks explicitly when accommodations are involved.',
   'Use server-side validation for customer-facing forms.',
   'Keep package and service content maintainable.',
   'Handle customer details with explicit security boundaries.',
@@ -82,7 +84,25 @@ const technicalApproach = [
   'Define integration boundaries before implementation.',
 ];
 
-const proofScreenshots = [
+const mondulkiriProofScreenshots = [
+  {
+    src: '/images/industries/tourism-hospitality/mondulkiri-guesthouse-public-booking.webp',
+    alt: 'Mondulkiri guesthouse public room selection and booking-request page',
+    caption: 'Public room details and structured booking-request intake.',
+  },
+  {
+    src: '/images/industries/tourism-hospitality/mondulkiri-guesthouse-bookings.webp',
+    alt: 'Mondulkiri guesthouse owner booking dashboard',
+    caption: 'Owner review for pending, confirmed, rejected, and direct bookings.',
+  },
+  {
+    src: '/images/industries/tourism-hospitality/mondulkiri-guesthouse-availability.webp',
+    alt: 'Mondulkiri guesthouse availability and room-block controls',
+    caption: 'Availability review and offline room blocking.',
+  },
+];
+
+const blessedJourneyProofScreenshots = [
   {
     src: '/images/industries/tourism-hospitality/blessed-journey-hero.webp',
     alt: 'Blessed Journey travel agency homepage and quote actions',
@@ -92,11 +112,6 @@ const proofScreenshots = [
     src: '/images/industries/tourism-hospitality/blessed-journey-services-about.webp',
     alt: 'Blessed Journey travel services and trust-building content',
     caption: 'Services, credibility, and customer decision support.',
-  },
-  {
-    src: '/images/industries/tourism-hospitality/blessed-journey-contact-page.webp',
-    alt: 'Blessed Journey travel inquiry form and contact details',
-    caption: 'Structured inquiry details and direct contact options.',
   },
 ];
 
@@ -133,8 +148,8 @@ const breadcrumbSchema = {
         </p>
         <div class="hero-actions">
           <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
-          <Button href="/case-studies/blessed-journey-travel-agency-website/" variant="secondary">
-            View Travel Agency Case Study
+          <Button href="/case-studies/mondulkiri-guesthouse-booking-system/" variant="secondary">
+            View Guesthouse Booking Case Study
           </Button>
         </div>
       </div>
@@ -143,8 +158,8 @@ const breadcrumbSchema = {
         <p class="eyebrow">Clear scope boundary</p>
         <h2>A booking request is not a confirmed booking.</h2>
         <p>
-          The first phase can improve service presentation, trip intake, and staff handoff without claiming real-time
-          airline, hotel, payment, or availability infrastructure that has not been integrated.
+          The first phase can improve service presentation, stay-detail intake, availability control, and owner handoff
+          without claiming OTA inventory, online payment, channel synchronization, or instant confirmation.
         </p>
       </aside>
     </div>
@@ -186,25 +201,45 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="section-title">
         <p class="eyebrow">Relevant proof</p>
-        <h2 id="proof-heading">Relevant work for tourism and travel businesses</h2>
-        <h3>Blessed Journey Travel Agency Website</h3>
+        <h2 id="proof-heading">Booking operations and public-facing tourism work</h2>
+        <h3>Mondulkiri Guesthouse Booking System</h3>
         <p>
-          A custom-coded travel agency website designed to present airline, hotel, visa, package, and insurance
-          services clearly while guiding visitors toward quotes, inquiries, location details, and direct contact.
+          A guesthouse booking-request and owner operations platform with public room selection, stay-detail intake,
+          booking review, room availability, offline blocking, room management, and publishing controls.
         </p>
-        <a href="/case-studies/blessed-journey-travel-agency-website/">
-          Read the full Blessed Journey case study
+        <a href="/case-studies/mondulkiri-guesthouse-booking-system/">
+          Read the Mondulkiri Guesthouse Booking System case study
         </a>
       </div>
 
-      <div class="proof-gallery" aria-label="Blessed Journey website screenshots">
-        {proofScreenshots.map((screenshot) => (
+      <div class="proof-gallery" aria-label="Mondulkiri guesthouse booking system screenshots">
+        {mondulkiriProofScreenshots.map((screenshot) => (
           <figure>
             <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
             <figcaption>{screenshot.caption}</figcaption>
           </figure>
         ))}
       </div>
+
+      <article class="supporting-proof surface-card">
+        <div class="supporting-proof__copy">
+          <p class="eyebrow">Supporting public-facing proof</p>
+          <h3>Blessed Journey Travel Agency Website</h3>
+          <p>
+            A custom-coded travel agency website focused on service presentation, trust, location visibility, and quote
+            or inquiry pathways.
+          </p>
+          <a href="/case-studies/blessed-journey-travel-agency-website/">Read the full Blessed Journey case study</a>
+        </div>
+        <div class="supporting-proof__gallery" aria-label="Blessed Journey website screenshots">
+          {blessedJourneyProofScreenshots.map((screenshot) => (
+            <figure>
+              <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
+              <figcaption>{screenshot.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </article>
     </div>
   </section>
 
@@ -247,8 +282,8 @@ const breadcrumbSchema = {
       <p>Start with the current service information, quote questions, staff handoff, and what customers need to know.</p>
       <div class="hero-actions">
         <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
-        <Button href="/case-studies/blessed-journey-travel-agency-website/" variant="secondary">
-          View Travel Agency Case Study
+        <Button href="/case-studies/mondulkiri-guesthouse-booking-system/" variant="secondary">
+          View Guesthouse Booking Case Study
         </Button>
       </div>
     </div>
@@ -297,6 +332,38 @@ const breadcrumbSchema = {
     gap: var(--space-lg);
   }
 
+  .supporting-proof {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .supporting-proof__copy p:last-of-type { color: var(--color-text-muted); }
+
+  .supporting-proof__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .supporting-proof__gallery figure { margin: 0; }
+
+  .supporting-proof__gallery img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--border-radius-sm);
+  }
+
+  .supporting-proof__gallery figcaption {
+    margin-top: 0.65rem;
+    color: var(--color-text-muted);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
   .proof-gallery figure {
     overflow: hidden;
     margin: 0;
@@ -327,7 +394,7 @@ const breadcrumbSchema = {
   }
 
   @media (max-width: 900px) {
-    .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+    .hero-grid, .grid-2, .supporting-proof { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 700px) {
