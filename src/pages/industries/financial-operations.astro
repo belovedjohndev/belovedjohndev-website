@@ -1,0 +1,298 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/ui/Button.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { ctaLabels, primaryCtaHref } from '../../data/siteContent';
+
+const title = 'Financial Operations & Ledger Systems | Beloved John Dev';
+const description =
+  'Custom multi-tenant ledger, account, balance, transfer, and transaction systems for fintech products, marketplaces, wallets, and SaaS platforms.';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://belovedjohndev.com';
+const pageUrl = `${siteUrl}/industries/financial-operations`;
+
+const operationalProblems = [
+  'Balances are updated directly instead of derived from journal activity.',
+  'Duplicate transfer requests can create repeated postings.',
+  'Failures can leave partial writes when posting is not transactional.',
+  'Account classifications are inconsistent across features.',
+  'Tenant scope is applied unevenly to accounts and history.',
+  'Authorization is enforced in navigation but not consistently on the server.',
+  'Transaction history is difficult to trace or audit.',
+  'Financial records are spread across unrelated tables.',
+  'Retries are not designed as a normal part of financial write behavior.',
+];
+
+const buildOptions = [
+  'Multi-tenant ledger platforms',
+  'Account management and chart of accounts',
+  'Balance engines',
+  'Wallet ledgers',
+  'Marketplace balances',
+  'Internal financial operations tools',
+  'Transaction history',
+  'Transfer workflows',
+  'Reconciliation support',
+  'Reporting dashboards',
+  'Audit-oriented records',
+  'Financial admin portals',
+];
+
+const bestFitOrganizations = [
+  'Fintech startups',
+  'SaaS products with internal balances',
+  'Marketplaces',
+  'Wallet products',
+  'Subscription platforms',
+  'Internal finance teams',
+  'Payment-adjacent products',
+  'Multi-tenant business platforms',
+  'Products that need traceable financial records',
+];
+
+const firstPhaseItems = [
+  'Define financial domain rules',
+  'Identify tenant and authorization boundaries',
+  'Model accounts and classifications',
+  'Define journal and posting behavior',
+  'Add a transactional transfer use case',
+  'Add idempotency protection',
+  'Derive balances from journal activity',
+  'Expose transaction history',
+  'Build a minimal operations interface',
+  'Document failure behavior and invariants',
+];
+
+const laterPhaseItems = [
+  'Banking integrations',
+  'Card processing',
+  'Payout rails',
+  'Tax reporting',
+  'External financial-institution reconciliation',
+  'Complex accounting standards',
+  'Multi-currency settlement',
+  'Compliance certification',
+  'Advanced fraud detection',
+  'Native mobile apps',
+];
+
+const technicalApproach = [
+  'Model the financial domain before designing screens.',
+  'Define explicit invariants for every posting workflow.',
+  'Use database constraints where integrity must survive application errors.',
+  'Scope data access by organization.',
+  'Enforce role-based authorization server-side.',
+  'Use transactions and idempotency for financial writes.',
+  'Keep journal activity append-only or otherwise traceable.',
+  'Calculate balances deterministically from posted activity.',
+  'Design transfer posting for retries and failures.',
+  'Keep operational history audit-friendly.',
+  'Use secure defaults.',
+  'Separate application roles from financial authority.',
+];
+
+const proofScreenshots = [
+  {
+    src: '/images/industries/financial-operations/tessera-overview.webp',
+    alt: 'Tessera organization-scoped ledger operations overview',
+    caption: 'Organization scope, roles, ledger balance, and account coverage in one workspace.',
+  },
+  {
+    src: '/images/industries/financial-operations/tessera-accounts.webp',
+    alt: 'Tessera chart of accounts and classification summary',
+    caption: 'Explicit account structure and classification-oriented empty states.',
+  },
+  {
+    src: '/images/industries/financial-operations/tessera-transfer.webp',
+    alt: 'Tessera transactional transfer workflow',
+    caption: 'Transfer workflow designed around account availability and idempotent posting.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` },
+    { '@type': 'ListItem', position: 3, name: 'Financial Operations', item: pageUrl },
+  ],
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical="/industries/financial-operations"
+  ogImage="/og/services.png"
+  ogImageAlt="Beloved John Dev services page share image"
+>
+  <Navbar slot="navbar" />
+  <JsonLd data={breadcrumbSchema} />
+
+  <section class="page-hero page-hero--services">
+    <div class="container hero-grid">
+      <div class="page-hero__content">
+        <p class="eyebrow">Financial operations</p>
+        <h1>Ledger and financial operations systems built around tenant isolation, transaction integrity, and traceable account activity.</h1>
+        <p class="page-hero__lead">
+          Financial workflows cannot be treated like ordinary form submissions. Accounts, balances, transfers, and
+          transaction history need explicit rules, transactional behavior, authorization, idempotency, and reliable
+          tenant scoping.
+        </p>
+        <div class="hero-actions">
+          <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+          <Button href="/case-studies/tessera-multi-tenant-ledger-platform/" variant="secondary">
+            View Ledger Platform Case Study
+          </Button>
+        </div>
+      </div>
+
+      <aside class="surface-card hero-aside" aria-label="Financial operations scope boundary">
+        <p class="eyebrow">Clear scope boundary</p>
+        <h2>A custom ledger is not automatically a bank or payment processor.</h2>
+        <p>
+          Banking connectivity, payment rails, regulated settlement, and compliance certification require separate
+          integration, security, legal, and operational scope.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="problems-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Common financial operations problems</p>
+        <h2 id="problems-heading">Financial integrity breaks down when domain rules remain implicit.</h2>
+        <ul class="bullet-list">{operationalProblems.map((item) => <li>{item}</li>)}</ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">What can be built</p>
+        <h2>Ledger and operations tools shaped around explicit financial workflows.</h2>
+        <div class="chip-row">{buildOptions.map((item) => <span class="chip">{item}</span>)}</div>
+        <p class="scope-note">Payment processing and banking connectivity are not implied unless separately integrated.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding fit-band" aria-labelledby="best-fit-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Best fit</p>
+        <h2 id="best-fit-heading">Products that need trustworthy internal balances and traceable activity.</h2>
+      </div>
+      <div class="fit-grid" role="list">
+        {bestFitOrganizations.map((item) => <span class="simple-card" role="listitem">{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding proof-section" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Relevant proof</p>
+        <h2 id="proof-heading">Ledger operations workflow in practice</h2>
+        <h3>Tessera Multi-Tenant Ledger Platform</h3>
+        <p>
+          A portfolio application demonstrating organization-scoped accounts, derived balances, idempotent transfers,
+          transaction history, and role-aware workspace access.
+        </p>
+        <a href="/case-studies/tessera-multi-tenant-ledger-platform/">Read the full Tessera case study</a>
+      </div>
+
+      <div class="proof-gallery" aria-label="Tessera ledger platform screenshots">
+        {proofScreenshots.map((screenshot) => (
+          <figure>
+            <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
+            <figcaption>{screenshot.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <p class="proof-limit">
+        Current captures demonstrate the workspace structure and empty-state behavior. Seeded data screenshots would
+        provide stronger visual proof of populated accounts, balances, transfers, and transaction history.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding" aria-labelledby="first-phase-heading">
+    <div class="container phase-layout">
+      <div class="section-title">
+        <p class="eyebrow">Recommended first phase</p>
+        <h2 id="first-phase-heading">Prove the posting model and invariants before expanding integrations.</h2>
+      </div>
+      <div class="phase-list" role="list">
+        {firstPhaseItems.map((item) => <article class="simple-card" role="listitem"><h3>{item}</h3></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding later-band" aria-labelledby="later-phase-heading">
+    <div class="container grid-2">
+      <article class="surface-card">
+        <p class="eyebrow">Usually later</p>
+        <h2 id="later-phase-heading">What should usually wait</h2>
+        <p>
+          These are separate phases with additional regulatory, security, integration, and operational requirements.
+          They should follow a stable core ledger and posting workflow rather than being assumed in the first release.
+        </p>
+        <div class="chip-row">{laterPhaseItems.map((item) => <span class="chip">{item}</span>)}</div>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">Technical approach</p>
+        <h2>Build around invariants, tenant boundaries, transactions, and failure behavior.</h2>
+        <ul class="bullet-list">{technicalApproach.map((item) => <li>{item}</li>)}</ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding cta-frame">
+    <div class="container cta-frame__content">
+      <p class="eyebrow">Next step</p>
+      <h2>Need a stronger ledger or financial operations foundation?</h2>
+      <p>Start with the account model, tenant boundaries, posting rules, failure behavior, and operational visibility.</p>
+      <div class="hero-actions">
+        <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
+        <Button href="/case-studies/tessera-multi-tenant-ledger-platform/" variant="secondary">
+          View Ledger Platform Case Study
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</MainLayout>
+
+<style>
+  .hero-grid, .grid-2, .phase-layout { display: grid; gap: var(--space-lg); }
+  .hero-grid { grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.7fr); align-items: start; }
+  .hero-aside { margin-top: 0.45rem; background: rgba(255, 255, 255, 0.94); }
+  .hero-aside h2 { font-size: 1.45rem; }
+  .hero-aside p, .scope-note, .proof-limit { margin-bottom: 0; color: var(--color-text-muted); }
+  .scope-note, .proof-limit { margin-top: var(--space-md); font-weight: 700; }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fit-band, .proof-section, .later-band { background: rgba(255, 255, 255, 0.45); }
+  .fit-grid, .phase-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.8rem; }
+  .fit-grid .simple-card { color: var(--color-dark); font-weight: 800; }
+  .phase-list h3 { margin-bottom: 0; color: var(--color-dark); font-size: 0.98rem; line-height: 1.35; }
+  .proof-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+  .proof-gallery figure { overflow: hidden; margin: 0; border: 1px solid rgba(16, 32, 51, 0.1); border-radius: var(--border-radius); background: var(--color-white); box-shadow: var(--shadow-sm); }
+  .proof-gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; background: #f4f6f7; }
+  .proof-gallery figcaption { padding: 0.95rem 1rem 1.05rem; color: var(--color-text-muted); font-size: 0.92rem; font-weight: 700; line-height: 1.55; }
+
+  @media (max-width: 1050px) {
+    .fit-grid, .phase-list, .proof-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .fit-grid, .phase-list, .proof-gallery { grid-template-columns: 1fr; }
+  }
+</style>
