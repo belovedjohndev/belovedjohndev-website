@@ -20,6 +20,8 @@ const operationalProblems = [
   'Staff repeat the same quote questions before they can prepare an option.',
   'Customers cannot clearly tell the difference between an inquiry and a confirmed booking.',
   'Public listing details and direct guest communication lack one consistent handoff.',
+  'Local business information is difficult to verify and scattered across social pages or outdated directories.',
+  'Business submissions arrive without a consistent review and publishing workflow.',
 ];
 
 const buildOptions = [
@@ -35,6 +37,10 @@ const buildOptions = [
   'Itinerary request workflows',
   'Document upload portals',
   'Direct guest communication pathways',
+  'Local tourism and business directories',
+  'Tour and activity listings',
+  'Verified information and trust-state workflows',
+  'Business submission and review flows',
 ];
 
 const bestFitOrganizations = [
@@ -45,6 +51,7 @@ const bestFitOrganizations = [
   'Guesthouses and boutique accommodations',
   'Transport and activity providers',
   'Tourism startups',
+  'Local tourism directory publishers',
   'Agencies that need a better website and inquiry workflow',
 ];
 
@@ -78,6 +85,8 @@ const technicalApproach = [
   'Model rooms, availability, and offline blocks explicitly when accommodations are involved.',
   'Use server-side validation for customer-facing forms.',
   'Keep package and service content maintainable.',
+  'Separate submitted, being-verified, and published listing states.',
+  'Support direct contact without presenting an inquiry or listing as a confirmed booking.',
   'Handle customer details with explicit security boundaries.',
   'Design responsive experiences for travelers using mobile devices.',
   'Use fast static delivery where it fits the workflow.',
@@ -115,6 +124,24 @@ const blessedJourneyProofScreenshots = [
   },
 ];
 
+const senMonoromProofScreenshots = [
+  {
+    src: '/assets/images/sen-monorom-local-guide.webp',
+    alt: 'Sen Monorom Local Guide homepage with a waterfall hero and verified listing actions',
+    caption: 'Local tourism discovery with clear verified-listing and business-submission paths.',
+  },
+  {
+    src: '/images/industries/tourism-hospitality/sen-monorom-guide-restaurants.webp',
+    alt: 'Sen Monorom Local Guide restaurant listings with verification and direct contact actions',
+    caption: 'Category browsing, owner-confirmed details, and direct contact actions.',
+  },
+  {
+    src: '/images/industries/tourism-hospitality/sen-monorom-guide-submit-business.webp',
+    alt: 'Sen Monorom Local Guide business submission requirements and contact pathways',
+    caption: 'A structured path for local businesses to submit details for review.',
+  },
+];
+
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -142,9 +169,10 @@ const breadcrumbSchema = {
         <p class="eyebrow">Tourism and hospitality</p>
         <h1>Travel websites and inquiry systems built to turn interest into clearer booking and quote conversations.</h1>
         <p class="page-hero__lead">
-          Travel agencies and tourism operators often rely on social messages, scattered service information, and
-          manual quote follow-up. A focused website or inquiry workflow can present services clearly, collect better
-          trip details, and give customers a more reliable path from discovery to contact.
+          Travel agencies, hospitality operators, and local guides often rely on social messages, scattered service
+          information, outdated listings, and manual follow-up. A focused website, directory, or inquiry workflow can
+          present verified information clearly, collect better details, and give customers a more reliable path from
+          discovery to direct contact or staff review.
         </p>
         <div class="hero-actions">
           <Button href={primaryCtaHref} variant="primary">{ctaLabels.primary}</Button>
@@ -233,6 +261,26 @@ const breadcrumbSchema = {
         </div>
         <div class="supporting-proof__gallery" aria-label="Blessed Journey website screenshots">
           {blessedJourneyProofScreenshots.map((screenshot) => (
+            <figure>
+              <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
+              <figcaption>{screenshot.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </article>
+
+      <article class="supporting-proof directory-proof surface-card">
+        <div class="supporting-proof__copy">
+          <p class="eyebrow">Local directory proof</p>
+          <h3>Sen Monorom Local Guide</h3>
+          <p>
+            A local tourism directory built around verified business listings, category browsing, direct contact
+            actions, honest empty states, and a structured business-submission workflow.
+          </p>
+          <a href="/case-studies/sen-monorom-local-guide/">Read the Sen Monorom Local Guide case study</a>
+        </div>
+        <div class="supporting-proof__gallery" aria-label="Sen Monorom Local Guide screenshots">
+          {senMonoromProofScreenshots.map((screenshot) => (
             <figure>
               <img src={screenshot.src} alt={screenshot.alt} width="900" height="600" loading="lazy" decoding="async" />
               <figcaption>{screenshot.caption}</figcaption>
@@ -347,6 +395,14 @@ const breadcrumbSchema = {
     gap: var(--space-md);
   }
 
+  .directory-proof {
+    grid-template-columns: minmax(240px, 0.58fr) minmax(0, 1.42fr);
+  }
+
+  .directory-proof .supporting-proof__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .supporting-proof__gallery figure { margin: 0; }
 
   .supporting-proof__gallery img {
@@ -399,5 +455,6 @@ const breadcrumbSchema = {
 
   @media (max-width: 700px) {
     .fit-grid, .phase-list, .proof-gallery { grid-template-columns: 1fr; }
+    .directory-proof .supporting-proof__gallery { grid-template-columns: 1fr; }
   }
 </style>
